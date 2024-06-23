@@ -1,0 +1,11 @@
+{
+  "type": "smelting:melting",
+  "input": {
+    "item": "minecraft:iron_ore"
+  },
+  "output": {
+    "amount": 100,
+    "id": "minecraft:water"
+  },
+  "meltingTemp": 100
+}
