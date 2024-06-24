@@ -4,6 +4,8 @@ import com.benbenlaw.smelting.block.ModBlocks;
 import com.benbenlaw.smelting.block.entity.ModBlockEntities;
 import com.benbenlaw.smelting.block.screen.ModMenuTypes;
 import com.benbenlaw.smelting.block.screen.SmelterScreen;
+import com.benbenlaw.smelting.block.screen.SolidifierMenu;
+import com.benbenlaw.smelting.block.screen.SolidifierScreen;
 import com.benbenlaw.smelting.item.ModCreativeModTab;
 import com.benbenlaw.smelting.item.ModItems;
 import com.benbenlaw.smelting.recipe.ModRecipes;
@@ -47,7 +49,7 @@ public class Smelting {
     }
 
     public void registerCapabilities(RegisterCapabilitiesEvent event) {
-   //     ModBlockEntities.registerCapabilities(event);
+        ModBlockEntities.registerCapabilities(event);
     }
 
     public void commonSetup(RegisterPayloadHandlersEvent event) {
@@ -59,6 +61,7 @@ public class Smelting {
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.SMELTER_MENU.get(), SmelterScreen::new);
+            event.register(ModMenuTypes.SOLIDIFIER_MENU.get(), SolidifierScreen::new);
         }
     }
 }

@@ -1,10 +1,7 @@
 package com.benbenlaw.smelting.block.screen;
 
-import com.benbenlaw.opolisutilities.screen.slot.utils.BlacklistTagInputSlot;
-import com.benbenlaw.opolisutilities.screen.slot.utils.ModResultSlot;
-import com.benbenlaw.opolisutilities.screen.slot.utils.WhitelistTagInputSlot;
 import com.benbenlaw.smelting.block.ModBlocks;
-import com.benbenlaw.smelting.block.entity.ControllerBlockEntity;
+import com.benbenlaw.smelting.block.entity.SolidifierBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -15,48 +12,39 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
 
-public class SmelterMenu extends AbstractContainerMenu {
+public class SolidifierMenu extends AbstractContainerMenu {
 
-    protected ControllerBlockEntity blockEntity;
+    protected SolidifierBlockEntity blockEntity;
     protected Level level;
     protected ContainerData data;
     protected Player player;
     protected BlockPos blockPos;
 
-    public SmelterMenu(int containerID, Inventory inventory, FriendlyByteBuf extraData) {
-        this(containerID, inventory, extraData.readBlockPos(), new SimpleContainerData(16));
+    public SolidifierMenu(int containerID, Inventory inventory, FriendlyByteBuf extraData) {
+        this(containerID, inventory, extraData.readBlockPos(), new SimpleContainerData(8));
 
     }
 
-    public SmelterMenu(int containerID, Inventory inventory, BlockPos blockPos, ContainerData data) {
-        super(ModMenuTypes.SMELTER_MENU.get(), containerID);
+    public SolidifierMenu(int containerID, Inventory inventory, BlockPos blockPos, ContainerData data) {
+        super(ModMenuTypes.SOLIDIFIER_MENU.get(), containerID);
         this.player = inventory.player;
         this.blockPos = blockPos;
         this.level = inventory.player.level();
         this.data = data;
-        this.blockEntity = (ControllerBlockEntity) this.level.getBlockEntity(blockPos);
+        this.blockEntity = (SolidifierBlockEntity) this.level.getBlockEntity(blockPos);
 
-        checkContainerSize(inventory, 16);
+        checkContainerSize(inventory, 8);
         addPlayerInventory(inventory);
         addPlayerHotbar(inventory);
 
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 0, 12, 16));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 1, 31, 16));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 2, 50, 16));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 3, 69, 16));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 4, 88, 16));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 5, 12, 35));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 6, 31, 35));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 7, 50, 35));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 8, 69, 35));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 9, 88, 35));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 10, 12, 54));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 11, 31, 54));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 12, 50, 54));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 13, 69, 54));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 14, 88, 54));
-
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 15, 112, 54));
+        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 0, 50, 21));
+        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 1, 69, 21));
+        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 2, 132, 21));
+        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 3, 151, 21));
+        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 4, 50, 51));
+        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 5, 69, 51));
+        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 6, 132, 51));
+        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 7, 151, 51));
 
         addDataSlots(data);
 
@@ -67,10 +55,10 @@ public class SmelterMenu extends AbstractContainerMenu {
     }
 
     public int getScaledProgress(int slotIndex) {
-        int progress = this.data.get(slotIndex);  // Adjust as per how data is accessed in SmelterMenu
-        int maxProgress = this.data.get(15);      // Assuming max progress is stored at index 1
+        int progress = this.data.get(0);  // Adjust as per how data is accessed in SmelterMenu
+        int maxProgress = this.data.get(1);      // Assuming max progress is stored at index 1
 
-        int progressBarWidth = 19;  // Adjust according to your UI design
+        int progressBarWidth = 26;  // Adjust according to your UI design
 
         return maxProgress != 0 && progress != 0 ? progress * progressBarWidth / maxProgress : 0;
     }
@@ -91,7 +79,7 @@ public class SmelterMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 16;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 8;  // must be the number of slots you have!
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
@@ -129,7 +117,7 @@ public class SmelterMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(@NotNull Player player) {
         return stillValid(ContainerLevelAccess.create(player.level(), blockPos),
-                player, ModBlocks.CONTROLLER.get());
+                player, ModBlocks.SOLIDIFIER.get());
     }
 
 

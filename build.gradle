@@ -102,6 +102,11 @@ dependencies {
     compileOnly "curse.maven:jei-238222:5437447"
     runtimeOnly "curse.maven:jei-238222:5437447"
 
+    //Mekanism
+
+    compileOnly "curse.maven:mekanism-268560:5433143"
+    runtimeOnly "curse.maven:mekanism-268560:5433143"
+
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

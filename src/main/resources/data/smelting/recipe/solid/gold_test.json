@@ -1,0 +1,14 @@
+{
+  "type": "smelting:solidifier",
+  "mold": {
+    "item": "minecraft:gold_ore"
+  },
+  "fluid": {
+    "amount": 100,
+    "id": "minecraft:water"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:diamond"
+  }
+}

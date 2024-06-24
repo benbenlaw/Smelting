@@ -1,0 +1,11 @@
+{
+  "type": "smelting:melting",
+  "input": {
+    "item": "minecraft:emerald_ore"
+  },
+  "output": {
+    "amount": 100,
+    "id": "mekanism:oxygen"
+  },
+  "meltingTemp": 100
+}

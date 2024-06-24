@@ -1,0 +1,11 @@
+{
+  "type": "smelting:melting",
+  "input": {
+    "item": "minecraft:gold_ore"
+  },
+  "output": {
+    "amount": 6000,
+    "id": "minecraft:lava"
+  },
+  "meltingTemp": 100
+}

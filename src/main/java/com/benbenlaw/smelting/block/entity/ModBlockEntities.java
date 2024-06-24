@@ -7,6 +7,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -21,16 +23,24 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ControllerBlockEntity>> CONTROLLER_BLOCK_ENTITY =
             register("controller_block_entity", () ->
                     BlockEntityType.Builder.of(ControllerBlockEntity::new, ModBlocks.CONTROLLER.get()));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SolidifierBlockEntity>> SOLIDIFIER_BLOCK_ENTITY =
+            register("solidifier_block_entity", () ->
+                    BlockEntityType.Builder.of(SolidifierBlockEntity::new, ModBlocks.SOLIDIFIER.get()));
 
-    /*
 
-    //Capability Registration (Item Handler)]
+
+    //Capability Registration (Item Handler)
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,
-                ModBlockEntities.SPRAYER.get(), SprayerBlockEntity::getItemHandlerCapability);
+                ModBlockEntities.CONTROLLER_BLOCK_ENTITY.get(), ControllerBlockEntity::getItemHandlerCapability);
+
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,
+                ModBlockEntities.SOLIDIFIER_BLOCK_ENTITY.get(), SolidifierBlockEntity::getItemHandlerCapability);
     }
 
-     */
+
+
+
 
 
     public static <T extends BlockEntity> DeferredHolder<BlockEntityType<?>, BlockEntityType<T>> register(@Nonnull String name, @Nonnull Supplier<BlockEntityType.Builder<T>> initializer) {

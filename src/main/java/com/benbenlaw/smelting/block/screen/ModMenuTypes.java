@@ -13,10 +13,14 @@ public class ModMenuTypes {
             DeferredRegister.create(BuiltInRegistries.MENU, Smelting.MOD_ID);
 
     public static final DeferredHolder<MenuType<?>, MenuType<SmelterMenu>> SMELTER_MENU;
+    public static final DeferredHolder<MenuType<?>, MenuType<SolidifierMenu>> SOLIDIFIER_MENU;
 
     static {
         SMELTER_MENU = MENUS.register("smelter_menu", () ->
                 IMenuTypeExtension.create(SmelterMenu::new));
+
+        SOLIDIFIER_MENU = MENUS.register("solidifier_menu", () ->
+                IMenuTypeExtension.create(SolidifierMenu::new));
     }
 
 

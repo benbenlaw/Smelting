@@ -26,7 +26,7 @@ public record MeltingRecipe(SizedIngredient input, FluidStack output, int meltin
 
     @Override
     public boolean matches(@NotNull RecipeInput container, @NotNull Level level) {
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < 15; i++) {
             if (input.test(container.getItem(i))) {
                 return true;
             }

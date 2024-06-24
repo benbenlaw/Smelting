@@ -15,13 +15,21 @@ public class ModRecipes {
     public static final DeferredRegister<RecipeType<?>> TYPES =
             DeferredRegister.create(BuiltInRegistries.RECIPE_TYPE, Smelting.MOD_ID);
 
-    //Catalogue
+    //Melting
 
     public static final Supplier<RecipeSerializer<MeltingRecipe>> MELTING_SERIALIZER =
         SERIALIZER.register("melting", () -> MeltingRecipe.Serializer.INSTANCE);
 
     public static final Supplier<RecipeType<MeltingRecipe>> MELTING_TYPE =
             TYPES.register("melting", () -> MeltingRecipe.Type.INSTANCE);
+
+    //Solidifier
+
+    public static final Supplier<RecipeSerializer<SolidifierRecipe>> SOLIDIFIER_SERIALIZER =
+        SERIALIZER.register("solidifier", () -> SolidifierRecipe.Serializer.INSTANCE);
+
+    public static final Supplier<RecipeType<SolidifierRecipe>> SOLIDIFIER_TYPE =
+            TYPES.register("solidifier", () -> SolidifierRecipe.Type.INSTANCE);
 
     public static void register(IEventBus eventBus) {
         SERIALIZER.register(eventBus);

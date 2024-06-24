@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.Level;
 
-public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
+public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
 
     Level level;
 
@@ -21,9 +21,9 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
     private FluidTankRenderer tank3;
     private FluidTankRenderer tank4;
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(Smelting.MOD_ID, "textures/gui/controller_gui.png");
+            ResourceLocation.fromNamespaceAndPath(Smelting.MOD_ID, "textures/gui/solidifier_gui.png");
 
-    public SmelterScreen(SmelterMenu menu, Inventory inventory, Component component) {
+    public SolidifierScreen(SolidifierMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
         this.level = menu.level;
     }
@@ -52,10 +52,10 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         renderProgressBars(guiGraphics);  // Draw progress bars over the item stacks
         renderTooltip(guiGraphics, mouseX, mouseY);
 
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_1, this.leftPos + 136, this.topPos + 15, 14, 26));
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_2, this.leftPos + 153, this.topPos + 15, 14, 26));
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_3, this.leftPos + 136, this.topPos + 45, 14, 26));
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_4, this.leftPos + 153, this.topPos + 45, 14, 26));
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_1, this.leftPos + 8, this.topPos + 15, 14, 26));
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_2, this.leftPos + 90, this.topPos + 15, 14, 26));
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_3, this.leftPos + 8, this.topPos + 45, 14, 26));
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_4, this.leftPos + 90, this.topPos + 45, 14, 26));
 
     }
 
@@ -67,30 +67,28 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        for (int slot = 0; slot <= 14; slot++) {
+        for (int slot = 0; slot <= 3; slot++) {
             int progress = menu.getScaledProgress(slot);
             int slotX = getSlotX(slot);
             int slotY = getSlotY(slot);
-            guiGraphics.blit(TEXTURE, x + slotX - 1, y + slotY - 5, 176, 0, progress, 18);
+            guiGraphics.blit(TEXTURE, x + slotX, y + slotY, 176, 30, progress, 16);
         }
     }
 
     private int getSlotX(int slot) {
-        switch (slot) {
-            case 0: case 5: case 10: return 12;
-            case 1: case 6: case 11: return 31;
-            case 2: case 7: case 12: return 50;
-            case 3: case 8: case 13: return 69;
-            case 4: case 9: case 14: return 88;
-            default: return 0;
-        }
+        return switch (slot) {
+            case 0, 2 -> 25;
+            case 1, 3 -> 106;
+            default -> 0;
+        };
     }
 
     private int getSlotY(int slot) {
-        if (slot >= 0 && slot <= 4) return 20;
-        if (slot >= 5 && slot <= 9) return 39;
-        if (slot >= 10 && slot <= 14) return 58;
-        return 0;
+        return switch (slot) {
+            case 0, 1 -> 19;
+            case 2, 3 -> 51;
+            default -> 0;
+        };
     }
 
     private void assignFluidRenderer() {

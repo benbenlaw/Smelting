@@ -2,6 +2,7 @@ package com.benbenlaw.smelting.block;
 
 import com.benbenlaw.smelting.Smelting;
 import com.benbenlaw.smelting.block.custom.ControllerBlock;
+import com.benbenlaw.smelting.block.custom.SolidifierBlock;
 import com.benbenlaw.smelting.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -24,6 +25,9 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> CONTROLLER = registerBlock("controller",
             () -> new ControllerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).sound(SoundType.METAL)
+                    .noOcclusion()));
+    public static final DeferredBlock<Block> SOLIDIFIER = registerBlock("solidifier",
+            () -> new SolidifierBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).sound(SoundType.METAL)
                     .noOcclusion()));
 
 

@@ -1,0 +1,11 @@
+{
+  "type": "smelting:melting",
+  "input": {
+    "item": "minecraft:diamond_ore"
+  },
+  "output": {
+    "amount": 1235,
+    "id": "mekanism:steam"
+  },
+  "meltingTemp": 100
+}
