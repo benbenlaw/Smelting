@@ -1,9 +1,12 @@
 package com.benbenlaw.smelting.block.entity;
 
 import com.benbenlaw.opolisutilities.block.entity.custom.BlockPlacerBlockEntity;
+import com.benbenlaw.opolisutilities.block.entity.custom.DryingTableBlockEntity;
 import com.benbenlaw.opolisutilities.block.entity.custom.handler.InputOutputItemHandler;
+import com.benbenlaw.opolisutilities.recipe.DryingTableRecipe;
 import com.benbenlaw.opolisutilities.util.inventory.IInventoryHandlingBlockEntity;
 import com.benbenlaw.smelting.block.screen.SolidifierMenu;
+import com.benbenlaw.smelting.recipe.MeltingRecipe;
 import com.benbenlaw.smelting.recipe.SolidifierRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -45,39 +48,24 @@ import java.util.Optional;
 
 public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, IInventoryHandlingBlockEntity {
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(8) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(2) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
             sync();
         }
-    };
 
-    public final FluidTank TANK_1 = new FluidTank(16000) {
         @Override
-        protected void onContentsChanged() {
-            setChanged();
-            sync();
+        protected int getStackLimit(int slot, ItemStack stack) {
+            if(slot == 0)
+                return 1;
+            if (slot == 1)
+                return 64;
+            return super.getStackLimit(slot, stack);
         }
     };
 
-    public final FluidTank TANK_2 = new FluidTank(16000) {
-        @Override
-        protected void onContentsChanged() {
-            setChanged();
-            sync();
-        }
-    };
-
-    public final FluidTank TANK_3 = new FluidTank(16000) {
-        @Override
-        protected void onContentsChanged() {
-            setChanged();
-            sync();
-        }
-    };
-
-    public final FluidTank TANK_4 = new FluidTank(16000) {
+    public final FluidTank TANK = new FluidTank(64000) {
         @Override
         protected void onContentsChanged() {
             setChanged();
@@ -88,89 +76,53 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
     private final IFluidHandler fluidHandler = new IFluidHandler() {
         @Override
         public int getTanks() {
-            return 4;
+            return 1;
         }
 
         @Override
         public FluidStack getFluidInTank(int tank) {
-
-            if (tank == 0)
-                return TANK_1.getFluid();
-            if (tank == 1)
-                return TANK_2.getFluid();
-            if (tank == 2)
-                return TANK_3.getFluid();
-            if (tank == 3)
-                return TANK_4.getFluid();
-            return null;
+            return TANK.getFluid();
         }
 
         @Override
         public int getTankCapacity(int tank) {
-            if (tank == 0)
-                return TANK_1.getCapacity();
-            if (tank == 1)
-                return TANK_2.getCapacity();
-            if (tank == 2)
-                return TANK_3.getCapacity();
-            if (tank == 3)
-                return TANK_4.getCapacity();
-            return 0;
+            return TANK.getCapacity();
         }
 
         @Override
         public boolean isFluidValid(int tank, FluidStack stack) {
-            return switch (tank) {
-                case 0 -> TANK_1.isFluidValid(stack);
-                case 1 -> TANK_2.isFluidValid(stack);
-                case 2 -> TANK_3.isFluidValid(stack);
-                case 3 -> TANK_4.isFluidValid(stack);
-                default -> false;
-            };
+            return TANK.isFluidValid(stack);
         }
 
 
         @Override
         public int fill(FluidStack resource, FluidAction action) {
-            if (resource.getFluid() == TANK_1.getFluid().getFluid()) {
-                return TANK_1.fill(resource, action);
-            }
-            if (resource.getFluid() == TANK_2.getFluid().getFluid()) {
-                return TANK_2.fill(resource, action);
-            }
-            if (resource.getFluid() == TANK_3.getFluid().getFluid()) {
-                return TANK_3.fill(resource, action);
-            }
-            if (resource.getFluid() == TANK_4.getFluid().getFluid()) {
-                return TANK_4.fill(resource, action);
+
+            if (resource.getFluid() == TANK.getFluid().getFluid()) {
+                return TANK.fill(resource, action);
             }
             return 0;
         }
 
         @Override
         public FluidStack drain(FluidStack resource, FluidAction action) {
-            return null;
+            if (resource.getFluid() == TANK.getFluid().getFluid()) {
+                return TANK.drain(resource.getAmount(), action);
+            }
+            return FluidStack.EMPTY;
         }
 
         @Override
         public FluidStack drain(int maxDrain, FluidAction action) {
-            return null;
+            if (TANK.getFluidAmount() > 0) {
+                return TANK.drain(maxDrain, action);
+            }
+            return FluidStack.EMPTY;
         }
     };
 
     public boolean onPlayerUse(Player player, InteractionHand hand) {
-        // Assuming TANK_1, TANK_2, TANK_3, TANK_4 are your tanks or references to them.
-        FluidTank[] tanks = { TANK_1, TANK_2, TANK_3, TANK_4 };
-
-        for (FluidTank tank : tanks) {
-            if (!tank.isEmpty() || tank.getCapacity() != tank.getFluidAmount()) {
-                boolean interacted = FluidUtil.interactWithFluidHandler(player, hand, tank);
-                if (interacted) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return FluidUtil.interactWithFluidHandler(player, hand, TANK);
     }
 
     public IFluidHandler getFluidHandlerCapability(Direction side) {
@@ -193,8 +145,8 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
     public int progress = 0;
     public int maxProgress = 20;
     private final IItemHandler solidifierItemHandler = new InputOutputItemHandler(itemHandler,
-            (i, stack) -> true,
-            i -> false //
+            (i, stack) -> true,  // Input condition: Always true (accept any input)
+            i -> i == 1  // Output condition: Output from all slots except slot 1
     );
 
     public @Nullable IItemHandler getItemHandlerCapability(@Nullable Direction side) {
@@ -283,10 +235,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
         compoundTag.put("inventory", this.itemHandler.serializeNBT(provider));
         compoundTag.putInt("progress", progress);
         compoundTag.putInt("maxProgress", maxProgress);
-        compoundTag.put("tank1", TANK_1.writeToNBT(provider, new CompoundTag()));
-        compoundTag.put("tank2", TANK_2.writeToNBT(provider, new CompoundTag()));
-        compoundTag.put("tank3", TANK_3.writeToNBT(provider, new CompoundTag()));
-        compoundTag.put("tank4", TANK_4.writeToNBT(provider, new CompoundTag()));
+        compoundTag.put("tank", TANK.writeToNBT(provider, new CompoundTag()));
 
 
     }
@@ -294,15 +243,9 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
     @Override
     protected void loadAdditional(CompoundTag compoundTag, HolderLookup.@NotNull Provider provider) {
         this.itemHandler.deserializeNBT(provider, compoundTag.getCompound("inventory"));
-
         progress = compoundTag.getInt("progress");
         maxProgress = compoundTag.getInt("maxProgress");
-
-        TANK_1.readFromNBT(provider, compoundTag.getCompound("tank1"));
-        TANK_2.readFromNBT(provider, compoundTag.getCompound("tank2"));
-        TANK_3.readFromNBT(provider, compoundTag.getCompound("tank3"));
-        TANK_4.readFromNBT(provider, compoundTag.getCompound("tank4"));
-
+        TANK.readFromNBT(provider, compoundTag.getCompound("tank"));
         super.loadAdditional(compoundTag, provider);
     }
 
@@ -321,162 +264,91 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
         if (!level.isClientSide()) {
             RecipeInput inventory = new RecipeInput() {
                 @Override
-                public ItemStack getItem(int index) {
-                    if (index == 0 || index == 2 || index == 4 || index == 6) {
-                        return itemHandler.getStackInSlot(index);
-                    }
-                    return ItemStack.EMPTY;
+                public @NotNull ItemStack getItem(int index) {
+                    return itemHandler.getStackInSlot(index);
                 }
 
                 @Override
                 public int size() {
-                    return 4;
+                    return itemHandler.getSlots();
                 }
             };
 
             sync();
 
+            if (itemHandler.getStackInSlot(0).isEmpty()) {
+                resetProgress();
+                return;
+            }
+
             Optional<RecipeHolder<SolidifierRecipe>> selectedRecipe = Optional.empty();
 
             for (RecipeHolder<SolidifierRecipe> recipeHolder : level.getRecipeManager().getRecipesFor(SolidifierRecipe.Type.INSTANCE, inventory, level)) {
-                SolidifierRecipe recipe = recipeHolder.value();
-
-                boolean isValidRecipe = false;
-                for (int i = 0; i <= 6; i += 2) {
-                    if (recipe.mold().test(itemHandler.getStackInSlot(i)) && hasEnoughFluid(recipe.fluid(), i) && isRecipeSlotsValidForTanks(recipe)) {
-                        isValidRecipe = true;
-                        break;
-                    }
-                }
-
-                if (isValidRecipe) {
-                    selectedRecipe = Optional.of(recipeHolder);
-                    break;
-                }
+                selectedRecipe = Optional.of(recipeHolder);
+                break;
             }
 
             if (selectedRecipe.isPresent()) {
                 RecipeHolder<SolidifierRecipe> match = selectedRecipe.get();
-                SolidifierRecipe recipe = match.value();
 
-                progress++;
+                if (match.value().mold().test(itemHandler.getStackInSlot(0))) {
+                    FluidStack output = match.value().fluid();
 
-                if (progress >= maxProgress) {
-                    int inputSlotIndex = -1;
-                    int outputSlotIndex = -1;
+                    if (hasEnoughFluid(output) && hasOutputSpaceMaking(this, match.value())) {
+                        progress++;
 
-                    for (int i = 0; i <= 6; i += 2) {
-                        if (recipe.mold().test(itemHandler.getStackInSlot(i)) && isRecipeSlotsValidForTanks(recipe)) {
-                            inputSlotIndex = i;
-                            outputSlotIndex = i + 1;
-                            break;
+                        if (progress >= maxProgress) {
+                            extractFluid(output, output.getAmount());
+                            itemHandler.setStackInSlot(1, new ItemStack(match.value().output().getItem(), match.value().output().getCount() + itemHandler.getStackInSlot(1).getCount()));
+                            setChanged();
+                            resetProgress();
+                            sync();
                         }
-                    }
-
-                    if (inputSlotIndex != -1 && outputSlotIndex != -1) {
-                        itemHandler.getStackInSlot(inputSlotIndex).shrink(1);
-
-                        ItemStack outputStack = itemHandler.getStackInSlot(outputSlotIndex);
-                        if (outputStack.isEmpty()) {
-                            itemHandler.setStackInSlot(outputSlotIndex, new ItemStack(recipe.output().getItem(), 1));
-                        } else {
-                            outputStack.grow(1);
-                            itemHandler.setStackInSlot(outputSlotIndex, outputStack);
-                        }
-
-                        extractFluid(recipe.fluid(), recipe.fluid().getAmount(), inputSlotIndex);
-
-                        System.out.println("Recipe Matched");
+                    } else {
                         resetProgress();
                     }
                 }
             }
+
         }
     }
-
-
 
     private void resetProgress() {
         progress = 0;
     }
 
-    private void extractFluid(FluidStack output, int amount, int slot) {
-        switch (slot) {
-            case 0:
-            case 1:
-                if (TANK_1.getFluidAmount() >= amount && TANK_1.getFluid().getFluid() == output.getFluid()) {
-                    TANK_1.drain(amount, IFluidHandler.FluidAction.EXECUTE);
-                }
-                break;
-            case 2:
-            case 3:
-                if (TANK_2.getFluidAmount() >= amount && TANK_2.getFluid().getFluid() == output.getFluid()) {
-                    TANK_2.drain(amount, IFluidHandler.FluidAction.EXECUTE);
-                }
-                break;
-            case 4:
-            case 5:
-                if (TANK_3.getFluidAmount() >= amount && TANK_3.getFluid().getFluid() == output.getFluid()) {
-                    TANK_3.drain(amount, IFluidHandler.FluidAction.EXECUTE);
-                }
-                break;
-            case 6:
-            case 7:
-                if (TANK_4.getFluidAmount() >= amount && TANK_4.getFluid().getFluid() == output.getFluid()) {
-                    TANK_4.drain(amount, IFluidHandler.FluidAction.EXECUTE);
-                }
-                break;
+    private void extractFluid(FluidStack output, int amount) {
+        if (TANK.getFluidAmount() >= amount && TANK.getFluid().getFluid() == output.getFluid()) {
+            TANK.drain(amount, IFluidHandler.FluidAction.EXECUTE);
         }
     }
 
 
-    private boolean hasEnoughFluid(FluidStack output, int slot) {
-        switch (slot) {
-            case 0:
-            case 1:
-                return TANK_1.getFluidAmount() >= output.getAmount() && TANK_1.getFluid().getFluid() == output.getFluid();
-            case 2:
-            case 3:
-                return TANK_2.getFluidAmount() >= output.getAmount() && TANK_2.getFluid().getFluid() == output.getFluid();
-            case 4:
-            case 5:
-                return TANK_3.getFluidAmount() >= output.getAmount() && TANK_3.getFluid().getFluid() == output.getFluid();
-            case 6:
-            case 7:
-                return TANK_4.getFluidAmount() >= output.getAmount() && TANK_4.getFluid().getFluid() == output.getFluid();
-            default:
-                return false;
-        }
+    private boolean hasEnoughFluid(FluidStack output) {
+        return TANK.getFluidAmount() >= output.getAmount() && TANK.getFluid().getFluid() == output.getFluid();
     }
 
 
     private boolean isRecipeSlotsValidForTanks(SolidifierRecipe recipe) {
         FluidStack recipeFluid = recipe.fluid();
-
-        boolean tank1Valid = TANK_1.getFluid().is(recipeFluid.getFluidType()) && (tankIsValidForSlot(recipeFluid, 0) || tankIsValidForSlot(recipeFluid, 1));
-        boolean tank2Valid = TANK_2.getFluid().is(recipeFluid.getFluidType()) && (tankIsValidForSlot(recipeFluid, 2) || tankIsValidForSlot(recipeFluid, 3));
-        boolean tank3Valid = TANK_3.getFluid().is(recipeFluid.getFluidType()) && (tankIsValidForSlot(recipeFluid, 4) || tankIsValidForSlot(recipeFluid, 5));
-        boolean tank4Valid = TANK_4.getFluid().is(recipeFluid.getFluidType()) && (tankIsValidForSlot(recipeFluid, 6) || tankIsValidForSlot(recipeFluid, 7));
-
-        return tank1Valid || tank2Valid || tank3Valid || tank4Valid;
+        return TANK.getFluid().is(recipeFluid.getFluidType()) && (tankIsValidForSlot(recipeFluid, 0) || tankIsValidForSlot(recipeFluid, 1));
     }
 
     private boolean tankIsValidForSlot(FluidStack stack, int slot) {
-        switch (slot) {
-            case 0:
-            case 1:
-                return stack.getFluid() == TANK_1.getFluid().getFluid();
-            case 2:
-            case 3:
-                return stack.getFluid() == TANK_2.getFluid().getFluid();
-            case 4:
-            case 5:
-                return stack.getFluid() == TANK_3.getFluid().getFluid();
-            case 6:
-            case 7:
-                return stack.getFluid() == TANK_4.getFluid().getFluid();
-            default:
-                return false;
+
+        return stack.getFluid() == TANK.getFluid().getFluid();
+    }
+
+    private boolean hasOutputSpaceMaking(SolidifierBlockEntity entity, SolidifierRecipe recipe) {
+        ItemStack outputSlotStack = entity.itemHandler.getStackInSlot(1);
+        ItemStack resultStack = recipe.getResultItem(Objects.requireNonNull(getLevel()).registryAccess());
+
+        if (outputSlotStack.isEmpty()) {
+            return resultStack.getCount() <= resultStack.getMaxStackSize();
+        } else if (outputSlotStack.getItem() == resultStack.getItem()) {
+            return outputSlotStack.getCount() + resultStack.getCount() <= outputSlotStack.getMaxStackSize();
+        } else {
+            return false;
         }
     }
 

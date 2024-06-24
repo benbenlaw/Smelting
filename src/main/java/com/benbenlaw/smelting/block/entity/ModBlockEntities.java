@@ -34,8 +34,14 @@ public class ModBlockEntities {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,
                 ModBlockEntities.CONTROLLER_BLOCK_ENTITY.get(), ControllerBlockEntity::getItemHandlerCapability);
 
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK,
+                ModBlockEntities.CONTROLLER_BLOCK_ENTITY.get(), ControllerBlockEntity::getFluidHandlerCapability);
+
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,
                 ModBlockEntities.SOLIDIFIER_BLOCK_ENTITY.get(), SolidifierBlockEntity::getItemHandlerCapability);
+
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK,
+                ModBlockEntities.SOLIDIFIER_BLOCK_ENTITY.get(), SolidifierBlockEntity::getFluidHandlerCapability);
     }
 
 

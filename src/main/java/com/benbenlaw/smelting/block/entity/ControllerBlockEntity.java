@@ -51,6 +51,15 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
             setChanged();
             sync();
         }
+
+        @Override
+        protected int getStackLimit(int slot, ItemStack stack) {
+            if (slot >= 0 && slot <= 14) {
+                return 1;
+            } else {
+                return 64;
+            }
+        }
     };
 
     public final FluidTank TANK_1 = new FluidTank(16000) {
@@ -93,17 +102,22 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
         @Override
         public FluidStack getFluidInTank(int tank) {
-
-            if (tank == 0)
-                return TANK_1.getFluid();
-            if (tank == 1)
-                return TANK_2.getFluid();
-            if (tank == 2)
-                return TANK_3.getFluid();
-            if (tank == 3)
-                return TANK_4.getFluid();
-            return null;
+            switch (tank) {
+                case 0:
+                    return TANK_1.getFluid();
+                case 1:
+                    return TANK_2.getFluid();
+                case 2:
+                    return TANK_3.getFluid();
+                case 3:
+                    return TANK_4.getFluid();
+                default:
+                    return FluidStack.EMPTY;
+            }
         }
+
+
+
 
         @Override
         public int getTankCapacity(int tank) {
@@ -150,12 +164,36 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
         @Override
         public FluidStack drain(FluidStack resource, FluidAction action) {
-            return null;
+            if (resource.getFluid() == TANK_1.getFluid().getFluid()) {
+                return TANK_1.drain(resource.getAmount(), action);
+            }
+            if (resource.getFluid() == TANK_2.getFluid().getFluid()) {
+                return TANK_2.drain(resource.getAmount(), action);
+            }
+            if (resource.getFluid() == TANK_3.getFluid().getFluid()) {
+                return TANK_3.drain(resource.getAmount(), action);
+            }
+            if (resource.getFluid() == TANK_4.getFluid().getFluid()) {
+                return TANK_4.drain(resource.getAmount(), action);
+            }
+            return FluidStack.EMPTY;
         }
 
         @Override
         public FluidStack drain(int maxDrain, FluidAction action) {
-            return null;
+            if (TANK_1.getFluidAmount() > 0) {
+                return TANK_1.drain(maxDrain, action);
+            }
+            if (TANK_2.getFluidAmount() > 0) {
+                return TANK_2.drain(maxDrain, action);
+            }
+            if (TANK_3.getFluidAmount() > 0) {
+                return TANK_3.drain(maxDrain, action);
+            }
+            if (TANK_4.getFluidAmount() > 0) {
+                return TANK_4.drain(maxDrain, action);
+            }
+            return FluidStack.EMPTY;
         }
     };
 

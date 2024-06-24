@@ -21,7 +21,7 @@ public class SolidifierMenu extends AbstractContainerMenu {
     protected BlockPos blockPos;
 
     public SolidifierMenu(int containerID, Inventory inventory, FriendlyByteBuf extraData) {
-        this(containerID, inventory, extraData.readBlockPos(), new SimpleContainerData(8));
+        this(containerID, inventory, extraData.readBlockPos(), new SimpleContainerData(2));
 
     }
 
@@ -33,18 +33,12 @@ public class SolidifierMenu extends AbstractContainerMenu {
         this.data = data;
         this.blockEntity = (SolidifierBlockEntity) this.level.getBlockEntity(blockPos);
 
-        checkContainerSize(inventory, 8);
+        checkContainerSize(inventory, 2);
         addPlayerInventory(inventory);
         addPlayerHotbar(inventory);
 
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 0, 50, 21));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 1, 69, 21));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 2, 132, 21));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 3, 151, 21));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 4, 50, 51));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 5, 69, 51));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 6, 132, 51));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 7, 151, 51));
+        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 0, 80, 36));
+        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 1, 134, 36));
 
         addDataSlots(data);
 
@@ -54,7 +48,7 @@ public class SolidifierMenu extends AbstractContainerMenu {
         return data.get(0) > 0;
     }
 
-    public int getScaledProgress(int slotIndex) {
+    public int getScaledProgress() {
         int progress = this.data.get(0);  // Adjust as per how data is accessed in SmelterMenu
         int maxProgress = this.data.get(1);      // Assuming max progress is stored at index 1
 
@@ -79,7 +73,7 @@ public class SolidifierMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 8;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must be the number of slots you have!
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {

@@ -6,6 +6,7 @@ import com.benbenlaw.smelting.block.screen.ModMenuTypes;
 import com.benbenlaw.smelting.block.screen.SmelterScreen;
 import com.benbenlaw.smelting.block.screen.SolidifierMenu;
 import com.benbenlaw.smelting.block.screen.SolidifierScreen;
+import com.benbenlaw.smelting.fluid.ModFluids;
 import com.benbenlaw.smelting.item.ModCreativeModTab;
 import com.benbenlaw.smelting.item.ModItems;
 import com.benbenlaw.smelting.recipe.ModRecipes;
@@ -35,12 +36,14 @@ public class Smelting {
         ModBlocks.register(modEventBus);
         ModCreativeModTab.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        ModFluids.register(modEventBus);
 
         modEventBus.addListener(this::registerCapabilities);
 
         //    ModParticles.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
+
 
         modEventBus.addListener(this::commonSetup);
 

@@ -1,0 +1,14 @@
+{
+  "type": "smelting:solidifier",
+  "mold": {
+    "item": "smelting:ingot_mold"
+  },
+  "fluid": {
+    "amount": 100,
+    "id": "smelting:molten_iron_fluid"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:iron_ingot"
+  }
+}

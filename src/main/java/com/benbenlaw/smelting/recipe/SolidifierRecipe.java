@@ -25,16 +25,7 @@ public record SolidifierRecipe(Ingredient mold, ItemStack output, FluidStack flu
 
     @Override
     public boolean matches(@NotNull RecipeInput container, @NotNull Level level) {
-
-        /*
-        for (int i = 0; i < 15; i++) {
-            if (input.test(container.getItem(i))) {
-                return true;
-            }
-        }
-
-         */
-        return true;
+        return mold.test(container.getItem(0));
     }
 
     @Override

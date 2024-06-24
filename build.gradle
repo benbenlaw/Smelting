@@ -99,13 +99,13 @@ dependencies {
 
     //JEI
 
-    compileOnly "curse.maven:jei-238222:5437447"
-    runtimeOnly "curse.maven:jei-238222:5437447"
+    compileOnly "curse.maven:jei-238222:5466551"
+    runtimeOnly "curse.maven:jei-238222:5466551"
 
     //Mekanism
 
-    compileOnly "curse.maven:mekanism-268560:5433143"
-    runtimeOnly "curse.maven:mekanism-268560:5433143"
+    compileOnly "curse.maven:mekanism-268560:5465725"
+    runtimeOnly "curse.maven:mekanism-268560:5465725"
 
 }
 

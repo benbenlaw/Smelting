@@ -4,8 +4,8 @@
     "item": "minecraft:gold_ore"
   },
   "output": {
-    "amount": 6000,
-    "id": "minecraft:lava"
+    "amount": 100,
+    "id": "smelting:molten_gold_fluid"
   },
   "meltingTemp": 100
 }
