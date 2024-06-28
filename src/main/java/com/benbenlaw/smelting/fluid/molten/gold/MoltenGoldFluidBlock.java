@@ -9,7 +9,7 @@ import net.minecraft.world.level.material.PushReaction;
 public class MoltenGoldFluidBlock extends LiquidBlock {
 
     public MoltenGoldFluidBlock() {
-        super(ModFluids.MOLTEN_GOLD_FLUID_SOURCE.get(), Properties.of()
+        super(ModFluids.MOLTEN_GOLD_SOURCE.get(), Properties.of()
                 .mapColor(MapColor.COLOR_GRAY)
                 .replaceable()
                 .noCollission()

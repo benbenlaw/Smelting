@@ -1,0 +1,8 @@
+{
+  "type": "smelting:fuel",
+  "fluid": {
+    "amount": 8,
+    "id": "smelting:molten_coal"
+  },
+  "temp": 1200
+}

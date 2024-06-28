@@ -2,7 +2,7 @@ package com.benbenlaw.smelting.block.custom;
 
 import com.benbenlaw.smelting.block.entity.ControllerBlockEntity;
 import com.benbenlaw.smelting.block.entity.ModBlockEntities;
-import com.benbenlaw.smelting.block.screen.SmelterMenu;
+import com.benbenlaw.smelting.screen.SmelterMenu;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;

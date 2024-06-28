@@ -31,6 +31,14 @@ public class ModRecipes {
     public static final Supplier<RecipeType<SolidifierRecipe>> SOLIDIFIER_TYPE =
             TYPES.register("solidifier", () -> SolidifierRecipe.Type.INSTANCE);
 
+    //Fuel
+
+    public static final Supplier<RecipeSerializer<FuelRecipe>> FUEL_SERIALIZER =
+        SERIALIZER.register("fuel", () -> FuelRecipe.Serializer.INSTANCE);
+
+    public static final Supplier<RecipeType<FuelRecipe>> FUEL_TYPE =
+            TYPES.register("fuel", () -> FuelRecipe.Type.INSTANCE);
+
     public static void register(IEventBus eventBus) {
         SERIALIZER.register(eventBus);
         TYPES.register(eventBus);

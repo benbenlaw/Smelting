@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_black_brick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "smelting:black_brick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "smelting:dust_mold"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_black_brick"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "smelting:dust_mold"
+    ]
+  }
+}

@@ -1,10 +1,8 @@
 package com.benbenlaw.smelting.block.custom;
 
-import com.benbenlaw.smelting.block.entity.ControllerBlockEntity;
 import com.benbenlaw.smelting.block.entity.ModBlockEntities;
 import com.benbenlaw.smelting.block.entity.SolidifierBlockEntity;
-import com.benbenlaw.smelting.block.screen.SmelterMenu;
-import com.benbenlaw.smelting.block.screen.SolidifierMenu;
+import com.benbenlaw.smelting.screen.SolidifierMenu;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -90,19 +88,23 @@ public class SolidifierBlock extends BaseEntityBlock {
 
             SolidifierBlockEntity solidifierBlockEntity = (SolidifierBlockEntity) level.getBlockEntity(blockPos);
 
-            //MENU OPEN//
+
             if (solidifierBlockEntity instanceof SolidifierBlockEntity) {
-                ContainerData data = solidifierBlockEntity.data;
-                player.openMenu(new SimpleMenuProvider(
-                        (windowId, playerInventory, playerEntity) -> new SolidifierMenu(windowId, playerInventory, blockPos, data),
-                        Component.translatable("block.smelting.solidifier")), (buf -> buf.writeBlockPos(blockPos)));
+
+                //Use Bucket First else open menu not both
+
+                if (solidifierBlockEntity.onPlayerUse(player, InteractionHand.MAIN_HAND)) {
+                    return InteractionResult.SUCCESS;
+                }
+
+                else {
+                    ContainerData data = solidifierBlockEntity.data;
+                    player.openMenu(new SimpleMenuProvider(
+                            (windowId, playerInventory, playerEntity) -> new SolidifierMenu(windowId, playerInventory, blockPos, data),
+                            Component.translatable("block.smelting.solidifier")), (buf -> buf.writeBlockPos(blockPos)));
+                }
             }
 
-            //FILL BUCKET//
-            SolidifierBlockEntity strainerTankBlockEntity = (SolidifierBlockEntity) level.getBlockEntity(blockPos);
-            if (strainerTankBlockEntity != null && strainerTankBlockEntity.onPlayerUse(player, InteractionHand.MAIN_HAND)) {
-                return InteractionResult.SUCCESS;
-            }
 
             return InteractionResult.SUCCESS;
         }

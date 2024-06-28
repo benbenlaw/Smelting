@@ -1,0 +1,8 @@
+{
+  "type": "smelting:fuel",
+  "fluid": {
+    "amount": 25,
+    "id": "smelting:molten_uranium"
+  },
+  "temp": 1600
+}

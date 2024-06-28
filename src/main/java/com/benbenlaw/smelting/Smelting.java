@@ -2,10 +2,9 @@ package com.benbenlaw.smelting;
 
 import com.benbenlaw.smelting.block.ModBlocks;
 import com.benbenlaw.smelting.block.entity.ModBlockEntities;
-import com.benbenlaw.smelting.block.screen.ModMenuTypes;
-import com.benbenlaw.smelting.block.screen.SmelterScreen;
-import com.benbenlaw.smelting.block.screen.SolidifierMenu;
-import com.benbenlaw.smelting.block.screen.SolidifierScreen;
+import com.benbenlaw.smelting.screen.ModMenuTypes;
+import com.benbenlaw.smelting.screen.SmelterScreen;
+import com.benbenlaw.smelting.screen.SolidifierScreen;
 import com.benbenlaw.smelting.fluid.ModFluids;
 import com.benbenlaw.smelting.item.ModCreativeModTab;
 import com.benbenlaw.smelting.item.ModItems;
@@ -14,10 +13,9 @@ import com.mojang.logging.LogUtils;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -61,10 +59,28 @@ public class Smelting {
 
     @EventBusSubscriber(modid = Smelting.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
+
+
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.SMELTER_MENU.get(), SmelterScreen::new);
             event.register(ModMenuTypes.SOLIDIFIER_MENU.get(), SolidifierScreen::new);
+        }
+
+
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+
+            event.enqueueWork(() -> {
+
+                // Only Needed if i need a translucent fluid otherwise should be ok? //
+
+
+           //     ItemBlockRenderTypes.setRenderLayer(ModFluids.MOLTEN_URANIUM_SOURCE.get(), RenderType.translucent());
+           //     ItemBlockRenderTypes.setRenderLayer(ModFluids.MOLTEN_URANIUM_FLOWING.get(), RenderType.translucent());
+
+
+            });
         }
     }
 }

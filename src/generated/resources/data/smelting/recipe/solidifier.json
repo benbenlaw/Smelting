@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "smelting:black_bricks"
+    },
+    "K": {
+      "item": "smelting:black_brick"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "K K",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "smelting:solidifier"
+  }
+}

@@ -9,7 +9,7 @@ import net.minecraft.world.level.material.PushReaction;
 public class MoltenIronFluidBlock extends LiquidBlock {
 
     public MoltenIronFluidBlock() {
-        super(ModFluids.MOLTEN_IRON_FLUID_SOURCE.get(), Properties.of()
+        super(ModFluids.MOLTEN_IRON_SOURCE.get(), Properties.of()
                 .mapColor(MapColor.COLOR_GRAY)
                 .replaceable()
                 .noCollission()

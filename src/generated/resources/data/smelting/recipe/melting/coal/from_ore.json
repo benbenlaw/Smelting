@@ -1,0 +1,12 @@
+{
+  "type": "smelting:melting",
+  "input": {
+    "count": 1,
+    "tag": "c:ores/coal"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 100,
+    "id": "smelting:molten_coal"
+  }
+}

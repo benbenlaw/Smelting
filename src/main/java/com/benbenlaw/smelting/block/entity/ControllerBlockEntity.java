@@ -1,9 +1,9 @@
 package com.benbenlaw.smelting.block.entity;
 
-import com.benbenlaw.opolisutilities.block.entity.custom.FluidGeneratorBlockEntity;
 import com.benbenlaw.opolisutilities.block.entity.custom.handler.InputOutputItemHandler;
 import com.benbenlaw.opolisutilities.util.inventory.IInventoryHandlingBlockEntity;
-import com.benbenlaw.smelting.block.screen.SmelterMenu;
+import com.benbenlaw.smelting.screen.SmelterMenu;
+import com.benbenlaw.smelting.recipe.FuelRecipe;
 import com.benbenlaw.smelting.recipe.MeltingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,11 +27,12 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeInput;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.IFluidTank;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import net.neoforged.neoforge.items.IItemHandler;
@@ -39,7 +40,7 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -162,8 +163,10 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
             return 0;
         }
 
+
         @Override
         public FluidStack drain(FluidStack resource, FluidAction action) {
+
             if (resource.getFluid() == TANK_1.getFluid().getFluid()) {
                 return TANK_1.drain(resource.getAmount(), action);
             }
@@ -181,6 +184,8 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
         @Override
         public FluidStack drain(int maxDrain, FluidAction action) {
+            assert level != null;
+
             if (TANK_1.getFluidAmount() > 0) {
                 return TANK_1.drain(maxDrain, action);
             }
@@ -215,11 +220,12 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
     public final ContainerData data;
     public int[] progress = new int[15];
-    public int maxProgress = 20;
+    public int maxProgress = 220;
     private final IItemHandler controllerItemHandler = new InputOutputItemHandler(itemHandler,
-            (i, stack) -> true,
-            i -> false //
+            (i, stack) -> i != 15,
+            i -> i == 1
     );
+
 
     public @Nullable IItemHandler getItemHandlerCapability(@Nullable Direction side) {
         return controllerItemHandler;
@@ -349,6 +355,19 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         assert level != null;
         if (!level.isClientSide()) {
 
+            //Drain to adjacent tanks
+
+            for (Direction direction : Direction.values()) {
+                BlockEntity entity = level.getBlockEntity(this.worldPosition.relative(direction));
+                if (entity instanceof SolidifierBlockEntity solidifierBlockEntity) {
+                    transferFluid(TANK_1, solidifierBlockEntity.TANK);
+                    transferFluid(TANK_2, solidifierBlockEntity.TANK);
+                    transferFluid(TANK_3, solidifierBlockEntity.TANK);
+                    transferFluid(TANK_4, solidifierBlockEntity.TANK);
+                }
+            }
+
+
             RecipeInput inventory = new RecipeInput() {
                 @Override
                 public ItemStack getItem(int index) {
@@ -361,10 +380,11 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                 }
             };
 
+
+
             sync();
 
-            for (int i = 0; i < 15; i++) {
-
+            for (int i = 0; i < 15; i++) {  // Loop includes slot 14
                 if (itemHandler.getStackInSlot(i).isEmpty()) {
                     resetProgress(i);
                     continue;
@@ -380,16 +400,16 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
                 if (selectedRecipe.isPresent()) {
                     RecipeHolder<MeltingRecipe> match = selectedRecipe.get();
-
                     if (match.value().input().test(itemHandler.getStackInSlot(i))) {
                         FluidStack output = match.value().output();
 
-                        if (canFitFluidInAnyTank(output)) {
+                        if (canFitFluidInAnyTank(output) && hasEnoughFuel(level.getBlockEntity(this.worldPosition), match.value().meltingTemp()) ) {
                             progress[i]++;
 
                             if (progress[i] >= maxProgress) {
                                 itemHandler.getStackInSlot(i).shrink(1);
                                 addFluidToTank(output, output.getAmount());
+                                useFuel(this);
                                 resetProgress(i);
                                 setChanged();
                                 sync();
@@ -402,6 +422,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
             }
         }
     }
+
 
     private void resetProgress(int slot) {
         progress[slot] = 0;
@@ -427,6 +448,66 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                 || (TANK_2.getFluid().isEmpty() || (TANK_2.getFluid().getFluid() == output.getFluid() && (TANK_2.getCapacity() - TANK_2.getFluidAmount() >= output.getAmount())))
                 || (TANK_3.getFluid().isEmpty() || (TANK_3.getFluid().getFluid() == output.getFluid() && (TANK_3.getCapacity() - TANK_3.getFluidAmount() >= output.getAmount())))
                 || (TANK_4.getFluid().isEmpty() || (TANK_4.getFluid().getFluid() == output.getFluid() && (TANK_4.getCapacity() - TANK_4.getFluidAmount() >= output.getAmount())));
+    }
+
+    private void useFuel(BlockEntity entity) {
+        if (entity == null) {
+            return;
+        }
+        Level level = entity.getLevel();
+        if (level != null) {
+            for (Direction direction : Direction.values()) {
+                BlockEntity adjacentEntity = level.getBlockEntity(entity.getBlockPos().relative(direction));
+                if (adjacentEntity instanceof TankBlockEntity tankBlockEntity) {
+                    List<RecipeHolder<FuelRecipe>> allFuels = level.getRecipeManager().getAllRecipesFor(FuelRecipe.Type.INSTANCE);
+
+                    for (RecipeHolder<FuelRecipe> recipeHolder : allFuels) {
+                        FuelRecipe recipe = recipeHolder.value();
+                        if (recipe.fluid().getFluid() == tankBlockEntity.FLUID_TANK.getFluid().getFluid()) {
+                            if (tankBlockEntity.FLUID_TANK.getFluidAmount() >= recipe.fluid().getAmount()) {
+                                tankBlockEntity.FLUID_TANK.drain(recipe.fluid().getAmount(), IFluidHandler.FluidAction.EXECUTE);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    private boolean hasEnoughFuel(BlockEntity entity, int temp) {
+        if (entity == null) {
+            return false;
+        }
+        Level level = entity.getLevel();
+        if (level != null) {
+            for (Direction direction : Direction.values()) {
+                BlockEntity adjacentEntity = level.getBlockEntity(entity.getBlockPos().relative(direction));
+                if (adjacentEntity instanceof TankBlockEntity tankBlockEntity) {
+                    List<RecipeHolder<FuelRecipe>> allFuels = level.getRecipeManager().getAllRecipesFor(FuelRecipe.Type.INSTANCE);
+
+                    for (RecipeHolder<FuelRecipe> recipeHolder : allFuels) {
+                        FuelRecipe recipe = recipeHolder.value();
+                        if (recipe.fluid().getFluid() == tankBlockEntity.FLUID_TANK.getFluid().getFluid()) {
+                            if (recipe.temp() >= temp) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+
+    private void transferFluid(IFluidTank sourceTank, IFluidTank targetTank) {
+        if (sourceTank.getFluidAmount() > 0) {
+            int drainAmount = sourceTank.getFluidAmount();
+            FluidStack drained = sourceTank.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
+            int filled = targetTank.fill(drained, IFluidHandler.FluidAction.EXECUTE);
+            sourceTank.drain(filled, IFluidHandler.FluidAction.EXECUTE);
+        }
     }
 
 }

@@ -1,12 +1,8 @@
 package com.benbenlaw.smelting.block.entity;
 
-import com.benbenlaw.opolisutilities.block.entity.custom.BlockPlacerBlockEntity;
-import com.benbenlaw.opolisutilities.block.entity.custom.DryingTableBlockEntity;
 import com.benbenlaw.opolisutilities.block.entity.custom.handler.InputOutputItemHandler;
-import com.benbenlaw.opolisutilities.recipe.DryingTableRecipe;
 import com.benbenlaw.opolisutilities.util.inventory.IInventoryHandlingBlockEntity;
-import com.benbenlaw.smelting.block.screen.SolidifierMenu;
-import com.benbenlaw.smelting.recipe.MeltingRecipe;
+import com.benbenlaw.smelting.screen.SolidifierMenu;
 import com.benbenlaw.smelting.recipe.SolidifierRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -34,6 +30,7 @@ import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidUtil;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
@@ -44,7 +41,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
-import java.util.Optional;
 
 public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, IInventoryHandlingBlockEntity {
 
@@ -97,8 +93,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
 
         @Override
         public int fill(FluidStack resource, FluidAction action) {
-
-            if (resource.getFluid() == TANK.getFluid().getFluid()) {
+            if (resource.getFluid() == TANK.getFluid().getFluid() || TANK.isEmpty()) {
                 return TANK.fill(resource, action);
             }
             return 0;
@@ -281,37 +276,35 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
                 return;
             }
 
-            Optional<RecipeHolder<SolidifierRecipe>> selectedRecipe = Optional.empty();
+            boolean foundMatch = false;
 
             for (RecipeHolder<SolidifierRecipe> recipeHolder : level.getRecipeManager().getRecipesFor(SolidifierRecipe.Type.INSTANCE, inventory, level)) {
-                selectedRecipe = Optional.of(recipeHolder);
-                break;
-            }
+                SolidifierRecipe recipe = recipeHolder.value();
+                if (recipe.mold().test(itemHandler.getStackInSlot(0)) && hasEnoughFluid(recipe.fluid())) {
+                    FluidStack output = recipe.fluid();
 
-            if (selectedRecipe.isPresent()) {
-                RecipeHolder<SolidifierRecipe> match = selectedRecipe.get();
-
-                if (match.value().mold().test(itemHandler.getStackInSlot(0))) {
-                    FluidStack output = match.value().fluid();
-
-                    if (hasEnoughFluid(output) && hasOutputSpaceMaking(this, match.value())) {
+                    if (hasOutputSpaceMaking(this, recipe)) {
                         progress++;
 
                         if (progress >= maxProgress) {
                             extractFluid(output, output.getAmount());
-                            itemHandler.setStackInSlot(1, new ItemStack(match.value().output().getItem(), match.value().output().getCount() + itemHandler.getStackInSlot(1).getCount()));
+                            itemHandler.setStackInSlot(1, new ItemStack(recipe.output().getItems()[0].getItem(), recipe.output().count() + itemHandler.getStackInSlot(1).getCount()));
                             setChanged();
                             resetProgress();
                             sync();
                         }
-                    } else {
-                        resetProgress();
+                        foundMatch = true;
+                        break;
                     }
                 }
             }
 
+            if (!foundMatch) {
+                resetProgress();
+            }
         }
     }
+
 
     private void resetProgress() {
         progress = 0;
@@ -328,7 +321,6 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
         return TANK.getFluidAmount() >= output.getAmount() && TANK.getFluid().getFluid() == output.getFluid();
     }
 
-
     private boolean isRecipeSlotsValidForTanks(SolidifierRecipe recipe) {
         FluidStack recipeFluid = recipe.fluid();
         return TANK.getFluid().is(recipeFluid.getFluidType()) && (tankIsValidForSlot(recipeFluid, 0) || tankIsValidForSlot(recipeFluid, 1));
@@ -341,12 +333,12 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
 
     private boolean hasOutputSpaceMaking(SolidifierBlockEntity entity, SolidifierRecipe recipe) {
         ItemStack outputSlotStack = entity.itemHandler.getStackInSlot(1);
-        ItemStack resultStack = recipe.getResultItem(Objects.requireNonNull(getLevel()).registryAccess());
+        SizedIngredient resultStack = recipe.output();
 
         if (outputSlotStack.isEmpty()) {
-            return resultStack.getCount() <= resultStack.getMaxStackSize();
-        } else if (outputSlotStack.getItem() == resultStack.getItem()) {
-            return outputSlotStack.getCount() + resultStack.getCount() <= outputSlotStack.getMaxStackSize();
+            return  recipe.output().count() <= resultStack.getItems()[0].getItem().getDefaultMaxStackSize();
+        } else if (outputSlotStack.getItem() == resultStack.getItems()[0].getItem()) {
+            return outputSlotStack.getCount() + recipe.output().count() <= outputSlotStack.getMaxStackSize();
         } else {
             return false;
         }

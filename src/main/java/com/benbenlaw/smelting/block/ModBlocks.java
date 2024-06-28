@@ -3,6 +3,7 @@ package com.benbenlaw.smelting.block;
 import com.benbenlaw.smelting.Smelting;
 import com.benbenlaw.smelting.block.custom.ControllerBlock;
 import com.benbenlaw.smelting.block.custom.SolidifierBlock;
+import com.benbenlaw.smelting.block.custom.TankBlock;
 import com.benbenlaw.smelting.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -24,10 +25,16 @@ public class ModBlocks {
             DeferredRegister.createBlocks(Smelting.MOD_ID);
 
     public static final DeferredBlock<Block> CONTROLLER = registerBlock("controller",
-            () -> new ControllerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).sound(SoundType.METAL)
+            () -> new ControllerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.STONE)
                     .noOcclusion()));
     public static final DeferredBlock<Block> SOLIDIFIER = registerBlock("solidifier",
-            () -> new SolidifierBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).sound(SoundType.METAL)
+            () -> new SolidifierBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.STONE)
+                    .noOcclusion()));
+    public static final DeferredBlock<Block> TANK = registerBlock("tank",
+            () -> new TankBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.STONE)
+                    .noOcclusion()));
+    public static final DeferredBlock<Block> BLACK_BRICKS = registerBlock("black_bricks",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS).sound(SoundType.STONE)
                     .noOcclusion()));
 
 

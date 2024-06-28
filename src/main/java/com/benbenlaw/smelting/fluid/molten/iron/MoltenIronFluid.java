@@ -13,9 +13,9 @@ import org.jetbrains.annotations.NotNull;
 public class MoltenIronFluid extends BaseFlowingFluid {
 
     public static final Properties PROPERTIES = new Properties(
-            ModFluids.MOLTEN_IRON_FLUID_TYPE,
-            ModFluids.MOLTEN_IRON_FLUID_FLOWING,
-            ModFluids.MOLTEN_IRON_FLUID_SOURCE).bucket(ModItems.MOLTEN_IRON_BUCKET).block(ModFluids.MOLTEN_IRON_FLUID_BLOCK)
+            ModFluids.MOLTEN_IRON_TYPE,
+            ModFluids.MOLTEN_IRON_FLOWING,
+            ModFluids.MOLTEN_IRON_SOURCE).bucket(ModItems.MOLTEN_IRON_BUCKET).block(ModFluids.MOLTEN_IRON_BLOCK)
 
 
     ;
@@ -26,12 +26,12 @@ public class MoltenIronFluid extends BaseFlowingFluid {
 
     @Override
     public Fluid getFlowing() {
-        return ModFluids.MOLTEN_IRON_FLUID_FLOWING.get();
+        return ModFluids.MOLTEN_IRON_FLOWING.get();
     }
 
     @Override
     public Fluid getSource() {
-        return ModFluids.MOLTEN_IRON_FLUID_SOURCE.get();
+        return ModFluids.MOLTEN_IRON_SOURCE.get();
     }
 
     @Override

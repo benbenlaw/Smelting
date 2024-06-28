@@ -1,0 +1,14 @@
+{
+  "type": "smelting:solidifier",
+  "fluid": {
+    "amount": 90,
+    "id": "smelting:molten_copper"
+  },
+  "mold": {
+    "item": "smelting:ingot_mold"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:copper_ingot"
+  }
+}

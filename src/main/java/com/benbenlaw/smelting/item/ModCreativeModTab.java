@@ -25,9 +25,28 @@ public class ModCreativeModTab {
                 output.accept(ModItems.INGOT_MOLD);
                 output.accept(ModItems.NUGGET_MOLD);
                 output.accept(ModItems.ROD_MOLD);
+                output.accept(ModItems.BLOCK_MOLD);
+                output.accept(ModItems.GEM_MOLD);
+                output.accept(ModItems.DUST_MOLD);
+                output.accept(ModItems.BLACK_BRICK);
+                output.accept(ModBlocks.BLACK_BRICKS);
+
+                output.accept(ModItems.MOLTEN_IRON_BUCKET);
+                output.accept(ModItems.MOLTEN_GOLD_BUCKET);
+                output.accept(ModItems.MOLTEN_COPPER_BUCKET);
+                output.accept(ModItems.MOLTEN_COAL_BUCKET);
+                output.accept(ModItems.MOLTEN_EMERALD_BUCKET);
+                output.accept(ModItems.MOLTEN_DIAMOND_BUCKET);
+                output.accept(ModItems.MOLTEN_LAPIS_BUCKET);
+                output.accept(ModItems.MOLTEN_REDSTONE_BUCKET);
+                output.accept(ModItems.MOLTEN_OSMIUM_BUCKET);
+                output.accept(ModItems.MOLTEN_TIN_BUCKET);
+                output.accept(ModItems.MOLTEN_URANIUM_BUCKET);
+                output.accept(ModItems.MOLTEN_LEAD_BUCKET);
 
                 output.accept(ModBlocks.SOLIDIFIER.asItem());
                 output.accept(ModBlocks.CONTROLLER.asItem());
+                output.accept(ModBlocks.TANK.asItem());
 
             }).build());
 

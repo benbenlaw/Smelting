@@ -13,9 +13,9 @@ import org.jetbrains.annotations.NotNull;
 public class MoltenGoldFluid extends BaseFlowingFluid {
 
     public static final Properties PROPERTIES = new Properties(
-            ModFluids.MOLTEN_GOLD_FLUID_TYPE,
-            ModFluids.MOLTEN_GOLD_FLUID_FLOWING,
-            ModFluids.MOLTEN_GOLD_FLUID_SOURCE).bucket(ModItems.MOLTEN_GOLD_BUCKET).block(ModFluids.MOLTEN_GOLD_FLUID_BLOCK)
+            ModFluids.MOLTEN_GOLD_TYPE,
+            ModFluids.MOLTEN_GOLD_FLOWING,
+            ModFluids.MOLTEN_GOLD_SOURCE).bucket(ModItems.MOLTEN_GOLD_BUCKET).block(ModFluids.MOLTEN_GOLD_BLOCK)
 
 
     ;
@@ -26,12 +26,12 @@ public class MoltenGoldFluid extends BaseFlowingFluid {
 
     @Override
     public Fluid getFlowing() {
-        return ModFluids.MOLTEN_GOLD_FLUID_FLOWING.get();
+        return ModFluids.MOLTEN_GOLD_FLOWING.get();
     }
 
     @Override
     public Fluid getSource() {
-        return ModFluids.MOLTEN_GOLD_FLUID_SOURCE.get();
+        return ModFluids.MOLTEN_GOLD_SOURCE.get();
     }
 
     @Override

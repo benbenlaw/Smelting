@@ -26,6 +26,9 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SolidifierBlockEntity>> SOLIDIFIER_BLOCK_ENTITY =
             register("solidifier_block_entity", () ->
                     BlockEntityType.Builder.of(SolidifierBlockEntity::new, ModBlocks.SOLIDIFIER.get()));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TankBlockEntity>> TANK_BLOCK_ENTITY =
+            register("tank_block_entity", () ->
+                    BlockEntityType.Builder.of(TankBlockEntity::new, ModBlocks.TANK.get()));
 
 
 
