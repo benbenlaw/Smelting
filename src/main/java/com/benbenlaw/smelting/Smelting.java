@@ -2,6 +2,7 @@ package com.benbenlaw.smelting;
 
 import com.benbenlaw.smelting.block.ModBlocks;
 import com.benbenlaw.smelting.block.entity.ModBlockEntities;
+import com.benbenlaw.smelting.screen.MixerScreen;
 import com.benbenlaw.smelting.screen.ModMenuTypes;
 import com.benbenlaw.smelting.screen.SmelterScreen;
 import com.benbenlaw.smelting.screen.SolidifierScreen;
@@ -65,6 +66,7 @@ public class Smelting {
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.SMELTER_MENU.get(), SmelterScreen::new);
             event.register(ModMenuTypes.SOLIDIFIER_MENU.get(), SolidifierScreen::new);
+            event.register(ModMenuTypes.MIXER_MENU.get(), MixerScreen::new);
         }
 
 

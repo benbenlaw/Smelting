@@ -30,6 +30,11 @@ public class ModBlockEntities {
             register("tank_block_entity", () ->
                     BlockEntityType.Builder.of(TankBlockEntity::new, ModBlocks.TANK.get()));
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MixerBlockEntity>> MIXER_BLOCK_ENTITY =
+            register("mixer_block_entity", () ->
+                    BlockEntityType.Builder.of(MixerBlockEntity::new, ModBlocks.MIXER.get()));
+
+
 
 
     //Capability Registration (Item Handler)

@@ -2,6 +2,7 @@ package com.benbenlaw.smelting.block;
 
 import com.benbenlaw.smelting.Smelting;
 import com.benbenlaw.smelting.block.custom.ControllerBlock;
+import com.benbenlaw.smelting.block.custom.MixerBlock;
 import com.benbenlaw.smelting.block.custom.SolidifierBlock;
 import com.benbenlaw.smelting.block.custom.TankBlock;
 import com.benbenlaw.smelting.item.ModItems;
@@ -32,6 +33,10 @@ public class ModBlocks {
                     .noOcclusion()));
     public static final DeferredBlock<Block> TANK = registerBlock("tank",
             () -> new TankBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.STONE)
+                    .noOcclusion()));
+
+    public static final DeferredBlock<Block> MIXER = registerBlock("mixer",
+            () -> new MixerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.STONE)
                     .noOcclusion()));
     public static final DeferredBlock<Block> BLACK_BRICKS = registerBlock("black_bricks",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS).sound(SoundType.STONE)

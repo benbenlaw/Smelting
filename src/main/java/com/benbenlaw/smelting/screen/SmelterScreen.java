@@ -46,7 +46,21 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
                 fuelTankEntity = null;
             }
         }
+    }
 
+    @Override
+    protected void init() {
+        super.init();
+        assignFluidRenderer();
+        addFluidWidgets();
+
+    }
+
+    public void addFluidWidgets() {
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_1, this.leftPos + 136, this.topPos + 15, 14, 26));
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_2, this.leftPos + 153, this.topPos + 15, 14, 26));
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_3, this.leftPos + 136, this.topPos + 45, 14, 26));
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_4, this.leftPos + 153, this.topPos + 45, 14, 26));
     }
 
     @Override
@@ -71,16 +85,10 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        assignFluidRenderer();
 
         renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
         super.render(guiGraphics, mouseX, mouseY, partialTicks);  // This draws the background and item stacks
         renderProgressBars(guiGraphics);  // Draw progress bars over the item stacks
-
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_1, this.leftPos + 136, this.topPos + 15, 14, 26));
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_2, this.leftPos + 153, this.topPos + 15, 14, 26));
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_3, this.leftPos + 136, this.topPos + 45, 14, 26));
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_4, this.leftPos + 153, this.topPos + 45, 14, 26));
 
         FluidTank fuelTank = new FluidTank(0);
         if (fuelTankEntity instanceof TankBlockEntity tankBlockEntity) {

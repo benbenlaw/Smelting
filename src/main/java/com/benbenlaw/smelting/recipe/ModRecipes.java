@@ -31,6 +31,14 @@ public class ModRecipes {
     public static final Supplier<RecipeType<SolidifierRecipe>> SOLIDIFIER_TYPE =
             TYPES.register("solidifier", () -> SolidifierRecipe.Type.INSTANCE);
 
+    //Mixer
+
+    public static final Supplier<RecipeSerializer<MixingRecipe>> MIXING_SERIALIZER =
+        SERIALIZER.register("mixing", () -> MixingRecipe.Serializer.INSTANCE);
+
+    public static final Supplier<RecipeType<MixingRecipe>> MIXING_TYPE =
+            TYPES.register("mixing", () -> MixingRecipe.Type.INSTANCE);
+
     //Fuel
 
     public static final Supplier<RecipeSerializer<FuelRecipe>> FUEL_SERIALIZER =

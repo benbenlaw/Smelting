@@ -14,6 +14,8 @@ public class ModMenuTypes {
 
     public static final DeferredHolder<MenuType<?>, MenuType<SmelterMenu>> SMELTER_MENU;
     public static final DeferredHolder<MenuType<?>, MenuType<SolidifierMenu>> SOLIDIFIER_MENU;
+    public static final DeferredHolder<MenuType<?>, MenuType<MixerMenu>> MIXER_MENU;
+
 
     static {
         SMELTER_MENU = MENUS.register("smelter_menu", () ->
@@ -21,6 +23,10 @@ public class ModMenuTypes {
 
         SOLIDIFIER_MENU = MENUS.register("solidifier_menu", () ->
                 IMenuTypeExtension.create(SolidifierMenu::new));
+
+        MIXER_MENU = MENUS.register("mixer_menu", () ->
+                IMenuTypeExtension.create(MixerMenu::new));
+
     }
 
 
