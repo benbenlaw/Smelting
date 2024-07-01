@@ -15,14 +15,29 @@ import net.minecraft.world.level.Level;
 public class MixerScreen extends AbstractContainerScreen<MixerMenu> {
 
     Level level;
-
-    private FluidTankRenderer tank1;
     private static final ResourceLocation TEXTURE =
             ResourceLocation.fromNamespaceAndPath(Smelting.MOD_ID, "textures/gui/mixer_gui.png");
 
     public MixerScreen(MixerMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
         this.level = menu.level;
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        addFluidWidgets();
+    }
+
+    public void addFluidWidgets() {
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_1, this.leftPos + 9, this.topPos + 15, 14, 56));
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_2, this.leftPos + 27, this.topPos + 15, 14, 56));
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_3, this.leftPos + 45, this.topPos + 15, 14, 56));
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_4, this.leftPos + 63, this.topPos + 15, 14, 56));
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_5, this.leftPos + 81, this.topPos + 15, 14, 56));
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_6, this.leftPos + 99, this.topPos + 15, 14, 56));
+
+        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.OUTPUT_TANK, this.leftPos + 153, this.topPos + 15, 14, 56));
     }
 
     @Override
@@ -42,13 +57,11 @@ public class MixerScreen extends AbstractContainerScreen<MixerMenu> {
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
 
-        assignFluidRenderer();
         renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         renderProgressBars(guiGraphics);
         renderTooltip(guiGraphics, mouseX, mouseY);
 
-    //    addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK, this.leftPos + 27, this.topPos + 15, 14, 56));
     }
 
     private void renderProgressBars(GuiGraphics guiGraphics) {
@@ -60,12 +73,5 @@ public class MixerScreen extends AbstractContainerScreen<MixerMenu> {
         int y = (height - imageHeight) / 2;
 
         guiGraphics.blit(TEXTURE, x + 104 , y + 35 , 176, 30, menu.getScaledProgress(), 16);
-
-    }
-
-
-    private void assignFluidRenderer() {
-   //     tank1 = new FluidTankRenderer(menu.blockEntity.TANK.getCapacity(), this.leftPos + 14, this.topPos + 15, 56);
-
     }
 }

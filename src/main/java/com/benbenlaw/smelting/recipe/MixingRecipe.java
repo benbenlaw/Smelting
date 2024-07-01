@@ -1,6 +1,7 @@
 package com.benbenlaw.smelting.recipe;
 
 import com.benbenlaw.opolisutilities.recipe.NoInventoryRecipe;
+import com.benbenlaw.smelting.block.entity.MixerBlockEntity;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
@@ -21,12 +22,13 @@ public record MixingRecipe(FluidStack fluid1, FluidStack fluid2, FluidStack flui
     public @NotNull NonNullList<Ingredient> getIngredients() {
         return NonNullList.create();
     }
-
-
     @Override
-    public boolean matches(NoInventoryRecipe p_346065_, Level p_345375_) {
-        return true;
+    public boolean matches(NoInventoryRecipe recipe, Level level) {
+
+            return true;
+
     }
+
 
     @Override
     public ItemStack assemble(NoInventoryRecipe p_345149_, HolderLookup.Provider p_346030_) {

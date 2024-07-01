@@ -14,8 +14,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
@@ -23,12 +21,6 @@ import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
 
     Level level;
-
-    private FluidTankRenderer tank1;
-    private FluidTankRenderer tank2;
-    private FluidTankRenderer tank3;
-    private FluidTankRenderer tank4;
-
     private BlockEntity fuelTankEntity;
     private static final ResourceLocation TEXTURE =
             ResourceLocation.fromNamespaceAndPath(Smelting.MOD_ID, "textures/gui/controller_gui.png");
@@ -51,9 +43,7 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
     @Override
     protected void init() {
         super.init();
-        assignFluidRenderer();
         addFluidWidgets();
-
     }
 
     public void addFluidWidgets() {
@@ -61,7 +51,17 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_2, this.leftPos + 153, this.topPos + 15, 14, 26));
         addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_3, this.leftPos + 136, this.topPos + 45, 14, 26));
         addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_4, this.leftPos + 153, this.topPos + 45, 14, 26));
+
+        FluidTank fuelTank = new FluidTank(0);
+        if (fuelTankEntity instanceof TankBlockEntity tankBlockEntity) {
+            fuelTank = tankBlockEntity.FLUID_TANK;
+        }
+
+        if (fuelTank.getCapacity() != 0 && fuelTank.getFluidAmount() != 0) {
+            addRenderableOnly(new FluidStackWidget(this, fuelTank, this.leftPos + 112, this.topPos + 54, 16, 16));
+        }
     }
+
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
@@ -77,14 +77,11 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         guiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
     }
 
-    FluidTank fuelTank = new FluidTank(16000);
-
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
 
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
-
 
         renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
         super.render(guiGraphics, mouseX, mouseY, partialTicks);  // This draws the background and item stacks
@@ -101,14 +98,8 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         else if (fuelTank.getFluidAmount() == 0) {
             renderEmptyTank(guiGraphics, mouseX, mouseY, x, y);
         }
-
-        else {
-            addRenderableOnly(new FluidStackWidget(this, fuelTank, this.leftPos + 112, this.topPos + 54, 16, 16));
-        }
         renderTooltip(guiGraphics, mouseX, mouseY);
-
     }
-
 
     private void renderProgressBars(GuiGraphics guiGraphics) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
@@ -142,13 +133,6 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         if (slot >= 5 && slot <= 9) return 39;
         if (slot >= 10 && slot <= 14) return 58;
         return 0;
-    }
-
-    private void assignFluidRenderer() {
-        tank1 = new FluidTankRenderer(menu.blockEntity.TANK_1.getCapacity(), this.leftPos + 14, this.topPos + 15, 14);
-        tank2 = new FluidTankRenderer(menu.blockEntity.TANK_2.getCapacity(), this.leftPos + 14, this.topPos + 15, 14);
-        tank3 = new FluidTankRenderer(menu.blockEntity.TANK_3.getCapacity(), this.leftPos + 14, this.topPos + 15, 14);
-        tank4 = new FluidTankRenderer(menu.blockEntity.TANK_4.getCapacity(), this.leftPos + 14, this.topPos + 15, 14);
     }
 
     private void renderNoTank (GuiGraphics guiGraphics, int mouseX, int mouseY, int x, int y) {

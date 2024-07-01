@@ -6,18 +6,26 @@
   },
   "fluid2": {
       "amount": 100,
-      "id": "smelting:molten_coal"
+      "id": "minecraft:lava"
   },
   "fluid3": {
       "amount": 100,
-      "id": "minecraft:lava"
+      "id": "minecraft:water"
   },
   "fluid4": {
       "amount": 100,
-      "id": "minecraft:water"
+      "id": "smelting:molten_iron"
+  },
+  "fluid5": {
+      "amount": 100,
+      "id": "smelting:molten_diamond"
+  },
+  "fluid6": {
+      "amount": 100,
+      "id": "smelting:molten_gold"
   },
   "output": {
       "amount": 100,
-      "id": "smelting:molten_uranium"
+      "id": "smelting:molten_emerald"
   }
 }

@@ -1,12 +1,8 @@
 package com.benbenlaw.smelting.block.entity;
 
-import com.benbenlaw.opolisutilities.block.entity.custom.handler.InputOutputItemHandler;
 import com.benbenlaw.opolisutilities.recipe.NoInventoryRecipe;
-import com.benbenlaw.opolisutilities.util.inventory.IInventoryHandlingBlockEntity;
 import com.benbenlaw.smelting.recipe.MixingRecipe;
-import com.benbenlaw.smelting.recipe.SolidifierRecipe;
 import com.benbenlaw.smelting.screen.MixerMenu;
-import com.benbenlaw.smelting.screen.SolidifierMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -19,30 +15,27 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
-import net.neoforged.neoforge.common.crafting.SizedIngredient;
+import net.neoforged.neoforge.fluids.FluidActionResult;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidUtil;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class MixerBlockEntity extends BlockEntity implements MenuProvider {
@@ -103,7 +96,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         }
     };
 
-
+    public final FluidTank[] tanks = new FluidTank[]{TANK_1, TANK_2, TANK_3, TANK_4, TANK_5, TANK_6};
 
     private final IFluidHandler fluidHandler = new IFluidHandler() {
         @Override
@@ -113,90 +106,87 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
 
         @Override
         public FluidStack getFluidInTank(int tank) {
-            switch (tank) {
-                case 0:
-                    return TANK_1.getFluid();
-                case 1:
-                    return TANK_2.getFluid();
-                case 2:
-                    return TANK_3.getFluid();
-                case 3:
-                    return TANK_4.getFluid();
-                case 4:
-                    return TANK_5.getFluid();
-                case 5:
-                    return TANK_6.getFluid();
-                case 6:
-                    return OUTPUT_TANK.getFluid();
-                default:
-                    return FluidStack.EMPTY;
-            }
+            return switch (tank) {
+                case 0 -> TANK_1.getFluid();
+                case 1 -> TANK_2.getFluid();
+                case 2 -> TANK_3.getFluid();
+                case 3 -> TANK_4.getFluid();
+                case 4 -> TANK_5.getFluid();
+                case 5 -> TANK_6.getFluid();
+                case 6 -> OUTPUT_TANK.getFluid();
+                default -> FluidStack.EMPTY;
+            };
         }
 
         @Override
         public int getTankCapacity(int tank) {
-            if (tank == 0)
-                return TANK_1.getCapacity();
-            if (tank == 1)
-                return TANK_2.getCapacity();
-            if (tank == 2)
-                return TANK_3.getCapacity();
-            if (tank == 3)
-                return TANK_4.getCapacity();
-            if (tank == 4)
-                return TANK_5.getCapacity();
-            if (tank == 5)
-                return TANK_6.getCapacity();
-            if (tank == 6)
-                return OUTPUT_TANK.getCapacity();
-            return 0;
+            return switch (tank) {
+                case 0 -> TANK_1.getCapacity();
+                case 1 -> TANK_2.getCapacity();
+                case 2 -> TANK_3.getCapacity();
+                case 3 -> TANK_4.getCapacity();
+                case 4 -> TANK_5.getCapacity();
+                case 5 -> TANK_6.getCapacity();
+                case 6 -> OUTPUT_TANK.getCapacity();
+                default -> 0;
+            };
         }
 
         @Override
         public boolean isFluidValid(int tank, FluidStack stack) {
-            if (tank == 0)
-                return TANK_1.isFluidValid(stack);
-            if (tank == 1)
-                return TANK_2.isFluidValid(stack);
-            if (tank == 2)
-                return TANK_3.isFluidValid(stack);
-            if (tank == 3)
-                return TANK_4.isFluidValid(stack);
-            if (tank == 4)
-                return TANK_5.isFluidValid(stack);
-            if (tank == 5)
-                return TANK_6.isFluidValid(stack);
-            if (tank == 6)
-                return OUTPUT_TANK.isFluidValid(stack);
-            return false;
+            return switch (tank) {
+                case 0 -> TANK_1.isFluidValid(stack);
+                case 1 -> TANK_2.isFluidValid(stack);
+                case 2 -> TANK_3.isFluidValid(stack);
+                case 3 -> TANK_4.isFluidValid(stack);
+                case 4 -> TANK_5.isFluidValid(stack);
+                case 5 -> TANK_6.isFluidValid(stack);
+                case 6 -> OUTPUT_TANK.isFluidValid(stack);
+                default -> false;
+            };
         }
+
         @Override
-        public int fill(FluidStack resource, FluidAction action) {
-            if (resource.getFluid() == TANK_1.getFluid().getFluid()) {
-                return TANK_1.fill(resource, action);
+        public int fill(@NotNull FluidStack resource, @NotNull FluidAction action) {
+            // Check if any tank already contains the same type of fluid
+            for (FluidTank tank : new FluidTank[]{TANK_1, TANK_2, TANK_3, TANK_4, TANK_5, TANK_6}) {
+                if (!tank.getFluid().isEmpty() && tank.getFluid().getFluid().isSame(resource.getFluid())) {
+                    // Calculate how much more of the fluid can be added to this tank
+                    int spaceLeft = tank.getCapacity() - tank.getFluidAmount();
+                    int amountToFill = Math.min(resource.getAmount(), spaceLeft);
+
+                    if (amountToFill > 0) {
+                        FluidStack resourceToFill = resource.copy();
+                        resourceToFill.setAmount(amountToFill);
+                        return tank.fill(resourceToFill, action);
+                    } else {
+                        return 0; // Tank is already full
+                    }
+                }
             }
-            if (resource.getFluid() == TANK_2.getFluid().getFluid()) {
-                return TANK_2.fill(resource, action);
+
+            // Try to fill the first empty tank
+            for (FluidTank tank : new FluidTank[]{TANK_1, TANK_2, TANK_3, TANK_4, TANK_5, TANK_6}) {
+                if (tank.isFluidValid(resource) && tank.getFluid().isEmpty()) {
+                    int amountToFill = Math.min(resource.getAmount(), tank.getCapacity());
+                    if (amountToFill > 0) {
+                        FluidStack resourceToFill = resource.copy();
+                        resourceToFill.setAmount(amountToFill);
+                        return tank.fill(resourceToFill, action);
+                    }
+                }
             }
-            if (resource.getFluid() == TANK_3.getFluid().getFluid()) {
-                return TANK_3.fill(resource, action);
-            }
-            if (resource.getFluid() == TANK_4.getFluid().getFluid()) {
-                return TANK_4.fill(resource, action);
-            }
-            if (resource.getFluid() == TANK_5.getFluid().getFluid()) {
-                return TANK_5.fill(resource, action);
-            }
-            if (resource.getFluid() == TANK_6.getFluid().getFluid()) {
-                return TANK_6.fill(resource, action);
-            }
-            return 0;
+
+            return 0; // Couldn't fill any tank
         }
+
+
+
+
 
         @Override
         public FluidStack drain(FluidStack resource, FluidAction action) {
-
-            if (resource.getFluid() == OUTPUT_TANK.getFluid().getFluid()) {
+            if (resource.getFluid().isSame(OUTPUT_TANK.getFluid().getFluid())) {
                 return OUTPUT_TANK.drain(resource.getAmount(), action);
             }
             return FluidStack.EMPTY;
@@ -204,15 +194,39 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
 
         @Override
         public FluidStack drain(int maxDrain, FluidAction action) {
-            if (OUTPUT_TANK.getFluidAmount() > 0) {
-                return OUTPUT_TANK.drain(maxDrain, action);
+            FluidStack drained = OUTPUT_TANK.drain(maxDrain, action);
+            if (!drained.isEmpty()) {
+                return drained;
             }
             return FluidStack.EMPTY;
         }
     };
 
     public boolean onPlayerUse(Player player, InteractionHand hand) {
-        return FluidUtil.interactWithFluidHandler(player, hand, TANK_1);
+        ItemStack heldItem = player.getItemInHand(hand);
+
+        // Check if the held item is a valid container
+        if (heldItem.isEmpty()) {
+            return false;
+        }
+
+        // Attempt to fill the container from the output tank
+        FluidActionResult result = FluidUtil.tryFillContainer(heldItem, OUTPUT_TANK, 1000, null, true);
+        if (result.isSuccess()) {
+            // Replace the held item with the filled container
+            ItemStack filledContainer = result.getResult();
+            player.setItemInHand(hand, filledContainer);
+            return true;
+        }
+
+        FluidTank[] inputTanks = new FluidTank[]{TANK_1, TANK_2, TANK_3, TANK_4, TANK_5, TANK_6};
+        for (FluidTank tank : inputTanks) {
+            if (FluidUtil.interactWithFluidHandler(player, hand, tank)) {
+                return true;
+            }
+        }
+        // If no interaction was successful, return false
+        return false;
     }
 
     public IFluidHandler getFluidHandlerCapability(Direction side) {
@@ -233,7 +247,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
 
     public final ContainerData data;
     public int progress = 0;
-    public int maxProgress = 20;
+    public int maxProgress = 10;
 
     public MixerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.MIXER_BLOCK_ENTITY.get(), pos, state);
@@ -338,61 +352,104 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
     public void tick() {
         assert level != null;
         if (!level.isClientSide()) {
+            sync();
 
-            boolean foundMatch = false;
-
-
+            // Iterate through all Mixing recipes in the recipe manager
             for (RecipeHolder<MixingRecipe> recipeHolder : level.getRecipeManager().getRecipesFor(MixingRecipe.Type.INSTANCE, NoInventoryRecipe.INSTANCE, level)) {
                 MixingRecipe recipe = recipeHolder.value();
-                FluidStack fluid1 = recipe.fluid1();
-                FluidStack fluid2 = recipe.fluid2();
-                FluidStack fluid3 = recipe.fluid3();
-                FluidStack fluid4 = recipe.fluid4();
-                FluidStack fluid5 = recipe.fluid5();
-                FluidStack fluid6 = recipe.fluid6();
 
-                /*
-                System.out.println("Fluid 1: " + fluid1.getFluid());
-                System.out.println("Fluid 2: " + fluid2.getFluid());
-                System.out.println("Fluid 3: " + fluid3.getFluid());
-                System.out.println("Fluid 4: " + fluid4.getFluid());
-                System.out.println("Fluid 5: " + fluid5.getFluid());
-                System.out.println("Fluid 6: " + fluid6.getFluid());
+                // Get all required fluids from the recipe (assuming there's a method to get them)
+                List<FluidStack> requiredFluids = new ArrayList<>();
+                requiredFluids.addAll(List.of(recipe.fluid1(), recipe.fluid2(), recipe.fluid3(), recipe.fluid4(), recipe.fluid5(), recipe.fluid6()));
 
-                 */
-            }
+                requiredFluids.removeIf(FluidStack::isEmpty);
 
-
-
-
-            /*
-            for (RecipeHolder<SolidifierRecipe> recipeHolder : level.getRecipeManager().getRecipesFor(SolidifierRecipe.Type.INSTANCE, inventory, level)) {
-                SolidifierRecipe recipe = recipeHolder.value();
-                if (recipe.mold().test(itemHandler.getStackInSlot(0)) && hasEnoughFluid(recipe.fluid())) {
-                    FluidStack output = recipe.fluid();
-
+                // Check all combinations of tanks for the required fluids
+                if (checkFluidCombinations(requiredFluids)) {
                     if (hasOutputSpaceMaking(this, recipe)) {
                         progress++;
-
                         if (progress >= maxProgress) {
-                            extractFluid(output, output.getAmount());
-                            itemHandler.setStackInSlot(1, new ItemStack(recipe.output().getItems()[0].getItem(), recipe.output().count() + itemHandler.getStackInSlot(1).getCount()));
+                            addOutputFluid(recipe.outputFluid());
                             setChanged();
                             resetProgress();
                             sync();
+                            System.out.println("Found a match for all required fluids in different tanks");
                         }
-           foundMatch = true;
-                        break;
                     }
                 }
             }
+        }
+    }
 
-             */
+    private boolean checkFluidCombinations(List<FluidStack> requiredFluids) {
+        // Generate all combinations of tank indices for 6 tanks
+        List<List<Integer>> combinations = generateCombinations(6);
 
-            if (!foundMatch) {
-                resetProgress();
+        // Iterate through each combination of tanks
+        for (List<Integer> combination : combinations) {
+            // Check if this combination of tanks contains all required fluids
+            if (checkFluidsInCombination(requiredFluids, combination)) {
+                return true; // Found a match for all required fluids in this combination of tanks
             }
         }
+
+        return false; // No combination of tanks matched all required fluids
+    }
+
+    private List<List<Integer>> generateCombinations(int n) {
+        List<List<Integer>> combinations = new ArrayList<>();
+        int[] currentCombination = new int[n];
+        generateCombinationsHelper(combinations, currentCombination, 0, 0, n);
+        return combinations;
+    }
+
+    private void generateCombinationsHelper(List<List<Integer>> combinations, int[] currentCombination, int index, int start, int n) {
+        if (index == n) {
+            List<Integer> combination = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                combination.add(currentCombination[i]);
+            }
+            combinations.add(combination);
+            return;
+        }
+
+        for (int i = start; i < 6; i++) {
+            currentCombination[index] = i;
+            generateCombinationsHelper(combinations, currentCombination, index + 1, i + 1, n);
+        }
+    }
+
+    private boolean checkFluidsInCombination(List<FluidStack> requiredFluids, List<Integer> combination) {
+        // Check if each required fluid is present in the respective tanks of the combination
+        for (FluidStack fluid : requiredFluids) {
+            boolean fluidFound = false;
+            for (int tankIndex : combination) {
+                FluidStack tankFluid = tanks[tankIndex].getFluid();
+                int tankAmount = tanks[tankIndex].getFluidAmount();
+                if (fluid.getFluid().isSame(tankFluid.getFluid()) && fluid.getAmount() <= tankAmount) {
+                    fluidFound = true;
+                    break;
+                }
+            }
+            if (!fluidFound) {
+                return false; // Required fluid not found in this combination of tanks
+            }
+        }
+        return true; // All required fluids are found in this combination of tanks
+    }
+
+
+
+
+    private void addOutputFluid(FluidStack output) {
+        OUTPUT_TANK.fill(output, IFluidHandler.FluidAction.EXECUTE);
+    }
+
+    private boolean hasOutputSpaceMaking(MixerBlockEntity entity, MixingRecipe recipe) {
+        FluidStack output = recipe.outputFluid();
+        FluidTank outputTank = entity.OUTPUT_TANK;
+        return outputTank.getFluid().isEmpty() || (outputTank.getFluid().getFluid().isSame(output.getFluid()) &&
+                outputTank.getFluidAmount() + output.getAmount() <= outputTank.getCapacity());
     }
 
 

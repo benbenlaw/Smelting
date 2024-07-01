@@ -5,6 +5,18 @@ Changelog BBL Smelting
 // Add Alloy fluids
 //
 
+1.3.0
+
+Completely changed fluid rendering system which should improve performance
+Fixed screen causing fps drops when open to long
+
+new block Mixer;
+    allows the mixing of fluids to create alloys
+    has 6 tanks
+    only allows for one type of fluid per tank so you end up with 6 tanks filled with the same fluid
+    bucket work with the mixer, empty bucket will take from the output tank first
+    filled fluid bucket will fill the input tanks in order
+
 1.2.0
 
 Added tags and loot tables

@@ -1,0 +1,19 @@
+{
+  "type": "smelting:mixing",
+  "fluid1": {
+    "amount": 500,
+    "id": "smelting:molten_coal"
+  },
+  "fluid2": {
+      "amount": 500,
+      "id": "minecraft:lava"
+  },
+  "fluid3": {
+      "amount": 500,
+      "id": "minecraft:water"
+  },
+  "output": {
+      "amount": 500,
+      "id": "smelting:molten_uranium"
+  }
+}
