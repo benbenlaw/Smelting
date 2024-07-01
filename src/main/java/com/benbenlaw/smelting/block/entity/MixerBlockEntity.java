@@ -354,47 +354,56 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         if (!level.isClientSide()) {
             sync();
 
-            // Iterate through all Mixing recipes in the recipe manager
             for (RecipeHolder<MixingRecipe> recipeHolder : level.getRecipeManager().getRecipesFor(MixingRecipe.Type.INSTANCE, NoInventoryRecipe.INSTANCE, level)) {
                 MixingRecipe recipe = recipeHolder.value();
 
-                // Get all required fluids from the recipe (assuming there's a method to get them)
                 List<FluidStack> requiredFluids = new ArrayList<>();
                 requiredFluids.addAll(List.of(recipe.fluid1(), recipe.fluid2(), recipe.fluid3(), recipe.fluid4(), recipe.fluid5(), recipe.fluid6()));
-
                 requiredFluids.removeIf(FluidStack::isEmpty);
 
-                // Check all combinations of tanks for the required fluids
-                if (checkFluidCombinations(requiredFluids)) {
-                    if (hasOutputSpaceMaking(this, recipe)) {
-                        progress++;
-                        if (progress >= maxProgress) {
-                            addOutputFluid(recipe.outputFluid());
-                            setChanged();
-                            resetProgress();
-                            sync();
-                            System.out.println("Found a match for all required fluids in different tanks");
-                        }
+                List<Integer> matchedTanks = checkFluidCombinations(requiredFluids);
+                if (matchedTanks != null && hasOutputSpaceMaking(this, recipe)) {
+                    progress++;
+                    if (progress >= maxProgress) {
+                        addOutputFluid(recipe.outputFluid());
+                        removeTankFluids(requiredFluids, matchedTanks);
+                        setChanged();
+                        resetProgress();
+                        sync();
+                        System.out.println("Found a match for all required fluids in different tanks");
                     }
                 }
             }
         }
     }
 
-    private boolean checkFluidCombinations(List<FluidStack> requiredFluids) {
-        // Generate all combinations of tank indices for 6 tanks
+    private void removeTankFluids(List<FluidStack> requiredFluids, List<Integer> matchedTanks) {
+        for (int i = 0; i < requiredFluids.size(); i++) {
+            FluidStack requiredFluid = requiredFluids.get(i);
+            int tankIndex = matchedTanks.get(i);
+
+            FluidStack tankFluid = tanks[tankIndex].getFluid();
+            tankFluid.shrink(requiredFluid.getAmount());
+            tanks[tankIndex].setFluid(tankFluid);
+        }
+    }
+
+
+
+
+    private List<Integer> checkFluidCombinations(List<FluidStack> requiredFluids) {
         List<List<Integer>> combinations = generateCombinations(6);
 
-        // Iterate through each combination of tanks
         for (List<Integer> combination : combinations) {
-            // Check if this combination of tanks contains all required fluids
-            if (checkFluidsInCombination(requiredFluids, combination)) {
-                return true; // Found a match for all required fluids in this combination of tanks
+            List<Integer> matchedTanks = checkFluidsInCombination(requiredFluids, combination);
+            if (matchedTanks != null) {
+                return matchedTanks; // Return the matched tank indices
             }
         }
 
-        return false; // No combination of tanks matched all required fluids
+        return null; // No combination of tanks matched all required fluids
     }
+
 
     private List<List<Integer>> generateCombinations(int n) {
         List<List<Integer>> combinations = new ArrayList<>();
@@ -413,30 +422,33 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
             return;
         }
 
-        for (int i = start; i < 6; i++) {
+        for (int i = start; i < 6; i++) { // Assuming you have 6 tanks
             currentCombination[index] = i;
             generateCombinationsHelper(combinations, currentCombination, index + 1, i + 1, n);
         }
     }
 
-    private boolean checkFluidsInCombination(List<FluidStack> requiredFluids, List<Integer> combination) {
-        // Check if each required fluid is present in the respective tanks of the combination
+    private List<Integer> checkFluidsInCombination(List<FluidStack> requiredFluids, List<Integer> combination) {
+        List<Integer> matchedTanks = new ArrayList<>();
+
         for (FluidStack fluid : requiredFluids) {
             boolean fluidFound = false;
             for (int tankIndex : combination) {
                 FluidStack tankFluid = tanks[tankIndex].getFluid();
                 int tankAmount = tanks[tankIndex].getFluidAmount();
                 if (fluid.getFluid().isSame(tankFluid.getFluid()) && fluid.getAmount() <= tankAmount) {
+                    matchedTanks.add(tankIndex);
                     fluidFound = true;
                     break;
                 }
             }
             if (!fluidFound) {
-                return false; // Required fluid not found in this combination of tanks
+                return null; // Required fluid not found in this combination of tanks
             }
         }
-        return true; // All required fluids are found in this combination of tanks
+        return matchedTanks; // All required fluids are found in this combination of tanks
     }
+
 
 
 
