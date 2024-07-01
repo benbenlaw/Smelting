@@ -1,4 +1,4 @@
-// 1.21	2024-07-01T13:49:42.2675801	Recipes
+// 1.21	2024-07-01T14:06:44.5903091	Recipes
 e68f33eb8c73be7b9f0f560d2866de027fc6b356 data/smelting/advancement/recipes/fuel/fuel/lava.json
 51c4c95b41ef464953316aea74417a0cfc49b87d data/smelting/advancement/recipes/fuel/fuel/molten_coal.json
 8023861813754386c168da4ff5d35feb016ed188 data/smelting/advancement/recipes/fuel/fuel/molten_uranium.json
@@ -56,6 +56,9 @@ b4d56bc5e5c51ed0d1864455c114efec0f9bcd7e data/smelting/advancement/recipes/misc/
 dfdd1488848030ad4677252c2d28103e02f56816 data/smelting/advancement/recipes/mixer/mixing/bronze.json
 da569010c95cd8f61692071eed097f3230ea69f2 data/smelting/advancement/recipes/mixer/mixing/obsidian.json
 8eb3ca70c22ecdc5b46a1cc55fbff03465aa5519 data/smelting/advancement/recipes/mixer/mixing/steel.json
+4cb823b0159bd1db5b329ad03ecef35603f6c221 data/smelting/advancement/recipes/solidifier/solidifier/bronze_block.json
+eedc54cb9979cbfd13f7d8d40197a7a29dbb62ab data/smelting/advancement/recipes/solidifier/solidifier/bronze_ingot.json
+bef0514e733e4616ea3350b036a47b162a73d4f6 data/smelting/advancement/recipes/solidifier/solidifier/bronze_nugget.json
 2ab77d98bf96df31fc7004524b083ad57c3b8c37 data/smelting/advancement/recipes/solidifier/solidifier/coal.json
 560745a73a76b0b02b11e854fa9f3a1e71e18b12 data/smelting/advancement/recipes/solidifier/solidifier/coal_block.json
 63058bc448faea631e6d131796e04aedef5b684d data/smelting/advancement/recipes/solidifier/solidifier/copper_block.json
@@ -83,6 +86,9 @@ c396eccda8379f62ea624f2bb937c77c2b44cb86 data/smelting/advancement/recipes/solid
 d250551e702c300e15e426b5f6a9504bece38771 data/smelting/advancement/recipes/solidifier/solidifier/osmium_nugget.json
 73568842f49c26301ac7c7e6bde3eaca6155dd19 data/smelting/advancement/recipes/solidifier/solidifier/redstone.json
 e7e8c86088ced6d1e8a46ae4b5baf235c703e299 data/smelting/advancement/recipes/solidifier/solidifier/redstone_block.json
+f826ee74fac33fa9a35467608b1e7c295bafc1f8 data/smelting/advancement/recipes/solidifier/solidifier/steel_block.json
+6ccde69f109b4b96db1da26e5da82995b493d2cf data/smelting/advancement/recipes/solidifier/solidifier/steel_ingot.json
+150dedb286e36373fb7cc3a40185540d2298324d data/smelting/advancement/recipes/solidifier/solidifier/steel_nugget.json
 348bc735f91325a96eb06c2a3a966474064038ed data/smelting/advancement/recipes/solidifier/solidifier/tin_block.json
 f01472097513d3dde97458fd697c1669170fefc2 data/smelting/advancement/recipes/solidifier/solidifier/tin_ingot.json
 3509bae1d0ae094e718bce68f9b6cefe52d13d8f data/smelting/advancement/recipes/solidifier/solidifier/tin_nugget.json
@@ -145,6 +151,9 @@ ba3b053fb312ef1e245738d66c42b67d9698add4 data/smelting/recipe/mixing/obsidian.js
 37c0f973249023d89d0634a9c393195d952a0c08 data/smelting/recipe/plate_mold.json
 eda5faf71eddec6ecdcaafd581bda7da5cdf8f22 data/smelting/recipe/rod_mold.json
 3e17e6b60897e7febaf1a7010b877894507e1d24 data/smelting/recipe/solidifier.json
+a1fe1a04d60fc063fc7f105d34cd342adc3b94dc data/smelting/recipe/solidifier/bronze_block.json
+ba1f03f162b64aefe0019f21a7799168f8fc1c30 data/smelting/recipe/solidifier/bronze_ingot.json
+f0d20f8674018bbd7de2d84639696e6738a770bf data/smelting/recipe/solidifier/bronze_nugget.json
 516130422e8502c60ceaa2da92d5ea73ef0afd3b data/smelting/recipe/solidifier/coal.json
 7f0a51e5d3774336bff9fe1e707f8e8d4c3f569f data/smelting/recipe/solidifier/coal_block.json
 45aab09bfc3235b2982f0a4ca42b7911655d685a data/smelting/recipe/solidifier/copper_block.json
@@ -172,6 +181,9 @@ aa41b44dfe6f125559c9b4008862363be2a5bdb7 data/smelting/recipe/solidifier/osmium_
 71a1e296b88335ecc9b4664d0579b00ffa795a9d data/smelting/recipe/solidifier/osmium_nugget.json
 85dae9f0a81daa90c469f7fa92b53f1f824ba019 data/smelting/recipe/solidifier/redstone.json
 18214386ae0e21e2d04e45257cfe21ea0785fba3 data/smelting/recipe/solidifier/redstone_block.json
+78b9a4ed1c50853fa65f3dfc3523d4f34fa7ee92 data/smelting/recipe/solidifier/steel_block.json
+30f2f053ab152245440b281780d21ebd8da33dc8 data/smelting/recipe/solidifier/steel_ingot.json
+a1d1a2c29e707bd5280038ed46d6a21128ca034f data/smelting/recipe/solidifier/steel_nugget.json
 6b2aa948a6cbf230823cf9ce9c02d554a1421792 data/smelting/recipe/solidifier/tin_block.json
 cef4a6fd00e04d9789d3f44e218d2ca51121aa9a data/smelting/recipe/solidifier/tin_ingot.json
 5fe060030d8a17aa528f1460065fd17aa397cf7d data/smelting/recipe/solidifier/tin_nugget.json

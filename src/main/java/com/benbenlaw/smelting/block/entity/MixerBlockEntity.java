@@ -358,10 +358,8 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
             for (Direction direction : Direction.values()) {
                 BlockEntity entity = level.getBlockEntity(this.worldPosition.relative(direction));
                 if (entity instanceof SolidifierBlockEntity solidifierBlockEntity) {
-                    transferFluid(TANK_1, solidifierBlockEntity.TANK);
-                    transferFluid(TANK_2, solidifierBlockEntity.TANK);
-                    transferFluid(TANK_3, solidifierBlockEntity.TANK);
-                    transferFluid(TANK_4, solidifierBlockEntity.TANK);
+                    transferFluid(OUTPUT_TANK, solidifierBlockEntity.TANK);
+
                 }
             }
 

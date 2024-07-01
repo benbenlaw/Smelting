@@ -528,13 +528,17 @@ MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tag
                 .save(consumer, "smelting:mixing/bronze");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(bronzeBlockTag), 1),
-                        new FluidStack(ModFluids.MOLTEN_BRONZE_SOURCE, 810));
+                        new FluidStack(ModFluids.MOLTEN_BRONZE_SOURCE, 810))
+                .unlockedBy("has_bucket", has(bronzeBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeBlockTag))), "smelting:solidifier/bronze_block");
+
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(bronzeIngotTag), 1),
-                        new FluidStack(ModFluids.MOLTEN_BRONZE_SOURCE, 90));
+                        new FluidStack(ModFluids.MOLTEN_BRONZE_SOURCE, 90))
+                .unlockedBy("has_bucket", has(bronzeIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeIngotTag))), "smelting:solidifier/bronze_ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(bronzeNuggetTag), 1),
-                        new FluidStack(ModFluids.MOLTEN_BRONZE_SOURCE, 10));
+                        new FluidStack(ModFluids.MOLTEN_BRONZE_SOURCE, 10))
+                .unlockedBy("has_bucket", has(bronzeIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeNuggetTag))), "smelting:solidifier/bronze_nugget");
 
         //Steel Processing
 
@@ -550,9 +554,6 @@ MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tag
                         new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 10), 1000)
                 .unlockedBy("has_bucket", has(steelNuggetTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelNuggetTag))), "smelting:melting/steel/from_nugget");
 
-
-
-
         MixingRecipeBuilder.MixingRecipesBuilder(
                         new FluidStack(ModFluids.MOLTEN_COAL_SOURCE, 160),
                         new FluidStack(ModFluids.MOLTEN_IRON_SOURCE, 90),
@@ -565,13 +566,16 @@ MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tag
                 .save(consumer, "smelting:mixing/steel");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(steelBlockTag), 1),
-                        new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 810));
+                        new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 810))
+                .unlockedBy("has_bucket", has(steelBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelBlockTag))), "smelting:solidifier/steel_block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(steelIngotTag), 1),
-                        new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 90));
+                        new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 90))
+                .unlockedBy("has_bucket", has(steelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelIngotTag))), "smelting:solidifier/steel_ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(steelNuggetTag), 1),
-                        new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 10));
+                        new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 10))
+                .unlockedBy("has_bucket", has(steelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelNuggetTag))), "smelting:solidifier/steel_nugget");
 
 
 

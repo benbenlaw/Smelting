@@ -365,6 +365,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                     transferFluid(TANK_3, solidifierBlockEntity.TANK);
                     transferFluid(TANK_4, solidifierBlockEntity.TANK);
                 }
+
             }
 
 
