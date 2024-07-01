@@ -1,0 +1,12 @@
+{
+  "type": "smelting:melting",
+  "input": {
+    "count": 1,
+    "tag": "c:obsidians"
+  },
+  "meltingTemp": 1200,
+  "output": {
+    "amount": 1000,
+    "id": "smelting:molten_obsidian"
+  }
+}

@@ -87,6 +87,41 @@ public class ModdedTags {
     public static TagKey<Item> leadRawOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
             String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "raw_materials/lead")))));
 
+    //Bronze Tags
+
+    public static TagKey<Item> bronzeNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/bronze")))));
+
+    public static TagKey<Item> bronzeIngotTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ingots/bronze")))));
+
+    public static TagKey<Item> bronzeBlockTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/bronze")))));
+
+    public static TagKey<Item> bronzeOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ores/bronze")))));
+
+    public static TagKey<Item> bronzeRawOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "raw_materials/bronze")))));
+
+    //Steel Tags
+
+    public static TagKey<Item> steelNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/steel")))));
+
+    public static TagKey<Item> steelIngotTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ingots/steel")))));
+
+    public static TagKey<Item> steelBlockTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/steel")))));
+
+    public static TagKey<Item> steelOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ores/steel")))));
+
+    public static TagKey<Item> steelRawOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "raw_materials/steel")))));
+
+
 
 
 }

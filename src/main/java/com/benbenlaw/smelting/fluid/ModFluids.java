@@ -1,6 +1,15 @@
 package com.benbenlaw.smelting.fluid;
 
 import com.benbenlaw.smelting.Smelting;
+import com.benbenlaw.smelting.fluid.molten.alloys.bronze.MoltenBronzeFluid;
+import com.benbenlaw.smelting.fluid.molten.alloys.bronze.MoltenBronzeFluidBlock;
+import com.benbenlaw.smelting.fluid.molten.alloys.bronze.MoltenBronzeFluidType;
+import com.benbenlaw.smelting.fluid.molten.alloys.obsidian.MoltenObsidianFluid;
+import com.benbenlaw.smelting.fluid.molten.alloys.obsidian.MoltenObsidianFluidBlock;
+import com.benbenlaw.smelting.fluid.molten.alloys.obsidian.MoltenObsidianFluidType;
+import com.benbenlaw.smelting.fluid.molten.alloys.steel.MoltenSteelFluid;
+import com.benbenlaw.smelting.fluid.molten.alloys.steel.MoltenSteelFluidBlock;
+import com.benbenlaw.smelting.fluid.molten.alloys.steel.MoltenSteelFluidType;
 import com.benbenlaw.smelting.fluid.molten.coal.MoltenCoalFluid;
 import com.benbenlaw.smelting.fluid.molten.coal.MoltenCoalFluidBlock;
 import com.benbenlaw.smelting.fluid.molten.coal.MoltenCoalFluidType;
@@ -187,6 +196,48 @@ public class ModFluids {
             MoltenLeadFluidBlock::new);
 
 
+
+    // *********** Obsidian *********** //
+
+    //Molten Obsidian
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_OBSIDIAN_TYPE = FLUID_TYPES.register("molten_obsidian",
+            MoltenObsidianFluidType::new);
+
+    public static final DeferredHolder<Fluid, MoltenObsidianFluid> MOLTEN_OBSIDIAN_FLOWING = FLUIDS.register("molten_obsidian_flowing",
+            MoltenObsidianFluid.Flowing::new);
+
+    public static final DeferredHolder<Fluid, MoltenObsidianFluid> MOLTEN_OBSIDIAN_SOURCE = FLUIDS.register("molten_obsidian",
+            MoltenObsidianFluid.Source::new);
+
+    public static final DeferredHolder<Block, LiquidBlock> MOLTEN_OBSIDIAN_BLOCK = FLUID_BLOCKS.register("molten_obsidian_block",
+            MoltenObsidianFluidBlock::new);
+
+    //Molten Bronze
+
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_BRONZE_TYPE = FLUID_TYPES.register("molten_bronze",
+            MoltenBronzeFluidType::new);
+    public static final DeferredHolder<Fluid, MoltenBronzeFluid> MOLTEN_BRONZE_FLOWING = FLUIDS.register("molten_bronze_flowing",
+            MoltenBronzeFluid.Flowing::new);
+
+    public static final DeferredHolder<Fluid, MoltenBronzeFluid> MOLTEN_BRONZE_SOURCE = FLUIDS.register("molten_bronze",
+            MoltenBronzeFluid.Source::new);
+
+    public static final DeferredHolder<Block, LiquidBlock> MOLTEN_BRONZE_BLOCK = FLUID_BLOCKS.register("molten_bronze_block",
+            MoltenBronzeFluidBlock::new);
+
+    //Molten Steel
+
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_STEEL_TYPE = FLUID_TYPES.register("molten_steel",
+            MoltenSteelFluidType::new);
+
+    public static final DeferredHolder<Fluid, MoltenSteelFluid> MOLTEN_STEEL_FLOWING = FLUIDS.register("molten_steel_flowing",
+            MoltenSteelFluid.Flowing::new);
+
+    public static final DeferredHolder<Fluid, MoltenSteelFluid> MOLTEN_STEEL_SOURCE = FLUIDS.register("molten_steel",
+            MoltenSteelFluid.Source::new);
+
+    public static final DeferredHolder<Block, LiquidBlock> MOLTEN_STEEL_BLOCK = FLUID_BLOCKS.register("molten_steel_block",
+            MoltenSteelFluidBlock::new);
 
 
     public static void register(IEventBus eventBus) {

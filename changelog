@@ -17,6 +17,21 @@ new block Mixer;
     bucket work with the mixer, empty bucket will take from the output tank first
     filled fluid bucket will fill the input tanks in order
 
+new recipe type "smelting:mixing" this is used for the mixer, uses between 2 and 6 fluids to create a new fluid
+
+New Fluids;
+    Molten Obsidian
+    Molten Steel
+    Molten Bronze
+
+ingots gem and dust can now be melted
+
+Solidifer now allows for more than one item per stack if it is not a mold item
+mold items do not take damage
+recipes that use non mold items will be consumed when used
+
+JEI now renders full fluid blocks with the amount shown when  hovered instead of a small amount of fluid
+
 1.2.0
 
 Added tags and loot tables

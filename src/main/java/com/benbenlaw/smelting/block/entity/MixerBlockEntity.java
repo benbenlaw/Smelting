@@ -34,9 +34,7 @@ import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class MixerBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -357,16 +355,15 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
             for (RecipeHolder<MixingRecipe> recipeHolder : level.getRecipeManager().getRecipesFor(MixingRecipe.Type.INSTANCE, NoInventoryRecipe.INSTANCE, level)) {
                 MixingRecipe recipe = recipeHolder.value();
 
-                List<FluidStack> requiredFluids = new ArrayList<>();
-                requiredFluids.addAll(List.of(recipe.fluid1(), recipe.fluid2(), recipe.fluid3(), recipe.fluid4(), recipe.fluid5(), recipe.fluid6()));
+                List<FluidStack> requiredFluids = new ArrayList<>(List.of(recipe.fluid1(), recipe.fluid2(), recipe.fluid3(), recipe.fluid4(), recipe.fluid5(), recipe.fluid6()));
                 requiredFluids.removeIf(FluidStack::isEmpty);
 
-                List<Integer> matchedTanks = checkFluidCombinations(requiredFluids);
+                Map<FluidStack, Integer> matchedTanks = checkFluidCombinations(requiredFluids);
                 if (matchedTanks != null && hasOutputSpaceMaking(this, recipe)) {
                     progress++;
                     if (progress >= maxProgress) {
                         addOutputFluid(recipe.outputFluid());
-                        removeTankFluids(requiredFluids, matchedTanks);
+                        removeTankFluids(matchedTanks);
                         setChanged();
                         resetProgress();
                         sync();
@@ -377,10 +374,11 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         }
     }
 
-    private void removeTankFluids(List<FluidStack> requiredFluids, List<Integer> matchedTanks) {
-        for (int i = 0; i < requiredFluids.size(); i++) {
-            FluidStack requiredFluid = requiredFluids.get(i);
-            int tankIndex = matchedTanks.get(i);
+
+    private void removeTankFluids(Map<FluidStack, Integer> matchedTanks) {
+        for (Map.Entry<FluidStack, Integer> entry : matchedTanks.entrySet()) {
+            FluidStack requiredFluid = entry.getKey();
+            int tankIndex = entry.getValue();
 
             FluidStack tankFluid = tanks[tankIndex].getFluid();
             tankFluid.shrink(requiredFluid.getAmount());
@@ -391,11 +389,11 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
 
 
 
-    private List<Integer> checkFluidCombinations(List<FluidStack> requiredFluids) {
+    private Map<FluidStack, Integer> checkFluidCombinations(List<FluidStack> requiredFluids) {
         List<List<Integer>> combinations = generateCombinations(6);
 
         for (List<Integer> combination : combinations) {
-            List<Integer> matchedTanks = checkFluidsInCombination(requiredFluids, combination);
+            Map<FluidStack, Integer> matchedTanks = checkFluidsInCombination(requiredFluids, combination);
             if (matchedTanks != null) {
                 return matchedTanks; // Return the matched tank indices
             }
@@ -403,6 +401,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
 
         return null; // No combination of tanks matched all required fluids
     }
+
 
 
     private List<List<Integer>> generateCombinations(int n) {
@@ -428,8 +427,8 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         }
     }
 
-    private List<Integer> checkFluidsInCombination(List<FluidStack> requiredFluids, List<Integer> combination) {
-        List<Integer> matchedTanks = new ArrayList<>();
+    private Map<FluidStack, Integer> checkFluidsInCombination(List<FluidStack> requiredFluids, List<Integer> combination) {
+        Map<FluidStack, Integer> matchedTanks = new HashMap<>();
 
         for (FluidStack fluid : requiredFluids) {
             boolean fluidFound = false;
@@ -437,7 +436,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
                 FluidStack tankFluid = tanks[tankIndex].getFluid();
                 int tankAmount = tanks[tankIndex].getFluidAmount();
                 if (fluid.getFluid().isSame(tankFluid.getFluid()) && fluid.getAmount() <= tankAmount) {
-                    matchedTanks.add(tankIndex);
+                    matchedTanks.put(fluid, tankIndex);
                     fluidFound = true;
                     break;
                 }
@@ -448,6 +447,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         }
         return matchedTanks; // All required fluids are found in this combination of tanks
     }
+
 
 
 

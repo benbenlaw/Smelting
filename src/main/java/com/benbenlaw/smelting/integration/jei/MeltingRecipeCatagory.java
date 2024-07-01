@@ -71,30 +71,17 @@ public class MeltingRecipeCatagory implements IRecipeCategory<MeltingRecipe> {
 
         builder.addSlot(RecipeIngredientRole.INPUT, 4, 2).addIngredients(recipe.getIngredients().getFirst());
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 50, 2).addFluidStack(recipe.output().getFluid(), recipe.output().getAmount()
-                ).addTooltipCallback(createFluidTooltipCallback(recipe));
-
-
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 50, 2).addFluidStack(recipe.output().getFluid(), 1000)
+                .addTooltipCallback((fluidAmount, addTooltip) -> {
+                    addTooltip.add(Component.literal("Fluid Amount: " + recipe.output().getAmount() + "mB"));
+                    addTooltip.add(Component.literal("Required Fuel Temp: " + recipe.meltingTemp() + "K"));
+        });
     }
 
     @Override
     public void draw(MeltingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-
         final Minecraft minecraft = Minecraft.getInstance();
-
         int temp = recipe.meltingTemp();
-
         guiGraphics.drawString(minecraft.font.self(), Component.literal(String.valueOf(temp)), 95, 6, Color.WHITE.getRGB());
-
-    }
-
-    private IRecipeSlotTooltipCallback createFluidTooltipCallback(MeltingRecipe recipe) {
-
-        return (fluidAmount, addTooltip) -> {
-            addTooltip.add(Component.literal("Fluid Amount: " + recipe.output().getAmount() + "mB"));
-            addTooltip.add(Component.literal("Required Fuel Temp: " + recipe.meltingTemp() + "K"));
-        };
-
-
     }
 }

@@ -1,0 +1,12 @@
+{
+  "type": "smelting:melting",
+  "input": {
+    "count": 1,
+    "tag": "c:gems/lapis"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 90,
+    "id": "smelting:molten_lapis"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "smelting:block/mixer",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "smelting:block/mixer"
+    },
+    "facing=south": {
+      "model": "smelting:block/mixer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "smelting:block/mixer",
+      "y": 270
+    }
+  }
+}

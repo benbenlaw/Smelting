@@ -3,6 +3,7 @@ package com.benbenlaw.smelting.data;
 import com.benbenlaw.smelting.block.ModBlocks;
 import com.benbenlaw.smelting.data.recipes.FuelRecipeBuilder;
 import com.benbenlaw.smelting.data.recipes.MeltingRecipeBuilder;
+import com.benbenlaw.smelting.data.recipes.MixingRecipeBuilder;
 import com.benbenlaw.smelting.data.recipes.SolidifierRecipeBuilder;
 import com.benbenlaw.smelting.fluid.ModFluids;
 import com.benbenlaw.smelting.item.ModItems;
@@ -179,9 +180,14 @@ public class SmeltingRecipes extends RecipeProvider {
                 .unlockedBy("has_bucket", has(Items.BUCKET))
                 .save(consumer);
 
-        // ********** Melting ********** //
+        // ********** Processing ********** //
 
         // Iron Processing
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.INGOTS_IRON), 1),
+                        new FluidStack(ModFluids.MOLTEN_IRON_SOURCE, 90), 1000)
+                .unlockedBy("has_bucket", has(Tags.Items.INGOTS_IRON))
+                .save(consumer, "smelting:melting/iron/from_ingot");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.ORES_IRON), 1),
                         new FluidStack(ModFluids.MOLTEN_IRON_SOURCE, 100), 1000)
@@ -207,6 +213,11 @@ public class SmeltingRecipes extends RecipeProvider {
 
         //Gold Processing
 
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.INGOTS_GOLD), 1),
+                        new FluidStack(ModFluids.MOLTEN_GOLD_SOURCE, 90), 1000)
+                .unlockedBy("has_bucket", has(Tags.Items.INGOTS_GOLD))
+                .save(consumer, "smelting:melting/gold/from_ingot");
+
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.ORES_GOLD), 1),
                         new FluidStack(ModFluids.MOLTEN_GOLD_SOURCE, 100), 1000)
                 .unlockedBy("has_bucket", has(Tags.Items.ORES_GOLD))
@@ -229,6 +240,11 @@ public class SmeltingRecipes extends RecipeProvider {
                 .unlockedBy("has_bucket", has(Items.GOLD_INGOT)).save(consumer, "smelting:solidifier/gold_nugget");
 
         //Copper Processing
+
+MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.INGOTS_COPPER), 1),
+                        new FluidStack(ModFluids.MOLTEN_COPPER_SOURCE, 90), 1000)
+                .unlockedBy("has_bucket", has(Tags.Items.INGOTS_COPPER))
+                .save(consumer, "smelting:melting/copper/from_ingot");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.ORES_COPPER), 1),
                         new FluidStack(ModFluids.MOLTEN_COPPER_SOURCE, 100), 1000)
@@ -253,6 +269,10 @@ public class SmeltingRecipes extends RecipeProvider {
 
         //Tin Processing
 
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(tinIngotTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_TIN_SOURCE, 90), 1000)
+                .unlockedBy("has_bucket", has(tinIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(tinIngotTag))), "smelting:melting/tin/from_ingot");
+
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(ModdedTags.tinOreTag), 1),
                         new FluidStack(ModFluids.MOLTEN_TIN_SOURCE, 100), 1000)
                 .unlockedBy("has_bucket", has(ModdedTags.tinOreTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(tinOreTag))), "smelting:melting/tin/from_ore");
@@ -274,6 +294,10 @@ public class SmeltingRecipes extends RecipeProvider {
                 .unlockedBy("has_bucket", has(tinIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(tinNuggetTag))), "smelting:solidifier/tin_nugget");
 
         //Osmium Processing
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(osmiumIngotTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_OSMIUM_SOURCE, 90), 1000)
+                .unlockedBy("has_bucket", has(osmiumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(osmiumIngotTag))), "smelting:melting/osmium/from_ingot");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(osmiumOreTag), 1),
                         new FluidStack(ModFluids.MOLTEN_OSMIUM_SOURCE, 100), 1000)
@@ -297,6 +321,11 @@ public class SmeltingRecipes extends RecipeProvider {
 
         //Uranium Processing
 
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(uraniumIngotTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_URANIUM_SOURCE, 90), 1000)
+                .unlockedBy("has_bucket", has(uraniumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(uraniumIngotTag))), "smelting:melting/uranium/from_ingot");
+
+
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(uraniumOreTag), 1),
                         new FluidStack(ModFluids.MOLTEN_URANIUM_SOURCE, 100), 1000)
                 .unlockedBy("has_bucket", has(uraniumOreTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(uraniumOreTag))), "smelting:melting/uranium/from_ore");
@@ -318,6 +347,11 @@ public class SmeltingRecipes extends RecipeProvider {
                 .unlockedBy("has_bucket", has(uraniumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(uraniumNuggetTag))), "smelting:solidifier/uranium_nugget");
 
         //Lead Processing
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(leadIngotTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_LEAD_SOURCE, 90), 1000)
+                .unlockedBy("has_bucket", has(leadIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(leadIngotTag))), "smelting:melting/lead/from_ingot");
+
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(leadOreTag), 1),
                         new FluidStack(ModFluids.MOLTEN_LEAD_SOURCE, 100), 1000)
@@ -342,6 +376,11 @@ public class SmeltingRecipes extends RecipeProvider {
 
         // Coal Processing
 
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Items.COAL), 1),
+                        new FluidStack(ModFluids.MOLTEN_COAL_SOURCE, 80), 1000)
+                .unlockedBy("has_bucket", has(Items.COAL))
+                .save(consumer, "smelting:melting/coal/from_item");
+
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.ORES_COAL), 1),
                         new FluidStack(ModFluids.MOLTEN_COAL_SOURCE, 100), 1000)
                 .unlockedBy("has_bucket", has(Tags.Items.ORES_COAL))
@@ -361,6 +400,11 @@ public class SmeltingRecipes extends RecipeProvider {
 
         // Emerald Processing
 
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.GEMS_EMERALD), 1),
+                        new FluidStack(ModFluids.MOLTEN_EMERALD_SOURCE, 90), 1000)
+                .unlockedBy("has_bucket", has(Tags.Items.GEMS_EMERALD))
+                .save(consumer, "smelting:melting/emerald/from_gem");
+
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.ORES_EMERALD), 1),
                         new FluidStack(ModFluids.MOLTEN_EMERALD_SOURCE, 100), 1000)
                 .unlockedBy("has_bucket", has(Tags.Items.ORES_EMERALD))
@@ -376,6 +420,11 @@ public class SmeltingRecipes extends RecipeProvider {
 
         //Diamond Processing
 
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.GEMS_DIAMOND), 1),
+                        new FluidStack(ModFluids.MOLTEN_DIAMOND_SOURCE, 90), 1000)
+                .unlockedBy("has_bucket", has(Tags.Items.GEMS_DIAMOND))
+                .save(consumer, "smelting:melting/diamond/from_gem");
+
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.ORES_DIAMOND), 1),
                         new FluidStack(ModFluids.MOLTEN_DIAMOND_SOURCE, 100), 1000)
                 .unlockedBy("has_bucket", has(Tags.Items.ORES_DIAMOND))
@@ -390,6 +439,11 @@ public class SmeltingRecipes extends RecipeProvider {
                 .unlockedBy("has_bucket", has(Items.DIAMOND)).save(consumer, "smelting:solidifier/diamond");
 
         //Redstone Processing
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.DUSTS_REDSTONE), 1),
+                        new FluidStack(ModFluids.MOLTEN_REDSTONE_SOURCE, 90), 1000)
+                .unlockedBy("has_bucket", has(Tags.Items.DUSTS_REDSTONE))
+                .save(consumer, "smelting:melting/redstone/from_dust");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.ORES_REDSTONE), 1),
                         new FluidStack(ModFluids.MOLTEN_REDSTONE_SOURCE, 100), 1000)
@@ -407,6 +461,11 @@ public class SmeltingRecipes extends RecipeProvider {
 
         //Lapis Processing
 
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.GEMS_LAPIS), 1),
+                        new FluidStack(ModFluids.MOLTEN_LAPIS_SOURCE, 90), 1000)
+                .unlockedBy("has_bucket", has(Tags.Items.GEMS_LAPIS))
+                .save(consumer, "smelting:melting/lapis/from_gem");
+
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.ORES_LAPIS), 1),
                         new FluidStack(ModFluids.MOLTEN_LAPIS_SOURCE, 100), 1000)
                 .unlockedBy("has_bucket", has(Tags.Items.ORES_LAPIS))
@@ -421,17 +480,98 @@ public class SmeltingRecipes extends RecipeProvider {
                 .unlockedBy("has_bucket", has(Items.LAPIS_LAZULI)).save(consumer, "smelting:solidifier/lapis");
 
 
+        //Obsidian Processing
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.OBSIDIANS), 1),
+                        new FluidStack(ModFluids.MOLTEN_OBSIDIAN_SOURCE, 1000), 1200)
+                .unlockedBy("has_bucket", has(Tags.Items.ORES_LAPIS))
+                .save(consumer, "smelting:melting/obsidian/from_block");
+
+        MixingRecipeBuilder.MixingRecipesBuilder(
+                        new FluidStack(Fluids.WATER, 1000),
+                        new FluidStack(Fluids.LAVA, 1000),
+                        null,
+                        null,
+                        null,
+                        null,
+                        new FluidStack(ModFluids.MOLTEN_OBSIDIAN_SOURCE, 1000))
+                .unlockedBy("has_bucket", has(Items.WATER_BUCKET))
+                .save(consumer, "smelting:mixing/obsidian");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(Items.OBSIDIAN), 1),
+                        new FluidStack(ModFluids.MOLTEN_OBSIDIAN_SOURCE, 1000))
+                .unlockedBy("has_bucket", has(Items.OBSIDIAN)).save(consumer, "smelting:solidifier/obsidian_block");
+
+        //Bronze Processing
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(bronzeBlockTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_BRONZE_SOURCE, 810), 1000)
+                .unlockedBy("has_bucket", has(bronzeBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeBlockTag))), "smelting:melting/bronze/from_block");
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(bronzeIngotTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_BRONZE_SOURCE, 90), 1000)
+                .unlockedBy("has_bucket", has(bronzeIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeIngotTag))), "smelting:melting/bronze/from_ingot");
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(bronzeNuggetTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_BRONZE_SOURCE, 10), 1000)
+                .unlockedBy("has_bucket", has(bronzeNuggetTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeNuggetTag))), "smelting:melting/bronze/from_nugget");
+
+        MixingRecipeBuilder.MixingRecipesBuilder(
+                        new FluidStack(ModFluids.MOLTEN_COPPER_SOURCE, 270),
+                        new FluidStack(ModFluids.MOLTEN_TIN_SOURCE, 90),
+                        null,
+                        null,
+                        null,
+                        null,
+                        new FluidStack(ModFluids.MOLTEN_BRONZE_SOURCE, 360))
+                .unlockedBy("has_bucket", has(bronzeIngotTag))
+                .save(consumer, "smelting:mixing/bronze");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(bronzeBlockTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_BRONZE_SOURCE, 810));
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(bronzeIngotTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_BRONZE_SOURCE, 90));
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(bronzeNuggetTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_BRONZE_SOURCE, 10));
+
+        //Steel Processing
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(steelBlockTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 810), 1000)
+                .unlockedBy("has_bucket", has(steelBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelBlockTag))), "smelting:melting/steel/from_block");
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(steelIngotTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 90), 1000)
+                .unlockedBy("has_bucket", has(steelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelIngotTag))), "smelting:melting/steel/from_ingot");
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(steelNuggetTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 10), 1000)
+                .unlockedBy("has_bucket", has(steelNuggetTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelNuggetTag))), "smelting:melting/steel/from_nugget");
 
 
 
 
+        MixingRecipeBuilder.MixingRecipesBuilder(
+                        new FluidStack(ModFluids.MOLTEN_COAL_SOURCE, 160),
+                        new FluidStack(ModFluids.MOLTEN_IRON_SOURCE, 90),
+                        null,
+                        null,
+                        null,
+                        null,
+                        new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 90))
+                .unlockedBy("has_bucket", has(steelIngotTag))
+                .save(consumer, "smelting:mixing/steel");
 
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(steelBlockTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 810));
 
-        //Uranium Processing
-        //Lead Processing
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(steelIngotTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 90));
 
-
-
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(steelNuggetTag), 1),
+                        new FluidStack(ModFluids.MOLTEN_STEEL_SOURCE, 10));
 
 
 

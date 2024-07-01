@@ -1,0 +1,12 @@
+{
+  "values": [
+    "smelting:block_mold",
+    "smelting:block_mold",
+    "smelting:dust_mold",
+    "smelting:gear_mold",
+    "smelting:ingot_mold",
+    "smelting:nugget_mold",
+    "smelting:plate_mold",
+    "smelting:gem_mold"
+  ]
+}
