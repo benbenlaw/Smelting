@@ -42,10 +42,14 @@ public class ModCreativeModTab {
                 output.accept(ModItems.MOLTEN_OSMIUM_BUCKET);
                 output.accept(ModItems.MOLTEN_TIN_BUCKET);
                 output.accept(ModItems.MOLTEN_URANIUM_BUCKET);
-                output.accept(ModItems.MOLTEN_LEAD_BUCKET);
+
+                output.accept(ModItems.MOLTEN_BRONZE_BUCKET);
+                output.accept(ModItems.MOLTEN_STEEL_BUCKET);
+                output.accept(ModItems.MOLTEN_OBSIDIAN_BUCKET);
 
                 output.accept(ModBlocks.SOLIDIFIER.asItem());
                 output.accept(ModBlocks.CONTROLLER.asItem());
+                output.accept(ModBlocks.MIXER.asItem());
                 output.accept(ModBlocks.TANK.asItem());
 
             }).build());

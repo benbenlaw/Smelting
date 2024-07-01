@@ -1,0 +1,12 @@
+{
+  "type": "smelting:melting",
+  "input": {
+    "count": 1,
+    "tag": "c:dusts/redstone"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 90,
+    "id": "smelting:molten_redstone"
+  }
+}

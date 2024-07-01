@@ -2,6 +2,7 @@
   "block.smelting.controller": "Controller",
   "block.smelting.solidifier": "Solidifier",
   "block.smelting.tank": "Controller Tank",
+  "block.smelting.mixer": "Mixer",
   "block.smelting.black_bricks": "Black Bricks",
 
   "item.smelting.block_mold": "Block Mold",
@@ -72,6 +73,8 @@
   "fluid_type.smelting.molten_redstone": "Molten Redstone",
   "fluid_type.smelting.molten_lapis": "Molten Lapis",
   "fluid_type.smelting.molten_diamond": "Molten Diamond",
+  "fluid_type.smelting.molten_emerald": "Molten Emerald",
+  "fluid_type.smelting.molten_obsidian": "Molten Obsidian",
 
   "itemGroup.smelting": "BBL Smelting"
 

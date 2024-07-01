@@ -1,0 +1,15 @@
+{
+  "type": "smelting:mixing",
+  "fluid1": {
+    "amount": 1000,
+    "id": "minecraft:water"
+  },
+  "fluid2": {
+    "amount": 1000,
+    "id": "minecraft:lava"
+  },
+  "output": {
+    "amount": 1000,
+    "id": "smelting:molten_obsidian"
+  }
+}

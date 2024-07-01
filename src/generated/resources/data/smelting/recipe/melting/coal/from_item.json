@@ -1,0 +1,12 @@
+{
+  "type": "smelting:melting",
+  "input": {
+    "count": 1,
+    "item": "minecraft:coal"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 80,
+    "id": "smelting:molten_coal"
+  }
+}

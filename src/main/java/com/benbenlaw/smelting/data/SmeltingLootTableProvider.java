@@ -23,6 +23,7 @@ public class SmeltingLootTableProvider extends VanillaBlockLoot {
         this.dropSelf(ModBlocks.TANK.get());
         this.dropSelf(ModBlocks.SOLIDIFIER.get());
         this.dropSelf(ModBlocks.BLACK_BRICKS.get());
+        this.dropSelf(ModBlocks.MIXER.get());
 
     }
 

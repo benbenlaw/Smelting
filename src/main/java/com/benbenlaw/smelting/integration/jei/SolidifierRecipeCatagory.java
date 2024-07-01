@@ -63,22 +63,11 @@ public class SolidifierRecipeCatagory implements IRecipeCategory<SolidifierRecip
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, SolidifierRecipe recipe, IFocusGroup focusGroup) {
 
-        builder.addSlot(RecipeIngredientRole.INPUT, 4, 2).addFluidStack(recipe.fluid().getFluid(), recipe.fluid().getAmount()
-        ).addTooltipCallback(createFluidTooltipCallback(recipe));
+        builder.addSlot(RecipeIngredientRole.INPUT, 4, 2).addFluidStack(recipe.fluid().getFluid(), 1000)
+                .addTooltipCallback((fluidStack, addTooltip) -> addTooltip.add(Component.literal("Fluid Required: " + recipe.fluid().getAmount() + "mB")));
 
         builder.addSlot(RecipeIngredientRole.CATALYST, 40, 2).addIngredients(recipe.mold());
         builder.addSlot(RecipeIngredientRole.OUTPUT, 84, 2).addIngredients(recipe.output().ingredient());
-
-
-    }
-
-
-    private IRecipeSlotTooltipCallback createFluidTooltipCallback(SolidifierRecipe recipe) {
-
-        return (fluidAmount, addTooltip) -> {
-            addTooltip.add(Component.literal("Fluid Required: " + recipe.fluid().getAmount() + "mB"));
-        };
-
 
     }
 }

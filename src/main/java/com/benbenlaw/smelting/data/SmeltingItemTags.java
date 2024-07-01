@@ -2,6 +2,8 @@ package com.benbenlaw.smelting.data;
 
 import com.benbenlaw.opolisutilities.OpolisUtilities;
 import com.benbenlaw.smelting.Smelting;
+import com.benbenlaw.smelting.item.ModItems;
+import com.benbenlaw.smelting.util.SmeltingTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -19,6 +21,17 @@ public class SmeltingItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
+
+        tag(SmeltingTags.Items.MOLDS)
+                .add(ModItems.BLOCK_MOLD.asItem())
+                .add(ModItems.BLOCK_MOLD.asItem())
+                .add(ModItems.DUST_MOLD.asItem())
+                .add(ModItems.GEAR_MOLD.asItem())
+                .add(ModItems.INGOT_MOLD.asItem())
+                .add(ModItems.NUGGET_MOLD.asItem())
+                .add(ModItems.PLATE_MOLD.asItem())
+                .add(ModItems.GEM_MOLD.asItem())
+        ;
 
 
     }

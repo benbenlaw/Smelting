@@ -85,6 +85,19 @@ public class ModItems {
     public static final DeferredItem<BucketItem> MOLTEN_LAPIS_BUCKET = ITEMS.register("molten_lapis_bucket",
             () -> new BucketItem(ModFluids.MOLTEN_LAPIS_SOURCE.get(),
                     new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<BucketItem> MOLTEN_OBSIDIAN_BUCKET = ITEMS.register("molten_obsidian_bucket",
+            () -> new BucketItem(ModFluids.MOLTEN_OBSIDIAN_SOURCE.get(),
+                    new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
+
+    public static final DeferredItem<BucketItem> MOLTEN_BRONZE_BUCKET = ITEMS.register("molten_bronze_bucket",
+            () -> new BucketItem(ModFluids.MOLTEN_BRONZE_SOURCE.get(),
+                    new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<BucketItem> MOLTEN_STEEL_BUCKET = ITEMS.register("molten_steel_bucket",
+            () -> new BucketItem(ModFluids.MOLTEN_STEEL_SOURCE.get(),
+                    new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
+
+
+
 
 
 

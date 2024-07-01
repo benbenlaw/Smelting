@@ -1,31 +1,14 @@
 {
-  "type": "smelting:mixing",
-  "fluid1": {
+  "type": "smelting:solidifier",
+  "fluid": {
     "amount": 100,
-    "id": "smelting:molten_coal"
+    "id": "smelting:molten_obsidian"
   },
-  "fluid2": {
-      "amount": 100,
-      "id": "minecraft:lava"
-  },
-  "fluid3": {
-      "amount": 100,
-      "id": "minecraft:water"
-  },
-  "fluid4": {
-      "amount": 100,
-      "id": "smelting:molten_iron"
-  },
-  "fluid5": {
-      "amount": 100,
-      "id": "smelting:molten_diamond"
-  },
-  "fluid6": {
-      "amount": 100,
-      "id": "smelting:molten_gold"
+  "mold": {
+    "item": "minecraft:dirt"
   },
   "output": {
-      "amount": 100,
-      "id": "smelting:molten_emerald"
+    "count": 1,
+    "item": "minecraft:grass_block"
   }
 }

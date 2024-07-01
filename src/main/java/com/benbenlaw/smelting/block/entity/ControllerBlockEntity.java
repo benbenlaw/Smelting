@@ -355,7 +355,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         assert level != null;
         if (!level.isClientSide()) {
 
-            //Drain to adjacent tanks
+            //Drain to adjacent solidifier
 
             for (Direction direction : Direction.values()) {
                 BlockEntity entity = level.getBlockEntity(this.worldPosition.relative(direction));

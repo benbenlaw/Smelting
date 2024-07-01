@@ -2,10 +2,7 @@ package com.benbenlaw.smelting.integration.jei;
 
 import com.benbenlaw.smelting.Smelting;
 import com.benbenlaw.smelting.block.ModBlocks;
-import com.benbenlaw.smelting.recipe.FuelRecipe;
-import com.benbenlaw.smelting.recipe.MeltingRecipe;
-import com.benbenlaw.smelting.recipe.ModRecipes;
-import com.benbenlaw.smelting.recipe.SolidifierRecipe;
+import com.benbenlaw.smelting.recipe.*;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
@@ -26,20 +23,17 @@ import org.jetbrains.annotations.NotNull;
 public class JEISmeltingPlugin implements IModPlugin {
 
     public static IDrawableStatic slotDrawable;
-
-
-
     public static RecipeType<MeltingRecipe> MELTING_RECIPE =
             new RecipeType<>(MeltingRecipeCatagory.UID, MeltingRecipe.class);
-
 
     public static RecipeType<SolidifierRecipe> SOLIDIFIER_RECIPE =
             new RecipeType<>(SolidifierRecipeCatagory.UID, SolidifierRecipe.class);
 
-
-
     public static RecipeType<FuelRecipe> FUEL_RECIPE =
             new RecipeType<>(FuelRecipeCategory.UID, FuelRecipe.class);
+
+    public static RecipeType<MixingRecipe> MIXER_RECIPE =
+            new RecipeType<>(MixingRecipeCatagory.UID, MixingRecipe.class);
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -51,6 +45,7 @@ public class JEISmeltingPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.TANK.get()), FuelRecipeCategory.RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.SOLIDIFIER.get()), SolidifierRecipeCatagory.RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.CONTROLLER.get()), MeltingRecipeCatagory.RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.MIXER.get()), MixingRecipeCatagory.RECIPE_TYPE);
     }
 
     @Override
@@ -66,6 +61,9 @@ public class JEISmeltingPlugin implements IModPlugin {
 
         registration.addRecipeCategories(new
                 MeltingRecipeCatagory(registration.getJeiHelpers().getGuiHelper()));
+
+        registration.addRecipeCategories(new
+                MixingRecipeCatagory(registration.getJeiHelpers().getGuiHelper()));
 
 
 
@@ -89,6 +87,9 @@ public class JEISmeltingPlugin implements IModPlugin {
 
         registration.addRecipes(SolidifierRecipeCatagory.RECIPE_TYPE,
                 recipeManager.getAllRecipesFor(ModRecipes.SOLIDIFIER_TYPE.get()).stream().map(RecipeHolder::value).toList());
+
+        registration.addRecipes(MixingRecipeCatagory.RECIPE_TYPE,
+                recipeManager.getAllRecipesFor(ModRecipes.MIXING_TYPE.get()).stream().map(RecipeHolder::value).toList());
 
 
     }

@@ -26,6 +26,7 @@ public class SmeltingBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.CONTROLLER.get())
                 .add(ModBlocks.TANK.get())
                 .add(ModBlocks.SOLIDIFIER.get())
+                .add(ModBlocks.MIXER.get())
         ;
 
 

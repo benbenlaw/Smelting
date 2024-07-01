@@ -4,6 +4,7 @@ import com.benbenlaw.opolisutilities.block.entity.custom.handler.InputOutputItem
 import com.benbenlaw.opolisutilities.util.inventory.IInventoryHandlingBlockEntity;
 import com.benbenlaw.smelting.screen.SolidifierMenu;
 import com.benbenlaw.smelting.recipe.SolidifierRecipe;
+import com.benbenlaw.smelting.util.SmeltingTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -53,11 +54,10 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
 
         @Override
         protected int getStackLimit(int slot, ItemStack stack) {
-            if(slot == 0)
+            if(slot == 0 && stack.is(SmeltingTags.Items.MOLDS)) {
                 return 1;
-            if (slot == 1)
-                return 64;
-            return super.getStackLimit(slot, stack);
+            }
+            return 64;
         }
     };
 
@@ -288,6 +288,10 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
 
                         if (progress >= maxProgress) {
                             extractFluid(output, output.getAmount());
+
+                            if (!itemHandler.getStackInSlot(0).is(SmeltingTags.Items.MOLDS)) {
+                                itemHandler.getStackInSlot(0).shrink(1);
+                            }
                             itemHandler.setStackInSlot(1, new ItemStack(recipe.output().getItems()[0].getItem(), recipe.output().count() + itemHandler.getStackInSlot(1).getCount()));
                             setChanged();
                             resetProgress();

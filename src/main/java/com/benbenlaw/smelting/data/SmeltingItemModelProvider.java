@@ -46,6 +46,10 @@ public class SmeltingItemModelProvider extends ItemModelProvider {
         simpleBucketItem(ModItems.MOLTEN_LAPIS_BUCKET);
         simpleBucketItem(ModItems.MOLTEN_COAL_BUCKET);
 
+        simpleBucketItem(ModItems.MOLTEN_OBSIDIAN_BUCKET);
+        simpleBucketItem(ModItems.MOLTEN_STEEL_BUCKET);
+        simpleBucketItem(ModItems.MOLTEN_BRONZE_BUCKET);
+
 
     }
 
