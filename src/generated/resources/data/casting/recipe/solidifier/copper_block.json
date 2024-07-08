@@ -1,0 +1,14 @@
+{
+  "type": "casting:solidifier",
+  "fluid": {
+    "amount": 810,
+    "id": "casting:molten_copper"
+  },
+  "mold": {
+    "item": "casting:block_mold"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:copper_block"
+  }
+}

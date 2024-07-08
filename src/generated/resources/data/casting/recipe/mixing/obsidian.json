@@ -1,0 +1,15 @@
+{
+  "type": "casting:mixing",
+  "fluid1": {
+    "amount": 1000,
+    "id": "minecraft:water"
+  },
+  "fluid2": {
+    "amount": 1000,
+    "id": "minecraft:lava"
+  },
+  "output": {
+    "amount": 1000,
+    "id": "casting:molten_obsidian"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "tag": "c:ores/diamond"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 100,
+    "id": "casting:molten_diamond"
+  }
+}

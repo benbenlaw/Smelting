@@ -1,0 +1,15 @@
+{
+  "type": "casting:mixing",
+  "fluid1": {
+    "amount": 270,
+    "id": "casting:molten_copper"
+  },
+  "fluid2": {
+    "amount": 90,
+    "id": "casting:molten_tin"
+  },
+  "output": {
+    "amount": 360,
+    "id": "casting:molten_bronze"
+  }
+}

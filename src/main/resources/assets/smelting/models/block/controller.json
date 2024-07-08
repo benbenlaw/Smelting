@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "front": "smelting:block/controller_front",
-    "side": "smelting:block/controller_side",
-    "top": "smelting:block/controller_side"
-  }
-}

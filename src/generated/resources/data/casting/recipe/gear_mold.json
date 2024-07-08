@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:gears"
+      }
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "casting:black_brick"
+    },
+    "G": {
+      "tag": "c:gears"
+    }
+  },
+  "pattern": [
+    " B ",
+    "BGB",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "casting:gear_mold"
+  }
+}

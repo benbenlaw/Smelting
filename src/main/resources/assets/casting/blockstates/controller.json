@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "casting:block/controller",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "casting:block/controller"
+    },
+    "facing=south": {
+      "model": "casting:block/controller",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "casting:block/controller",
+      "y": 270
+    }
+  }
+}

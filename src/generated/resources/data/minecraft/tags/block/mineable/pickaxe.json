@@ -1,9 +1,9 @@
 {
   "values": [
-    "smelting:black_bricks",
-    "smelting:controller",
-    "smelting:tank",
-    "smelting:solidifier",
-    "smelting:mixer"
+    "casting:black_bricks",
+    "casting:controller",
+    "casting:tank",
+    "casting:solidifier",
+    "casting:mixer"
   ]
 }

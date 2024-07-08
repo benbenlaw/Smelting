@@ -1,8 +1,0 @@
-{
-  "type": "smelting:fuel",
-  "fluid": {
-    "amount": 10,
-    "id": "minecraft:lava"
-  },
-  "temp": 1000
-}

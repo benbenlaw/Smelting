@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "has_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:ingots/bronze"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "casting:mixing/bronze"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_bucket"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "casting:mixing/bronze"
+    ]
+  },
+  "sends_telemetry_event": true
+}

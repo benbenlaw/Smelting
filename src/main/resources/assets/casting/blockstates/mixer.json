@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "casting:block/mixer",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "casting:block/mixer"
+    },
+    "facing=south": {
+      "model": "casting:block/mixer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "casting:block/mixer",
+      "y": 270
+    }
+  }
+}

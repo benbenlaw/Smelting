@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "tag": "c:ingots/gold"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 90,
+    "id": "casting:molten_gold"
+  }
+}
