@@ -94,7 +94,7 @@ public class ControllerBlock extends BaseEntityBlock {
                 ContainerData data = controllerBlockEntity.data;
                 player.openMenu(new SimpleMenuProvider(
                         (windowId, playerInventory, playerEntity) -> new SmelterMenu(windowId, playerInventory, blockPos, data),
-                        Component.translatable("block.smelting.controller")), (buf -> buf.writeBlockPos(blockPos)));
+                        Component.translatable("block.casting.controller")), (buf -> buf.writeBlockPos(blockPos)));
 
             }
             return InteractionResult.SUCCESS;

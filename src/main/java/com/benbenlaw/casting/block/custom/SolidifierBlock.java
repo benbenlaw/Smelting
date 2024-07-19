@@ -101,7 +101,7 @@ public class SolidifierBlock extends BaseEntityBlock {
                     ContainerData data = solidifierBlockEntity.data;
                     player.openMenu(new SimpleMenuProvider(
                             (windowId, playerInventory, playerEntity) -> new SolidifierMenu(windowId, playerInventory, blockPos, data),
-                            Component.translatable("block.smelting.solidifier")), (buf -> buf.writeBlockPos(blockPos)));
+                            Component.translatable("block.casting.solidifier")), (buf -> buf.writeBlockPos(blockPos)));
                 }
             }
 

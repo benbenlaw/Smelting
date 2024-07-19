@@ -101,7 +101,7 @@ public class MixerBlock extends BaseEntityBlock {
                     ContainerData data = mixerBlockEntity.data;
                     player.openMenu(new SimpleMenuProvider(
                             (windowId, playerInventory, playerEntity) -> new MixerMenu(windowId, playerInventory, blockPos, data),
-                            Component.translatable("block.smelting.mixer")), (buf -> buf.writeBlockPos(blockPos)));
+                            Component.translatable("block.casting.mixer")), (buf -> buf.writeBlockPos(blockPos)));
                 }
             }
 

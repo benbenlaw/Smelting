@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "tag": "c:cobblestones"
+  },
+  "meltingTemp": 900,
+  "output": {
+    "amount": 1000,
+    "id": "casting:molten_stone"
+  }
+}

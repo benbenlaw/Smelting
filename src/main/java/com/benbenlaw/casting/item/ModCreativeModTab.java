@@ -2,6 +2,7 @@ package com.benbenlaw.casting.item;
 
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.casting.block.ModBlocks;
+import com.benbenlaw.casting.fluid.CastingFluids;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -31,21 +32,22 @@ public class ModCreativeModTab {
                 output.accept(ModItems.BLACK_BRICK);
                 output.accept(ModBlocks.BLACK_BRICKS);
 
-                output.accept(ModItems.MOLTEN_IRON_BUCKET);
-                output.accept(ModItems.MOLTEN_GOLD_BUCKET);
-                output.accept(ModItems.MOLTEN_COPPER_BUCKET);
-                output.accept(ModItems.MOLTEN_COAL_BUCKET);
-                output.accept(ModItems.MOLTEN_EMERALD_BUCKET);
-                output.accept(ModItems.MOLTEN_DIAMOND_BUCKET);
-                output.accept(ModItems.MOLTEN_LAPIS_BUCKET);
-                output.accept(ModItems.MOLTEN_REDSTONE_BUCKET);
-                output.accept(ModItems.MOLTEN_OSMIUM_BUCKET);
-                output.accept(ModItems.MOLTEN_TIN_BUCKET);
-                output.accept(ModItems.MOLTEN_URANIUM_BUCKET);
+                output.accept(CastingFluids.MOLTEN_IRON.getBucket());
+                output.accept(CastingFluids.MOLTEN_GOLD.getBucket());
+                output.accept(CastingFluids.MOLTEN_COPPER.getBucket());
+                output.accept(CastingFluids.MOLTEN_COAL.getBucket());
+                output.accept(CastingFluids.MOLTEN_EMERALD.getBucket());
+                output.accept(CastingFluids.MOLTEN_DIAMOND.getBucket());
+                output.accept(CastingFluids.MOLTEN_LAPIS.getBucket());
+                output.accept(CastingFluids.MOLTEN_REDSTONE.getBucket());
+                output.accept(CastingFluids.MOLTEN_OSMIUM.getBucket());
+                output.accept(CastingFluids.MOLTEN_TIN.getBucket());
+                output.accept(CastingFluids.MOLTEN_URANIUM.getBucket());
 
-                output.accept(ModItems.MOLTEN_BRONZE_BUCKET);
-                output.accept(ModItems.MOLTEN_STEEL_BUCKET);
-                output.accept(ModItems.MOLTEN_OBSIDIAN_BUCKET);
+                output.accept(CastingFluids.MOLTEN_BRONZE.getBucket());
+                output.accept(CastingFluids.MOLTEN_STEEL.getBucket());
+                output.accept(CastingFluids.MOLTEN_OBSIDIAN.getBucket());
+
 
                 output.accept(ModBlocks.SOLIDIFIER.asItem());
                 output.accept(ModBlocks.CONTROLLER.asItem());

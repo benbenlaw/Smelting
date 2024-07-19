@@ -246,7 +246,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
 
     public final ContainerData data;
     public int progress = 0;
-    public int maxProgress = 10;
+    public int maxProgress = 220;
 
     public MixerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.MIXER_BLOCK_ENTITY.get(), pos, state);
@@ -275,7 +275,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.smelting.mixer");
+        return Component.translatable("block.casting.mixer");
     }
 
 
@@ -363,6 +363,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
                 }
             }
 
+            drainTanksIntoValidBlocks();
             sync();
 
             for (RecipeHolder<MixingRecipe> recipeHolder : level.getRecipeManager().getRecipesFor(MixingRecipe.Type.INSTANCE, NoInventoryRecipe.INSTANCE, level)) {
@@ -387,6 +388,16 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         }
     }
 
+    private void drainTanksIntoValidBlocks() {
+
+        //Drain to adjacent solidifier
+        for (Direction direction : Direction.values()) {
+            BlockEntity entity = level.getBlockEntity(this.worldPosition.relative(direction));
+            if (entity instanceof SolidifierBlockEntity solidifierBlockEntity) {
+                transferFluid(OUTPUT_TANK, solidifierBlockEntity.TANK);
+            }
+        }
+    }
 
     private void removeTankFluids(Map<FluidStack, Integer> matchedTanks) {
         for (Map.Entry<FluidStack, Integer> entry : matchedTanks.entrySet()) {

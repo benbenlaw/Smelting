@@ -273,7 +273,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.smelting.controller");
+        return Component.translatable("block.casting.controller");
     }
 
 
@@ -355,19 +355,6 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         assert level != null;
         if (!level.isClientSide()) {
 
-            //Drain to adjacent solidifier
-
-            for (Direction direction : Direction.values()) {
-                BlockEntity entity = level.getBlockEntity(this.worldPosition.relative(direction));
-                if (entity instanceof SolidifierBlockEntity solidifierBlockEntity) {
-                    transferFluid(TANK_1, solidifierBlockEntity.TANK);
-                    transferFluid(TANK_2, solidifierBlockEntity.TANK);
-                    transferFluid(TANK_3, solidifierBlockEntity.TANK);
-                    transferFluid(TANK_4, solidifierBlockEntity.TANK);
-                }
-
-            }
-
 
             RecipeInput inventory = new RecipeInput() {
                 @Override
@@ -382,7 +369,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
             };
 
 
-
+            drainTanksIntoValidBlocks();
             sync();
 
             for (int i = 0; i < 15; i++) {  // Loop includes slot 14
@@ -420,6 +407,53 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                         }
                     }
                 }
+            }
+        }
+    }
+
+    private void drainTanksIntoValidBlocks() {
+
+        //Drain to adjacent solidifier
+
+        for (Direction direction : Direction.values()) {
+            BlockEntity entity = level.getBlockEntity(this.worldPosition.relative(direction));
+            if (entity instanceof SolidifierBlockEntity solidifierBlockEntity) {
+                transferFluid(TANK_1, solidifierBlockEntity.TANK);
+                transferFluid(TANK_2, solidifierBlockEntity.TANK);
+                transferFluid(TANK_3, solidifierBlockEntity.TANK);
+                transferFluid(TANK_4, solidifierBlockEntity.TANK);
+            }
+        }
+
+        //Drain to adjacent mixer
+
+        for (Direction direction : Direction.values()) {
+            BlockEntity entity = level.getBlockEntity(this.worldPosition.relative(direction));
+            if (entity instanceof MixerBlockEntity mixerBlockEntity) {
+                transferFluid(TANK_1, mixerBlockEntity.TANK_1);
+                transferFluid(TANK_1, mixerBlockEntity.TANK_2);
+                transferFluid(TANK_1, mixerBlockEntity.TANK_3);
+                transferFluid(TANK_1, mixerBlockEntity.TANK_4);
+                transferFluid(TANK_1, mixerBlockEntity.TANK_5);
+                transferFluid(TANK_1, mixerBlockEntity.TANK_6);
+                transferFluid(TANK_2, mixerBlockEntity.TANK_1);
+                transferFluid(TANK_2, mixerBlockEntity.TANK_2);
+                transferFluid(TANK_2, mixerBlockEntity.TANK_3);
+                transferFluid(TANK_2, mixerBlockEntity.TANK_4);
+                transferFluid(TANK_2, mixerBlockEntity.TANK_5);
+                transferFluid(TANK_2, mixerBlockEntity.TANK_6);
+                transferFluid(TANK_3, mixerBlockEntity.TANK_1);
+                transferFluid(TANK_3, mixerBlockEntity.TANK_2);
+                transferFluid(TANK_3, mixerBlockEntity.TANK_3);
+                transferFluid(TANK_3, mixerBlockEntity.TANK_4);
+                transferFluid(TANK_3, mixerBlockEntity.TANK_5);
+                transferFluid(TANK_3, mixerBlockEntity.TANK_6);
+                transferFluid(TANK_4, mixerBlockEntity.TANK_1);
+                transferFluid(TANK_4, mixerBlockEntity.TANK_2);
+                transferFluid(TANK_4, mixerBlockEntity.TANK_3);
+                transferFluid(TANK_4, mixerBlockEntity.TANK_4);
+                transferFluid(TANK_4, mixerBlockEntity.TANK_5);
+                transferFluid(TANK_4, mixerBlockEntity.TANK_6);
             }
         }
     }

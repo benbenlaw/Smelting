@@ -1,6 +1,5 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "casting:item/molten_lead_bucket"
-  }
+  "parent": "neoforge:item/bucket",
+  "fluid": "casting:molten_lead",
+  "loader": "neoforge:fluid_container"
 }

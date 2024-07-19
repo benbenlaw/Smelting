@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "item": "minecraft:netherite_scrap"
+  },
+  "meltingTemp": 1250,
+  "output": {
+    "amount": 90,
+    "id": "casting:molten_debris"
+  }
+}

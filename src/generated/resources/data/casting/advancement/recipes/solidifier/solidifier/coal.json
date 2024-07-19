@@ -1,6 +1,6 @@
 {
   "criteria": {
-    "has_bucket": {
+    "has_item": {
       "conditions": {
         "items": [
           {
@@ -20,7 +20,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_bucket"
+      "has_item"
     ]
   ],
   "rewards": {

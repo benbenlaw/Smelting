@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "tag": "c:ingots/netherite"
+  },
+  "meltingTemp": 1250,
+  "output": {
+    "amount": 90,
+    "id": "casting:molten_netherite"
+  }
+}

@@ -22,7 +22,6 @@ import java.util.Map;
 public class MixingRecipeBuilder implements RecipeBuilder {
 
     protected String group;
-
     protected FluidStack fluid1;
     protected FluidStack fluid2;
     protected FluidStack fluid3;

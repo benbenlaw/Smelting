@@ -138,7 +138,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
 
     public final ContainerData data;
     public int progress = 0;
-    public int maxProgress = 20;
+    public int maxProgress = 220;
     private final IItemHandler solidifierItemHandler = new InputOutputItemHandler(itemHandler,
             (i, stack) -> true,  // Input condition: Always true (accept any input)
             i -> i == 1  // Output condition: Output from all slots except slot 1
@@ -185,7 +185,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.smelting.solidifier");
+        return Component.translatable("block.casting.solidifier");
     }
 
 

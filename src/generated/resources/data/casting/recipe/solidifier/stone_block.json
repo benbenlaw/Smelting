@@ -1,0 +1,14 @@
+{
+  "type": "casting:solidifier",
+  "fluid": {
+    "amount": 1000,
+    "id": "casting:molten_stone"
+  },
+  "mold": {
+    "item": "casting:block_mold"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:stone"
+  }
+}

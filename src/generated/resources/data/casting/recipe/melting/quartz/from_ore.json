@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "tag": "c:ores/quartz"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 100,
+    "id": "casting:molten_quartz"
+  }
+}

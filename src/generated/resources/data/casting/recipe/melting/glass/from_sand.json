@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "tag": "c:sands"
+  },
+  "meltingTemp": 250,
+  "output": {
+    "amount": 1000,
+    "id": "casting:molten_glass"
+  }
+}

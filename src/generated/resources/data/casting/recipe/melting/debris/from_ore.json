@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "item": "minecraft:ancient_debris"
+  },
+  "meltingTemp": 1250,
+  "output": {
+    "amount": 100,
+    "id": "casting:molten_debris"
+  }
+}

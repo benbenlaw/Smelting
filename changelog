@@ -5,6 +5,21 @@ Changelog BBL Smelting
 // Add Alloy fluids
 //
 
+1.5.0
+
+Added gear solidifier recipes
+Added Molten Silver and Molten Electrum with there recipes
+
+1.4.0
+
+Name changed to BBL Casting
+Moved to the opolis utilities fluid
+Fixed log spam about fluids not having the correct fluid states
+Fluid can now be added to the mod a lot quicker and easier
+Added Molten stone, glass, netherite, debris and quartz
+Added various recipes for creating and using the new fluids
+Controller will now output to adjacent mixers
+
 1.3.0
 
 Completely changed fluid rendering system which should improve performance

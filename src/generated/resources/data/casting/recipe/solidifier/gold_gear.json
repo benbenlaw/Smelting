@@ -1,0 +1,14 @@
+{
+  "type": "casting:solidifier",
+  "fluid": {
+    "amount": 360,
+    "id": "casting:molten_gold"
+  },
+  "mold": {
+    "item": "casting:gear_mold"
+  },
+  "output": {
+    "count": 1,
+    "tag": "c:gears/gold"
+  }
+}

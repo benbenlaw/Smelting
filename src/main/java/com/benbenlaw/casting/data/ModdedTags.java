@@ -22,6 +22,36 @@ public class ModdedTags {
     public static TagKey<Item> rodTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
             String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "rods")))));
 
+
+    //Gear Tags
+
+    public static TagKey<Item> ironGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/iron")))));
+
+    public static TagKey<Item> goldGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/gold")))));
+
+    public static TagKey<Item> copperGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/copper")))));
+
+    public static TagKey<Item> diamondGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/diamond")))));
+
+    public static TagKey<Item> emeraldGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/emerald")))));
+
+    public static TagKey<Item> stoneGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/stone")))));
+    public static TagKey<Item> lapisGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/lapis")))));
+
+    //Netherite Tags
+
+    public static TagKey<Item> netheriteNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/netherite")))));
+    public static TagKey<Item> netheriteGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/netherite")))));
+
     //Tin Tags
     public static TagKey<Item> tinNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
             String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/tin")))));
@@ -33,6 +63,8 @@ public class ModdedTags {
             String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ores/tin")))));
     public static TagKey<Item> tinRawOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
             String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "raw_materials/tin")))));
+    public static TagKey<Item> tinGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/tin")))));
 
     //Osmium Tags
 
@@ -50,6 +82,9 @@ public class ModdedTags {
 
     public static TagKey<Item> osmiumRawOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
             String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "raw_materials/osmium")))));
+    public static TagKey<Item> osmiumGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/osmium")))));
+
 
 
     //Uranium Tags
@@ -69,6 +104,9 @@ public class ModdedTags {
     public static TagKey<Item> uraniumRawOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
             String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "raw_materials/uranium")))));
 
+    public static TagKey<Item> uraniumGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/uranium")))));
+
 
     //Lead Tags
 
@@ -87,6 +125,29 @@ public class ModdedTags {
     public static TagKey<Item> leadRawOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
             String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "raw_materials/lead")))));
 
+    public static TagKey<Item> leadGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/lead")))));
+
+    //Silver Tags
+
+    public static TagKey<Item> silverNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/silver")))));
+
+    public static TagKey<Item> silverIngotTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ingots/silver")))));
+
+    public static TagKey<Item> silverBlockTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/silver")))));
+
+    public static TagKey<Item> silverOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ores/silver")))));
+
+    public static TagKey<Item> silverRawOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "raw_materials/silver")))));
+
+    public static TagKey<Item> silverGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/silver")))));
+
     //Bronze Tags
 
     public static TagKey<Item> bronzeNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
@@ -104,6 +165,9 @@ public class ModdedTags {
     public static TagKey<Item> bronzeRawOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
             String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "raw_materials/bronze")))));
 
+    public static TagKey<Item> bronzeGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/bronze")))));
+
     //Steel Tags
 
     public static TagKey<Item> steelNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
@@ -120,6 +184,29 @@ public class ModdedTags {
 
     public static TagKey<Item> steelRawOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
             String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "raw_materials/steel")))));
+
+    public static TagKey<Item> steelGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/steel")))));
+
+    //Electrum Tags
+
+    public static TagKey<Item> electrumNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/electrum")))));
+
+    public static TagKey<Item> electrumIngotTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ingots/electrum")))));
+
+    public static TagKey<Item> electrumBlockTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/electrum")))));
+
+    public static TagKey<Item> electrumOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ores/electrum")))));
+
+    public static TagKey<Item> electrumRawOreTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "raw_materials/electrum")))));
+
+    public static TagKey<Item> electrumGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/electrum")))));
 
 
 

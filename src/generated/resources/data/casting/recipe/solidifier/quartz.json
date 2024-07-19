@@ -1,0 +1,14 @@
+{
+  "type": "casting:solidifier",
+  "fluid": {
+    "amount": 90,
+    "id": "casting:molten_quartz"
+  },
+  "mold": {
+    "item": "casting:gem_mold"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:quartz"
+  }
+}

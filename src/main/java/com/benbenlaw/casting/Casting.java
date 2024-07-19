@@ -2,11 +2,11 @@ package com.benbenlaw.casting;
 
 import com.benbenlaw.casting.block.ModBlocks;
 import com.benbenlaw.casting.block.entity.ModBlockEntities;
+import com.benbenlaw.casting.fluid.CastingFluids;
 import com.benbenlaw.casting.screen.MixerScreen;
 import com.benbenlaw.casting.screen.ModMenuTypes;
 import com.benbenlaw.casting.screen.SmelterScreen;
 import com.benbenlaw.casting.screen.SolidifierScreen;
-import com.benbenlaw.casting.fluid.ModFluids;
 import com.benbenlaw.casting.item.ModCreativeModTab;
 import com.benbenlaw.casting.item.ModItems;
 import com.benbenlaw.casting.recipe.ModRecipes;
@@ -35,7 +35,8 @@ public class Casting {
         ModBlocks.register(modEventBus);
         ModCreativeModTab.register(modEventBus);
         ModBlockEntities.register(modEventBus);
-        ModFluids.register(modEventBus);
+
+        CastingFluids.FLUIDS.register(modEventBus);
 
         modEventBus.addListener(this::registerCapabilities);
 
