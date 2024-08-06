@@ -64,12 +64,20 @@ public class TankBlockEntity extends BlockEntity {
 
         @Override
         public FluidStack drain(FluidStack resource, FluidAction action) {
-            return null;
+            assert level != null;
+
+            if (resource.getFluid() == FLUID_TANK.getFluid().getFluid()) {
+                return FLUID_TANK.drain(resource.getAmount(), action);
+            }
+            return FluidStack.EMPTY;
         }
 
         @Override
         public FluidStack drain(int maxDrain, FluidAction action) {
-            return null;
+            if (FLUID_TANK.getFluidAmount() > 0) {
+                return FLUID_TANK.drain(maxDrain, action);
+            }
+            return FluidStack.EMPTY;
         }
     };
 
