@@ -2,8 +2,16 @@ Changelog BBL Smelting
 
 // TODO //
 
+1.6.4
+
+Allow fluid insertion into empty tanks
+
+1.6.3
+
+More tank fixes?
+
 1.6.2
-Fixed crash
+Fixed crash when trying to extract fluid from tank
 
 1.6.1
 

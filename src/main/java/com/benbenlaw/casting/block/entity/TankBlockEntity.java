@@ -59,8 +59,13 @@ public class TankBlockEntity extends BlockEntity {
 
         @Override
         public int fill(FluidStack resource, FluidAction action) {
-            return resource.getAmount() - FLUID_TANK.fill(resource, action);
+            if (resource.getFluid() == FLUID_TANK.getFluid().getFluid() || FLUID_TANK.isEmpty()) {
+                return FLUID_TANK.fill(resource, action);
+            }
+            return 0;
         }
+
+
 
         @Override
         public FluidStack drain(FluidStack resource, FluidAction action) {
