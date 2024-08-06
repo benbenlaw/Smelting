@@ -1,0 +1,14 @@
+{
+  "type": "casting:solidifier",
+  "fluid": {
+    "amount": 90,
+    "id": "casting:molten_gold"
+  },
+  "mold": {
+    "item": "casting:rod_mold"
+  },
+  "output": {
+    "count": 1,
+    "tag": "c:rods/gold"
+  }
+}

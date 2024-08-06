@@ -107,8 +107,9 @@ public class MixingRecipeCatagory implements IRecipeCategory<MixingRecipe> {
                     .addTooltipCallback((itemStack, addTooltip) -> addTooltip.add(Component.literal("No Fluid Needed")));
         }
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 142, 2).addFluidStack(recipe.outputFluid().getFluid(), recipe.outputFluid().getAmount())
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 142, 2).addFluidStack(recipe.outputFluid().getFluid(), 1000)
                 .addTooltipCallback((fluidStack, addTooltip) -> addTooltip.add(Component.literal("Fluid Produced: " + recipe.outputFluid().getAmount() + "mB")));
+
 
     }
 }

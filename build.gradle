@@ -93,19 +93,20 @@ dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
     //Opolis Utilities
-
     compileOnly "curse.maven:opolis-utilities-649644:5513642"
     runtimeOnly "curse.maven:opolis-utilities-649644:5513642"
 
     //JEI
-
     compileOnly "curse.maven:jei-238222:5466551"
     runtimeOnly "curse.maven:jei-238222:5466551"
 
     //Mekanism
-
     compileOnly "curse.maven:mekanism-268560:5465725"
     runtimeOnly "curse.maven:mekanism-268560:5465725"
+
+    //All The Ores
+    compileOnly "curse.maven:ato-405593:5553138"
+    runtimeOnly "curse.maven:ato-405593:5553138"
 
 }
 

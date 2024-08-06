@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:rods/netherite"
+      }
+    }
+  ],
+  "type": "casting:solidifier",
+  "fluid": {
+    "amount": 90,
+    "id": "casting:molten_netherite"
+  },
+  "mold": {
+    "item": "casting:rod_mold"
+  },
+  "output": {
+    "count": 1,
+    "tag": "c:rods/netherite"
+  }
+}

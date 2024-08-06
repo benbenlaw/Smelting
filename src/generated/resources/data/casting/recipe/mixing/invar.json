@@ -1,0 +1,15 @@
+{
+  "type": "casting:mixing",
+  "fluid1": {
+    "amount": 180,
+    "id": "casting:molten_iron"
+  },
+  "fluid2": {
+    "amount": 90,
+    "id": "casting:molten_nickel"
+  },
+  "output": {
+    "amount": 270,
+    "id": "casting:molten_invar"
+  }
+}

@@ -47,6 +47,8 @@ public class CastingFluids {
             BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_STONE;
     public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
             BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_SILVER;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_NICKEL;
 
 
 
@@ -62,6 +64,8 @@ public class CastingFluids {
             BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_STEEL;
     public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
             BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_NETHERITE;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_INVAR;
 
 
 
@@ -138,6 +142,12 @@ public class CastingFluids {
                 renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_silver_still"),
                         ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_silver_flow")));
 
+        MOLTEN_NICKEL = FLUIDS.register("molten_nickel", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_nickel_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_nickel_flow")));
+
+
+
 
 
 
@@ -163,6 +173,10 @@ public class CastingFluids {
         MOLTEN_ELECTRUM = FLUIDS.register("molten_electrum", (renderProperties) ->
                 renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_electrum_still"),
                         ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_electrum_flow")));
+
+        MOLTEN_INVAR = FLUIDS.register("molten_invar", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_invar_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_invar_flow")));
 
 
     }

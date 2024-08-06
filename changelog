@@ -1,14 +1,33 @@
 Changelog BBL Smelting
 
 // TODO //
-// Add alloy mixer block
-// Add Alloy fluids
-//
+
+
+1.6.1
+
+Fixed fluid handler on tank not being enabled
+
+1.6.0
+Added All the ores (internal)
+Added Rod recipes and rod mold to the casting molds tag
+Added Molten Nickel
+Added Molten Invar
+Changed recipe locations casting/recipe_type/resource/item_made
+    eg casting/recipe/solidifier/ingot/ingot.json
+This is to make it easier to find the recipes for pack devs, thanks ben
+Added plate recipes
+
+Solidifier in JEI now displays how many ingots/gems are required to make an item, still shows amount in mb
+
+1.6.0
+
+
 
 1.5.0
 
 Added gear solidifier recipes
 Added Molten Silver and Molten Electrum with there recipes
+Changed recipes ids
 
 1.4.0
 

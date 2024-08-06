@@ -1,0 +1,14 @@
+{
+  "type": "casting:solidifier",
+  "fluid": {
+    "amount": 90,
+    "id": "casting:molten_iron"
+  },
+  "mold": {
+    "item": "casting:plate_mold"
+  },
+  "output": {
+    "count": 1,
+    "tag": "c:plates/iron"
+  }
+}

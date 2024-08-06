@@ -30,6 +30,7 @@ public class CastingItemTags extends ItemTagsProvider {
                 .add(ModItems.NUGGET_MOLD.asItem())
                 .add(ModItems.PLATE_MOLD.asItem())
                 .add(ModItems.GEM_MOLD.asItem())
+                .add(ModItems.ROD_MOLD.asItem())
         ;
 
 

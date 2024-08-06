@@ -53,6 +53,9 @@ public class ModBlockEntities {
 
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK,
                 ModBlockEntities.MIXER_BLOCK_ENTITY.get(), MixerBlockEntity::getFluidHandlerCapability);
+
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK,
+                ModBlockEntities.TANK_BLOCK_ENTITY.get(), TankBlockEntity::getFluidHandlerCapability);
     }
 
 

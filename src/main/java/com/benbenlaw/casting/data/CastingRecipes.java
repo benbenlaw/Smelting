@@ -195,19 +195,27 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(Items.IRON_BLOCK), 1),
                         new FluidStack(CastingFluids.MOLTEN_IRON.getFluid(), 810))
-                .unlockedBy("has_item", has(Items.IRON_INGOT)).save(consumer, "casting:solidifier/iron_block");
+                .unlockedBy("has_item", has(Items.IRON_INGOT)).save(consumer, "casting:solidifier/iron/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(Items.IRON_INGOT), 1),
                         new FluidStack(CastingFluids.MOLTEN_IRON.getFluid(), 90))
-                .unlockedBy("has_item", has(Items.IRON_INGOT)).save(consumer, "casting:solidifier/iron_ingot");
+                .unlockedBy("has_item", has(Items.IRON_INGOT)).save(consumer, "casting:solidifier/iron/ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(Items.IRON_NUGGET), 1),
                         new FluidStack(CastingFluids.MOLTEN_IRON.getFluid(), 10))
-                .unlockedBy("has_item", has(Items.IRON_INGOT)).save(consumer, "casting:solidifier/iron_nugget");
+                .unlockedBy("has_item", has(Items.IRON_INGOT)).save(consumer, "casting:solidifier/iron/nugget");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(ironGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_IRON.getFluid(), 360))
-                .unlockedBy("has_item", has(Items.IRON_INGOT)).save(consumer, "casting:solidifier/iron_gear");
+                .unlockedBy("has_item", has(Items.IRON_INGOT)).save(consumer, "casting:solidifier/iron/gear");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(ironRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_IRON.getFluid(), 90))
+                .unlockedBy("has_item", has(Items.IRON_INGOT)).save(consumer, "casting:solidifier/iron/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(ironPlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_IRON.getFluid(), 90))
+                .unlockedBy("has_item", has(Items.IRON_INGOT)).save(consumer, "casting:solidifier/iron/plate");
 
 
 
@@ -229,19 +237,27 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(Items.GOLD_BLOCK), 1),
                         new FluidStack(CastingFluids.MOLTEN_GOLD.getFluid(), 810))
-                .unlockedBy("has_item", has(Items.GOLD_INGOT)).save(consumer, "casting:solidifier/gold_block");
+                .unlockedBy("has_item", has(Items.GOLD_INGOT)).save(consumer, "casting:solidifier/gold/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD),new SizedIngredient(Ingredient.of(Items.GOLD_INGOT), 1),
                         new FluidStack(CastingFluids.MOLTEN_GOLD.getFluid(), 90))
-                .unlockedBy("has_item", has(Items.GOLD_INGOT)).save(consumer, "casting:solidifier/gold_ingot");
+                .unlockedBy("has_item", has(Items.GOLD_INGOT)).save(consumer, "casting:solidifier/gold/ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(Items.GOLD_NUGGET), 1),
                         new FluidStack(CastingFluids.MOLTEN_GOLD.getFluid(), 10))
-                .unlockedBy("has_item", has(Items.GOLD_INGOT)).save(consumer, "casting:solidifier/gold_nugget");
+                .unlockedBy("has_item", has(Items.GOLD_INGOT)).save(consumer, "casting:solidifier/gold/nugget");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(goldGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_GOLD.getFluid(), 360))
-                .unlockedBy("has_item", has(Items.GOLD_INGOT)).save(consumer, "casting:solidifier/gold_gear");
+                .unlockedBy("has_item", has(Items.GOLD_INGOT)).save(consumer, "casting:solidifier/gold/gear");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(goldRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_GOLD.getFluid(), 90))
+                .unlockedBy("has_item", has(Items.GOLD_INGOT)).save(consumer, "casting:solidifier/gold/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(goldPlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_GOLD.getFluid(), 90))
+                .unlockedBy("has_item", has(Items.GOLD_INGOT)).save(consumer, "casting:solidifier/gold/plate");
 
         //Copper Processing
 
@@ -261,19 +277,28 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD),new SizedIngredient(Ingredient.of(Items.COPPER_BLOCK), 1),
                         new FluidStack(CastingFluids.MOLTEN_COPPER.getFluid(), 810))
-                .unlockedBy("has_item", has(Items.COPPER_INGOT)).save(consumer, "casting:solidifier/copper_block");
+                .unlockedBy("has_item", has(Items.COPPER_INGOT)).save(consumer, "casting:solidifier/copper/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(Items.COPPER_INGOT), 1),
                         new FluidStack(CastingFluids.MOLTEN_COPPER.getFluid(), 90))
-                .unlockedBy("has_item", has(Items.COPPER_INGOT)).save(consumer, "casting:solidifier/copper_ingot");
+                .unlockedBy("has_item", has(Items.COPPER_INGOT)).save(consumer, "casting:solidifier/copper/ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(com.benbenlaw.opolisutilities.item.ModItems.COPPER_NUGGET), 1),
                         new FluidStack(CastingFluids.MOLTEN_COPPER.getFluid(), 10))
-                .unlockedBy("has_item", has(Items.COPPER_INGOT)).save(consumer, "casting:solidifier/copper_nugget");
+                .unlockedBy("has_item", has(Items.COPPER_INGOT)).save(consumer, "casting:solidifier/copper/nugget");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(copperGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_COPPER.getFluid(), 360))
-                .unlockedBy("has_item", has(Items.COPPER_INGOT)).save(consumer, "casting:solidifier/copper_gear");
+                .unlockedBy("has_item", has(Items.COPPER_INGOT)).save(consumer, "casting:solidifier/copper/gear");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(copperRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_COPPER.getFluid(), 90))
+                .unlockedBy("has_item", has(Items.COPPER_INGOT)).save(consumer, "casting:solidifier/copper/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(copperPlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_COPPER.getFluid(), 90))
+                .unlockedBy("has_item", has(Items.COPPER_INGOT)).save(consumer, "casting:solidifier/copper/plate");
+
 
         //Tin Processing
 
@@ -291,19 +316,27 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(tinBlockTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_TIN.getFluid(), 810))
-                .unlockedBy("has_item", has(tinIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(tinBlockTag))), "casting:solidifier/tin_block");
+                .unlockedBy("has_item", has(tinIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(tinBlockTag))), "casting:solidifier/tin/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(tinIngotTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_TIN.getFluid(), 90))
-                .unlockedBy("has_item", has(tinIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(tinIngotTag))), "casting:solidifier/tin_ingot");
+                .unlockedBy("has_item", has(tinIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(tinIngotTag))), "casting:solidifier/tin/ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(ModdedTags.tinNuggetTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_TIN.getFluid(), 10))
-                .unlockedBy("has_item", has(tinIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(tinNuggetTag))), "casting:solidifier/tin_nugget");
+                .unlockedBy("has_item", has(tinIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(tinNuggetTag))), "casting:solidifier/tin/nugget");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(tinGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_TIN.getFluid(), 360))
-                .unlockedBy("has_item", has(tinIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(tinGearTag))), "casting:solidifier/tin_gear");
+                .unlockedBy("has_item", has(tinIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(tinGearTag))), "casting:solidifier/tin/gear");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(tinRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_TIN.getFluid(), 90))
+                .unlockedBy("has_item", has(tinIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(tinIngotTag))), "casting:solidifier/tin/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(tinPlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_TIN.getFluid(), 90))
+                .unlockedBy("has_item", has(tinIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(tinPlateTag))), "casting:solidifier/tin/plate");
 
         //Osmium Processing
 
@@ -321,19 +354,27 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(osmiumBlockTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_OSMIUM.getFluid(), 810))
-                .unlockedBy("has_item", has(osmiumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(osmiumBlockTag))), "casting:solidifier/osmium_block");
+                .unlockedBy("has_item", has(osmiumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(osmiumBlockTag))), "casting:solidifier/osmium/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(osmiumIngotTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_OSMIUM.getFluid(), 90))
-                .unlockedBy("has_item", has(osmiumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(osmiumIngotTag))), "casting:solidifier/osmium_ingot");
+                .unlockedBy("has_item", has(osmiumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(osmiumIngotTag))), "casting:solidifier/osmium/ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(osmiumNuggetTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_OSMIUM.getFluid(), 10))
-                .unlockedBy("has_item", has(osmiumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(osmiumNuggetTag))), "casting:solidifier/osmium_nugget");
+                .unlockedBy("has_item", has(osmiumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(osmiumNuggetTag))), "casting:solidifier/osmium/nugget");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(osmiumGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_OSMIUM.getFluid(), 360))
-                .unlockedBy("has_item", has(osmiumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(osmiumGearTag))), "casting:solidifier/osmium_gear");
+                .unlockedBy("has_item", has(osmiumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(osmiumGearTag))), "casting:solidifier/osmium/gear");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(osmiumRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_OSMIUM.getFluid(), 90))
+                .unlockedBy("has_item", has(osmiumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(osmiumIngotTag))), "casting:solidifier/osmium/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(osmiumPlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_OSMIUM.getFluid(), 90))
+                .unlockedBy("has_item", has(osmiumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(osmiumPlateTag))), "casting:solidifier/osmium/plate");
 
         //Uranium Processing
 
@@ -352,19 +393,27 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(uraniumBlockTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_URANIUM.getFluid(), 810))
-                .unlockedBy("has_item", has(uraniumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(uraniumBlockTag))), "casting:solidifier/uranium_block");
+                .unlockedBy("has_item", has(uraniumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(uraniumBlockTag))), "casting:solidifier/uranium/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(uraniumIngotTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_URANIUM.getFluid(), 90))
-                .unlockedBy("has_item", has(uraniumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(uraniumIngotTag))), "casting:solidifier/uranium_ingot");
+                .unlockedBy("has_item", has(uraniumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(uraniumIngotTag))), "casting:solidifier/uranium/ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(uraniumNuggetTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_URANIUM.getFluid(), 10))
-                .unlockedBy("has_item", has(uraniumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(uraniumNuggetTag))), "casting:solidifier/uranium_nugget");
+                .unlockedBy("has_item", has(uraniumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(uraniumNuggetTag))), "casting:solidifier/uranium/nugget");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(uraniumGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_URANIUM.getFluid(), 360))
-                .unlockedBy("has_item", has(uraniumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(uraniumGearTag))), "casting:solidifier/uranium_gear");
+                .unlockedBy("has_item", has(uraniumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(uraniumGearTag))), "casting:solidifier/uranium/gear");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(uraniumRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_URANIUM.getFluid(), 90))
+                .unlockedBy("has_item", has(uraniumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(uraniumIngotTag))), "casting:solidifier/uranium/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(uraniumPlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_URANIUM.getFluid(), 90))
+                .unlockedBy("has_item", has(uraniumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(uraniumPlateTag))), "casting:solidifier/uranium/plate");
 
         //Lead Processing
 
@@ -382,19 +431,27 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(leadBlockTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_LEAD.getFluid(), 810))
-                .unlockedBy("has_item", has(leadIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(leadBlockTag))), "casting:solidifier/lead_block");
+                .unlockedBy("has_item", has(leadIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(leadBlockTag))), "casting:solidifier/lead/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(leadIngotTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_LEAD.getFluid(), 90))
-                .unlockedBy("has_item", has(leadIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(leadIngotTag))), "casting:solidifier/lead_ingot");
+                .unlockedBy("has_item", has(leadIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(leadIngotTag))), "casting:solidifier/lead/ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(leadNuggetTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_LEAD.getFluid(), 10))
-                .unlockedBy("has_item", has(leadIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(leadNuggetTag))), "casting:solidifier/lead_nugget");
+                .unlockedBy("has_item", has(leadIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(leadNuggetTag))), "casting:solidifier/lead/nugget");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(leadGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_LEAD.getFluid(), 360))
-                .unlockedBy("has_item", has(leadIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(leadGearTag))), "casting:solidifier/lead_gear");
+                .unlockedBy("has_item", has(leadIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(leadGearTag))), "casting:solidifier/lead/gear");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(leadRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_LEAD.getFluid(), 90))
+                .unlockedBy("has_item", has(leadIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(leadIngotTag))), "casting:solidifier/lead/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(leadPlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_LEAD.getFluid(), 90))
+                .unlockedBy("has_item", has(leadIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(leadPlateTag))), "casting:solidifier/lead/plate");
 
         //Silver Processing
 
@@ -412,19 +469,28 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(silverBlockTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_SILVER.getFluid(), 810))
-                .unlockedBy("has_item", has(silverIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(silverBlockTag))), "casting:solidifier/silver_block");
+                .unlockedBy("has_item", has(silverIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(silverBlockTag))), "casting:solidifier/silver/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(silverIngotTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_SILVER.getFluid(), 90))
-                .unlockedBy("has_item", has(silverIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(silverIngotTag))), "casting:solidifier/silver_ingot");
+                .unlockedBy("has_item", has(silverIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(silverIngotTag))), "casting:solidifier/silver/ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(silverNuggetTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_SILVER.getFluid(), 10))
-                .unlockedBy("has_item", has(silverIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(silverNuggetTag))), "casting:solidifier/silver_nugget");
+                .unlockedBy("has_item", has(silverIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(silverNuggetTag))), "casting:solidifier/silver/nugget");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(silverGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_SILVER.getFluid(), 360))
-                .unlockedBy("has_item", has(silverIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(silverGearTag))), "casting:solidifier/silver_gear");
+                .unlockedBy("has_item", has(silverIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(silverGearTag))), "casting:solidifier/silver/gear");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(silverRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_SILVER.getFluid(), 90))
+                .unlockedBy("has_item", has(silverIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(silverIngotTag))), "casting:solidifier/silver/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(silverPlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_SILVER.getFluid(), 90))
+                .unlockedBy("has_item", has(silverIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(silverPlateTag))), "casting:solidifier/silver/plate");
+
 
         // Coal Processing
 
@@ -440,15 +506,15 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(Items.COAL_BLOCK), 1),
                         new FluidStack(CastingFluids.MOLTEN_COAL.getFluid(), 720))
-                .unlockedBy("has_item", has(Items.COAL)).save(consumer, "casting:solidifier/coal_block");
+                .unlockedBy("has_item", has(Items.COAL)).save(consumer, "casting:solidifier/coal/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEM_MOLD), new SizedIngredient(Ingredient.of(Items.COAL), 1),
                         new FluidStack(CastingFluids.MOLTEN_COAL.getFluid(), 80))
-                .unlockedBy("has_item", has(Items.COAL)).save(consumer, "casting:solidifier/coal");
+                .unlockedBy("has_item", has(Items.COAL)).save(consumer, "casting:solidifier/coal/coal");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(com.benbenlaw.opolisutilities.item.ModItems.MINI_COAL), 1),
                         new FluidStack(CastingFluids.MOLTEN_COAL.getFluid(), 10))
-                .unlockedBy("has_item", has(Items.COAL)).save(consumer, "casting:solidifier/mini_coal");
+                .unlockedBy("has_item", has(Items.COAL)).save(consumer, "casting:solidifier/coal/mini");
 
         // Emerald Processing
 
@@ -464,15 +530,19 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(Items.EMERALD_BLOCK), 1),
                         new FluidStack(CastingFluids.MOLTEN_EMERALD.getFluid(), 810))
-                .unlockedBy("has_item", has(Items.EMERALD)).save(consumer, "casting:solidifier/emerald_block");
+                .unlockedBy("has_item", has(Items.EMERALD)).save(consumer, "casting:solidifier/emerald/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEM_MOLD), new SizedIngredient(Ingredient.of(Items.EMERALD), 1),
                         new FluidStack(CastingFluids.MOLTEN_EMERALD.getFluid(), 90))
-                .unlockedBy("has_item", has(Items.EMERALD)).save(consumer,"casting:solidifier/emerald");
+                .unlockedBy("has_item", has(Items.EMERALD)).save(consumer,"casting:solidifier/emerald/emerald");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(emeraldGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_EMERALD.getFluid(), 360))
-                .unlockedBy("has_item", has(emeraldGearTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(emeraldGearTag))), "casting:solidifier/emerald_gear");
+                .unlockedBy("has_item", has(emeraldGearTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(emeraldGearTag))), "casting:solidifier/emerald/gear");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(Items.EMERALD), 1),
+                        new FluidStack(CastingFluids.MOLTEN_EMERALD.getFluid(), 90))
+                .unlockedBy("has_item", has(Items.EMERALD)).save(consumer, "casting:solidifier/emerald/rod");
 
         //Diamond Processing
 
@@ -488,15 +558,15 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(Items.DIAMOND_BLOCK), 1),
                         new FluidStack(CastingFluids.MOLTEN_DIAMOND.getFluid(), 810))
-                .unlockedBy("has_item", has(Items.DIAMOND)).save(consumer, "casting:solidifier/diamond_block");
+                .unlockedBy("has_item", has(Items.DIAMOND)).save(consumer, "casting:solidifier/diamond/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEM_MOLD), new SizedIngredient(Ingredient.of(Items.DIAMOND), 1),
                         new FluidStack(CastingFluids.MOLTEN_DIAMOND.getFluid(), 90))
-                .unlockedBy("has_item", has(Items.DIAMOND)).save(consumer, "casting:solidifier/diamond");
+                .unlockedBy("has_item", has(Items.DIAMOND)).save(consumer, "casting:solidifier/diamond/diamond");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(diamondGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_DIAMOND.getFluid(), 360))
-                .unlockedBy("has_item", has(diamondGearTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(diamondGearTag))), "casting:solidifier/diamond_gear");
+                .unlockedBy("has_item", has(diamondGearTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(diamondGearTag))), "casting:solidifier/diamond/gear");
 
         //Redstone Processing
 
@@ -512,11 +582,11 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(Items.REDSTONE_BLOCK), 1),
                         new FluidStack(CastingFluids.MOLTEN_REDSTONE.getFluid(), 810))
-                .unlockedBy("has_item", has(Items.REDSTONE)).save(consumer, "casting:solidifier/redstone_block");
+                .unlockedBy("has_item", has(Items.REDSTONE)).save(consumer, "casting:solidifier/redstone/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.DUST_MOLD), new SizedIngredient(Ingredient.of(Items.REDSTONE), 1),
                         new FluidStack(CastingFluids.MOLTEN_REDSTONE.getFluid(), 90))
-                .unlockedBy("has_item", has(Items.REDSTONE)).save(consumer, "casting:solidifier/redstone");
+                .unlockedBy("has_item", has(Items.REDSTONE)).save(consumer, "casting:solidifier/redstone/redstone");
 
 
         //Lapis Processing
@@ -533,15 +603,15 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD),new SizedIngredient(Ingredient.of(Items.LAPIS_BLOCK), 1),
                         new FluidStack(CastingFluids.MOLTEN_LAPIS.getFluid(), 810))
-                .unlockedBy("has_item", has(Items.LAPIS_LAZULI)).save(consumer, "casting:solidifier/lapis_block");
+                .unlockedBy("has_item", has(Items.LAPIS_LAZULI)).save(consumer, "casting:solidifier/lapis/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEM_MOLD), new SizedIngredient(Ingredient.of(Items.LAPIS_LAZULI), 1),
                         new FluidStack(CastingFluids.MOLTEN_LAPIS.getFluid(), 90))
-                .unlockedBy("has_item", has(Items.LAPIS_LAZULI)).save(consumer, "casting:solidifier/lapis");
+                .unlockedBy("has_item", has(Items.LAPIS_LAZULI)).save(consumer, "casting:solidifier/lapis/lapis");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(lapisGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_LAPIS.getFluid(), 360))
-                .unlockedBy("has_item", has(lapisGearTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(lapisGearTag))), "casting:solidifier/lapis_gear");
+                .unlockedBy("has_item", has(lapisGearTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(lapisGearTag))), "casting:solidifier/lapis/gear");
 
 
         //Obsidian Processing
@@ -564,7 +634,7 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(Items.OBSIDIAN), 1),
                         new FluidStack(CastingFluids.MOLTEN_OBSIDIAN.getFluid(), 1000))
-                .unlockedBy("has_item", has(Items.OBSIDIAN)).save(consumer, "casting:solidifier/obsidian_block");
+                .unlockedBy("has_item", has(Items.OBSIDIAN)).save(consumer, "casting:solidifier/obsidian/block");
 
         //Bronze Processing
 
@@ -593,20 +663,28 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(bronzeBlockTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_BRONZE.getFluid(), 810))
-                .unlockedBy("has_item", has(bronzeBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeBlockTag))), "casting:solidifier/bronze_block");
+                .unlockedBy("has_item", has(bronzeBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeBlockTag))), "casting:solidifier/bronze/block");
 
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(bronzeIngotTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_BRONZE.getFluid(), 90))
-                .unlockedBy("has_item", has(bronzeIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeIngotTag))), "casting:solidifier/bronze_ingot");
+                .unlockedBy("has_item", has(bronzeIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeIngotTag))), "casting:solidifier/bronze/ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(bronzeNuggetTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_BRONZE.getFluid(), 10))
-                .unlockedBy("has_item", has(bronzeIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeNuggetTag))), "casting:solidifier/bronze_nugget");
+                .unlockedBy("has_item", has(bronzeIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeNuggetTag))), "casting:solidifier/bronze/nugget");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(bronzeGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_BRONZE.getFluid(), 360))
-                .unlockedBy("has_item", has(bronzeIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeGearTag))), "casting:solidifier/bronze_gear");
+                .unlockedBy("has_item", has(bronzeIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeGearTag))), "casting:solidifier/bronze/gear");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(bronzeRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_BRONZE.getFluid(), 90))
+                .unlockedBy("has_item", has(bronzeIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzeRodTag))), "casting:solidifier/bronze/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(bronzePlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_BRONZE.getFluid(), 90))
+                .unlockedBy("has_item", has(bronzeIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(bronzePlateTag))), "casting:solidifier/bronze/plate");
 
         //Steel Processing
 
@@ -635,20 +713,27 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(steelBlockTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_STEEL.getFluid(), 810))
-                .unlockedBy("has_item", has(steelBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelBlockTag))), "casting:solidifier/steel_block");
+                .unlockedBy("has_item", has(steelBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelBlockTag))), "casting:solidifier/steel/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(steelIngotTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_STEEL.getFluid(), 90))
-                .unlockedBy("has_item", has(steelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelIngotTag))), "casting:solidifier/steel_ingot");
+                .unlockedBy("has_item", has(steelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelIngotTag))), "casting:solidifier/steel/ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(steelNuggetTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_STEEL.getFluid(), 10))
-                .unlockedBy("has_item", has(steelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelNuggetTag))), "casting:solidifier/steel_nugget");
+                .unlockedBy("has_item", has(steelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelNuggetTag))), "casting:solidifier/steel/nugget");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(steelGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_STEEL.getFluid(), 360))
-                .unlockedBy("has_item", has(steelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelGearTag))), "casting:solidifier/steel_gear");
+                .unlockedBy("has_item", has(steelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelGearTag))), "casting:solidifier/steel/gear");
 
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(steelRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_STEEL.getFluid(), 90))
+                .unlockedBy("has_item", has(steelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelRodTag))), "casting:solidifier/steel/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(steelPlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_STEEL.getFluid(), 90))
+                .unlockedBy("has_item", has(steelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(steelPlateTag))), "casting:solidifier/steel/plate");
 
         //Netherite Processing
 
@@ -677,20 +762,27 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(Blocks.NETHERITE_BLOCK), 1),
                         new FluidStack(CastingFluids.MOLTEN_NETHERITE.getFluid(), 810))
-                    .unlockedBy("has_item", has(Blocks.NETHERITE_BLOCK)).save(consumer, "casting:solidifier/netherite_block");
+                    .unlockedBy("has_item", has(Blocks.NETHERITE_BLOCK)).save(consumer, "casting:solidifier/netherite/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(Tags.Items.INGOTS_NETHERITE), 1),
                         new FluidStack(CastingFluids.MOLTEN_NETHERITE.getFluid(), 90))
-                    .unlockedBy("has_item", has(Tags.Items.INGOTS_NETHERITE)).save(consumer, "casting:solidifier/netherite_ingot");
+                    .unlockedBy("has_item", has(Tags.Items.INGOTS_NETHERITE)).save(consumer, "casting:solidifier/netherite/ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(netheriteNuggetTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_NETHERITE.getFluid(), 10))
-                    .unlockedBy("has_item", has(netheriteNuggetTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(netheriteNuggetTag))), "casting:solidifier/netherite_nugget");
+                    .unlockedBy("has_item", has(netheriteNuggetTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(netheriteNuggetTag))), "casting:solidifier/netherite/nugget");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(netheriteGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_NETHERITE.getFluid(), 360))
-                    .unlockedBy("has_item", has(netheriteGearTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(netheriteGearTag))), "casting:solidifier/netherite_gear");
+                    .unlockedBy("has_item", has(netheriteGearTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(netheriteGearTag))), "casting:solidifier/netherite/gear");
 
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(netheriteRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_NETHERITE.getFluid(), 90))
+                    .unlockedBy("has_item", has(netheriteRodTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(netheriteRodTag))), "casting:solidifier/netherite/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(netheritePlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_NETHERITE.getFluid(), 90))
+                    .unlockedBy("has_item", has(netheritePlateTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(netheritePlateTag))), "casting:solidifier/netherite/plate");
 
 
         //Debris Processing
@@ -725,11 +817,11 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(Items.QUARTZ_BLOCK), 1),
                         new FluidStack(CastingFluids.MOLTEN_QUARTZ.getFluid(), 360))
-                .unlockedBy("has_item", has(Items.QUARTZ)).save(consumer, "casting:solidifier/quartz_block");
+                .unlockedBy("has_item", has(Items.QUARTZ)).save(consumer, "casting:solidifier/quartz/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEM_MOLD), new SizedIngredient(Ingredient.of(Items.QUARTZ), 1),
                         new FluidStack(CastingFluids.MOLTEN_QUARTZ.getFluid(), 90))
-                .unlockedBy("has_item", has(Items.QUARTZ)).save(consumer, "casting:solidifier/quartz");
+                .unlockedBy("has_item", has(Items.QUARTZ)).save(consumer, "casting:solidifier/quartz/quartz");
 
         //Glass Processing
 
@@ -745,7 +837,7 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(Items.GLASS), 1),
                         new FluidStack(CastingFluids.MOLTEN_GLASS.getFluid(), 1000))
-                .unlockedBy("has_item", has(Items.GLASS)).save(consumer, "casting:solidifier/glass_block");
+                .unlockedBy("has_item", has(Items.GLASS)).save(consumer, "casting:solidifier/glass/block");
 
         //Stone Processing
 
@@ -761,11 +853,19 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(Items.STONE), 1),
                         new FluidStack(CastingFluids.MOLTEN_STONE.getFluid(), 1000))
-                .unlockedBy("has_item", has(Tags.Items.STONES)).save(consumer, "casting:solidifier/stone_block");
+                .unlockedBy("has_item", has(Tags.Items.STONES)).save(consumer, "casting:solidifier/stone/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(stoneGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_STONE.getFluid(), 360))
-                .unlockedBy("has_item", has(stoneGearTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(stoneGearTag))), "casting:solidifier/stone_gear");
+                .unlockedBy("has_item", has(stoneGearTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(stoneGearTag))), "casting:solidifier/stone/gear");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(stoneRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_STONE.getFluid(), 90))
+                .unlockedBy("has_item", has(stoneRodTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(stoneRodTag))), "casting:solidifier/stone/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(stonePlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_STONE.getFluid(), 90))
+                .unlockedBy("has_item", has(Tags.Items.STONES)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(stonePlateTag))), "casting:solidifier/stone/plate");
 
         //Electrum Processing
 
@@ -794,21 +894,125 @@ public class CastingRecipes extends RecipeProvider {
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(electrumBlockTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_ELECTRUM.getFluid(), 810))
-                .unlockedBy("has_item", has(electrumBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(electrumBlockTag))), "casting:solidifier/electrum_block");
-
+                .unlockedBy("has_item", has(electrumBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(electrumBlockTag))), "casting:solidifier/electrum/block");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(electrumIngotTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_ELECTRUM.getFluid(), 90))
-                .unlockedBy("has_item", has(electrumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(electrumIngotTag))), "casting:solidifier/electrum_ingot");
+                .unlockedBy("has_item", has(electrumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(electrumIngotTag))), "casting:solidifier/electrum/ingot");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(electrumNuggetTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_ELECTRUM.getFluid(), 10))
-                .unlockedBy("has_item", has(electrumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(electrumNuggetTag))), "casting:solidifier/electrum_nugget");
+                .unlockedBy("has_item", has(electrumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(electrumNuggetTag))), "casting:solidifier/electrum/nugget");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(electrumGearTag), 1),
                         new FluidStack(CastingFluids.MOLTEN_ELECTRUM.getFluid(), 360))
-                .unlockedBy("has_item", has(electrumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(electrumGearTag))), "casting:solidifier/electrum_gear");
+                .unlockedBy("has_item", has(electrumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(electrumGearTag))), "casting:solidifier/electrum/gear");
 
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(electrumRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_ELECTRUM.getFluid(), 90))
+                .unlockedBy("has_item", has(electrumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(electrumRodTag))), "casting:solidifier/electrum/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(electrumPlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_ELECTRUM.getFluid(), 90))
+                .unlockedBy("has_item", has(electrumIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(electrumPlateTag))), "casting:solidifier/electrum/plate");
+
+
+        //Invar Processing
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(invarBlockTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_INVAR.getFluid(), 810), 1000)
+                .unlockedBy("has_item", has(invarBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(invarBlockTag))), "casting:melting/invar/from_block");
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(invarIngotTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_INVAR.getFluid(), 90), 1000)
+                .unlockedBy("has_item", has(invarIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(invarIngotTag))), "casting:melting/invar/from_ingot");
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(invarNuggetTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_INVAR.getFluid(), 10), 1000)
+                .unlockedBy("has_item", has(invarNuggetTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(invarNuggetTag))), "casting:melting/invar/from_nugget");
+
+        MixingRecipeBuilder.MixingRecipesBuilder(
+                        new FluidStack(CastingFluids.MOLTEN_IRON.getFluid(), 180),
+                        new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 90),
+                        null,
+                        null,
+                        null,
+                        null,
+                        new FluidStack(CastingFluids.MOLTEN_INVAR.getFluid(), 270))
+                .unlockedBy("has_item", has(invarIngotTag))
+                .save(consumer, "casting:mixing/invar");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(invarBlockTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_INVAR.getFluid(), 810))
+                .unlockedBy("has_item", has(invarBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(invarBlockTag))), "casting:solidifier/invar/block");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(invarIngotTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_INVAR.getFluid(), 90))
+                .unlockedBy("has_item", has(invarIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(invarIngotTag))), "casting:solidifier/invar/ingot");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(invarNuggetTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_INVAR.getFluid(), 10))
+                .unlockedBy("has_item", has(invarIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(invarNuggetTag))), "casting:solidifier/invar/nugget");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(invarGearTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_INVAR.getFluid(), 360))
+                .unlockedBy("has_item", has(invarIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(invarGearTag))), "casting:solidifier/invar/gear");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(invarRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_INVAR.getFluid(), 90))
+                .unlockedBy("has_item", has(invarIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(invarRodTag))), "casting:solidifier/invar/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(invarPlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_INVAR.getFluid(), 90))
+                .unlockedBy("has_item", has(invarIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(invarPlateTag))), "casting:solidifier/invar/plate");
+
+        //Nickel
+
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(nickelOreTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 100), 1000)
+                .unlockedBy("has_item", has(nickelOreTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(nickelOreTag))), "casting:melting/nickel/from_ore");
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(nickelRawOreTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 100), 1000)
+                .unlockedBy("has_item", has(nickelRawOreTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(nickelRawOreTag))), "casting:melting/nickel/from_raw_ore");
+
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(nickelBlockTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 810), 1000)
+                .unlockedBy("has_item", has(nickelBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(nickelBlockTag))), "casting:melting/nickel/from_block");
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(nickelIngotTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 90), 1000)
+                .unlockedBy("has_item", has(nickelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(nickelIngotTag))), "casting:melting/nickel/from_ingot");
+
+        MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(nickelNuggetTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 10), 1000)
+                .unlockedBy("has_item", has(nickelNuggetTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(nickelNuggetTag))), "casting:melting/nickel/from_nugget");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.BLOCK_MOLD), new SizedIngredient(Ingredient.of(nickelBlockTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 810))
+                .unlockedBy("has_item", has(nickelBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(nickelBlockTag))), "casting:solidifier/nickel/block");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.INGOT_MOLD), new SizedIngredient(Ingredient.of(nickelIngotTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 90))
+                .unlockedBy("has_item", has(nickelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(nickelIngotTag))), "casting:solidifier/nickel/ingot");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.NUGGET_MOLD), new SizedIngredient(Ingredient.of(nickelNuggetTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 10))
+                .unlockedBy("has_item", has(nickelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(nickelNuggetTag))), "casting:solidifier/nickel/nugget");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.GEAR_MOLD), new SizedIngredient(Ingredient.of(nickelGearTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 360))
+                .unlockedBy("has_item", has(nickelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(nickelGearTag))), "casting:solidifier/nickel/gear");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.ROD_MOLD), new SizedIngredient(Ingredient.of(nickelRodTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 90))
+                .unlockedBy("has_item", has(nickelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(nickelRodTag))), "casting:solidifier/nickel/rod");
+
+        SolidifierRecipeBuilder.SolidifierRecipesBuilder(Ingredient.of(ModItems.PLATE_MOLD), new SizedIngredient(Ingredient.of(nickelPlateTag), 1),
+                        new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 90))
+                .unlockedBy("has_item", has(nickelIngotTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(nickelPlateTag))), "casting:solidifier/nickel/plate");
 
 
 
