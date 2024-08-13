@@ -3,6 +3,7 @@ package com.benbenlaw.casting.screen;
 import com.benbenlaw.opolisutilities.screen.utils.FluidStackWidget;
 import com.benbenlaw.opolisutilities.screen.utils.FluidTankRenderer;
 import com.benbenlaw.casting.Casting;
+import com.benbenlaw.opolisutilities.util.MouseUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -51,10 +52,15 @@ public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
+
         renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
 
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         renderProgressBars(guiGraphics);
+        renderTickRate(guiGraphics, mouseX, mouseY, x, y);
         renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
@@ -63,5 +69,12 @@ public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
         int x = leftPos;
         int y = topPos;
         guiGraphics.blit(TEXTURE, x + 104, y + 35, 176, 30, menu.getScaledProgress(), 16);
+    }
+
+    private void renderTickRate(GuiGraphics guiGraphics, int mouseX, int mouseY, int x, int y) {
+        if (MouseUtil.isMouseAboveArea(mouseX, mouseY, x, y, 80, 36, 90, 16)) {
+            guiGraphics.drawString(this.font, this.menu.blockEntity.maxProgress + " ticks", this.leftPos + 120,
+                    this.topPos + 68, 0x3F3F3F, false);
+        }
     }
 }

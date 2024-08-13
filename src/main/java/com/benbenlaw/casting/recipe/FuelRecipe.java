@@ -13,8 +13,11 @@ import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
-public record FuelRecipe(FluidStack fluid, int temp) implements Recipe<RecipeInput> {
+public record FuelRecipe(FluidStack fluid, int temp, int smeltTime) implements Recipe<RecipeInput> {
 
+    //FluidStack contains the amount of fluid this is how much is used in recipes,
+    // int temp is the temperature required to use the fuel,
+    // int smeltTime is how long recipes take to melt
 
     @Override
     public boolean matches(@NotNull RecipeInput container, @NotNull Level level) {
@@ -70,7 +73,8 @@ public record FuelRecipe(FluidStack fluid, int temp) implements Recipe<RecipeInp
         public final MapCodec<FuelRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
                 instance.group(
                         FluidStack.CODEC.fieldOf("fluid").forGetter(FuelRecipe::fluid),
-                        Codec.INT.fieldOf("temp").forGetter(FuelRecipe::temp)
+                        Codec.INT.fieldOf("temp").forGetter(FuelRecipe::temp),
+                        Codec.INT.fieldOf("smeltTime").forGetter(FuelRecipe::smeltTime)
 
                 ).apply(instance, Serializer::createFuelRecipe)
         );
@@ -91,16 +95,18 @@ public record FuelRecipe(FluidStack fluid, int temp) implements Recipe<RecipeInp
         private static FuelRecipe read(RegistryFriendlyByteBuf buffer) {
             FluidStack fluid = FluidStack.STREAM_CODEC.decode(buffer);
             int temp = buffer.readInt();
-            return new FuelRecipe(fluid, temp);
+            int smeltTime = buffer.readInt();
+            return new FuelRecipe(fluid, temp, smeltTime);
         }
 
         private static void write(RegistryFriendlyByteBuf buffer, FuelRecipe recipe) {
             FluidStack.STREAM_CODEC.encode(buffer, recipe.fluid);
             buffer.writeInt(recipe.temp);
+            buffer.writeInt(recipe.smeltTime);
         }
 
-        static FuelRecipe createFuelRecipe(FluidStack fluid, int temp) {
-            return new FuelRecipe(fluid, temp);
+        static FuelRecipe createFuelRecipe(FluidStack fluid, int temp, int smeltTime) {
+            return new FuelRecipe(fluid, temp, smeltTime);
         }
     }
 }

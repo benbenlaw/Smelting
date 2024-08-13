@@ -160,17 +160,17 @@ public class CastingRecipes extends RecipeProvider {
         // ********** Fuels ********** //
 
         // Lava
-        FuelRecipeBuilder.FuelRecipesBuilder(new FluidStack(Fluids.LAVA, 10), 1000)
+        FuelRecipeBuilder.FuelRecipesBuilder(new FluidStack(Fluids.LAVA, 10), 1000, 220)
                 .unlockedBy("has_item", has(Items.BUCKET))
                 .save(consumer);
 
         // Coal
-        FuelRecipeBuilder.FuelRecipesBuilder(new FluidStack(CastingFluids.MOLTEN_COAL.getFluid(), 8), 1200)
+        FuelRecipeBuilder.FuelRecipesBuilder(new FluidStack(CastingFluids.MOLTEN_COAL.getFluid(), 8), 1200, 250)
                 .unlockedBy("has_item", has(Items.BUCKET))
                 .save(consumer);
         
         // Uranium
-        FuelRecipeBuilder.FuelRecipesBuilder(new FluidStack(CastingFluids.MOLTEN_URANIUM.getFluid(), 25), 1600)
+        FuelRecipeBuilder.FuelRecipesBuilder(new FluidStack(CastingFluids.MOLTEN_URANIUM.getFluid(), 25), 1600, 180)
                 .unlockedBy("has_item", has(Items.BUCKET))
                 .save(consumer);
 

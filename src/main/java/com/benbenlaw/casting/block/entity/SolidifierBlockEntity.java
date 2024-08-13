@@ -1,5 +1,6 @@
 package com.benbenlaw.casting.block.entity;
 
+import com.benbenlaw.casting.item.ModItems;
 import com.benbenlaw.opolisutilities.block.entity.custom.handler.InputOutputItemHandler;
 import com.benbenlaw.opolisutilities.util.inventory.IInventoryHandlingBlockEntity;
 import com.benbenlaw.casting.screen.SolidifierMenu;
@@ -25,6 +26,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeInput;
@@ -138,7 +140,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
 
     public final ContainerData data;
     public int progress = 0;
-    public int maxProgress = 220;
+    public int maxProgress;
     private final IItemHandler solidifierItemHandler = new InputOutputItemHandler(itemHandler,
             (i, stack) -> true,  // Input condition: Always true (accept any input)
             i -> i == 1  // Output condition: Output from all slots except slot 1
@@ -270,6 +272,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
             };
 
             sync();
+            updateSpeed();
 
             if (itemHandler.getStackInSlot(0).isEmpty()) {
                 resetProgress();
@@ -348,4 +351,28 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
         }
     }
 
+    private void updateSpeed() {
+        Item moldItem = itemHandler.getStackInSlot(0).getItem();
+
+        if (moldItem == ModItems.NUGGET_MOLD.get()) {
+            maxProgress = 10;
+        }
+        else if (moldItem == ModItems.GEAR_MOLD.get()) {
+            maxProgress = 50;
+        }
+        else if (moldItem == ModItems.INGOT_MOLD.get() ||
+                moldItem == ModItems.GEM_MOLD.get() ||
+                moldItem == ModItems.DUST_MOLD.get() ||
+                moldItem == ModItems.ROD_MOLD.get() ||
+                moldItem == ModItems.PLATE_MOLD.get()) {
+            maxProgress = 100;
+        }
+        else if (moldItem == ModItems.BLOCK_MOLD.get()) {
+            maxProgress = 300;
+        }
+        else {
+            maxProgress = 220;
+        }
+
+    }
 }

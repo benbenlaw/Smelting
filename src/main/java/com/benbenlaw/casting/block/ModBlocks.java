@@ -1,10 +1,7 @@
 package com.benbenlaw.casting.block;
 
 import com.benbenlaw.casting.Casting;
-import com.benbenlaw.casting.block.custom.ControllerBlock;
-import com.benbenlaw.casting.block.custom.MixerBlock;
-import com.benbenlaw.casting.block.custom.SolidifierBlock;
-import com.benbenlaw.casting.block.custom.TankBlock;
+import com.benbenlaw.casting.block.custom.*;
 import com.benbenlaw.casting.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

@@ -37,6 +37,7 @@ public class ModBlockEntities {
 
 
 
+
     //Capability Registration (Item Handler)
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,

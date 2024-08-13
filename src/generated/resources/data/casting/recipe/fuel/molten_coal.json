@@ -4,5 +4,6 @@
     "amount": 8,
     "id": "casting:molten_coal"
   },
+  "smeltTime": 220,
   "temp": 1200
 }

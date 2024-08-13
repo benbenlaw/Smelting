@@ -4,6 +4,7 @@ import com.benbenlaw.casting.block.ModBlocks;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.NotNull;
@@ -20,7 +21,7 @@ public class CastingLootTableProvider extends VanillaBlockLoot {
 
 
         this.dropSelf(ModBlocks.CONTROLLER.get());
-        this.dropSelf(ModBlocks.TANK.get());
+        this.dropOther(ModBlocks.TANK.get(), Items.AIR);
         this.dropSelf(ModBlocks.SOLIDIFIER.get());
         this.dropSelf(ModBlocks.BLACK_BRICKS.get());
         this.dropSelf(ModBlocks.MIXER.get());

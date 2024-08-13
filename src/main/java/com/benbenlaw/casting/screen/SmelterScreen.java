@@ -1,5 +1,6 @@
 package com.benbenlaw.casting.screen;
 
+import com.benbenlaw.casting.screen.utils.ControllerFluidStackWidget;
 import com.benbenlaw.opolisutilities.util.MouseUtil;
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.casting.block.entity.TankBlockEntity;
@@ -57,7 +58,7 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         }
 
         if (fuelTank.getCapacity() != 0 && fuelTank.getFluidAmount() != 0) {
-            addRenderableOnly(new FluidStackWidget(this, fuelTank, this.leftPos + 112, this.topPos + 54, 16, 16));
+            addRenderableOnly(new ControllerFluidStackWidget(this, fuelTank, this.menu.blockEntity, this.leftPos + 112, this.topPos + 54, 16, 16));
         }
     }
 

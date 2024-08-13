@@ -1,4 +1,4 @@
-// 1.21	2024-07-23T17:56:41.3318655	Recipes
+// 1.21	2024-08-13T08:47:52.6547838	Recipes
 d2ea4d8ce765581bcbbe977e46d4dada22629c1e data/casting/advancement/recipes/fuel/fuel/lava.json
 d42b7a6d6b1d2bf9f8135d17c5a1f3d53b083e4a data/casting/advancement/recipes/fuel/fuel/molten_coal.json
 6eaa9f2ac51ad06e09d65198b662c48367632b81 data/casting/advancement/recipes/fuel/fuel/molten_uranium.json
@@ -197,9 +197,9 @@ b0438c04f065f9b7b3dd44e9f1747d78e600f107 data/casting/advancement/recipes/solidi
 aefd70d4d03e1742f2efebc70fb206c87db13a6e data/casting/recipe/block_mold.json
 2c08b0fcaf863c6edc4a87a2540b398feda0af2c data/casting/recipe/controller.json
 ff44ded1a1524d15d8cf744e2a5901ea3950bf94 data/casting/recipe/dust_mold.json
-9050ead0cc07ea5da54cca54818054d30c1895e0 data/casting/recipe/fuel/lava.json
-ae084fdcf9b65bca85c89f0ee93ee91a20b535d6 data/casting/recipe/fuel/molten_coal.json
-e13ba5cf2cda73b3e80f1fc44162bad1cac14f33 data/casting/recipe/fuel/molten_uranium.json
+3a43b31fc6ee1bc8a67a6687f86e59137d054d73 data/casting/recipe/fuel/lava.json
+585d02bcd4192d8799a7b748638c60a772e7923b data/casting/recipe/fuel/molten_coal.json
+c60c0ca9e9d2c2a731c39c9f86c53b3850abc76f data/casting/recipe/fuel/molten_uranium.json
 f5950fde1e1105685a1944cac32ab4cb4f1205e7 data/casting/recipe/gear_mold.json
 e4e5476169b56a53839c85c491d49a5fa70696c4 data/casting/recipe/gem_mold.json
 a68632fd08efb13dfb7560db453c11ed71b75366 data/casting/recipe/ingot_mold.json

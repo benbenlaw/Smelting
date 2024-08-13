@@ -221,6 +221,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
     public final ContainerData data;
     public int[] progress = new int[15];
     public int maxProgress = 220;
+    public int fuelTemp = 0;
     private final IItemHandler controllerItemHandler = new InputOutputItemHandler(itemHandler,
             (i, stack) -> i != 15,
             i -> i == 1
@@ -318,6 +319,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         compoundTag.put("inventory", this.itemHandler.serializeNBT(provider));
         compoundTag.putIntArray("progress", progress);
         compoundTag.putInt("maxProgress", maxProgress);
+        compoundTag.putInt("fuelTemp", fuelTemp);
         compoundTag.put("tank1", TANK_1.writeToNBT(provider, new CompoundTag()));
         compoundTag.put("tank2", TANK_2.writeToNBT(provider, new CompoundTag()));
         compoundTag.put("tank3", TANK_3.writeToNBT(provider, new CompoundTag()));
@@ -332,6 +334,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
         progress = compoundTag.getIntArray("progress");
         maxProgress = compoundTag.getInt("maxProgress");
+        fuelTemp = compoundTag.getInt("fuelTemp");
 
         TANK_1.readFromNBT(provider, compoundTag.getCompound("tank1"));
         TANK_2.readFromNBT(provider, compoundTag.getCompound("tank2"));
@@ -370,6 +373,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
 
             drainTanksIntoValidBlocks();
+            fuelInformation(level.getBlockEntity(this.worldPosition));
             sync();
 
             for (int i = 0; i < 15; i++) {  // Loop includes slot 14
@@ -544,5 +548,34 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
             sourceTank.drain(filled, IFluidHandler.FluidAction.EXECUTE);
         }
     }
+
+    private boolean fuelInformation(BlockEntity entity) {
+        if (entity == null) {
+            return false;
+        }
+        Level level = entity.getLevel();
+        if (level != null) {
+            for (Direction direction : Direction.values()) {
+                BlockEntity adjacentEntity = level.getBlockEntity(entity.getBlockPos().relative(direction));
+                if (adjacentEntity instanceof TankBlockEntity tankBlockEntity) {
+                    List<RecipeHolder<FuelRecipe>> allFuels = level.getRecipeManager().getAllRecipesFor(FuelRecipe.Type.INSTANCE);
+
+                    for (RecipeHolder<FuelRecipe> recipeHolder : allFuels) {
+                        FuelRecipe recipe = recipeHolder.value();
+                        if (recipe.fluid().getFluid() == tankBlockEntity.FLUID_TANK.getFluid().getFluid()) {
+
+                            maxProgress = recipe.smeltTime();
+                            fuelTemp = recipe.temp();
+
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+
+
 
 }

@@ -1,8 +1,18 @@
 Changelog BBL Smelting
 
 // TODO //
-version controler
 
+Add too melting recipes (damaged based)
+
+1.8.0
+Fixed translation for creative menu
+Tank now stores fluids when broken
+Tank drops now controlled inside block entity not loottables
+Fuel recipes tweaked, now require a "smeltTime": 10
+    this allows the speed of recipes to be controlled with fuels
+
+Solidifier now varies items max progress eg recipes using the nugget mold will be quicker than recipes using the ingot mold
+Solidifier now shows it max progress as a number when hovering over the area
 
 1.7.0
 Updated to neoforge 21.0.166

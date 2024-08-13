@@ -3,10 +3,8 @@ package com.benbenlaw.casting;
 import com.benbenlaw.casting.block.ModBlocks;
 import com.benbenlaw.casting.block.entity.ModBlockEntities;
 import com.benbenlaw.casting.fluid.CastingFluids;
-import com.benbenlaw.casting.screen.MixerScreen;
-import com.benbenlaw.casting.screen.ModMenuTypes;
-import com.benbenlaw.casting.screen.SmelterScreen;
-import com.benbenlaw.casting.screen.SolidifierScreen;
+import com.benbenlaw.casting.item.CastingDataComponents;
+import com.benbenlaw.casting.screen.*;
 import com.benbenlaw.casting.item.ModCreativeModTab;
 import com.benbenlaw.casting.item.ModItems;
 import com.benbenlaw.casting.recipe.ModRecipes;
@@ -33,7 +31,7 @@ public class Casting {
     public Casting(IEventBus modEventBus) {
 
         ModItems.register(modEventBus);
-        //    ModDataComponents.COMPONENTS.register(modEventBus);
+        CastingDataComponents.COMPONENTS.register(modEventBus);
 
         ModBlocks.register(modEventBus);
         ModCreativeModTab.register(modEventBus);
@@ -71,6 +69,7 @@ public class Casting {
             event.register(ModMenuTypes.SMELTER_MENU.get(), SmelterScreen::new);
             event.register(ModMenuTypes.SOLIDIFIER_MENU.get(), SolidifierScreen::new);
             event.register(ModMenuTypes.MIXER_MENU.get(), MixerScreen::new);
+
         }
 
         @SubscribeEvent
