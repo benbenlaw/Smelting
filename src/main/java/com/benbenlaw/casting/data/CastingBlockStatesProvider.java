@@ -5,7 +5,6 @@ import com.benbenlaw.casting.block.ModBlocks;
 
 import com.benbenlaw.casting.fluid.CastingFluids;
 import com.benbenlaw.opolisutilities.fluid.FluidDeferredRegister;
-import mekanism.common.util.RegistryUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;

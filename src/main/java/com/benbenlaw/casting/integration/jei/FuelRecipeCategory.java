@@ -4,10 +4,13 @@ import com.benbenlaw.opolisutilities.OpolisUtilities;
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.casting.block.ModBlocks;
 import com.benbenlaw.casting.recipe.FuelRecipe;
+import com.benbenlaw.opolisutilities.integration.jei.OpolisIRecipeSlotTooltipCallback;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotTooltipCallback;
+import mezz.jei.api.gui.ingredient.IRecipeSlotView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -94,17 +97,19 @@ public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
             int temp = mutableRecipes.get(i).temp();
             int amountUsed = mutableRecipes.get(i).fluid().getAmount();
 
-            builder.addSlot(RecipeIngredientRole.INPUT, slotX, slotY).addFluidStack(mutableRecipes.get(i).getFluid(), 1000).addTooltipCallback(fuelInformation(temp, amountUsed))
+            builder.addSlot(RecipeIngredientRole.INPUT, slotX, slotY).addFluidStack(mutableRecipes.get(i).getFluid(), 1000)
+                    .addTooltipCallback(new OpolisIRecipeSlotTooltipCallback() {
+                        @Override
+                        public void onRichTooltip(IRecipeSlotView recipeSlotView, ITooltipBuilder tooltipBuilder) {
+                            tooltipBuilder.add(Component.literal("Temp: " + temp));
+                            tooltipBuilder.add(Component.literal("Used Amount: " + amountUsed));
+                        }
+                    })
+
+
+
                     .setBackground(JEISmeltingPlugin.slotDrawable, slotX - (i % 9 * 19) - 5, slotY - (2 + i / 9 * 19) - 1);
 
         }
-    }
-
-    @Contract(pure = true)
-    private @NotNull IRecipeSlotTooltipCallback fuelInformation(int temp, int amountUsed) {
-        return (chance, addTooltip) -> {
-            addTooltip.add(Component.literal("Temp: " + temp));
-            addTooltip.add(Component.literal("Used Amount: " + amountUsed));
-        };
     }
 }

@@ -3,10 +3,13 @@ package com.benbenlaw.casting.integration.jei;
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.casting.block.ModBlocks;
 import com.benbenlaw.casting.recipe.SolidifierRecipe;
+import com.benbenlaw.opolisutilities.integration.jei.OpolisIRecipeSlotTooltipCallback;
 import com.benbenlaw.opolisutilities.util.ModTags;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.IRecipeSlotView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -70,16 +73,20 @@ public class SolidifierRecipeCatagory implements IRecipeCategory<SolidifierRecip
         List<ItemStack> items = ingredients.stream().flatMap(stream -> stream).toList();
 
         builder.addSlot(RecipeIngredientRole.INPUT, 4, 2).addFluidStack(recipe.fluid().getFluid(), 1000)
-                .addTooltipCallback((fluidStack, addTooltip) -> {
-                    String tooltipText = "Fluid Required: " + fluidAmount + "mB";
-                    boolean isIngot = items.stream().anyMatch(itemStack -> itemStack.is(Tags.Items.INGOTS));
-                    boolean isGem = items.stream().anyMatch(itemStack -> itemStack.is(Tags.Items.GEMS));
-                    if ((isIngot || isGem) && fluidAmount % 90 == 0) {
-                        int units = fluidAmount / 90;
-                        String unitType = isIngot ? "Ingot" : "Gem";
-                        tooltipText = units + " " + unitType + (units > 1 ? "s" : "") + " / " + fluidAmount + "mB";
+                .addTooltipCallback(new OpolisIRecipeSlotTooltipCallback() {
+                    @Override
+                    public void onRichTooltip(IRecipeSlotView iRecipeSlotView, ITooltipBuilder iTooltipBuilder) {
+                        String tooltipText = "Fluid Required: " + fluidAmount + "mB";
+                        boolean isIngot = items.stream().anyMatch(itemStack -> itemStack.is(Tags.Items.INGOTS));
+                        boolean isGem = items.stream().anyMatch(itemStack -> itemStack.is(Tags.Items.GEMS));
+                        if ((isIngot || isGem) && fluidAmount % 90 == 0) {
+                            int units = fluidAmount / 90;
+                            String unitType = isIngot ? "Ingot" : "Gem";
+                            tooltipText = units + " " + unitType + (units > 1 ? "s" : "") + " / " + fluidAmount + "mB";
+                        }
+                        iTooltipBuilder.add(Component.literal(tooltipText));
+
                     }
-                    addTooltip.add(Component.literal(tooltipText));
                 });
 
         builder.addSlot(RecipeIngredientRole.CATALYST, 40, 2).addIngredients(recipe.mold());

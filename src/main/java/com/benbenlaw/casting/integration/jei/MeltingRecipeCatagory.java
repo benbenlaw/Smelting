@@ -3,9 +3,13 @@ package com.benbenlaw.casting.integration.jei;
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.casting.block.ModBlocks;
 import com.benbenlaw.casting.recipe.MeltingRecipe;
+import com.benbenlaw.opolisutilities.integration.jei.OpolisIRecipeSlotTooltipCallback;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.IRecipeSlotTooltipCallback;
+import mezz.jei.api.gui.ingredient.IRecipeSlotView;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -65,9 +69,13 @@ public class MeltingRecipeCatagory implements IRecipeCategory<MeltingRecipe> {
         builder.addSlot(RecipeIngredientRole.INPUT, 4, 2).addIngredients(recipe.getIngredients().getFirst());
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 50, 2).addFluidStack(recipe.output().getFluid(), 1000)
-                .addTooltipCallback((fluidAmount, addTooltip) -> {
-                    addTooltip.add(Component.literal("Fluid Amount: " + recipe.output().getAmount() + "mB"));
-                    addTooltip.add(Component.literal("Required Fuel Temp: " + recipe.meltingTemp() + "K"));
+
+                .addTooltipCallback(new OpolisIRecipeSlotTooltipCallback() {
+                    @Override
+                    public void onRichTooltip(IRecipeSlotView recipeSlotView, ITooltipBuilder tooltipBuilder) {
+                        tooltipBuilder.add(Component.literal("Fluid Amount: " + recipe.output().getAmount() + "mB"));
+                        tooltipBuilder.add(Component.literal("Required Fuel Temp: " + recipe.meltingTemp() + "K"));
+                    }
         });
     }
 

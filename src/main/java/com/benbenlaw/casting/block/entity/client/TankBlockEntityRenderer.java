@@ -67,6 +67,7 @@ public class TankBlockEntityRenderer implements BlockEntityRenderer<TankBlockEnt
         RenderUtil.renderFace(Direction.EAST, pose, consumer, texture, inset, inset, inset, faceSize, fluidHeight, color, packedLight);
         RenderUtil.renderFace(Direction.WEST, pose, consumer, texture, inset, inset, inset, faceSize, fluidHeight, color, packedLight);
         RenderUtil.renderFace(Direction.UP, pose, consumer, texture, inset, inset, inset + fluidHeight, faceSize, faceSize, color, packedLight);
+        RenderUtil.renderFace(Direction.DOWN, pose, consumer, texture, inset, inset, inset + fluidHeight, faceSize, faceSize, color, packedLight);
     }
 
 

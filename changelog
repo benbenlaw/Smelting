@@ -1,10 +1,19 @@
 Changelog BBL Smelting
 
 // TODO //
+version controler
+
+
+1.7.0
+Updated to neoforge 21.0.166
+Updated to opolis utilities 4.5.4
+Updated to JEI jei-1.21-neoforge-19.8.0.97
+JEI additional information now back
 
 1.6.4
 
 Allow fluid insertion into empty tanks
+Fixed tank not rendering fluids when looked from the bottom side of the tank
 
 1.6.3
 
