@@ -4,6 +4,11 @@ Changelog BBL Smelting
 
 Add too melting recipes (damaged based)
 
+1.8.1
+
+Fixed version name
+removed test recipe
+
 1.8.0
 Fixed translation for creative menu
 Tank now stores fluids when broken
