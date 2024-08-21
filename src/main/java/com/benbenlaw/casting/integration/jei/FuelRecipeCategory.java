@@ -96,6 +96,7 @@ public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
 
             int temp = mutableRecipes.get(i).temp();
             int amountUsed = mutableRecipes.get(i).fluid().getAmount();
+            int tickPerCraft = mutableRecipes.get(i).smeltTime();
 
             builder.addSlot(RecipeIngredientRole.INPUT, slotX, slotY).addFluidStack(mutableRecipes.get(i).getFluid(), 1000)
                     .addTooltipCallback(new OpolisIRecipeSlotTooltipCallback() {
@@ -103,6 +104,7 @@ public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
                         public void onRichTooltip(IRecipeSlotView recipeSlotView, ITooltipBuilder tooltipBuilder) {
                             tooltipBuilder.add(Component.literal("Temp: " + temp));
                             tooltipBuilder.add(Component.literal("Used Amount: " + amountUsed));
+                            tooltipBuilder.add(Component.literal("Ticks Per Craft: " + tickPerCraft));
                         }
                     })
 
