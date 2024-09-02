@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "tag": "c:nuggets/copper"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 10,
+    "id": "casting:molten_copper"
+  }
+}

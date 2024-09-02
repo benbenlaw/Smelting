@@ -4,7 +4,15 @@ Changelog BBL Smelting
 
 Add too melting recipes (damaged based)
 
- zinc, platinum and iridium aluimiun
+1.9.1
+
+Added auto updating to curseforge and modrinth
+
+1.9.0
+
+Added Molten Zinc, Platinum, Iridium and Aluminum
+Added missing nugget recipes for some ore and storage block recipes (in the controller/melting recipes)
+
 
 1.8.2
 

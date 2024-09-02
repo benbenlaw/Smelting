@@ -57,6 +57,12 @@ public class CastingItemModelProvider extends ItemModelProvider {
         simpleBucketItem("molten_quartz_bucket", CastingFluids.MOLTEN_QUARTZ.getFluid());
         simpleBucketItem("molten_stone_bucket", CastingFluids.MOLTEN_STONE.getFluid());
         simpleBucketItem("molten_silver_bucket", CastingFluids.MOLTEN_SILVER.getFluid());
+        simpleBucketItem("molten_aluminum_bucket", CastingFluids.MOLTEN_ALUMINUM.getFluid());
+        simpleBucketItem("molten_nickel_bucket", CastingFluids.MOLTEN_NICKEL.getFluid());
+        simpleBucketItem("molten_zinc_bucket", CastingFluids.MOLTEN_ZINC.getFluid());
+        simpleBucketItem("molten_iridium_bucket", CastingFluids.MOLTEN_IRIDIUM.getFluid());
+        simpleBucketItem("molten_platinum_bucket", CastingFluids.MOLTEN_PLATINUM.getFluid());
+        simpleBucketItem("molten_invar_bucket", CastingFluids.MOLTEN_INVAR.getFluid());
 
         simpleBucketItem("molten_bronze_bucket", CastingFluids.MOLTEN_BRONZE.getFluid());
         simpleBucketItem("molten_obsidian_bucket", CastingFluids.MOLTEN_OBSIDIAN.getFluid());

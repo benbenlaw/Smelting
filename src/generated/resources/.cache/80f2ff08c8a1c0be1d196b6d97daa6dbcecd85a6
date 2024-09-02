@@ -1,10 +1,11 @@
-// 1.21	2024-07-19T16:16:55.960268	casting Item Models
+// 1.21	2024-08-23T10:30:33.8462431	casting Item Models
 c458d3e96733818f13805ef73ad0ad87dcb05aa1 assets/casting/models/item/black_brick.json
 5ef57e44724fe244ce039e996866679b24b0db10 assets/casting/models/item/block_mold.json
 37b2423e087aba4168c4382dad45ac5afa40f06a assets/casting/models/item/dust_mold.json
 549bfdb4f27483849ce359a3f7e3e2781796614e assets/casting/models/item/gear_mold.json
 cf9eae803bac38044112d744bde8b6b12c3af28c assets/casting/models/item/gem_mold.json
 0b04b6b6d70bf4321f1120a56f0aa5e03818e717 assets/casting/models/item/ingot_mold.json
+8c3a964156a7993a72f5cfc632038610f0806a9d assets/casting/models/item/molten_aluminum_bucket.json
 8f60fbcfe6e5a0238eb00cb3feb44f742b94c2fa assets/casting/models/item/molten_bronze_bucket.json
 c642db7386524086e4c8ba3682f34a9f4c24f895 assets/casting/models/item/molten_coal_bucket.json
 7ce68bc47fd0a737cb4f70d9cb7eb39beaa4daba assets/casting/models/item/molten_copper_bucket.json
@@ -14,12 +15,16 @@ c642db7386524086e4c8ba3682f34a9f4c24f895 assets/casting/models/item/molten_coal_
 b19b5c25cd064678014088beaef97ee0c1f8b42c assets/casting/models/item/molten_emerald_bucket.json
 a2e2093f90ad247a5e57271f9089fe285323f11f assets/casting/models/item/molten_glass_bucket.json
 8e4ef642c16dc1fe0f3a456849ea3b0d719775f9 assets/casting/models/item/molten_gold_bucket.json
+c9414e12c2f6c3d21c43850bb25f51049aaeced5 assets/casting/models/item/molten_invar_bucket.json
+29c83ddaa04c5194679f7290ce9d828d9e2658cf assets/casting/models/item/molten_iridium_bucket.json
 4acf17f07653c48b8136cbc3cc1675fd8ef84f14 assets/casting/models/item/molten_iron_bucket.json
 1ffb716f0dfb55f09905fed03a05f2b257acf0e5 assets/casting/models/item/molten_lapis_bucket.json
 8284676fe2926a524aa7ad3d9f6d2e354a330a9a assets/casting/models/item/molten_lead_bucket.json
 efe6c5cf3b64cf0b05b4a5c493c8eb44549865e4 assets/casting/models/item/molten_netherite_bucket.json
+901cf95fec404e2a93d4527af1f16663f199cfad assets/casting/models/item/molten_nickel_bucket.json
 be8ce748b9c6c543394934c2e2d3265a5d6d664f assets/casting/models/item/molten_obsidian_bucket.json
 3924bbe336c9636f66794d98c59a378a0cd08496 assets/casting/models/item/molten_osmium_bucket.json
+f7310301902031718d3987b1ebddd0f50d0e7ed2 assets/casting/models/item/molten_platinum_bucket.json
 b4f7d127f934221d33583917411670177caa2cc1 assets/casting/models/item/molten_quartz_bucket.json
 7339335a05d1a8e0e7149063ef527c40b80ad995 assets/casting/models/item/molten_redstone_bucket.json
 120973419babc930d41aee518c230bec47f2b9cc assets/casting/models/item/molten_silver_bucket.json
@@ -27,6 +32,7 @@ c2fd008f6d2a5f6ab3dae85d072261b0487c103f assets/casting/models/item/molten_steel
 82f832b66fb2b5b63725e7cc23557f5fe2784dd6 assets/casting/models/item/molten_stone_bucket.json
 931ab39a54eaf7ce1df37778f7871b9f73373927 assets/casting/models/item/molten_tin_bucket.json
 301ec833af6b33d7818378b7b333417ec03ca997 assets/casting/models/item/molten_uranium_bucket.json
+acc90a5c62f7b1b830ef519a2fa188528b2de327 assets/casting/models/item/molten_zinc_bucket.json
 49dae1412b9b8af9f0b991a06586be22e90b0e0f assets/casting/models/item/nugget_mold.json
 4f7a63852ad16a549251405c8fe6de603edb22b2 assets/casting/models/item/plate_mold.json
 cfd72d20c3421e3da904954307832d8c96153746 assets/casting/models/item/rod_mold.json

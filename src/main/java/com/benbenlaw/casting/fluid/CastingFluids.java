@@ -49,6 +49,14 @@ public class CastingFluids {
             BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_SILVER;
     public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
             BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_NICKEL;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_ZINC;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_PLATINUM;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_ALUMINUM;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_IRIDIUM;
 
 
 
@@ -146,10 +154,21 @@ public class CastingFluids {
                 renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_nickel_still"),
                         ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_nickel_flow")));
 
+        MOLTEN_ZINC = FLUIDS.register("molten_zinc", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_zinc_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_zinc_flow")));
 
+        MOLTEN_PLATINUM = FLUIDS.register("molten_platinum", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_platinum_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_platinum_flow")));
 
+        MOLTEN_ALUMINUM = FLUIDS.register("molten_aluminum", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_aluminum_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_aluminum_flow")));
 
-
+        MOLTEN_IRIDIUM = FLUIDS.register("molten_iridium", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_iridium_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_iridium_flow")));
 
 
         //ALLOYS

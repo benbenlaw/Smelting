@@ -34,22 +34,34 @@ public class ModCreativeModTab {
                 output.accept(ModItems.BLACK_BRICK);
                 output.accept(ModBlocks.BLACK_BRICKS);
 
+                output.accept(CastingFluids.MOLTEN_BRONZE.getBucket());
+                output.accept(CastingFluids.MOLTEN_OBSIDIAN.getBucket());
+                output.accept(CastingFluids.MOLTEN_STEEL.getBucket());
+                output.accept(CastingFluids.MOLTEN_NETHERITE.getBucket());
+                output.accept(CastingFluids.MOLTEN_ELECTRUM.getBucket());
+                output.accept(CastingFluids.MOLTEN_INVAR.getBucket());
                 output.accept(CastingFluids.MOLTEN_IRON.getBucket());
                 output.accept(CastingFluids.MOLTEN_GOLD.getBucket());
                 output.accept(CastingFluids.MOLTEN_COPPER.getBucket());
-                output.accept(CastingFluids.MOLTEN_COAL.getBucket());
-                output.accept(CastingFluids.MOLTEN_EMERALD.getBucket());
-                output.accept(CastingFluids.MOLTEN_DIAMOND.getBucket());
+                output.accept(CastingFluids.MOLTEN_TIN.getBucket());
+                output.accept(CastingFluids.MOLTEN_LEAD.getBucket());
+                output.accept(CastingFluids.MOLTEN_SILVER.getBucket());
+                output.accept(CastingFluids.MOLTEN_NICKEL.getBucket());
+                output.accept(CastingFluids.MOLTEN_OSMIUM.getBucket());
+                output.accept(CastingFluids.MOLTEN_QUARTZ.getBucket());
                 output.accept(CastingFluids.MOLTEN_LAPIS.getBucket());
                 output.accept(CastingFluids.MOLTEN_REDSTONE.getBucket());
-                output.accept(CastingFluids.MOLTEN_OSMIUM.getBucket());
-                output.accept(CastingFluids.MOLTEN_TIN.getBucket());
+                output.accept(CastingFluids.MOLTEN_DIAMOND.getBucket());
+                output.accept(CastingFluids.MOLTEN_EMERALD.getBucket());
                 output.accept(CastingFluids.MOLTEN_URANIUM.getBucket());
-
-                output.accept(CastingFluids.MOLTEN_BRONZE.getBucket());
-                output.accept(CastingFluids.MOLTEN_STEEL.getBucket());
-                output.accept(CastingFluids.MOLTEN_OBSIDIAN.getBucket());
-
+                output.accept(CastingFluids.MOLTEN_GLASS.getBucket());
+                output.accept(CastingFluids.MOLTEN_DEBRIS.getBucket());
+                output.accept(CastingFluids.MOLTEN_STONE.getBucket());
+                output.accept(CastingFluids.MOLTEN_COAL.getBucket());
+                output.accept(CastingFluids.MOLTEN_ALUMINUM.getBucket());
+                output.accept(CastingFluids.MOLTEN_ZINC.getBucket());
+                output.accept(CastingFluids.MOLTEN_PLATINUM.getBucket());
+                output.accept(CastingFluids.MOLTEN_IRIDIUM.getBucket());
 
                 output.accept(ModBlocks.SOLIDIFIER.asItem());
                 output.accept(ModBlocks.CONTROLLER.asItem());

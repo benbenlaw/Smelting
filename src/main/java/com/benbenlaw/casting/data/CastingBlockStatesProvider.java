@@ -46,6 +46,12 @@ public class CastingBlockStatesProvider extends BlockStateProvider {
         fluidBlocks("molten_stone", CastingFluids.MOLTEN_STONE.getBlock());
         fluidBlocks("molten_silver", CastingFluids.MOLTEN_SILVER.getBlock());
         fluidBlocks("molten_nickel", CastingFluids.MOLTEN_NICKEL.getBlock());
+        fluidBlocks("molten_aluminum", CastingFluids.MOLTEN_ALUMINUM.getBlock());
+        fluidBlocks("molten_zinc", CastingFluids.MOLTEN_ZINC.getBlock());
+        fluidBlocks("molten_platinum", CastingFluids.MOLTEN_PLATINUM.getBlock());
+        fluidBlocks("molten_iridium", CastingFluids.MOLTEN_IRIDIUM.getBlock());
+
+
 
         fluidBlocks("molten_bronze", CastingFluids.MOLTEN_BRONZE.getBlock());
         fluidBlocks("molten_obsidian", CastingFluids.MOLTEN_OBSIDIAN.getBlock());

@@ -4,6 +4,6 @@
     "amount": 25,
     "id": "casting:molten_uranium"
   },
-  "smeltTime": 10,
+  "smeltTime": 180,
   "temp": 1600
 }

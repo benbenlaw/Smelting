@@ -1,10 +1,19 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:nuggets/uranium"
+      }
+    }
+  ],
   "criteria": {
     "has_item": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:coal"
+            "items": "#c:ingots/uranium"
           }
         ]
       },
@@ -12,7 +21,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "casting:solidifier/coal/mini"
+        "recipe": "casting:melting/uranium/from_nugget"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -25,7 +34,7 @@
   ],
   "rewards": {
     "recipes": [
-      "casting:solidifier/coal/mini"
+      "casting:melting/uranium/from_nugget"
     ]
   },
   "sends_telemetry_event": true

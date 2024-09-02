@@ -122,6 +122,15 @@ public class Casting {
                     CastingFluids.MOLTEN_STONE.getFluidType());
             event.registerFluidType(CastingFluids.MOLTEN_COAL.getFluidType().getClientExtensions(),
                     CastingFluids.MOLTEN_COAL.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_ALUMINUM.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_ALUMINUM.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_ZINC.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_ZINC.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_PLATINUM.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_PLATINUM.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_IRIDIUM.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_IRIDIUM.getFluidType());
+
             
         }
 
