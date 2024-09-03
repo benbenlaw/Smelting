@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "item": "minecraft:iron_chestplate"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 720,
+    "id": "casting:molten_iron"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "item": "minecraft:golden_shovel"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 90,
+    "id": "casting:molten_gold"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "item": "minecraft:golden_sword"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 180,
+    "id": "casting:molten_gold"
+  }
+}

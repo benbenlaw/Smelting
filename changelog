@@ -2,7 +2,21 @@ Changelog BBL Smelting
 
 // TODO //
 
-Add too melting recipes (damaged based)
+
+1.10.0
+
+Changes to all JEI intergrations to support EMI slightly better
+In JEI recipes can now be book marked
+Recipe ID can now be copied in JEI and EMI
+Added opolis utilities as a dependency to the mod
+Updated to opolis utilities 4.8.0
+Fixed Zinc translations
+Swapped molten and molds in JEI
+Various vanilla iron, gold and diamond items can now be melted
+Melting Recipes;
+    If the input item in a recipe is a damageable item such as an iron chestplate the recipe will adjust the output based on the remaining durability of the item
+    These recipes show a range of fluid output in jei as "1-max amount of fluid mb"
+
 
 1.9.1
 

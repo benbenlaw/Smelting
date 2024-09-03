@@ -8,6 +8,7 @@ import com.benbenlaw.casting.recipe.MeltingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
@@ -385,7 +386,6 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                 Optional<RecipeHolder<MeltingRecipe>> selectedRecipe = Optional.empty();
 
                 for (RecipeHolder<MeltingRecipe> recipeHolder : level.getRecipeManager().getRecipesFor(MeltingRecipe.Type.INSTANCE, inventory, level)) {
-                    MeltingRecipe recipe = recipeHolder.value();
                     selectedRecipe = Optional.of(recipeHolder);
                     break;
                 }
@@ -396,15 +396,40 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                         FluidStack output = match.value().output();
 
                         if (canFitFluidInAnyTank(output) && hasEnoughFuel(level.getBlockEntity(this.worldPosition), match.value().meltingTemp()) ) {
-                            progress[i]++;
 
-                            if (progress[i] >= maxProgress) {
-                                itemHandler.getStackInSlot(i).shrink(1);
-                                addFluidToTank(output, output.getAmount());
-                                useFuel(this);
-                                resetProgress(i);
-                                setChanged();
-                                sync();
+                            if (itemHandler.getStackInSlot(i).isDamageableItem()) {
+                                progress[i]++;
+
+                                if (progress[i] >= maxProgress) {
+
+                                    ItemStack stack = itemHandler.getStackInSlot(i);
+                                    float outputAmountModifier = (float) (stack.getMaxDamage() - stack.getDamageValue()) / (float) stack.getMaxDamage();
+
+                                    int outputAmountModified = Math.round(output.getAmount() * outputAmountModifier);
+
+                                    System.out.println("Output Amount Modifier: " + outputAmountModifier);
+
+                                    itemHandler.getStackInSlot(i).shrink(1);
+                                    addFluidToTank(output, outputAmountModified);
+                                    useFuel(this);
+                                    resetProgress(i);
+                                    setChanged();
+                                    sync();
+                                }
+
+
+                            } else {
+
+                                progress[i]++;
+
+                                if (progress[i] >= maxProgress) {
+                                    itemHandler.getStackInSlot(i).shrink(1);
+                                    addFluidToTank(output, output.getAmount());
+                                    useFuel(this);
+                                    resetProgress(i);
+                                    setChanged();
+                                    sync();
+                                }
                             }
                         } else {
                             resetProgress(i);

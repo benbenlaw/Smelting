@@ -24,3 +24,10 @@ type="required"
 versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
+
+[[dependencies."${mod_id}"]]
+modId="opolisutilities"
+type="required"
+versionRange="1.21-4.8.0"
+ordering="NONE"
+side="BOTH"

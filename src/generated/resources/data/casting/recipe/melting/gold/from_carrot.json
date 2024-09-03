@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "item": "minecraft:golden_carrot"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 80,
+    "id": "casting:molten_gold"
+  }
+}

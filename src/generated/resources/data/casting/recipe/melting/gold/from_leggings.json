@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "item": "minecraft:golden_leggings"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 630,
+    "id": "casting:molten_gold"
+  }
+}

@@ -1,31 +1,36 @@
 package com.benbenlaw.casting.integration.jei;
 
+import com.benbenlaw.casting.recipe.MeltingRecipe;
 import com.benbenlaw.opolisutilities.OpolisUtilities;
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.casting.block.ModBlocks;
 import com.benbenlaw.casting.recipe.FuelRecipe;
 import com.benbenlaw.opolisutilities.integration.jei.OpolisIRecipeSlotTooltipCallback;
+import com.benbenlaw.opolisutilities.recipe.SpeedUpgradesRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotTooltipCallback;
 import mezz.jei.api.gui.ingredient.IRecipeSlotView;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.awt.*;
+import java.util.*;
 import java.util.List;
 
 public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
@@ -72,6 +77,18 @@ public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
         return this.icon;
     }
 
+    public @Nullable ResourceLocation getRegistryName(FuelRecipe recipe) {
+        assert Minecraft.getInstance().level != null;
+        return Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(FuelRecipe.Type.INSTANCE).stream()
+                .filter(recipeHolder -> recipeHolder.value().equals(recipe))
+                .map(RecipeHolder::id)
+                .findFirst()
+                .orElse(null);
+    }
+
+    private final Map<Point, FuelRecipe> slotRecipes = new HashMap<>();
+    private int backgroundWidth;
+
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, FuelRecipe recipe, IFocusGroup focusGroup) {
         tabs_used++;
@@ -83,35 +100,68 @@ public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
         mutableRecipes.sort(Comparator.comparingInt(FuelRecipe::temp).reversed());
 
         // Background Size
+        int yOffset = 34;
+
         int numRows = (int) Math.ceil((double) mutableRecipes.size() / 9);
-        int numCols = Math.min(9, mutableRecipes.size()); // Maximum of 9 columns
+        int numCols = 9; //Math.min(9, mutableRecipes.size()); // Maximum of 9 columns
         int backgroundWidth = 4 + numCols * 19;
-        int backgroundHeight = 2 + numRows * 19;
+        int backgroundHeight = 2 + numRows * 19 + yOffset;
 
         background = helper.createDrawable(TEXTURE, 0, 0, backgroundWidth, backgroundHeight);
 
+        slotRecipes.clear();
+
         for (int i = 0; i < mutableRecipes.size(); i++) {
             final int slotX = 4 + (i % 9 * 19);
-            final int slotY = 2 + i / 9 * 19;
+            final int slotY = yOffset + 2 + i / 9 * 19; // Add yOffset to the Y position
 
-            int temp = mutableRecipes.get(i).temp();
-            int amountUsed = mutableRecipes.get(i).fluid().getAmount();
-            int tickPerCraft = mutableRecipes.get(i).smeltTime();
+            builder.addSlot(RecipeIngredientRole.INPUT, slotX, slotY)
+                    .addFluidStack(mutableRecipes.get(i).getFluid(), 1000)
+                    .setBackground(JEISmeltingPlugin.slotDrawable, slotX - (i % 9 * 19) - 5, slotY - (yOffset + 2 + i / 9 * 19) - 1);
 
-            builder.addSlot(RecipeIngredientRole.INPUT, slotX, slotY).addFluidStack(mutableRecipes.get(i).getFluid(), 1000)
-                    .addTooltipCallback(new OpolisIRecipeSlotTooltipCallback() {
-                        @Override
-                        public void onRichTooltip(IRecipeSlotView recipeSlotView, ITooltipBuilder tooltipBuilder) {
-                            tooltipBuilder.add(Component.literal("Temp: " + temp));
-                            tooltipBuilder.add(Component.literal("Used Amount: " + amountUsed));
-                            tooltipBuilder.add(Component.literal("Ticks Per Craft: " + tickPerCraft));
-                        }
-                    })
-
-
-
-                    .setBackground(JEISmeltingPlugin.slotDrawable, slotX - (i % 9 * 19) - 5, slotY - (2 + i / 9 * 19) - 1);
-
+            // Store the position of this slot with its corresponding recipe
+            slotRecipes.put(new Point(slotX, slotY), mutableRecipes.get(i));
         }
     }
+
+    @Override
+    public void draw(FuelRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        IRecipeCategory.super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
+
+        String tempText = null;
+        String amountText = null;
+        String tickText = null;
+
+        for (Map.Entry<Point, FuelRecipe> entry : slotRecipes.entrySet()) {
+            Point position = entry.getKey();
+            FuelRecipe hoveredRecipe = entry.getValue();
+
+            int slotX = position.x;
+            int slotY = position.y;
+            int slotWidth = 18;
+            int slotHeight = 18;
+
+            if (mouseX >= slotX && mouseX < slotX + slotWidth && mouseY >= slotY && mouseY < slotY + slotHeight) {
+                int temp = hoveredRecipe.temp();
+                int amountUsed = hoveredRecipe.fluid().getAmount();
+                int tickPerCraft = hoveredRecipe.smeltTime();
+
+                tempText = "Temp: " + temp;
+                amountText = "Used Amount: " + amountUsed;
+                tickText = "Ticks Per Craft: " + tickPerCraft;
+                break;
+            }
+        }
+
+        if (tempText != null) {
+            int textX = 3; // Calculate X to center the text
+            int textY = 2;
+
+            guiGraphics.drawString(Minecraft.getInstance().font, tempText, textX , textY, Color.GRAY.getRGB(), false);
+            guiGraphics.drawString(Minecraft.getInstance().font, amountText, textX , textY + 10, Color.GRAY.getRGB(), false);
+            guiGraphics.drawString(Minecraft.getInstance().font, tickText, textX, textY + 20, Color.GRAY.getRGB(), false);
+        }
+    }
+
+
 }

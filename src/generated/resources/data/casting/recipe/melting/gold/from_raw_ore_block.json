@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "tag": "c:storage_blocks/raw_gold"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 900,
+    "id": "casting:molten_gold"
+  }
+}

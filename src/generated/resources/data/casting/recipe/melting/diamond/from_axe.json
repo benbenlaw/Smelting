@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "item": "minecraft:diamond_axe"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 270,
+    "id": "casting:molten_diamond"
+  }
+}

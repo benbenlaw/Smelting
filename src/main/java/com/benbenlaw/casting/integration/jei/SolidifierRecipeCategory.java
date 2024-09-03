@@ -2,32 +2,37 @@ package com.benbenlaw.casting.integration.jei;
 
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.casting.block.ModBlocks;
+import com.benbenlaw.casting.recipe.MeltingRecipe;
 import com.benbenlaw.casting.recipe.SolidifierRecipe;
 import com.benbenlaw.opolisutilities.integration.jei.OpolisIRecipeSlotTooltipCallback;
-import com.benbenlaw.opolisutilities.util.ModTags;
+import com.benbenlaw.opolisutilities.recipe.SpeedUpgradesRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotView;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class SolidifierRecipeCatagory implements IRecipeCategory<SolidifierRecipe> {
+public class SolidifierRecipeCategory implements IRecipeCategory<SolidifierRecipe> {
     public final static ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "solidifier");
     public final static ResourceLocation TEXTURE =
             ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "textures/gui/jei_solidifier.png");
@@ -39,9 +44,18 @@ public class SolidifierRecipeCatagory implements IRecipeCategory<SolidifierRecip
     private final IDrawable icon;
     private final IGuiHelper helper;
 
-    public SolidifierRecipeCatagory(IGuiHelper helper) {
+    public @Nullable ResourceLocation getRegistryName(SolidifierRecipe recipe) {
+        assert Minecraft.getInstance().level != null;
+        return Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(SolidifierRecipe.Type.INSTANCE).stream()
+                .filter(recipeHolder -> recipeHolder.value().equals(recipe))
+                .map(RecipeHolder::id)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public SolidifierRecipeCategory(IGuiHelper helper) {
         this.helper = helper;
-        this.background = helper.createDrawable(TEXTURE, 0, 0, 120, 19);
+        this.background = helper.createDrawable(TEXTURE, 0, 0, 132, 19);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.SOLIDIFIER.get()));
     }
 
@@ -72,26 +86,18 @@ public class SolidifierRecipeCatagory implements IRecipeCategory<SolidifierRecip
         List<Stream<ItemStack>> ingredients = List.of(Arrays.stream(recipe.output().getItems())).reversed();
         List<ItemStack> items = ingredients.stream().flatMap(stream -> stream).toList();
 
-        builder.addSlot(RecipeIngredientRole.INPUT, 4, 2).addFluidStack(recipe.fluid().getFluid(), 1000)
-                .addTooltipCallback(new OpolisIRecipeSlotTooltipCallback() {
-                    @Override
-                    public void onRichTooltip(IRecipeSlotView iRecipeSlotView, ITooltipBuilder iTooltipBuilder) {
-                        String tooltipText = "Fluid Required: " + fluidAmount + "mB";
-                        boolean isIngot = items.stream().anyMatch(itemStack -> itemStack.is(Tags.Items.INGOTS));
-                        boolean isGem = items.stream().anyMatch(itemStack -> itemStack.is(Tags.Items.GEMS));
-                        if ((isIngot || isGem) && fluidAmount % 90 == 0) {
-                            int units = fluidAmount / 90;
-                            String unitType = isIngot ? "Ingot" : "Gem";
-                            tooltipText = units + " " + unitType + (units > 1 ? "s" : "") + " / " + fluidAmount + "mB";
-                        }
-                        iTooltipBuilder.add(Component.literal(tooltipText));
+        builder.addSlot(RecipeIngredientRole.INPUT, 40, 2).addFluidStack(recipe.fluid().getFluid(), recipe.fluid().getAmount());
 
-                    }
-                });
-
-        builder.addSlot(RecipeIngredientRole.CATALYST, 40, 2).addIngredients(recipe.mold());
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 84, 2).addIngredients(recipe.output().ingredient());
+        builder.addSlot(RecipeIngredientRole.CATALYST, 4, 2).addIngredients(recipe.mold());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 113, 2).addIngredients(recipe.output().ingredient());
     }
 
-
+    public void draw(SolidifierRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        final Minecraft minecraft = Minecraft.getInstance();
+        int fluidAmount = recipe.fluid().getAmount();
+        String fluidText = fluidAmount + "mb";
+        int textWidth = minecraft.font.width(fluidText);
+        int xPosition = 76 - (textWidth / 2);
+        guiGraphics.drawString(minecraft.font.self(), Component.literal(fluidText), xPosition, 6, Color.GRAY.getRGB(), false);
+    }
 }

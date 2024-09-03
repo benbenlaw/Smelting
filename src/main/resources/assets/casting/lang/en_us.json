@@ -49,8 +49,7 @@
   "item.casting.molten_quartz_bucket": "Molten Quartz Bucket",
   "item.casting.molten_stone_bucket": "Molten Stone Bucket",
   "item.casting.molten_obsidian_bucket": "Molten Obsidian Bucket",
-
-
+  "item.casting.molten_zinc_bucket": "Molten Zinc Bucket",
 
   "block.casting.molten_iron": "Molten Iron",
   "block.casting.molten_gold": "Molten Gold",
@@ -87,6 +86,7 @@
   "block.casting.molten_debris": "Molten Debris",
   "block.casting.molten_netherite": "Molten Netherite",
   "block.casting.molten_quartz": "Molten Quartz",
+  "block.casting.molten_zinc": "Molten Zinc",
 
 
   "itemGroup.casting": "BBL Casting"

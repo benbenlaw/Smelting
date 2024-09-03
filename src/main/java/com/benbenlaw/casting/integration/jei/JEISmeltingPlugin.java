@@ -26,7 +26,7 @@ public class JEISmeltingPlugin implements IModPlugin {
             new RecipeType<>(MeltingRecipeCatagory.UID, MeltingRecipe.class);
 
     public static RecipeType<SolidifierRecipe> SOLIDIFIER_RECIPE =
-            new RecipeType<>(SolidifierRecipeCatagory.UID, SolidifierRecipe.class);
+            new RecipeType<>(SolidifierRecipeCategory.UID, SolidifierRecipe.class);
 
     public static RecipeType<FuelRecipe> FUEL_RECIPE =
             new RecipeType<>(FuelRecipeCategory.UID, FuelRecipe.class);
@@ -42,7 +42,7 @@ public class JEISmeltingPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(@NotNull IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.TANK.get()), FuelRecipeCategory.RECIPE_TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.SOLIDIFIER.get()), SolidifierRecipeCatagory.RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.SOLIDIFIER.get()), SolidifierRecipeCategory.RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.CONTROLLER.get()), MeltingRecipeCatagory.RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.MIXER.get()), MixingRecipeCatagory.RECIPE_TYPE);
     }
@@ -56,7 +56,7 @@ public class JEISmeltingPlugin implements IModPlugin {
                 FuelRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 
         registration.addRecipeCategories(new
-                SolidifierRecipeCatagory(registration.getJeiHelpers().getGuiHelper()));
+                SolidifierRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 
         registration.addRecipeCategories(new
                 MeltingRecipeCatagory(registration.getJeiHelpers().getGuiHelper()));
@@ -84,7 +84,7 @@ public class JEISmeltingPlugin implements IModPlugin {
         registration.addRecipes(MeltingRecipeCatagory.RECIPE_TYPE,
                 recipeManager.getAllRecipesFor(ModRecipes.MELTING_TYPE.get()).stream().map(RecipeHolder::value).toList());
 
-        registration.addRecipes(SolidifierRecipeCatagory.RECIPE_TYPE,
+        registration.addRecipes(SolidifierRecipeCategory.RECIPE_TYPE,
                 recipeManager.getAllRecipesFor(ModRecipes.SOLIDIFIER_TYPE.get()).stream().map(RecipeHolder::value).toList());
 
         registration.addRecipes(MixingRecipeCatagory.RECIPE_TYPE,

@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "item": "minecraft:netherite_helmet"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 50,
+    "id": "casting:molten_netherite"
+  }
+}
