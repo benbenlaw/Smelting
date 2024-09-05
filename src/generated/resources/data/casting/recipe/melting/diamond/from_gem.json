@@ -1,21 +1,12 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:not",
-      "value": {
-        "type": "neoforge:tag_empty",
-        "tag": "c:nuggets/diamond"
-      }
-    }
-  ],
   "type": "casting:melting",
   "input": {
     "count": 1,
-    "tag": "c:nuggets/diamond"
+    "tag": "c:gems/diamond"
   },
   "meltingTemp": 1000,
   "output": {
-    "amount": 10,
+    "amount": 90,
     "id": "casting:molten_diamond"
   }
 }
