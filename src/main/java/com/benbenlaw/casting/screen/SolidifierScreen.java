@@ -68,7 +68,7 @@ public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
     private void renderProgressBars(GuiGraphics guiGraphics) {
         int x = leftPos;
         int y = topPos;
-        guiGraphics.blit(TEXTURE, x + 104, y + 35, 176, 30, menu.getScaledProgress(), 16);
+        guiGraphics.blit(TEXTURE, x + 104, y + 34, 176, 30, menu.getScaledProgress(), 16);
     }
 
     private void renderTickRate(GuiGraphics guiGraphics, int mouseX, int mouseY, int x, int y) {

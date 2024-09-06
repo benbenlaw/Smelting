@@ -63,7 +63,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
         }
     };
 
-    public final FluidTank TANK = new FluidTank(64000) {
+    public final FluidTank TANK = new FluidTank(16000) {
         @Override
         protected void onContentsChanged() {
             setChanged();

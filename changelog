@@ -2,6 +2,15 @@ Changelog BBL Smelting
 
 // TODO //
 
+1.10.3
+
+1.10.2
+
+Fixed controller not allowing for various inputs to be melted at the same time
+Moved progress bar rendering a pixel higher
+Mixer tank capacity reduced to 8000mb in inputs and 16000mb in output
+Soilidifer tank capacity reduced to 16000mb
+
 1.10.1
 
 Fixed emerald and diamond gems to molten versions not working

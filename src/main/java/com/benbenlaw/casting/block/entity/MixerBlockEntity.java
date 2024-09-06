@@ -39,7 +39,7 @@ import java.util.*;
 
 public class MixerBlockEntity extends BlockEntity implements MenuProvider {
 
-    public final FluidTank TANK_1 = new FluidTank(16000) {
+    public final FluidTank TANK_1 = new FluidTank(8000) {
         @Override
         protected void onContentsChanged() {
             setChanged();
@@ -47,7 +47,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         }
     };
 
-    public final FluidTank TANK_2 = new FluidTank(16000) {
+    public final FluidTank TANK_2 = new FluidTank(8000) {
         @Override
         protected void onContentsChanged() {
             setChanged();
@@ -55,7 +55,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         }
     };
 
-    public final FluidTank TANK_3 = new FluidTank(16000) {
+    public final FluidTank TANK_3 = new FluidTank(8000) {
         @Override
         protected void onContentsChanged() {
             setChanged();
@@ -63,7 +63,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         }
     };
 
-    public final FluidTank TANK_4 = new FluidTank(16000) {
+    public final FluidTank TANK_4 = new FluidTank(8000) {
         @Override
         protected void onContentsChanged() {
             setChanged();
@@ -71,7 +71,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         }
     };
 
-    public final FluidTank TANK_5 = new FluidTank(16000) {
+    public final FluidTank TANK_5 = new FluidTank(8000) {
         @Override
         protected void onContentsChanged() {
             setChanged();
@@ -79,7 +79,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         }
     };
 
-    public final FluidTank TANK_6 = new FluidTank(16000) {
+    public final FluidTank TANK_6 = new FluidTank(8000) {
         @Override
         protected void onContentsChanged() {
             setChanged();
@@ -87,7 +87,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         }
     };
 
-    public final FluidTank OUTPUT_TANK = new FluidTank(64000) {
+    public final FluidTank OUTPUT_TANK = new FluidTank(16000) {
         @Override
         protected void onContentsChanged() {
             setChanged();

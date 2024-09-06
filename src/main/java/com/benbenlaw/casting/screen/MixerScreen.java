@@ -71,6 +71,6 @@ public class MixerScreen extends AbstractContainerScreen<MixerMenu> {
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        guiGraphics.blit(TEXTURE, x + 122 , y + 35 , 176, 30, menu.getScaledProgress(), 16);
+        guiGraphics.blit(TEXTURE, x + 122 , y + 34 , 176, 30, menu.getScaledProgress(), 16);
     }
 }
