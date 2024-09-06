@@ -128,10 +128,25 @@ public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
     public void draw(FuelRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         IRecipeCategory.super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
 
-        String tempText = null;
-        String amountText = null;
-        String tickText = null;
+        // Define the labels and their positions
+        int textX = 3; // X position for the labels
+        int textY = 2; // Y position for the first label
 
+        String tempLabel = "Temp: ";
+        String amountLabel = "Used Amount: ";
+        String tickLabel = "Ticks Per Craft: ";
+
+        // Draw the labels
+        guiGraphics.drawString(Minecraft.getInstance().font, tempLabel, textX, textY, Color.GRAY.getRGB(), false);
+        guiGraphics.drawString(Minecraft.getInstance().font, amountLabel, textX, textY + 10, Color.GRAY.getRGB(), false);
+        guiGraphics.drawString(Minecraft.getInstance().font, tickLabel, textX, textY + 20, Color.GRAY.getRGB(), false);
+
+        // Initialize the dynamic text as empty
+        String tempValue = "";
+        String amountValue = "";
+        String tickValue = "";
+
+        // Check if the mouse is hovering over a slot and get the corresponding recipe values
         for (Map.Entry<Point, FuelRecipe> entry : slotRecipes.entrySet()) {
             Point position = entry.getKey();
             FuelRecipe hoveredRecipe = entry.getValue();
@@ -141,27 +156,21 @@ public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
             int slotWidth = 18;
             int slotHeight = 18;
 
+            // Check if the mouse is over the current slot
             if (mouseX >= slotX && mouseX < slotX + slotWidth && mouseY >= slotY && mouseY < slotY + slotHeight) {
-                int temp = hoveredRecipe.temp();
-                int amountUsed = hoveredRecipe.fluid().getAmount();
-                int tickPerCraft = hoveredRecipe.smeltTime();
-
-                tempText = "Temp: " + temp;
-                amountText = "Used Amount: " + amountUsed;
-                tickText = "Ticks Per Craft: " + tickPerCraft;
-                break;
+                tempValue = String.valueOf(hoveredRecipe.temp());
+                amountValue = String.valueOf(hoveredRecipe.fluid().getAmount());
+                tickValue = String.valueOf(hoveredRecipe.smeltTime());
+                break; // Exit the loop once the hovered slot is found
             }
         }
 
-        if (tempText != null) {
-            int textX = 3; // Calculate X to center the text
-            int textY = 2;
-
-            guiGraphics.drawString(Minecraft.getInstance().font, tempText, textX , textY, Color.GRAY.getRGB(), false);
-            guiGraphics.drawString(Minecraft.getInstance().font, amountText, textX , textY + 10, Color.GRAY.getRGB(), false);
-            guiGraphics.drawString(Minecraft.getInstance().font, tickText, textX, textY + 20, Color.GRAY.getRGB(), false);
-        }
+        // Draw the dynamic values next to the labels
+        guiGraphics.drawString(Minecraft.getInstance().font, tempValue, textX + Minecraft.getInstance().font.width(tempLabel), textY, Color.GRAY.getRGB(), false);
+        guiGraphics.drawString(Minecraft.getInstance().font, amountValue, textX + Minecraft.getInstance().font.width(amountLabel), textY + 10, Color.GRAY.getRGB(), false);
+        guiGraphics.drawString(Minecraft.getInstance().font, tickValue, textX + Minecraft.getInstance().font.width(tickLabel), textY + 20, Color.GRAY.getRGB(), false);
     }
+
 
 
 }
