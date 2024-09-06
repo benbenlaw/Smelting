@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:dusts/coal"
+      }
+    }
+  ],
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "tag": "c:dusts/coal"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 80,
+    "id": "casting:molten_coal"
+  }
+}
