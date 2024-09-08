@@ -63,12 +63,20 @@ public class CastingItemModelProvider extends ItemModelProvider {
         simpleBucketItem("molten_iridium_bucket", CastingFluids.MOLTEN_IRIDIUM.getFluid());
         simpleBucketItem("molten_platinum_bucket", CastingFluids.MOLTEN_PLATINUM.getFluid());
         simpleBucketItem("molten_invar_bucket", CastingFluids.MOLTEN_INVAR.getFluid());
+        simpleBucketItem("molten_glowstone_bucket", CastingFluids.MOLTEN_GLOWSTONE.getFluid());
+        simpleBucketItem("molten_ender_bucket", CastingFluids.MOLTEN_ENDER.getFluid());
 
         simpleBucketItem("molten_bronze_bucket", CastingFluids.MOLTEN_BRONZE.getFluid());
         simpleBucketItem("molten_obsidian_bucket", CastingFluids.MOLTEN_OBSIDIAN.getFluid());
         simpleBucketItem("molten_steel_bucket", CastingFluids.MOLTEN_STEEL.getFluid());
         simpleBucketItem("molten_netherite_bucket", CastingFluids.MOLTEN_NETHERITE.getFluid());
         simpleBucketItem("molten_electrum_bucket", CastingFluids.MOLTEN_ELECTRUM.getFluid());
+        simpleBucketItem("molten_signalum_bucket", CastingFluids.MOLTEN_SIGNALUM.getFluid());
+        simpleBucketItem("molten_lumium_bucket", CastingFluids.MOLTEN_LUMIUM.getFluid());
+        simpleBucketItem("molten_enderium_bucket", CastingFluids.MOLTEN_ENDERIUM.getFluid());
+        simpleBucketItem("molten_constantan_bucket", CastingFluids.MOLTEN_CONSTANTAN.getFluid());
+        simpleBucketItem("molten_brass_bucket", CastingFluids.MOLTEN_BRASS.getFluid());
+
 
 
 

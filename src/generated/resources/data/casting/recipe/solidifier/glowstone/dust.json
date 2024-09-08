@@ -1,0 +1,14 @@
+{
+  "type": "casting:solidifier",
+  "fluid": {
+    "amount": 250,
+    "id": "casting:molten_glowstone"
+  },
+  "mold": {
+    "item": "casting:dust_mold"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:glowstone_dust"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/constantan"
+      }
+    }
+  ],
+  "type": "casting:mixing",
+  "fluid1": {
+    "amount": 90,
+    "id": "casting:molten_copper"
+  },
+  "fluid2": {
+    "amount": 90,
+    "id": "casting:molten_nickel"
+  },
+  "output": {
+    "amount": 180,
+    "id": "casting:molten_constantan"
+  }
+}

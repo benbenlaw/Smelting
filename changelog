@@ -2,7 +2,15 @@ Changelog BBL Smelting
 
 // TODO //
 
+1.11.0
+
+Added Molten Signalum, Lumium, Enderium, Brass, Constantan, Glowstone and Ender
+    this includes melting, solidifying and mixing recipes
+Fixed some mixing recipes not having the correct conditions in there recipes
+
 1.10.4
+
+Changed rendering for text on fuels
 
 1.10.3
 

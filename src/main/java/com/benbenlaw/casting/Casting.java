@@ -130,6 +130,21 @@ public class Casting {
                     CastingFluids.MOLTEN_PLATINUM.getFluidType());
             event.registerFluidType(CastingFluids.MOLTEN_IRIDIUM.getFluidType().getClientExtensions(),
                     CastingFluids.MOLTEN_IRIDIUM.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_GLOWSTONE.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_GLOWSTONE.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_ENDER.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_ENDER.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_CONSTANTAN.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_CONSTANTAN.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_BRASS.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_BRASS.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_SIGNALUM.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_SIGNALUM.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_LUMIUM.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_LUMIUM.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_ENDERIUM.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_ENDERIUM.getFluidType());
+
 
             
         }

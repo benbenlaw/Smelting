@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "item": "minecraft:glowstone"
+  },
+  "meltingTemp": 1000,
+  "output": {
+    "amount": 1000,
+    "id": "casting:molten_glowstone"
+  }
+}

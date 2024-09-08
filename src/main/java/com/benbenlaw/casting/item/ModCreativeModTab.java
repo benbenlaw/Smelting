@@ -62,6 +62,13 @@ public class ModCreativeModTab {
                 output.accept(CastingFluids.MOLTEN_ZINC.getBucket());
                 output.accept(CastingFluids.MOLTEN_PLATINUM.getBucket());
                 output.accept(CastingFluids.MOLTEN_IRIDIUM.getBucket());
+                output.accept(CastingFluids.MOLTEN_GLOWSTONE.getBucket());
+                output.accept(CastingFluids.MOLTEN_ENDER.getBucket());
+                output.accept(CastingFluids.MOLTEN_CONSTANTAN.getBucket());
+                output.accept(CastingFluids.MOLTEN_BRASS.getBucket());
+                output.accept(CastingFluids.MOLTEN_SIGNALUM.getBucket());
+                output.accept(CastingFluids.MOLTEN_LUMIUM.getBucket());
+                output.accept(CastingFluids.MOLTEN_ENDERIUM.getBucket());
 
                 output.accept(ModBlocks.SOLIDIFIER.asItem());
                 output.accept(ModBlocks.CONTROLLER.asItem());

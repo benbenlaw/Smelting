@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/brass"
+      }
+    }
+  ],
+  "type": "casting:mixing",
+  "fluid1": {
+    "amount": 270,
+    "id": "casting:molten_copper"
+  },
+  "fluid2": {
+    "amount": 90,
+    "id": "casting:molten_zinc"
+  },
+  "output": {
+    "amount": 360,
+    "id": "casting:molten_brass"
+  }
+}

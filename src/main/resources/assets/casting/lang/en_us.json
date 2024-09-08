@@ -50,6 +50,13 @@
   "item.casting.molten_stone_bucket": "Molten Stone Bucket",
   "item.casting.molten_obsidian_bucket": "Molten Obsidian Bucket",
   "item.casting.molten_zinc_bucket": "Molten Zinc Bucket",
+  "item.casting.molten_glowstone_bucket": "Molten Glowstone Bucket",
+  "item.casting.molten_ender_bucket": "Molten Ender Bucket",
+  "item.casting.molten_lumium_bucket": "Molten Lumium Bucket",
+  "item.casting.molten_signalum_bucket": "Molten Signalum Bucket",
+  "item.casting.molten_constantan_bucket": "Molten Constantan Bucket",
+  "item.casting.molten_brass_bucket": "Molten Brass Bucket",
+  "item.casting.molten_enderium_bucket": "Molten Enderium Bucket",
 
   "block.casting.molten_iron": "Molten Iron",
   "block.casting.molten_gold": "Molten Gold",
@@ -87,6 +94,14 @@
   "block.casting.molten_netherite": "Molten Netherite",
   "block.casting.molten_quartz": "Molten Quartz",
   "block.casting.molten_zinc": "Molten Zinc",
+  "block.casting.molten_glowstone": "Molten Glowstone",
+  "block.casting.molten_ender": "Molten Ender",
+  "block.casting.molten_lumium": "Molten Lumium",
+  "block.casting.molten_signalum": "Molten Signalum",
+  "block.casting.molten_constantan": "Molten Constantan",
+  "block.casting.molten_brass": "Molten Brass",
+  "block.casting.molten_enderium": "Molten Enderium",
+
 
 
   "itemGroup.casting": "BBL Casting"

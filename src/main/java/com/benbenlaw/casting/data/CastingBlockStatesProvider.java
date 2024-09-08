@@ -50,8 +50,8 @@ public class CastingBlockStatesProvider extends BlockStateProvider {
         fluidBlocks("molten_zinc", CastingFluids.MOLTEN_ZINC.getBlock());
         fluidBlocks("molten_platinum", CastingFluids.MOLTEN_PLATINUM.getBlock());
         fluidBlocks("molten_iridium", CastingFluids.MOLTEN_IRIDIUM.getBlock());
-
-
+        fluidBlocks("molten_glowstone", CastingFluids.MOLTEN_GLOWSTONE.getBlock());
+        fluidBlocks("molten_ender", CastingFluids.MOLTEN_ENDER.getBlock());
 
         fluidBlocks("molten_bronze", CastingFluids.MOLTEN_BRONZE.getBlock());
         fluidBlocks("molten_obsidian", CastingFluids.MOLTEN_OBSIDIAN.getBlock());
@@ -59,7 +59,11 @@ public class CastingBlockStatesProvider extends BlockStateProvider {
         fluidBlocks("molten_netherite", CastingFluids.MOLTEN_NETHERITE.getBlock());
         fluidBlocks("molten_electrum", CastingFluids.MOLTEN_ELECTRUM.getBlock());
         fluidBlocks("molten_invar", CastingFluids.MOLTEN_INVAR.getBlock());
-
+        fluidBlocks("molten_signalum", CastingFluids.MOLTEN_SIGNALUM.getBlock());
+        fluidBlocks("molten_lumium", CastingFluids.MOLTEN_LUMIUM.getBlock());
+        fluidBlocks("molten_enderium", CastingFluids.MOLTEN_ENDERIUM.getBlock());
+        fluidBlocks("molten_constantan", CastingFluids.MOLTEN_CONSTANTAN.getBlock());
+        fluidBlocks("molten_brass", CastingFluids.MOLTEN_BRASS.getBlock());
     }
 
     private void fluidBlocks(String name, Block block) {
