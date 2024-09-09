@@ -1,4 +1,4 @@
-// 1.21	2024-09-08T18:37:16.7436694	Recipes
+// 1.21	2024-09-09T09:35:35.9332062	Recipes
 d2ea4d8ce765581bcbbe977e46d4dada22629c1e data/casting/advancement/recipes/fuel/fuel/lava.json
 d42b7a6d6b1d2bf9f8135d17c5a1f3d53b083e4a data/casting/advancement/recipes/fuel/fuel/molten_coal.json
 6eaa9f2ac51ad06e09d65198b662c48367632b81 data/casting/advancement/recipes/fuel/fuel/molten_uranium.json
@@ -606,7 +606,7 @@ b493dba2d03497acc67756b6bb7fcbb95745a300 data/casting/recipe/mixing/bronze.json
 7d8c1b95e7dc3ca54e40712acbd0bdc83464395e data/casting/recipe/mixing/lumium.json
 434e4fdb377d20a596b1d8c51c2cace0fe985313 data/casting/recipe/mixing/netherite.json
 a107c28d79ff97d9f34f238d0aaef2a0e570228a data/casting/recipe/mixing/obsidian.json
-0658b022c93995fc90e94b097f6a4a9e1ecec2d1 data/casting/recipe/mixing/signalum.json
+179456ab445f9c7b9838fb36e81e0b7421099134 data/casting/recipe/mixing/signalum.json
 6d7075e5d7b4f9522b085c39c3dc8746b3ebd6a0 data/casting/recipe/mixing/steel.json
 bfc4471c9afa8af9081158724356735b90860ebe data/casting/recipe/nugget_mold.json
 03fdace3400d3c5513c36d5af79c07a7ac17b480 data/casting/recipe/plate_mold.json

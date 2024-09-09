@@ -2,6 +2,10 @@ Changelog BBL Smelting
 
 // TODO //
 
+1.11.1
+
+Mixing signalum recipe now uses redstone not itself in the recipe
+
 1.11.0
 
 Added Molten Signalum, Lumium, Enderium, Brass, Constantan, Glowstone and Ender

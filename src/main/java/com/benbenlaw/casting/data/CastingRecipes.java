@@ -1652,7 +1652,7 @@ public class CastingRecipes extends RecipeProvider {
         MixingRecipeBuilder.MixingRecipesBuilder(
                         new FluidStack(CastingFluids.MOLTEN_COPPER.getFluid(), 270),
                         new FluidStack(CastingFluids.MOLTEN_SILVER.getFluid(), 90),
-                        new FluidStack(CastingFluids.MOLTEN_SIGNALUM.getFluid(), 360),
+                        new FluidStack(CastingFluids.MOLTEN_REDSTONE.getFluid(), 360),
                         null,
                         null,
                         null,
