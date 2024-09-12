@@ -1,7 +1,15 @@
 Changelog BBL Smelting
 
 // TODO //
-Apply same tank dumping methods to the mixer and controller in updates 1.11.3 and 1.11.4 and misc improvements
+
+1.11.3
+
+Mixer and Controller now store fluids when broken
+Mixer and Controller loot tables disable
+Mixer and Controller will show stored fluid in inventory
+Mixer, Controller, solidifier and tank will now have a "Shift" for more information
+    this will show the stored fluid in the block
+Mixer and Controller can now dump fluids like the solidifier
 
 
 1.11.2

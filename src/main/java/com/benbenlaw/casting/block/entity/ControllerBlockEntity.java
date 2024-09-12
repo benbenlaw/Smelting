@@ -219,6 +219,46 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         player.connection.send(Objects.requireNonNull(getUpdatePacket()));
     }
 
+    public void getOutputFluidStack1(FluidStack stack) {
+        this.TANK_1.setFluid(stack);
+    }
+    public void setOutputFluid1(FluidStack stack) {
+        TANK_1.setFluid(stack);
+    }
+    public FluidStack getOutputFluid1() {
+        return this.TANK_1.getFluid();
+    }
+
+    public void getOutputFluidStack2(FluidStack stack) {
+        this.TANK_2.setFluid(stack);
+    }
+    public void setOutputFluid2(FluidStack stack) {
+        TANK_2.setFluid(stack);
+    }
+    public FluidStack getOutputFluid2() {
+        return this.TANK_2.getFluid();
+    }
+
+    public void getOutputFluidStack3(FluidStack stack) {
+        this.TANK_3.setFluid(stack);
+    }
+    public void setOutputFluid3(FluidStack stack) {
+        TANK_3.setFluid(stack);
+    }
+    public FluidStack getOutputFluid3() {
+        return this.TANK_3.getFluid();
+    }
+
+    public void getOutputFluidStack4(FluidStack stack) {
+        this.TANK_4.setFluid(stack);
+    }
+    public void setOutputFluid4(FluidStack stack) {
+        TANK_4.setFluid(stack);
+    }
+    public FluidStack getOutputFluid4() {
+        return this.TANK_4.getFluid();
+    }
+
     public final ContainerData data;
     public int[] progress = new int[15];
     public int maxProgress = 220;

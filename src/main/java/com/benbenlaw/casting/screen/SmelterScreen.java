@@ -1,5 +1,6 @@
 package com.benbenlaw.casting.screen;
 
+import com.benbenlaw.casting.networking.payload.ClearTankPayload;
 import com.benbenlaw.casting.screen.utils.ControllerFluidStackWidget;
 import com.benbenlaw.opolisutilities.util.MouseUtil;
 import com.benbenlaw.casting.Casting;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
 
@@ -99,6 +101,7 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
             renderEmptyTank(guiGraphics, mouseX, mouseY, x, y);
         }
         renderTooltip(guiGraphics, mouseX, mouseY);
+        renderWarning(guiGraphics, mouseX, mouseY);
     }
 
     private void renderProgressBars(GuiGraphics guiGraphics) {
@@ -117,6 +120,74 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         }
     }
 
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
+        boolean handled = super.mouseClicked(mouseX, mouseY, mouseButton);
+
+        int tankX_1 = leftPos + 136;
+        int tankY_1 = topPos + 15;
+        int tankX_2 = leftPos + 153;
+        int tankY_2 = topPos + 15;
+        int tankX_3 = leftPos + 136;
+        int tankY_3 = topPos + 45;
+        int tankX_4 = leftPos + 153;
+        int tankY_4 = topPos + 45;
+
+        int tankWidth = 14;
+        int tankHeight = 26;
+
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_1, tankY_1, tankWidth, tankHeight)) {
+            boolean hasShiftDown = SolidifierScreen.hasShiftDown();
+            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 1));
+        }
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_2, tankY_2, tankWidth, tankHeight)) {
+            boolean hasShiftDown = SolidifierScreen.hasShiftDown();
+            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 2));
+        }
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_3, tankY_3, tankWidth, tankHeight)) {
+            boolean hasShiftDown = SolidifierScreen.hasShiftDown();
+            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 3));
+        }
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_4, tankY_4, tankWidth, tankHeight)) {
+            boolean hasShiftDown = SolidifierScreen.hasShiftDown();
+            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 4));
+        }
+
+        return handled;
+    }
+
+    private void renderWarning(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+
+        int tankX_1 = leftPos + 136;
+        int tankY_1 = topPos + 15;
+        int tankX_2 = leftPos + 153;
+        int tankY_2 = topPos + 15;
+        int tankX_3 = leftPos + 136;
+        int tankY_3 = topPos + 45;
+        int tankX_4 = leftPos + 153;
+        int tankY_4 = topPos + 45;
+
+        int tankWidth = 14;
+        int tankHeight = 26;
+
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_1, tankY_1, tankWidth, tankHeight) && SolidifierScreen.hasShiftDown()) {
+            guiGraphics.renderTooltip(this.font, Component.translatable("screen.casting.warning").withStyle(ChatFormatting.RED), mouseX, mouseY - 14);
+        }
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_2, tankY_2, tankWidth, tankHeight) && SolidifierScreen.hasShiftDown()) {
+            guiGraphics.renderTooltip(this.font, Component.translatable("screen.casting.warning").withStyle(ChatFormatting.RED), mouseX, mouseY - 14);
+        }
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_3, tankY_3, tankWidth, tankHeight) && SolidifierScreen.hasShiftDown()) {
+            guiGraphics.renderTooltip(this.font, Component.translatable("screen.casting.warning").withStyle(ChatFormatting.RED), mouseX, mouseY - 14);
+        }
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_4, tankY_4, tankWidth, tankHeight) && SolidifierScreen.hasShiftDown()) {
+            guiGraphics.renderTooltip(this.font, Component.translatable("screen.casting.warning").withStyle(ChatFormatting.RED), mouseX, mouseY - 14);
+        }
+    }
     private int getSlotX(int slot) {
         switch (slot) {
             case 0: case 5: case 10: return 12;

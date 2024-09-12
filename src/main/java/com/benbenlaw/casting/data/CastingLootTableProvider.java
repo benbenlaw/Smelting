@@ -20,11 +20,11 @@ public class CastingLootTableProvider extends VanillaBlockLoot {
     protected void generate() {
 
 
-        this.dropSelf(ModBlocks.CONTROLLER.get());
+        this.dropOther(ModBlocks.CONTROLLER.get(), Items.AIR);
         this.dropOther(ModBlocks.TANK.get(), Items.AIR);
         this.dropOther(ModBlocks.SOLIDIFIER.get(), Items.AIR);
         this.dropSelf(ModBlocks.BLACK_BRICKS.get());
-        this.dropSelf(ModBlocks.MIXER.get());
+        this.dropOther(ModBlocks.MIXER.get(), Items.AIR);
 
     }
 

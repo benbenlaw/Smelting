@@ -1,6 +1,6 @@
-// 1.21	2024-09-12T13:29:14.3759884	Loot Tables
+// 1.21	2024-09-12T18:03:20.5058646	Loot Tables
 6fbf2da5bfe6af76a63d4f35c7b0a6c721c169cf data/casting/loot_table/blocks/black_bricks.json
-69c06bb1ee700a863993fbac75796e383102773c data/casting/loot_table/blocks/controller.json
-20fd6f285f63683cb75d0f98c8307defb43eeee8 data/casting/loot_table/blocks/mixer.json
+593876eee8aaa6af4db94e8a1b6e18d61ca2cf44 data/casting/loot_table/blocks/controller.json
+d54bc258c0e7afaf4541139825c83876906cf664 data/casting/loot_table/blocks/mixer.json
 77ee2327a834fa84b84abe2b66669e276678170f data/casting/loot_table/blocks/solidifier.json
 3619491576c069a4c23ef4b06b0c07d84242ba57 data/casting/loot_table/blocks/tank.json

@@ -97,7 +97,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
 
     public final FluidTank[] tanks = new FluidTank[]{TANK_1, TANK_2, TANK_3, TANK_4, TANK_5, TANK_6};
 
-    private final IFluidHandler fluidHandler = new IFluidHandler() {
+    public final IFluidHandler fluidHandler = new IFluidHandler() {
         @Override
         public int getTanks() {
             return 7;
@@ -179,10 +179,6 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
             return 0; // Couldn't fill any tank
         }
 
-
-
-
-
         @Override
         public FluidStack drain(FluidStack resource, FluidAction action) {
             if (resource.getFluid().isSame(OUTPUT_TANK.getFluid().getFluid())) {
@@ -200,6 +196,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
             return FluidStack.EMPTY;
         }
     };
+
 
     public boolean onPlayerUse(Player player, InteractionHand hand) {
         ItemStack heldItem = player.getItemInHand(hand);
@@ -243,6 +240,94 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
     public void syncContents(ServerPlayer player) {
         player.connection.send(Objects.requireNonNull(getUpdatePacket()));
     }
+
+
+
+    public void setFluid1(FluidStack stack) {
+        this.TANK_1.setFluid(stack);
+    }
+
+    public void getFluid1(FluidStack stack) {
+        TANK_1.setFluid(stack);
+    }
+
+    public FluidStack getFluidStack1() {
+        return this.TANK_1.getFluid();
+    }
+
+    public void setFluid2(FluidStack stack) {
+        this.TANK_2.setFluid(stack);
+    }
+
+    public void getFluid2(FluidStack stack) {
+        TANK_2.setFluid(stack);
+    }
+
+    public FluidStack getFluidStack2() {
+        return this.TANK_2.getFluid();
+    }
+
+    public void setFluid3(FluidStack stack) {
+        this.TANK_3.setFluid(stack);
+    }
+
+    public void getFluid3(FluidStack stack) {
+        TANK_3.setFluid(stack);
+    }
+
+    public FluidStack getFluidStack3() {
+        return this.TANK_3.getFluid();
+    }
+
+    public void setFluid4(FluidStack stack) {
+        this.TANK_4.setFluid(stack);
+    }
+
+    public void getFluid4(FluidStack stack) {
+        TANK_4.setFluid(stack);
+    }
+
+    public FluidStack getFluidStack4() {
+        return this.TANK_4.getFluid();
+    }
+
+    public void setFluid5(FluidStack stack) {
+        this.TANK_5.setFluid(stack);
+    }
+
+    public void getFluid5(FluidStack stack) {
+        TANK_5.setFluid(stack);
+    }
+
+    public FluidStack getFluidStack5() {
+        return this.TANK_5.getFluid();
+    }
+
+    public void setFluid6(FluidStack stack) {
+        this.TANK_6.setFluid(stack);
+    }
+
+    public void getFluid6(FluidStack stack) {
+        TANK_6.setFluid(stack);
+    }
+
+    public FluidStack getFluidStack6() {
+        return this.TANK_6.getFluid();
+    }
+
+    public void setOutputFluid(FluidStack stack) {
+        this.OUTPUT_TANK.setFluid(stack);
+    }
+
+    public void getOutputFluid(FluidStack stack) {
+        OUTPUT_TANK.setFluid(stack);
+    }
+
+    public FluidStack getOutputFluid() {
+        return this.OUTPUT_TANK.getFluid();
+    }
+
+
 
     public final ContainerData data;
     public int progress = 0;

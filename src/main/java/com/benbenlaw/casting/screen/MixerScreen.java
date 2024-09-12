@@ -1,8 +1,11 @@
 package com.benbenlaw.casting.screen;
 
+import com.benbenlaw.casting.networking.payload.ClearTankPayload;
 import com.benbenlaw.opolisutilities.screen.utils.FluidStackWidget;
 import com.benbenlaw.casting.Casting;
+import com.benbenlaw.opolisutilities.util.MouseUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -10,6 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public class MixerScreen extends AbstractContainerScreen<MixerMenu> {
 
@@ -27,6 +31,7 @@ public class MixerScreen extends AbstractContainerScreen<MixerMenu> {
         super.init();
         addFluidWidgets();
     }
+
 
     public void addFluidWidgets() {
         addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_1, this.leftPos + 9, this.topPos + 15, 14, 56));
@@ -60,7 +65,7 @@ public class MixerScreen extends AbstractContainerScreen<MixerMenu> {
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         renderProgressBars(guiGraphics);
         renderTooltip(guiGraphics, mouseX, mouseY);
-
+        renderWarning(guiGraphics, mouseX, mouseY);
     }
 
     private void renderProgressBars(GuiGraphics guiGraphics) {
@@ -72,5 +77,107 @@ public class MixerScreen extends AbstractContainerScreen<MixerMenu> {
         int y = (height - imageHeight) / 2;
 
         guiGraphics.blit(TEXTURE, x + 122 , y + 34 , 176, 30, menu.getScaledProgress(), 16);
+    }
+
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
+        boolean handled = super.mouseClicked(mouseX, mouseY, mouseButton);
+
+        int tankX_1 = leftPos + 9;
+        int tankY_1 = topPos + 15;
+        int tankX_2 = leftPos + 27;
+        int tankY_2 = topPos + 15;
+        int tankX_3 = leftPos + 45;
+        int tankY_3 = topPos + 15;
+        int tankX_4 = leftPos + 63;
+        int tankY_4 = topPos + 15;
+        int tankX_5 = leftPos + 81;
+        int tankY_5 = topPos + 15;
+        int tankX_6 = leftPos + 99;
+        int tankY_6 = topPos + 15;
+        int tankX_7 = leftPos + 153;
+        int tankY_7 = topPos + 15;
+        int tankWidth = 14;
+        int tankHeight = 56;
+
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_1, tankY_1, tankWidth, tankHeight)) {
+            boolean hasShiftDown = SolidifierScreen.hasShiftDown();
+            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 1));
+        }
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_2, tankY_2, tankWidth, tankHeight)) {
+            boolean hasShiftDown = SolidifierScreen.hasShiftDown();
+            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 2));
+        }
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_3, tankY_3, tankWidth, tankHeight)) {
+            boolean hasShiftDown = SolidifierScreen.hasShiftDown();
+            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 3));
+        }
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_4, tankY_4, tankWidth, tankHeight)) {
+            boolean hasShiftDown = SolidifierScreen.hasShiftDown();
+            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 4));
+        }
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_5, tankY_5, tankWidth, tankHeight)) {
+            boolean hasShiftDown = SolidifierScreen.hasShiftDown();
+            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 5));
+        }
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_6, tankY_6, tankWidth, tankHeight)) {
+            boolean hasShiftDown = SolidifierScreen.hasShiftDown();
+            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 6));
+        }
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_7, tankY_7, tankWidth, tankHeight)) {
+            boolean hasShiftDown = SolidifierScreen.hasShiftDown();
+            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 7));
+        }
+
+        return handled;
+    }
+
+    private void renderWarning(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+
+        int tankX_1 = leftPos + 9;
+        int tankY_1 = topPos + 15;
+        int tankX_2 = leftPos + 27;
+        int tankY_2 = topPos + 15;
+        int tankX_3 = leftPos + 45;
+        int tankY_3 = topPos + 15;
+        int tankX_4 = leftPos + 63;
+        int tankY_4 = topPos + 15;
+        int tankX_5 = leftPos + 81;
+        int tankY_5 = topPos + 15;
+        int tankX_6 = leftPos + 99;
+        int tankY_6 = topPos + 15;
+        int tankX_7 = leftPos + 153;
+        int tankY_7 = topPos + 15;
+        int tankWidth = 14;
+        int tankHeight = 56;
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_1, tankY_1, tankWidth, tankHeight) && SolidifierScreen.hasShiftDown()) {
+            guiGraphics.renderTooltip(this.font, Component.translatable("screen.casting.warning").withStyle(ChatFormatting.RED), mouseX, mouseY - 14);
+        }
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_2, tankY_2, tankWidth, tankHeight) && SolidifierScreen.hasShiftDown()) {
+            guiGraphics.renderTooltip(this.font, Component.translatable("screen.casting.warning").withStyle(ChatFormatting.RED), mouseX, mouseY - 14);
+        }
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_3, tankY_3, tankWidth, tankHeight) && SolidifierScreen.hasShiftDown()) {
+            guiGraphics.renderTooltip(this.font, Component.translatable("screen.casting.warning").withStyle(ChatFormatting.RED), mouseX, mouseY - 14);
+        }
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_4, tankY_4, tankWidth, tankHeight) && SolidifierScreen.hasShiftDown()) {
+            guiGraphics.renderTooltip(this.font, Component.translatable("screen.casting.warning").withStyle(ChatFormatting.RED), mouseX, mouseY - 14);
+        }
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_5, tankY_5, tankWidth, tankHeight) && SolidifierScreen.hasShiftDown()) {
+            guiGraphics.renderTooltip(this.font, Component.translatable("screen.casting.warning").withStyle(ChatFormatting.RED), mouseX, mouseY - 14);
+        }
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_6, tankY_6, tankWidth, tankHeight) && SolidifierScreen.hasShiftDown()) {
+            guiGraphics.renderTooltip(this.font, Component.translatable("screen.casting.warning").withStyle(ChatFormatting.RED), mouseX, mouseY - 14);
+        }
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_7, tankY_7, tankWidth, tankHeight) && SolidifierScreen.hasShiftDown()) {
+            guiGraphics.renderTooltip(this.font, Component.translatable("screen.casting.warning").withStyle(ChatFormatting.RED), mouseX, mouseY - 14);
+        }
     }
 }

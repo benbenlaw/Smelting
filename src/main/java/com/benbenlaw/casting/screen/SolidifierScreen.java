@@ -65,7 +65,7 @@ public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         renderProgressBars(guiGraphics);
         renderTickRate(guiGraphics, mouseX, mouseY, x, y);
-        renderWarning(guiGraphics, mouseX, mouseY, x, y);
+        renderWarning(guiGraphics, mouseX, mouseY);
         renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
@@ -102,7 +102,7 @@ public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
         }
         return handled;
     }
-    private void renderWarning(GuiGraphics guiGraphics, int mouseX, int mouseY, int x, int y) {
+    private void renderWarning(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 
         int tankX = leftPos + 27;
         int tankY = topPos + 15;

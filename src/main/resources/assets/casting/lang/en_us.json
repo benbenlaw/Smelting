@@ -105,6 +105,8 @@
 
   "screen.casting.warning": "Dump Fluid!",
 
+  "tooltips.blocks.with_fluid.shift": "Press SHIFT for more info",
+
   "jei.casting.solidifier": "The Solidifier is used to turn your molten resource into useful item! \n\nHolding Shift whilst above the tank and left clicking will remove the fluid from the tank!",
 
   "itemGroup.casting": "BBL Casting"

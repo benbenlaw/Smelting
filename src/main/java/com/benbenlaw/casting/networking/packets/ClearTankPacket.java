@@ -1,6 +1,8 @@
 package com.benbenlaw.casting.networking.packets;
 
 import com.benbenlaw.casting.block.ModBlocks;
+import com.benbenlaw.casting.block.entity.ControllerBlockEntity;
+import com.benbenlaw.casting.block.entity.MixerBlockEntity;
 import com.benbenlaw.casting.block.entity.SolidifierBlockEntity;
 import com.benbenlaw.casting.networking.payload.ClearTankPayload;
 import net.minecraft.core.BlockPos;
@@ -26,11 +28,66 @@ public record ClearTankPacket() {
         BlockPos blockPos = payload.blockPos();
         BlockState blockState = level.getBlockState(blockPos);
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
+        int tankNumber = payload.tankID();
 
         if (blockEntity instanceof SolidifierBlockEntity solidifierBlockEntity) {
             if (isShiftDown) {
                 solidifierBlockEntity.TANK.getFluid().setAmount(0);
                 solidifierBlockEntity.sync();
+            }
+        }
+
+        if (blockEntity instanceof ControllerBlockEntity controllerBlockEntity) {
+            if (isShiftDown) {
+                if (tankNumber == 1) {
+                    controllerBlockEntity.TANK_1.getFluid().setAmount(0);
+                    controllerBlockEntity.sync();
+                }
+                if (tankNumber == 2) {
+                    controllerBlockEntity.TANK_2.getFluid().setAmount(0);
+                    controllerBlockEntity.sync();
+                }
+                if (tankNumber == 3) {
+                    controllerBlockEntity.TANK_3.getFluid().setAmount(0);
+                    controllerBlockEntity.sync();
+                }
+                if (tankNumber == 4) {
+                    controllerBlockEntity.TANK_4.getFluid().setAmount(0);
+                    controllerBlockEntity.sync();
+                }
+            }
+        }
+
+        if (blockEntity instanceof MixerBlockEntity mixerBlockEntity) {
+            if (isShiftDown) {
+                if (tankNumber == 1) {
+                    mixerBlockEntity.TANK_1.getFluid().setAmount(0);
+                    mixerBlockEntity.sync();
+                }
+                if (tankNumber == 2) {
+                    mixerBlockEntity.TANK_2.getFluid().setAmount(0);
+                    mixerBlockEntity.sync();
+                }
+                if (tankNumber == 3) {
+                    mixerBlockEntity.TANK_3.getFluid().setAmount(0);
+                    mixerBlockEntity.sync();
+                }
+                if (tankNumber == 4) {
+                    mixerBlockEntity.TANK_4.getFluid().setAmount(0);
+                    mixerBlockEntity.sync();
+                }
+                if (tankNumber == 5) {
+                    mixerBlockEntity.TANK_5.getFluid().setAmount(0);
+                    mixerBlockEntity.sync();
+                }
+                if (tankNumber == 6) {
+                    mixerBlockEntity.TANK_6.getFluid().setAmount(0);
+                    mixerBlockEntity.sync();
+                }
+                if (tankNumber == 7) {
+                    mixerBlockEntity.OUTPUT_TANK.getFluid().setAmount(0);
+                    mixerBlockEntity.sync();
+                }
             }
         }
 

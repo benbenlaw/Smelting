@@ -7,6 +7,7 @@ import com.benbenlaw.casting.item.CastingDataComponents;
 import com.benbenlaw.casting.screen.SolidifierMenu;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -160,12 +161,17 @@ public class SolidifierBlock extends BaseEntityBlock {
     @Override
     public void appendHoverText(ItemStack itemStack, Item.@NotNull TooltipContext context, @NotNull List<Component> components, @NotNull TooltipFlag flag) {
 
-        if (itemStack.has(CastingDataComponents.FLUID_TYPE)) {
-            String fluidAsString = itemStack.get(CastingDataComponents.FLUID_TYPE);
-            int fluidAmount = itemStack.get(CastingDataComponents.FLUID_AMOUNT);
-            assert fluidAsString != null;
-            FluidType fluid = BuiltInRegistries.FLUID.get(ResourceLocation.tryParse(fluidAsString)).getFluidType();
-            components.add(Component.literal("Contains: ").append(fluidAmount + "mb ").append(Component.translatable(fluid.getDescriptionId())) .withStyle(ChatFormatting.GREEN));
+        if (Screen.hasShiftDown()) {
+
+            if (itemStack.has(CastingDataComponents.FLUID_TYPE)) {
+                String fluidAsString = itemStack.get(CastingDataComponents.FLUID_TYPE);
+                int fluidAmount = itemStack.get(CastingDataComponents.FLUID_AMOUNT);
+                assert fluidAsString != null;
+                FluidType fluid = BuiltInRegistries.FLUID.get(ResourceLocation.tryParse(fluidAsString)).getFluidType();
+                components.add(Component.literal("Contains: ").append(fluidAmount + "mb ").append(Component.translatable(fluid.getDescriptionId())).withStyle(ChatFormatting.GREEN));
+            }
+        } else {
+            components.add(Component.translatable("tooltips.blocks.with_fluid.shift").withStyle(ChatFormatting.BLUE));
         }
 
         super.appendHoverText(itemStack, context, components, flag);
