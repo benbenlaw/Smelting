@@ -1,17 +1,21 @@
 package com.benbenlaw.casting.screen;
 
+import com.benbenlaw.casting.networking.payload.ClearTankPayload;
 import com.benbenlaw.opolisutilities.screen.utils.FluidStackWidget;
 import com.benbenlaw.opolisutilities.screen.utils.FluidTankRenderer;
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.opolisutilities.util.MouseUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
 
@@ -61,6 +65,7 @@ public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         renderProgressBars(guiGraphics);
         renderTickRate(guiGraphics, mouseX, mouseY, x, y);
+        renderWarning(guiGraphics, mouseX, mouseY, x, y);
         renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
@@ -77,4 +82,37 @@ public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
                     this.topPos + 68, 0x3F3F3F, false);
         }
     }
+
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
+        boolean handled = super.mouseClicked(mouseX, mouseY, mouseButton);
+
+        int tankX = leftPos + 27;
+        int tankY = topPos + 15;
+        int tankWidth = 14;
+        int tankHeight = 56;
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX, tankY, tankWidth, tankHeight)) {
+
+            int tank = this.menu.blockEntity.TANK.getTanks();
+
+            boolean hasShiftDown = SolidifierScreen.hasShiftDown();
+            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, tank));
+
+        }
+        return handled;
+    }
+    private void renderWarning(GuiGraphics guiGraphics, int mouseX, int mouseY, int x, int y) {
+
+        int tankX = leftPos + 27;
+        int tankY = topPos + 15;
+        int tankWidth = 14;
+        int tankHeight = 56;
+
+        if (MouseUtil.isMouseOver(mouseX, mouseY, tankX, tankY, tankWidth, tankHeight) && SolidifierScreen.hasShiftDown()) {
+
+            guiGraphics.renderTooltip(this.font, Component.translatable("screen.casting.warning").withStyle(ChatFormatting.RED), mouseX, mouseY - 14);
+        }
+    }
+
 }

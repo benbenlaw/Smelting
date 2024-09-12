@@ -82,7 +82,7 @@ public class ControllerFluidStackWidget extends OpolisUtilitiesWidget {
     }
 
     public void renderToolTip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        if (MouseUtil.isMouseAboveArea(mouseX, mouseY, this.x, this.y, 0, 0, 14, 26)) {
+        if (MouseUtil.isMouseAboveArea(mouseX, mouseY, this.x, this.y, 0, 0, 16, 16)) {
             Font var10001 = this.screen.getMinecraft().font;
 
             // Create an array to hold the tooltip lines

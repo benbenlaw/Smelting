@@ -2,6 +2,7 @@ package com.benbenlaw.casting.screen;
 
 import com.benbenlaw.casting.block.ModBlocks;
 import com.benbenlaw.casting.block.entity.SolidifierBlockEntity;
+import com.benbenlaw.opolisutilities.screen.slot.utils.ModResultSlot;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -38,7 +39,7 @@ public class SolidifierMenu extends AbstractContainerMenu {
         addPlayerHotbar(inventory);
 
         this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 0, 80, 36));
-        this.addSlot(new SlotItemHandler(blockEntity.getItemStackHandler(), 1, 134, 36));
+        this.addSlot(new ModResultSlot(blockEntity.getItemStackHandler(), 1, 134, 36));
 
         addDataSlots(data);
 

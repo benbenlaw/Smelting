@@ -134,6 +134,18 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
         }
     }
 
+    public void setFluid(FluidStack stack) {
+        this.TANK.setFluid(stack);
+    }
+
+    public void getFluid(FluidStack stack) {
+        TANK.setFluid(stack);
+    }
+
+    public FluidStack getFluidStack() {
+        return this.TANK.getFluid();
+    }
+
     public void syncContents(ServerPlayer player) {
         player.connection.send(Objects.requireNonNull(getUpdatePacket()));
     }
@@ -142,8 +154,8 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
     public int progress = 0;
     public int maxProgress;
     private final IItemHandler solidifierItemHandler = new InputOutputItemHandler(itemHandler,
-            (i, stack) -> true,  // Input condition: Always true (accept any input)
-            i -> i == 1  // Output condition: Output from all slots except slot 1
+            (i, stack) -> i == 0 ,  //
+            i -> i == 1
     );
 
     public @Nullable IItemHandler getItemHandlerCapability(@Nullable Direction side) {
@@ -358,7 +370,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
             maxProgress = 10;
         }
         else if (moldItem == ModItems.GEAR_MOLD.get()) {
-            maxProgress = 50;
+            maxProgress = 120;
         }
         else if (moldItem == ModItems.INGOT_MOLD.get() ||
                 moldItem == ModItems.GEM_MOLD.get() ||
@@ -368,7 +380,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
             maxProgress = 100;
         }
         else if (moldItem == ModItems.BLOCK_MOLD.get()) {
-            maxProgress = 300;
+            maxProgress = 240;
         }
         else {
             maxProgress = 220;

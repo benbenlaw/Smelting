@@ -1,6 +1,21 @@
 Changelog BBL Smelting
 
 // TODO //
+Apply same tank dumping methods to the mixer and controller in updates 1.11.3 and 1.11.4 and misc improvements
+
+
+1.11.2
+
+Solidifier now longer allows the placement of items into the output slot via player or automation
+Solidifier recipes using the block mold now 250 ticks not 300
+Solidifier recipes using the gear mold now 120 ticks not 40
+Fixed emerald buck recipe name
+Fixed fuel area in controller showing tool tip when below the slot
+Tank now renders the bottom side correctly
+Solidifier now stores fluid when broken
+Solidifier now shows stored fluid in inventory
+Solidifier loottable now removed
+
 
 1.11.1
 

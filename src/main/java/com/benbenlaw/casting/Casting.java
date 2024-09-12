@@ -4,6 +4,7 @@ import com.benbenlaw.casting.block.ModBlocks;
 import com.benbenlaw.casting.block.entity.ModBlockEntities;
 import com.benbenlaw.casting.fluid.CastingFluids;
 import com.benbenlaw.casting.item.CastingDataComponents;
+import com.benbenlaw.casting.networking.CastingModMessages;
 import com.benbenlaw.casting.screen.*;
 import com.benbenlaw.casting.item.ModCreativeModTab;
 import com.benbenlaw.casting.item.ModItems;
@@ -57,7 +58,7 @@ public class Casting {
     }
 
     public void commonSetup(RegisterPayloadHandlersEvent event) {
-   //     ModMessages.registerNetworking(event);
+        CastingModMessages.registerNetworking(event);
     }
 
     @EventBusSubscriber(modid = Casting.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

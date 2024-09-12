@@ -57,6 +57,7 @@
   "item.casting.molten_constantan_bucket": "Molten Constantan Bucket",
   "item.casting.molten_brass_bucket": "Molten Brass Bucket",
   "item.casting.molten_enderium_bucket": "Molten Enderium Bucket",
+  "item.casting.molten_emerald_bucket": "Molten Emerald Bucket",
 
   "block.casting.molten_iron": "Molten Iron",
   "block.casting.molten_gold": "Molten Gold",
@@ -102,7 +103,9 @@
   "block.casting.molten_brass": "Molten Brass",
   "block.casting.molten_enderium": "Molten Enderium",
 
+  "screen.casting.warning": "Dump Fluid!",
 
+  "jei.casting.solidifier": "The Solidifier is used to turn your molten resource into useful item! \n\nHolding Shift whilst above the tank and left clicking will remove the fluid from the tank!",
 
   "itemGroup.casting": "BBL Casting"
 
