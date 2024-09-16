@@ -2,6 +2,12 @@ Changelog BBL Smelting
 
 // TODO //
 
+Move to latest opolis utilities version with its fluids dump
+
+1.11.4
+
+Added JEI information for the mixer, controller and tank
+
 1.11.3
 
 Mixer and Controller now store fluids when broken

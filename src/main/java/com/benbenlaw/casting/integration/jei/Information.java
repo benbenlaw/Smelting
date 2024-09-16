@@ -34,6 +34,15 @@ public class Information implements IModPlugin {
 
         reg.addIngredientInfo(new ItemStack(ModBlocks.SOLIDIFIER), VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.casting.solidifier"));
+
+        reg.addIngredientInfo(new ItemStack(ModBlocks.TANK), VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.casting.tank"));
+
+        reg.addIngredientInfo(new ItemStack(ModBlocks.MIXER), VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.casting.mixer"));
+
+        reg.addIngredientInfo(new ItemStack(ModBlocks.CONTROLLER), VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.casting.controller"));
     }
 
 }

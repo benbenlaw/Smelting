@@ -107,7 +107,10 @@
 
   "tooltips.blocks.with_fluid.shift": "Press SHIFT for more info",
 
-  "jei.casting.solidifier": "The Solidifier is used to turn your molten resource into useful item! \n\nHolding Shift whilst above the tank and left clicking will remove the fluid from the tank!",
+  "jei.casting.solidifier": "The Solidifier is used to turn your molten resource into useful item! \n\nHolding Shift whilst above the tank and left clicking will remove the fluid from the tank!\n\nStores fluids when broken!",
+  "jei.casting.controller": "The Controller can be used to melt items into there molten variants! \n\nHolding Shift whilst above a certain tank and left clicking will remove the fluid from the that tank!\n\nStores fluids when broken!",
+  "jei.casting.mixer": "The Mixer can be used to mix molten fluids together! \n\nHolding Shift whilst above a certain tank and left clicking will remove the fluid from the that tank!\n\nStores fluids when broken!",
+  "jei.casting.tank": "The Tank stores the fuel used in the Controller to melt items! \n\nStores fluids when broken!",
 
   "itemGroup.casting": "BBL Casting"
 
