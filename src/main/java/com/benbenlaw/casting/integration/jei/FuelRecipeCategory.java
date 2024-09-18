@@ -160,7 +160,8 @@ public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
             if (mouseX >= slotX && mouseX < slotX + slotWidth && mouseY >= slotY && mouseY < slotY + slotHeight) {
                 tempValue = String.valueOf(hoveredRecipe.temp());
                 amountValue = String.valueOf(hoveredRecipe.fluid().getAmount());
-                tickValue = String.valueOf(hoveredRecipe.smeltTime());
+                tickValue = "change soonTM";
+
                 break; // Exit the loop once the hovered slot is found
             }
         }

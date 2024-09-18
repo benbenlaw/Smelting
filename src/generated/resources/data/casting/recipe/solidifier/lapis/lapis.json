@@ -5,6 +5,7 @@
     "id": "casting:molten_lapis"
   },
   "mold": {
+    "count": 1,
     "item": "casting:gem_mold"
   },
   "output": {

@@ -8,7 +8,6 @@ import com.benbenlaw.casting.recipe.MeltingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
@@ -41,9 +40,9 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
+
+import static net.neoforged.neoforge.fluids.FluidStack.isSameFluidSameComponents;
 
 public class ControllerBlockEntity extends BlockEntity implements MenuProvider, IInventoryHandlingBlockEntity {
 
@@ -103,23 +102,15 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         }
 
         @Override
-        public FluidStack getFluidInTank(int tank) {
-            switch (tank) {
-                case 0:
-                    return TANK_1.getFluid();
-                case 1:
-                    return TANK_2.getFluid();
-                case 2:
-                    return TANK_3.getFluid();
-                case 3:
-                    return TANK_4.getFluid();
-                default:
-                    return FluidStack.EMPTY;
-            }
+        public @NotNull FluidStack getFluidInTank(int tank) {
+            return switch (tank) {
+                case 0 -> TANK_1.getFluid();
+                case 1 -> TANK_2.getFluid();
+                case 2 -> TANK_3.getFluid();
+                case 3 -> TANK_4.getFluid();
+                default -> FluidStack.EMPTY;
+            };
         }
-
-
-
 
         @Override
         public int getTankCapacity(int tank) {
@@ -135,7 +126,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         }
 
         @Override
-        public boolean isFluidValid(int tank, FluidStack stack) {
+        public boolean isFluidValid(int tank, @NotNull FluidStack stack) {
             if (tank == 0)
                 return TANK_1.isFluidValid(stack);
             if (tank == 1)
@@ -148,7 +139,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         }
 
         @Override
-        public int fill(FluidStack resource, FluidAction action) {
+        public int fill(FluidStack resource, @NotNull FluidAction action) {
             if (resource.getFluid() == TANK_1.getFluid().getFluid()) {
                 return TANK_1.fill(resource, action);
             }
@@ -166,7 +157,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
 
         @Override
-        public FluidStack drain(FluidStack resource, FluidAction action) {
+        public @NotNull FluidStack drain(FluidStack resource, @NotNull FluidAction action) {
 
             if (resource.getFluid() == TANK_1.getFluid().getFluid()) {
                 return TANK_1.drain(resource.getAmount(), action);
@@ -184,7 +175,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         }
 
         @Override
-        public FluidStack drain(int maxDrain, FluidAction action) {
+        public @NotNull FluidStack drain(int maxDrain, @NotNull FluidAction action) {
             assert level != null;
 
             if (TANK_1.getFluidAmount() > 0) {
@@ -261,7 +252,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
     public final ContainerData data;
     public int[] progress = new int[15];
-    public int maxProgress = 220;
+    public int maxProgress = 240;
     public int fuelTemp = 0;
     private final IItemHandler controllerItemHandler = new InputOutputItemHandler(itemHandler,
             (i, stack) -> i != 15,
@@ -436,6 +427,8 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                     RecipeHolder<MeltingRecipe> match = selectedRecipe.get();
                     FluidStack output = match.value().output();
 
+                    //maxProgress[i] =/* (1000 / match.value().meltingTemp()) +*/ 240;
+
                     if (canFitFluidInAnyTank(output) && hasEnoughFuel(level.getBlockEntity(this.worldPosition), match.value().meltingTemp())) {
 
                         // Progress logic for damageable items
@@ -448,7 +441,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                                 float outputAmountModifier = (float) (stack.getMaxDamage() - stack.getDamageValue()) / (float) stack.getMaxDamage();
                                 int outputAmountModified = Math.round(output.getAmount() * outputAmountModifier);
 
-                                System.out.println("Output Amount Modifier: " + outputAmountModifier);
+                            //    System.out.println("Output Amount Modifier: " + outputAmountModifier);
 
                                 itemHandler.getStackInSlot(i).shrink(1);
                                 addFluidToTank(output, outputAmountModified);
@@ -486,42 +479,23 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         for (Direction direction : Direction.values()) {
             BlockEntity entity = level.getBlockEntity(this.worldPosition.relative(direction));
             if (entity instanceof SolidifierBlockEntity solidifierBlockEntity) {
-                transferFluid(TANK_1, solidifierBlockEntity.TANK);
-                transferFluid(TANK_2, solidifierBlockEntity.TANK);
-                transferFluid(TANK_3, solidifierBlockEntity.TANK);
-                transferFluid(TANK_4, solidifierBlockEntity.TANK);
+                transferFluidToTank(TANK_1, solidifierBlockEntity.TANK);
+                transferFluidToTank(TANK_2, solidifierBlockEntity.TANK);
+                transferFluidToTank(TANK_3, solidifierBlockEntity.TANK);
+                transferFluidToTank(TANK_4, solidifierBlockEntity.TANK);
             }
         }
 
         //Drain to adjacent mixer
 
+        // Drain to adjacent mixer
         for (Direction direction : Direction.values()) {
             BlockEntity entity = level.getBlockEntity(this.worldPosition.relative(direction));
             if (entity instanceof MixerBlockEntity mixerBlockEntity) {
-                transferFluid(TANK_1, mixerBlockEntity.TANK_1);
-                transferFluid(TANK_1, mixerBlockEntity.TANK_2);
-                transferFluid(TANK_1, mixerBlockEntity.TANK_3);
-                transferFluid(TANK_1, mixerBlockEntity.TANK_4);
-                transferFluid(TANK_1, mixerBlockEntity.TANK_5);
-                transferFluid(TANK_1, mixerBlockEntity.TANK_6);
-                transferFluid(TANK_2, mixerBlockEntity.TANK_1);
-                transferFluid(TANK_2, mixerBlockEntity.TANK_2);
-                transferFluid(TANK_2, mixerBlockEntity.TANK_3);
-                transferFluid(TANK_2, mixerBlockEntity.TANK_4);
-                transferFluid(TANK_2, mixerBlockEntity.TANK_5);
-                transferFluid(TANK_2, mixerBlockEntity.TANK_6);
-                transferFluid(TANK_3, mixerBlockEntity.TANK_1);
-                transferFluid(TANK_3, mixerBlockEntity.TANK_2);
-                transferFluid(TANK_3, mixerBlockEntity.TANK_3);
-                transferFluid(TANK_3, mixerBlockEntity.TANK_4);
-                transferFluid(TANK_3, mixerBlockEntity.TANK_5);
-                transferFluid(TANK_3, mixerBlockEntity.TANK_6);
-                transferFluid(TANK_4, mixerBlockEntity.TANK_1);
-                transferFluid(TANK_4, mixerBlockEntity.TANK_2);
-                transferFluid(TANK_4, mixerBlockEntity.TANK_3);
-                transferFluid(TANK_4, mixerBlockEntity.TANK_4);
-                transferFluid(TANK_4, mixerBlockEntity.TANK_5);
-                transferFluid(TANK_4, mixerBlockEntity.TANK_6);
+                transferFluidToMixer(TANK_1, mixerBlockEntity);
+                transferFluidToMixer(TANK_2, mixerBlockEntity);
+                transferFluidToMixer(TANK_3, mixerBlockEntity);
+                transferFluidToMixer(TANK_4, mixerBlockEntity);
             }
         }
     }
@@ -531,7 +505,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         progress[slot] = 0;
     }
 
-    private void addFluidToTank(FluidStack output, int amount) {
+        private void addFluidToTank(FluidStack output, int amount) {
         if((TANK_1.getFluid().getFluid() == output.getFluid() && (TANK_1.getCapacity() - TANK_1.getFluidAmount() >= output.getAmount()) ) || TANK_1.getFluid().isEmpty()) {
             TANK_1.fill(new FluidStack(output.getFluid(), amount), IFluidHandler.FluidAction.EXECUTE);
         }
@@ -603,19 +577,74 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         return false;
     }
 
-
-    private void transferFluid(IFluidTank sourceTank, IFluidTank targetTank) {
+    private void transferFluidToTank(IFluidTank sourceTank, IFluidTank targetTank) {
         if (sourceTank.getFluidAmount() > 0) {
-            int drainAmount = sourceTank.getFluidAmount();
-            FluidStack drained = sourceTank.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
-            int filled = targetTank.fill(drained, IFluidHandler.FluidAction.EXECUTE);
-            sourceTank.drain(filled, IFluidHandler.FluidAction.EXECUTE);
+            FluidStack fluidInSource = sourceTank.getFluid();
+            if (targetTank.getFluidAmount() == 0 || isSameFluidSameComponents(targetTank.getFluid(), fluidInSource)) {
+                int drainAmount = sourceTank.getFluidAmount();
+                FluidStack drained = sourceTank.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
+                int filled = targetTank.fill(drained, IFluidHandler.FluidAction.EXECUTE);
+                sourceTank.drain(filled, IFluidHandler.FluidAction.EXECUTE);
+            }
         }
     }
 
-    private boolean fuelInformation(BlockEntity entity) {
+    private void transferFluidToMixer(IFluidTank sourceTank, MixerBlockEntity mixerBlockEntity) {
+        if (sourceTank.getFluidAmount() > 0) {
+            FluidStack fluidInSource = sourceTank.getFluid();
+            IFluidTank[] mixerTanks = {
+                    mixerBlockEntity.TANK_1,
+                    mixerBlockEntity.TANK_2,
+                    mixerBlockEntity.TANK_3,
+                    mixerBlockEntity.TANK_4,
+                    mixerBlockEntity.TANK_5,
+                    mixerBlockEntity.TANK_6
+            };
+
+            // First check if there's already a tank with this fluid
+            for (IFluidTank mixerTank : mixerTanks) {
+                if (isSameFluidSameComponents(mixerTank.getFluid(), fluidInSource)) {
+                    // If a tank contains the same fluid, attempt to fill it
+                    if (mixerTank.getCapacity() > mixerTank.getFluidAmount()) {
+                        int spaceLeftInTank = mixerTank.getCapacity() - mixerTank.getFluidAmount();
+                        int drainAmount = Math.min(sourceTank.getFluidAmount(), spaceLeftInTank);
+
+                        // Drain from the source tank and fill into the mixer tank
+                        FluidStack drained = sourceTank.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
+                        if (isSameFluidSameComponents(drained, fluidInSource)) {
+                            int filled = mixerTank.fill(drained, IFluidHandler.FluidAction.EXECUTE);
+                            sourceTank.drain(filled, IFluidHandler.FluidAction.EXECUTE);
+                        }
+                    }
+                    // Stop here since we only want one tank to be filled with this fluid
+                    return;
+                }
+            }
+
+            // If no tank currently contains the fluid, fill the first available empty tank
+            for (IFluidTank mixerTank : mixerTanks) {
+                if (mixerTank.getFluidAmount() == 0) {
+                    int drainAmount = Math.min(sourceTank.getFluidAmount(), mixerTank.getCapacity());
+                    FluidStack drained = sourceTank.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
+
+                    // Only proceed if the fluid types match
+                    if (isSameFluidSameComponents(drained, fluidInSource)) {
+                        int filled = mixerTank.fill(drained, IFluidHandler.FluidAction.EXECUTE);
+                        sourceTank.drain(filled, IFluidHandler.FluidAction.EXECUTE);
+                    }
+                    // Stop after filling the first empty tank
+                    return;
+                }
+            }
+        }
+    }
+
+
+
+
+    private void fuelInformation(BlockEntity entity) {
         if (entity == null) {
-            return false;
+            return;
         }
         Level level = entity.getLevel();
         if (level != null) {
@@ -627,16 +656,12 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                     for (RecipeHolder<FuelRecipe> recipeHolder : allFuels) {
                         FuelRecipe recipe = recipeHolder.value();
                         if (recipe.fluid().getFluid() == tankBlockEntity.FLUID_TANK.getFluid().getFluid()) {
-
-                            maxProgress = recipe.smeltTime();
                             fuelTemp = recipe.temp();
-
                         }
                     }
                 }
             }
         }
-        return false;
     }
 
 

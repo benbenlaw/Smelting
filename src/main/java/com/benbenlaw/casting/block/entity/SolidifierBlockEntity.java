@@ -1,6 +1,7 @@
 package com.benbenlaw.casting.block.entity;
 
 import com.benbenlaw.casting.item.ModItems;
+import com.benbenlaw.casting.recipe.FuelRecipe;
 import com.benbenlaw.opolisutilities.block.entity.custom.handler.InputOutputItemHandler;
 import com.benbenlaw.opolisutilities.util.inventory.IInventoryHandlingBlockEntity;
 import com.benbenlaw.casting.screen.SolidifierMenu;
@@ -30,6 +31,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeInput;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
@@ -43,6 +45,7 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Objects;
 
 public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, IInventoryHandlingBlockEntity {
@@ -153,6 +156,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
     public final ContainerData data;
     public int progress = 0;
     public int maxProgress;
+    public int fuelTemp = 0;
     private final IItemHandler solidifierItemHandler = new InputOutputItemHandler(itemHandler,
             (i, stack) -> i == 0 ,  //
             i -> i == 1
@@ -245,7 +249,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
         compoundTag.putInt("progress", progress);
         compoundTag.putInt("maxProgress", maxProgress);
         compoundTag.put("tank", TANK.writeToNBT(provider, new CompoundTag()));
-
+        compoundTag.putInt("fuelTemp", fuelTemp);
 
     }
 
@@ -255,6 +259,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
         progress = compoundTag.getInt("progress");
         maxProgress = compoundTag.getInt("maxProgress");
         TANK.readFromNBT(provider, compoundTag.getCompound("tank"));
+        fuelTemp = compoundTag.getInt("fuelTemp");
         super.loadAdditional(compoundTag, provider);
     }
 
@@ -285,6 +290,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
 
             sync();
             updateSpeed();
+            fuelInformation(level.getBlockEntity(this.worldPosition));
 
             if (itemHandler.getStackInSlot(0).isEmpty()) {
                 resetProgress();
@@ -295,7 +301,7 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
 
             for (RecipeHolder<SolidifierRecipe> recipeHolder : level.getRecipeManager().getRecipesFor(SolidifierRecipe.Type.INSTANCE, inventory, level)) {
                 SolidifierRecipe recipe = recipeHolder.value();
-                if (recipe.mold().test(itemHandler.getStackInSlot(0)) && hasEnoughFluid(recipe.fluid())) {
+                if (recipe.mold().test(itemHandler.getStackInSlot(0)) && hasEnoughFluid(recipe.fluid()) && hasCorrectInputAmount(recipe.mold())) {
                     FluidStack output = recipe.fluid();
 
                     if (hasOutputSpaceMaking(this, recipe)) {
@@ -305,10 +311,11 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
                             extractFluid(output, output.getAmount());
 
                             if (!itemHandler.getStackInSlot(0).is(CastingTags.Items.MOLDS)) {
-                                itemHandler.getStackInSlot(0).shrink(1);
+                                itemHandler.getStackInSlot(0).shrink(recipe.mold().count());
                             }
                             itemHandler.setStackInSlot(1, new ItemStack(recipe.output().getItems()[0].getItem(), recipe.output().count() + itemHandler.getStackInSlot(1).getCount()));
                             setChanged();
+                            useFuel(this);
                             resetProgress();
                             sync();
                         }
@@ -322,6 +329,10 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
                 resetProgress();
             }
         }
+    }
+
+    private boolean hasCorrectInputAmount(SizedIngredient mold) {
+        return itemHandler.getStackInSlot(0).getCount() >= mold.count();
     }
 
 
@@ -364,27 +375,78 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
     }
 
     private void updateSpeed() {
-        Item moldItem = itemHandler.getStackInSlot(0).getItem();
+        int updatedProgress = 0;
 
-        if (moldItem == ModItems.NUGGET_MOLD.get()) {
-            maxProgress = 10;
-        }
-        else if (moldItem == ModItems.GEAR_MOLD.get()) {
-            maxProgress = 120;
-        }
-        else if (moldItem == ModItems.INGOT_MOLD.get() ||
-                moldItem == ModItems.GEM_MOLD.get() ||
-                moldItem == ModItems.DUST_MOLD.get() ||
-                moldItem == ModItems.ROD_MOLD.get() ||
-                moldItem == ModItems.PLATE_MOLD.get()) {
-            maxProgress = 100;
-        }
-        else if (moldItem == ModItems.BLOCK_MOLD.get()) {
-            maxProgress = 240;
-        }
-        else {
-            maxProgress = 220;
+        if (fuelTemp > 1000){
+            double modifier = ((double) (fuelTemp - 1000) / 1000);
+            updatedProgress = (int) (240 / modifier);
         }
 
+        if (fuelTemp < 1000) {
+            double modifier = (((double) fuelTemp / 1000));
+            updatedProgress = (int) (240 * modifier);
+
+        }
+
+        if (fuelTemp == 1000) {
+            updatedProgress = 240;
+        }
+
+        maxProgress = updatedProgress;
+
+
+    }
+
+
+    private boolean fuelInformation(BlockEntity entity) {
+        if (entity == null) {
+            return false;
+        }
+        Level level = entity.getLevel();
+        if (level != null) {
+            for (Direction direction : Direction.values()) {
+                BlockEntity adjacentEntity = level.getBlockEntity(entity.getBlockPos().relative(direction));
+                if (adjacentEntity instanceof TankBlockEntity tankBlockEntity) {
+                    List<RecipeHolder<FuelRecipe>> allFuels = level.getRecipeManager().getAllRecipesFor(FuelRecipe.Type.INSTANCE);
+
+                    for (RecipeHolder<FuelRecipe> recipeHolder : allFuels) {
+                        FuelRecipe recipe = recipeHolder.value();
+                        if (recipe.fluid().getFluid() == tankBlockEntity.FLUID_TANK.getFluid().getFluid()) {
+
+                        //    maxProgress = recipe.smeltTime();
+                            fuelTemp = recipe.temp();
+
+                        }
+                    }
+                } else {
+                    fuelTemp = 1000;
+                }
+            }
+        }
+        return false;
+    }
+
+    private void useFuel(BlockEntity entity) {
+        if (entity == null) {
+            return;
+        }
+        Level level = entity.getLevel();
+        if (level != null) {
+            for (Direction direction : Direction.values()) {
+                BlockEntity adjacentEntity = level.getBlockEntity(entity.getBlockPos().relative(direction));
+                if (adjacentEntity instanceof TankBlockEntity tankBlockEntity) {
+                    List<RecipeHolder<FuelRecipe>> allFuels = level.getRecipeManager().getAllRecipesFor(FuelRecipe.Type.INSTANCE);
+
+                    for (RecipeHolder<FuelRecipe> recipeHolder : allFuels) {
+                        FuelRecipe recipe = recipeHolder.value();
+                        if (recipe.fluid().getFluid() == tankBlockEntity.FLUID_TANK.getFluid().getFluid()) {
+                            if (tankBlockEntity.FLUID_TANK.getFluidAmount() >= recipe.fluid().getAmount()) {
+                                tankBlockEntity.FLUID_TANK.drain(recipe.fluid().getAmount(), IFluidHandler.FluidAction.EXECUTE);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

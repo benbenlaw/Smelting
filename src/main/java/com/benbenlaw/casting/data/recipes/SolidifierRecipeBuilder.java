@@ -24,18 +24,18 @@ import java.util.Map;
 public class SolidifierRecipeBuilder implements RecipeBuilder {
 
     protected String group;
-    protected Ingredient mold;
+    protected SizedIngredient mold;
     protected SizedIngredient output;
     protected FluidStack fluid;
     protected final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
 
-    public SolidifierRecipeBuilder(Ingredient mold, SizedIngredient output, FluidStack fluid) {
+    public SolidifierRecipeBuilder(SizedIngredient mold, SizedIngredient output, FluidStack fluid) {
         this.mold = mold;
         this.output = output;
         this.fluid = fluid;
     }
 
-    public static SolidifierRecipeBuilder SolidifierRecipesBuilder(Ingredient mold, SizedIngredient output, FluidStack fluid) {
+    public static SolidifierRecipeBuilder SolidifierRecipesBuilder(SizedIngredient mold, SizedIngredient output, FluidStack fluid) {
         return new SolidifierRecipeBuilder(mold, output, fluid);
     }
 

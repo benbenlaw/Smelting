@@ -25,17 +25,15 @@ public class FuelRecipeBuilder implements RecipeBuilder {
     protected String group;
     protected FluidStack fluid;
     protected int temp;
-    protected int smeltTime;
     protected final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
 
-    public FuelRecipeBuilder(FluidStack fluid, int temp, int smeltTime) {
+    public FuelRecipeBuilder(FluidStack fluid, int temp) {
         this.fluid = fluid;
         this.temp = temp;
-        this.smeltTime = smeltTime;
     }
 
-    public static FuelRecipeBuilder FuelRecipesBuilder(FluidStack fluid, int temp, int smeltTime) {
-        return new FuelRecipeBuilder(fluid, temp, smeltTime);
+    public static FuelRecipeBuilder FuelRecipesBuilder(FluidStack fluid, int temp) {
+        return new FuelRecipeBuilder(fluid, temp);
     }
 
 
@@ -68,7 +66,7 @@ public class FuelRecipeBuilder implements RecipeBuilder {
                 .rewards(AdvancementRewards.Builder.recipe(id))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(builder::addCriterion);
-        FuelRecipe fuelRecipe = new FuelRecipe(this.fluid, this.temp, this.smeltTime);
+        FuelRecipe fuelRecipe = new FuelRecipe(this.fluid, this.temp);
         recipeOutput.accept(id, fuelRecipe, builder.build(id.withPrefix("recipes/fuel/")));
 
     }

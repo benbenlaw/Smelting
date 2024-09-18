@@ -28,6 +28,6 @@ side="BOTH"
 [[dependencies."${mod_id}"]]
 modId="opolisutilities"
 type="required"
-versionRange="1.21-4.8.0"
+versionRange="1.21-4.10.0"
 ordering="NONE"
 side="BOTH"

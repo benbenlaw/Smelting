@@ -2,7 +2,22 @@ Changelog BBL Smelting
 
 // TODO //
 
-Move to latest opolis utilities version with its fluids dump
+1.12.0
+
+Updated to opolis utilities 4.10.0
+Buckets no longer allow the mixer to fill an additional tank with the same fluid
+The controller will no longer push fluids into the mixer if the fluid that it is
+    trying to move is already in the mixer and that tank is full
+Added missing tin block to molten tin recipe
+
+Solidifier no longer uses different speeds depending on mold
+Solidifier now uses a tank to change speed
+Solidifier now uses SizedIngredient instead of Ingredient (Allows for more items to be used in recipes)
+
+Controller now stores each slots max progress separately
+
+Fuel recipes have had there smeltTime value removed
+    the temperature different between the fuel and the resource to be smelted will now determine the speed of the recipe
 
 1.11.4
 

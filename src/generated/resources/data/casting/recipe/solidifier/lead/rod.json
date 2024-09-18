@@ -14,6 +14,7 @@
     "id": "casting:molten_lead"
   },
   "mold": {
+    "count": 1,
     "item": "casting:rod_mold"
   },
   "output": {

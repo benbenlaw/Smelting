@@ -88,7 +88,7 @@ public class SolidifierRecipeCategory implements IRecipeCategory<SolidifierRecip
 
         builder.addSlot(RecipeIngredientRole.INPUT, 40, 2).addFluidStack(recipe.fluid().getFluid(), recipe.fluid().getAmount());
 
-        builder.addSlot(RecipeIngredientRole.CATALYST, 4, 2).addIngredients(recipe.mold());
+        builder.addSlot(RecipeIngredientRole.CATALYST, 4, 2).addIngredients(VanillaTypes.ITEM_STACK, Arrays.asList(recipe.mold().getItems()));
         builder.addSlot(RecipeIngredientRole.OUTPUT, 113, 2).addIngredients(recipe.output().ingredient());
     }
 

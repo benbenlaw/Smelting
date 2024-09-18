@@ -1,6 +1,7 @@
 package com.benbenlaw.casting.screen.utils;
 
 import com.benbenlaw.casting.block.entity.ControllerBlockEntity;
+import com.benbenlaw.casting.block.entity.SolidifierBlockEntity;
 import com.benbenlaw.opolisutilities.screen.utils.OpolisUtilitiesWidget;
 import com.benbenlaw.opolisutilities.util.MouseUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -16,24 +17,24 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.FormattedCharSequence;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 
 import java.util.Arrays;
 
-public class ControllerFluidStackWidget extends OpolisUtilitiesWidget {
+public class FuelTankFluidStackWidget extends OpolisUtilitiesWidget {
     private final Screen screen;
     private final FluidTank getFluid;
-    private ControllerBlockEntity controllerBlockEntity;
+    private BlockEntity blockEntity;
 
-    public ControllerFluidStackWidget(Screen screen, FluidTank getFluid, ControllerBlockEntity controllerBlockEntity,  int pX, int pY, int pWidth, int pHeight) {
+    public FuelTankFluidStackWidget(Screen screen, FluidTank getFluid, BlockEntity blockEntity, int pX, int pY, int pWidth, int pHeight) {
         super(pX, pY, pWidth, pHeight);
         this.screen = screen;
         this.getFluid = getFluid;
-        this.controllerBlockEntity = controllerBlockEntity;
+        this.blockEntity = blockEntity;
     }
-
     public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         Minecraft minecraft = Minecraft.getInstance();
         RenderSystem.defaultBlendFunc();
@@ -85,16 +86,35 @@ public class ControllerFluidStackWidget extends OpolisUtilitiesWidget {
         if (MouseUtil.isMouseAboveArea(mouseX, mouseY, this.x, this.y, 0, 0, 16, 16)) {
             Font var10001 = this.screen.getMinecraft().font;
 
-            // Create an array to hold the tooltip lines
-            FormattedCharSequence[] tooltipLines = new FormattedCharSequence[4];
+            if (blockEntity instanceof ControllerBlockEntity controllerBlockEntity) {
 
-            tooltipLines[0] = this.getFluid.getFluid().getHoverName().getVisualOrderText();
-            tooltipLines[1] = Component.literal("" + this.getFluid.getFluidAmount() + "mB / " + this.getFluid.getCapacity() + "mB").getVisualOrderText();
+                // Create an array to hold the tooltip lines
+                FormattedCharSequence[] tooltipLines = new FormattedCharSequence[4];
 
-            tooltipLines[2] = Component.literal("Fuel Temp: " + this.controllerBlockEntity.fuelTemp).getVisualOrderText();
-            tooltipLines[3] = Component.literal("Ticks Per Recipe: " + this.controllerBlockEntity.maxProgress).getVisualOrderText();
+                tooltipLines[0] = this.getFluid.getFluid().getHoverName().getVisualOrderText();
+                tooltipLines[1] = Component.literal("" + this.getFluid.getFluidAmount() + "mB / " + this.getFluid.getCapacity() + "mB").getVisualOrderText();
 
-            guiGraphics.renderTooltip(var10001, Arrays.asList(tooltipLines), mouseX, mouseY);
+                tooltipLines[2] = Component.literal("Fuel Temp: " + controllerBlockEntity.fuelTemp).getVisualOrderText();
+                tooltipLines[3] = Component.literal("Ticks Per Recipe: " + controllerBlockEntity.maxProgress).getVisualOrderText();
+
+                guiGraphics.renderTooltip(var10001, Arrays.asList(tooltipLines), mouseX, mouseY);
+
+            }
+
+            if (blockEntity instanceof SolidifierBlockEntity solidifierBlockEntity) {
+
+                // Create an array to hold the tooltip lines
+                FormattedCharSequence[] tooltipLines = new FormattedCharSequence[4];
+
+                tooltipLines[0] = this.getFluid.getFluid().getHoverName().getVisualOrderText();
+                tooltipLines[1] = Component.literal("" + this.getFluid.getFluidAmount() + "mB / " + this.getFluid.getCapacity() + "mB").getVisualOrderText();
+
+                tooltipLines[2] = Component.literal("Fuel Temp: " + solidifierBlockEntity.fuelTemp).getVisualOrderText();
+                tooltipLines[3] = Component.literal("Ticks Per Recipe: " + solidifierBlockEntity.maxProgress).getVisualOrderText();
+
+                guiGraphics.renderTooltip(var10001, Arrays.asList(tooltipLines), mouseX, mouseY);
+
+            }
         }
     }
 

@@ -5,6 +5,7 @@
     "id": "casting:molten_glowstone"
   },
   "mold": {
+    "count": 1,
     "item": "casting:dust_mold"
   },
   "output": {

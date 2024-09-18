@@ -13,12 +13,12 @@ import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
-public record SolidifierRecipe(Ingredient mold, SizedIngredient output, FluidStack fluid) implements Recipe<RecipeInput> {
+public record SolidifierRecipe(SizedIngredient mold, SizedIngredient output, FluidStack fluid) implements Recipe<RecipeInput> {
 
     @Override
     public @NotNull NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> ingredients = NonNullList.createWithCapacity(1);
-        ingredients.add(mold);
+        ingredients.add(mold.ingredient());
         return ingredients;
     }
 
@@ -72,7 +72,7 @@ public record SolidifierRecipe(Ingredient mold, SizedIngredient output, FluidSta
 
         public final MapCodec<SolidifierRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
                 instance.group(
-                        Ingredient.CODEC_NONEMPTY.fieldOf("mold").forGetter(SolidifierRecipe::mold),
+                        SizedIngredient.FLAT_CODEC.fieldOf("mold").forGetter(SolidifierRecipe::mold),
                         SizedIngredient.FLAT_CODEC.fieldOf("output").forGetter(SolidifierRecipe::output),
                         FluidStack.CODEC.fieldOf("fluid").forGetter(SolidifierRecipe::fluid)
                 ).apply(instance, Serializer::createSolidifierRecipe)
@@ -92,19 +92,19 @@ public record SolidifierRecipe(Ingredient mold, SizedIngredient output, FluidSta
         }
 
         private static SolidifierRecipe read(RegistryFriendlyByteBuf buffer) {
-            Ingredient mold = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
+            SizedIngredient mold = SizedIngredient.STREAM_CODEC.decode(buffer);
             SizedIngredient output = SizedIngredient.STREAM_CODEC.decode(buffer);
             FluidStack fluid = FluidStack.STREAM_CODEC.decode(buffer);
             return new SolidifierRecipe(mold, output, fluid );
         }
 
         private static void write(RegistryFriendlyByteBuf buffer, SolidifierRecipe recipe) {
-            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.mold);
+            SizedIngredient.STREAM_CODEC.encode(buffer, recipe.mold);
             SizedIngredient.STREAM_CODEC.encode(buffer, recipe.output);
             FluidStack.STREAM_CODEC.encode(buffer, recipe.fluid);
         }
 
-        static SolidifierRecipe createSolidifierRecipe(Ingredient mold, SizedIngredient output, FluidStack fluid) {
+        static SolidifierRecipe createSolidifierRecipe(SizedIngredient mold, SizedIngredient output, FluidStack fluid) {
             return new SolidifierRecipe(mold, output, fluid);
         }
     }

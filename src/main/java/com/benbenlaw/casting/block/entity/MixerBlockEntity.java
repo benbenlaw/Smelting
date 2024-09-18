@@ -1,5 +1,6 @@
 package com.benbenlaw.casting.block.entity;
 
+import com.benbenlaw.casting.recipe.FuelRecipe;
 import com.benbenlaw.opolisutilities.recipe.NoInventoryRecipe;
 import com.benbenlaw.casting.recipe.MixingRecipe;
 import com.benbenlaw.casting.screen.MixerMenu;
@@ -23,6 +24,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
@@ -36,6 +38,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
+
+import static net.neoforged.neoforge.fluids.FluidStack.isSameFluidSameComponents;
 
 public class MixerBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -209,18 +213,40 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         // Attempt to fill the container from the output tank
         FluidActionResult result = FluidUtil.tryFillContainer(heldItem, OUTPUT_TANK, 1000, null, true);
         if (result.isSuccess()) {
-            // Replace the held item with the filled container
             ItemStack filledContainer = result.getResult();
-            player.setItemInHand(hand, filledContainer);
-            return true;
+
+            // Check if the filled container is different from the held item
+            if (!ItemStack.matches(heldItem, filledContainer)) {
+                // Replace the held item with the filled container
+                player.setItemInHand(hand, filledContainer);
+                return true;
+            }
         }
 
         FluidTank[] inputTanks = new FluidTank[]{TANK_1, TANK_2, TANK_3, TANK_4, TANK_5, TANK_6};
+
+        // Check if the held item contains a fluid that's already full in one of the tanks
+        if (FluidUtil.getFluidContained(heldItem).isPresent()) {
+            FluidStack fluidInBucket = FluidUtil.getFluidContained(heldItem).get();
+
+            for (FluidTank tank : inputTanks) {
+                if (isSameFluidSameComponents(tank.getFluid(), fluidInBucket)) {
+                    // Check if the tank is full
+                    if (tank.getFluidAmount() >= tank.getCapacity()) {
+                        // Prevent the operation if the tank is already full of the same fluid
+                        return false;
+                    }
+                }
+            }
+        }
+
+        // Attempt to interact with the fluid handlers if the tank was not full
         for (FluidTank tank : inputTanks) {
             if (FluidUtil.interactWithFluidHandler(player, hand, tank)) {
                 return true;
             }
         }
+
         // If no interaction was successful, return false
         return false;
     }
@@ -332,6 +358,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
     public final ContainerData data;
     public int progress = 0;
     public int maxProgress = 220;
+    public int fuelTemp = 0;
 
     public MixerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.MIXER_BLOCK_ENTITY.get(), pos, state);
@@ -411,6 +438,8 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         compoundTag.put("tank5", TANK_5.writeToNBT(provider, new CompoundTag()));
         compoundTag.put("tank6", TANK_6.writeToNBT(provider, new CompoundTag()));
         compoundTag.put("output_tank", OUTPUT_TANK.writeToNBT(provider, new CompoundTag()));
+        compoundTag.putInt("fuelTemp", fuelTemp);
+
 
 
     }
@@ -426,6 +455,8 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         TANK_5.readFromNBT(provider, compoundTag.getCompound("tank5"));
         TANK_6.readFromNBT(provider, compoundTag.getCompound("tank6"));
         OUTPUT_TANK.readFromNBT(provider, compoundTag.getCompound("output_tank"));
+        fuelTemp = compoundTag.getInt("fuelTemp");
+
         super.loadAdditional(compoundTag, provider);
     }
 
@@ -449,6 +480,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
             }
 
             drainTanksIntoValidBlocks();
+            fuelInformation(level.getBlockEntity(this.worldPosition));
             sync();
 
             for (RecipeHolder<MixingRecipe> recipeHolder : level.getRecipeManager().getRecipesFor(MixingRecipe.Type.INSTANCE, NoInventoryRecipe.INSTANCE, level)) {
@@ -466,7 +498,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
                         setChanged();
                         resetProgress();
                         sync();
-                        System.out.println("Found a match for all required fluids in different tanks");
+                    //    System.out.println("Found a match for all required fluids in different tanks");
                     }
                 }
             }
@@ -585,5 +617,31 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
             int filled = targetTank.fill(drained, IFluidHandler.FluidAction.EXECUTE);
             sourceTank.drain(filled, IFluidHandler.FluidAction.EXECUTE);
         }
+    }
+
+    private boolean fuelInformation(BlockEntity entity) {
+        if (entity == null) {
+            return false;
+        }
+        Level level = entity.getLevel();
+        if (level != null) {
+            for (Direction direction : Direction.values()) {
+                BlockEntity adjacentEntity = level.getBlockEntity(entity.getBlockPos().relative(direction));
+                if (adjacentEntity instanceof TankBlockEntity tankBlockEntity) {
+                    List<RecipeHolder<FuelRecipe>> allFuels = level.getRecipeManager().getAllRecipesFor(FuelRecipe.Type.INSTANCE);
+
+                    for (RecipeHolder<FuelRecipe> recipeHolder : allFuels) {
+                        FuelRecipe recipe = recipeHolder.value();
+                        if (recipe.fluid().getFluid() == tankBlockEntity.FLUID_TANK.getFluid().getFluid()) {
+
+                            //maxProgress = recipe.smeltTime();
+                            fuelTemp = recipe.temp();
+
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
 }
