@@ -21,7 +21,7 @@ public class SmelterMenu extends AbstractContainerMenu {
     protected BlockPos blockPos;
 
     public SmelterMenu(int containerID, Inventory inventory, FriendlyByteBuf extraData) {
-        this(containerID, inventory, extraData.readBlockPos(), new SimpleContainerData(16));
+        this(containerID, inventory, extraData.readBlockPos(), new SimpleContainerData(30));
 
     }
 

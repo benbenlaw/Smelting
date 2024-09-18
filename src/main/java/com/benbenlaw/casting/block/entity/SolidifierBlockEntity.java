@@ -378,18 +378,18 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
         int updatedProgress = 0;
 
         if (fuelTemp > 1000){
-            double modifier = ((double) (fuelTemp - 1000) / 1000);
-            updatedProgress = (int) (240 / modifier);
+            float modifier = ((float) (fuelTemp - 1000) / 1000);
+            updatedProgress = (int) (220 / modifier);
         }
 
         if (fuelTemp < 1000) {
-            double modifier = (((double) fuelTemp / 1000));
-            updatedProgress = (int) (240 * modifier);
+            float modifier = (((float) fuelTemp / 1000));
+            updatedProgress = (int) (220 * modifier);
 
         }
 
         if (fuelTemp == 1000) {
-            updatedProgress = 240;
+            updatedProgress = 220;
         }
 
         maxProgress = updatedProgress;

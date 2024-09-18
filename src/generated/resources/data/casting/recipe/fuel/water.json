@@ -1,0 +1,8 @@
+{
+  "type": "casting:fuel",
+  "fluid": {
+    "amount": 125,
+    "id": "minecraft:water"
+  },
+  "temp": 50
+}

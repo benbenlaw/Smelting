@@ -1,7 +1,12 @@
-// 1.21	2024-09-18T16:03:35.8786422	Recipes
+// 1.21	2024-09-18T19:02:36.2001831	Recipes
 d2ea4d8ce765581bcbbe977e46d4dada22629c1e data/casting/advancement/recipes/fuel/fuel/lava.json
 d42b7a6d6b1d2bf9f8135d17c5a1f3d53b083e4a data/casting/advancement/recipes/fuel/fuel/molten_coal.json
+87543abaa0e3ad2d740112dc3a783db8f6d295be data/casting/advancement/recipes/fuel/fuel/molten_ender.json
+871595fdf23cb8ffeee247eb53c6ce3288c6a480 data/casting/advancement/recipes/fuel/fuel/molten_glowstone.json
+cff7fda0371fdb4b98a0c79d56c938f122821c84 data/casting/advancement/recipes/fuel/fuel/molten_netherite.json
+47e35de39b02496dad694add563828c853e28521 data/casting/advancement/recipes/fuel/fuel/molten_obsidian.json
 6eaa9f2ac51ad06e09d65198b662c48367632b81 data/casting/advancement/recipes/fuel/fuel/molten_uranium.json
+e488cc481d32b2ec114df32165c12ff8ae1f90a4 data/casting/advancement/recipes/fuel/fuel/water.json
 0fbfe3ac0d77bb6b20c23c44c188672401194344 data/casting/advancement/recipes/melting/melting/aluminum/from_block.json
 6cce461fa557580f48d0c2ca3606e413105df9d1 data/casting/advancement/recipes/melting/melting/aluminum/from_dust.json
 8a3de417367ae57749a6408b8a998e9a2b26a412 data/casting/advancement/recipes/melting/melting/aluminum/from_ingot.json
@@ -396,7 +401,12 @@ aefd70d4d03e1742f2efebc70fb206c87db13a6e data/casting/recipe/block_mold.json
 ff44ded1a1524d15d8cf744e2a5901ea3950bf94 data/casting/recipe/dust_mold.json
 9050ead0cc07ea5da54cca54818054d30c1895e0 data/casting/recipe/fuel/lava.json
 ae084fdcf9b65bca85c89f0ee93ee91a20b535d6 data/casting/recipe/fuel/molten_coal.json
-e13ba5cf2cda73b3e80f1fc44162bad1cac14f33 data/casting/recipe/fuel/molten_uranium.json
+50ac686b99dde32c0376bab1f0cd638818ba1b13 data/casting/recipe/fuel/molten_ender.json
+c6698b33c4b9d57bf96fe3ea3433633a6782426f data/casting/recipe/fuel/molten_glowstone.json
+a29e918f911c962c470f8644075737302b545a8a data/casting/recipe/fuel/molten_netherite.json
+0ea87aef865848717ec8c892a3e8613d5a8cef5a data/casting/recipe/fuel/molten_obsidian.json
+e99e164f2189b29cca6090e3bb5e19d4bd7710b6 data/casting/recipe/fuel/molten_uranium.json
+fc34f614917be2fde95e4dd708111b8036b88b82 data/casting/recipe/fuel/water.json
 f5950fde1e1105685a1944cac32ab4cb4f1205e7 data/casting/recipe/gear_mold.json
 e4e5476169b56a53839c85c491d49a5fa70696c4 data/casting/recipe/gem_mold.json
 a68632fd08efb13dfb7560db453c11ed71b75366 data/casting/recipe/ingot_mold.json
@@ -458,8 +468,8 @@ ff4f2ef52b94b96372a4782f3cb00b555e079689 data/casting/recipe/melting/enderium/fr
 350eace552c89d99e398d5e42a2a8bd34d18add6 data/casting/recipe/melting/enderium/from_dust.json
 8942737421d9fd24f25d1a0906f4d2da78e32ef6 data/casting/recipe/melting/enderium/from_ingot.json
 f5c684325a64da6e4d89db4d4d087478a890b0d5 data/casting/recipe/melting/enderium/from_nugget.json
-fde9226c5621d9176d1db8dd49f87577143bb3d9 data/casting/recipe/melting/ender/from_fragment.json
-666678e8f2b507d801441d7d276388dd9b767510 data/casting/recipe/melting/ender/from_gem.json
+bc8b8950ba61a37bd78c59702bea9136fb0dc336 data/casting/recipe/melting/ender/from_fragment.json
+c9e019c3791efb9da4a9ba9504745b660cf77ae1 data/casting/recipe/melting/ender/from_gem.json
 5c9cf4d2f97df3d6e542df3b6ba24e2486917858 data/casting/recipe/melting/glass/from_item.json
 649d2cb6c1c7b5ec1338aae0eb89a596999e670e data/casting/recipe/melting/glass/from_sand.json
 547f776a44a880b2eedf6384e34082fdd820f46d data/casting/recipe/melting/glowstone/from_block.json

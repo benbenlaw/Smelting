@@ -2,7 +2,7 @@
   "type": "casting:fuel",
   "fluid": {
     "amount": 25,
-    "id": "casting:molten_uranium"
+    "id": "casting:molten_glowstone"
   },
-  "temp": 2000
+  "temp": 1600
 }

@@ -4,7 +4,7 @@
     "count": 1,
     "item": "opolisutilities:ender_pearl_fragment"
   },
-  "meltingTemp": 1000,
+  "meltingTemp": 700,
   "output": {
     "amount": 10,
     "id": "casting:molten_ender"

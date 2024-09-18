@@ -48,7 +48,7 @@ public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
 
     public FuelRecipeCategory(IGuiHelper helper) {
         this.helper = helper;
-        this.background = helper.createDrawable(TEXTURE, 0, 0, 175, 114);
+        this.background = helper.createDrawable(TEXTURE, 0, 0, 175, 104);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.CONTROLLER.get()));
     }
 
@@ -100,7 +100,7 @@ public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
         mutableRecipes.sort(Comparator.comparingInt(FuelRecipe::temp).reversed());
 
         // Background Size
-        int yOffset = 34;
+        int yOffset = 24;
 
         int numRows = (int) Math.ceil((double) mutableRecipes.size() / 9);
         int numCols = 9; //Math.min(9, mutableRecipes.size()); // Maximum of 9 columns
@@ -134,17 +134,16 @@ public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
 
         String tempLabel = "Temp: ";
         String amountLabel = "Used Amount: ";
-        String tickLabel = "Ticks Per Craft: ";
+        String tickLabel = "Uses: ";
 
         // Draw the labels
         guiGraphics.drawString(Minecraft.getInstance().font, tempLabel, textX, textY, Color.GRAY.getRGB(), false);
         guiGraphics.drawString(Minecraft.getInstance().font, amountLabel, textX, textY + 10, Color.GRAY.getRGB(), false);
-        guiGraphics.drawString(Minecraft.getInstance().font, tickLabel, textX, textY + 20, Color.GRAY.getRGB(), false);
+    //    guiGraphics.drawString(Minecraft.getInstance().font, tickLabel, textX, textY + 20, Color.GRAY.getRGB(), false);
 
         // Initialize the dynamic text as empty
         String tempValue = "";
         String amountValue = "";
-        String tickValue = "";
 
         // Check if the mouse is hovering over a slot and get the corresponding recipe values
         for (Map.Entry<Point, FuelRecipe> entry : slotRecipes.entrySet()) {
@@ -160,7 +159,6 @@ public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
             if (mouseX >= slotX && mouseX < slotX + slotWidth && mouseY >= slotY && mouseY < slotY + slotHeight) {
                 tempValue = String.valueOf(hoveredRecipe.temp());
                 amountValue = String.valueOf(hoveredRecipe.fluid().getAmount());
-                tickValue = "change soonTM";
 
                 break; // Exit the loop once the hovered slot is found
             }
@@ -169,7 +167,6 @@ public class FuelRecipeCategory implements IRecipeCategory<FuelRecipe> {
         // Draw the dynamic values next to the labels
         guiGraphics.drawString(Minecraft.getInstance().font, tempValue, textX + Minecraft.getInstance().font.width(tempLabel), textY, Color.GRAY.getRGB(), false);
         guiGraphics.drawString(Minecraft.getInstance().font, amountValue, textX + Minecraft.getInstance().font.width(amountLabel), textY + 10, Color.GRAY.getRGB(), false);
-        guiGraphics.drawString(Minecraft.getInstance().font, tickValue, textX + Minecraft.getInstance().font.width(tickLabel), textY + 20, Color.GRAY.getRGB(), false);
     }
 
 

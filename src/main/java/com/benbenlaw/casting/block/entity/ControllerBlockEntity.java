@@ -252,7 +252,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
     public final ContainerData data;
     public int[] progress = new int[15];
-    public int maxProgress = 240;
+    public int maxProgress;
     public int fuelTemp = 0;
     private final IItemHandler controllerItemHandler = new InputOutputItemHandler(itemHandler,
             (i, stack) -> i != 15,
@@ -427,9 +427,10 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                     RecipeHolder<MeltingRecipe> match = selectedRecipe.get();
                     FluidStack output = match.value().output();
 
-                    //maxProgress[i] =/* (1000 / match.value().meltingTemp()) +*/ 240;
-
                     if (canFitFluidInAnyTank(output) && hasEnoughFuel(level.getBlockEntity(this.worldPosition), match.value().meltingTemp())) {
+
+                        maxProgress = setNewMaxProgress(fuelTemp, match.value().meltingTemp());
+
 
                         // Progress logic for damageable items
                         if (itemHandler.getStackInSlot(i).isDamageableItem()) {
@@ -441,7 +442,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                                 float outputAmountModifier = (float) (stack.getMaxDamage() - stack.getDamageValue()) / (float) stack.getMaxDamage();
                                 int outputAmountModified = Math.round(output.getAmount() * outputAmountModifier);
 
-                            //    System.out.println("Output Amount Modifier: " + outputAmountModifier);
+                                //    System.out.println("Output Amount Modifier: " + outputAmountModifier);
 
                                 itemHandler.getStackInSlot(i).shrink(1);
                                 addFluidToTank(output, outputAmountModified);
@@ -505,7 +506,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         progress[slot] = 0;
     }
 
-        private void addFluidToTank(FluidStack output, int amount) {
+    private void addFluidToTank(FluidStack output, int amount) {
         if((TANK_1.getFluid().getFluid() == output.getFluid() && (TANK_1.getCapacity() - TANK_1.getFluidAmount() >= output.getAmount()) ) || TANK_1.getFluid().isEmpty()) {
             TANK_1.fill(new FluidStack(output.getFluid(), amount), IFluidHandler.FluidAction.EXECUTE);
         }
@@ -647,7 +648,8 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
             return;
         }
         Level level = entity.getLevel();
-        if (level != null) {
+
+        if (level != null && !level.isClientSide()) {
             for (Direction direction : Direction.values()) {
                 BlockEntity adjacentEntity = level.getBlockEntity(entity.getBlockPos().relative(direction));
                 if (adjacentEntity instanceof TankBlockEntity tankBlockEntity) {
@@ -657,14 +659,29 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                         FuelRecipe recipe = recipeHolder.value();
                         if (recipe.fluid().getFluid() == tankBlockEntity.FLUID_TANK.getFluid().getFluid()) {
                             fuelTemp = recipe.temp();
+                            break;
                         }
                     }
                 }
             }
         }
     }
+    private int setNewMaxProgress(int fuelInTankTemp, int recipeTemp) {
+        if (recipeTemp <= 0) {
+            throw new IllegalArgumentException("recipeTemp must be greater than zero");
+        }
 
+        // Handle cases where fuel temperature is too low to have an effect
+        if (fuelInTankTemp < recipeTemp) {
+            return 10000; // or some large number indicating that melting cannot proceed
+        }
 
+        // Calculate newMaxProgress based on the temperature ratio
+        double temperatureRatio = (double) fuelInTankTemp / recipeTemp;
+        int newMaxProgress = (int) (240 / temperatureRatio);
 
-
+        // Ensure that newMaxProgress is within a reasonable range
+        // Here you might want to set a minimum progress value
+        return Math.max(newMaxProgress, 1); // Ensure it's at least 1
+    }
 }

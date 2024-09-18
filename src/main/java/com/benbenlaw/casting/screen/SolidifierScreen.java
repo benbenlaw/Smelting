@@ -90,7 +90,7 @@ public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
 
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         renderProgressBars(guiGraphics);
-        renderTickRate(guiGraphics, mouseX, mouseY, x, y);
+    //    renderTickRate(guiGraphics, mouseX, mouseY, x, y);
 
         FluidTank fuelTank = new FluidTank(0);
         if (fuelTankEntity instanceof TankBlockEntity tankBlockEntity) {

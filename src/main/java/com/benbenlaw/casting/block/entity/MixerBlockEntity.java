@@ -357,7 +357,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
 
     public final ContainerData data;
     public int progress = 0;
-    public int maxProgress = 220;
+    public int maxProgress = 80;
     public int fuelTemp = 0;
 
     public MixerBlockEntity(BlockPos pos, BlockState state) {

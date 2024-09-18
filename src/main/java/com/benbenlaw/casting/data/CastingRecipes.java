@@ -180,10 +180,37 @@ public class CastingRecipes extends RecipeProvider {
                 .unlockedBy("has_item", has(Items.BUCKET))
                 .save(consumer);
 
-        // Uranium
-        FuelRecipeBuilder.FuelRecipesBuilder(new FluidStack(CastingFluids.MOLTEN_URANIUM.getFluid(), 25), 1600)
+        // Obsidian
+        FuelRecipeBuilder.FuelRecipesBuilder(new FluidStack(CastingFluids.MOLTEN_OBSIDIAN.getFluid(), 20), 1400)
                 .unlockedBy("has_item", has(Items.BUCKET))
                 .save(consumer);
+
+        // Glowstone
+        FuelRecipeBuilder.FuelRecipesBuilder(new FluidStack(CastingFluids.MOLTEN_GLOWSTONE.getFluid(), 25), 1600)
+                .unlockedBy("has_item", has(Items.BUCKET))
+                .save(consumer);
+
+        // Netherite
+        FuelRecipeBuilder.FuelRecipesBuilder(new FluidStack(CastingFluids.MOLTEN_NETHERITE.getFluid(), 10), 1800)
+                .unlockedBy("has_item", has(Items.BUCKET))
+                .save(consumer);
+
+        // Uranium
+        FuelRecipeBuilder.FuelRecipesBuilder(new FluidStack(CastingFluids.MOLTEN_URANIUM.getFluid(), 25), 2000)
+                .unlockedBy("has_item", has(Items.BUCKET))
+                .save(consumer);
+
+        // Ender
+        FuelRecipeBuilder.FuelRecipesBuilder(new FluidStack(CastingFluids.MOLTEN_ENDER.getFluid(), 5), 700)
+                .unlockedBy("has_item", has(Items.BUCKET))
+                .save(consumer);
+
+        // Water
+        FuelRecipeBuilder.FuelRecipesBuilder(new FluidStack(Fluids.WATER, 125), 50)
+                .unlockedBy("has_item", has(Items.BUCKET))
+                .save(consumer);
+
+
 
         // ********** Processing ********** //
 
@@ -1905,11 +1932,11 @@ public class CastingRecipes extends RecipeProvider {
         //Ender Processing
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Items.ENDER_PEARL), 1),
-                        new FluidStack(CastingFluids.MOLTEN_ENDER.getFluid(), 80), 1000)
+                        new FluidStack(CastingFluids.MOLTEN_ENDER.getFluid(), 80), 700)
                 .unlockedBy("has_item", has(Items.ENDER_PEARL)).save(consumer, "casting:melting/ender/from_gem");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(com.benbenlaw.opolisutilities.item.ModItems.ENDER_PEARL_FRAGMENT), 1),
-                        new FluidStack(CastingFluids.MOLTEN_ENDER.getFluid(), 10), 1000)
+                        new FluidStack(CastingFluids.MOLTEN_ENDER.getFluid(), 10), 700)
                 .unlockedBy("has_item", has(Items.ENDER_PEARL)).save(consumer, "casting:melting/ender/from_fragment");
 
         SolidifierRecipeBuilder.SolidifierRecipesBuilder(SizedIngredient.of(ModItems.NUGGET_MOLD, 1), new SizedIngredient(Ingredient.of(com.benbenlaw.opolisutilities.item.ModItems.ENDER_PEARL_FRAGMENT), 1),
