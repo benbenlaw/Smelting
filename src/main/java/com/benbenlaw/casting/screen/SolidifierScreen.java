@@ -155,15 +155,15 @@ public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
     }
 
 
-    private void renderNoTank (GuiGraphics guiGraphics, int mouseX, int mouseY, int x, int y) {
+    private void renderNoTank(GuiGraphics guiGraphics, int mouseX, int mouseY, int x, int y) {
         if (MouseUtil.isMouseAboveArea(mouseX, mouseY, x, y, 107,  55, 16, 16)) {
-            guiGraphics.renderTooltip(this.font, Component.literal("Place a Tank adjacent to the controller!").withStyle(ChatFormatting.RED), mouseX, mouseY);
+            guiGraphics.renderTooltip(this.font, Component.literal("Place a Tank adjacent to the Solidifier to increase speed!").withStyle(ChatFormatting.RED), mouseX, mouseY);
         }
     }
 
     private void renderEmptyTank (GuiGraphics guiGraphics, int mouseX, int mouseY, int x, int y) {
         if (MouseUtil.isMouseAboveArea(mouseX, mouseY, x, y, 107,  55, 16, 16)) {
-            guiGraphics.renderTooltip(this.font, Component.literal("Tank missing fuel!").withStyle(ChatFormatting.RED), mouseX, mouseY);
+            guiGraphics.renderTooltip(this.font, Component.literal("Use cooler fuels in tank to speed up the Solidifier!").withStyle(ChatFormatting.RED), mouseX, mouseY);
         }
     }
 

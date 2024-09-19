@@ -289,8 +289,8 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
             };
 
             sync();
-            updateSpeed();
             fuelInformation(level.getBlockEntity(this.worldPosition));
+            updateSpeed();
 
             if (itemHandler.getStackInSlot(0).isEmpty()) {
                 resetProgress();
@@ -398,33 +398,39 @@ public class SolidifierBlockEntity extends BlockEntity implements MenuProvider, 
     }
 
 
-    private boolean fuelInformation(BlockEntity entity) {
+    private void fuelInformation(BlockEntity entity) {
         if (entity == null) {
-            return false;
+            return;
         }
         Level level = entity.getLevel();
-        if (level != null) {
+        if (level != null && !level.isClientSide()) {
+            boolean foundFuel = false;
             for (Direction direction : Direction.values()) {
                 BlockEntity adjacentEntity = level.getBlockEntity(entity.getBlockPos().relative(direction));
+
                 if (adjacentEntity instanceof TankBlockEntity tankBlockEntity) {
                     List<RecipeHolder<FuelRecipe>> allFuels = level.getRecipeManager().getAllRecipesFor(FuelRecipe.Type.INSTANCE);
 
                     for (RecipeHolder<FuelRecipe> recipeHolder : allFuels) {
                         FuelRecipe recipe = recipeHolder.value();
                         if (recipe.fluid().getFluid() == tankBlockEntity.FLUID_TANK.getFluid().getFluid()) {
-
-                        //    maxProgress = recipe.smeltTime();
                             fuelTemp = recipe.temp();
-
+                            foundFuel = true;
+                            break;
                         }
                     }
-                } else {
-                    fuelTemp = 1000;
+
+                    if (foundFuel) {
+                        break;
+                    }
                 }
             }
+            if (!foundFuel) {
+                fuelTemp = 1000;  // Set the default temperature
+            }
         }
-        return false;
     }
+
 
     private void useFuel(BlockEntity entity) {
         if (entity == null) {

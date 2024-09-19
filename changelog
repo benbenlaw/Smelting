@@ -2,6 +2,11 @@ Changelog BBL Smelting
 
 // TODO //
 
+1.12.1
+
+Fixed fuel tank not effecting the speed of the solidifier in certain directions
+Fixed Solidifier screen tooltips about tank
+
 1.12.0
 
 Updated to opolis utilities 4.10.0
