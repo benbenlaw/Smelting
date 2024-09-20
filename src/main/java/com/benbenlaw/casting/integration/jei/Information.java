@@ -2,6 +2,7 @@ package com.benbenlaw.casting.integration.jei;
 
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.casting.block.ModBlocks;
+import com.benbenlaw.casting.item.ModItems;
 import com.benbenlaw.casting.recipe.FuelRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -43,6 +44,9 @@ public class Information implements IModPlugin {
 
         reg.addIngredientInfo(new ItemStack(ModBlocks.CONTROLLER), VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.casting.controller"));
+
+        reg.addIngredientInfo(new ItemStack(ModItems.FLUID_MOVER.get()), VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.casting.fluid_mover"));
     }
 
 }

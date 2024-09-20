@@ -1,5 +1,6 @@
 package com.benbenlaw.casting.block.entity;
 
+import com.benbenlaw.casting.block.custom.ControllerBlock;
 import com.benbenlaw.opolisutilities.block.entity.custom.handler.InputOutputItemHandler;
 import com.benbenlaw.opolisutilities.util.inventory.IInventoryHandlingBlockEntity;
 import com.benbenlaw.casting.screen.SmelterMenu;
@@ -406,6 +407,8 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
             fuelInformation(level.getBlockEntity(this.worldPosition));
             sync();
 
+            boolean isPowered = false; // Flag to track if any recipe is running
+
             // Iterate through each slot independently
             for (int i = 0; i < 15; i++) {  // Loop includes slot 14
                 if (itemHandler.getStackInSlot(i).isEmpty()) {
@@ -430,19 +433,16 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                     if (canFitFluidInAnyTank(output) && hasEnoughFuel(level.getBlockEntity(this.worldPosition), match.value().meltingTemp())) {
 
                         maxProgress = setNewMaxProgress(fuelTemp, match.value().meltingTemp());
-
-
+                        isPowered = true;
                         // Progress logic for damageable items
                         if (itemHandler.getStackInSlot(i).isDamageableItem()) {
                             progress[i]++;
+                            level.setBlockAndUpdate(worldPosition, level.getBlockState(worldPosition).setValue(ControllerBlock.POWERED, true));
 
                             if (progress[i] >= maxProgress) {
-
                                 ItemStack stack = itemHandler.getStackInSlot(i);
                                 float outputAmountModifier = (float) (stack.getMaxDamage() - stack.getDamageValue()) / (float) stack.getMaxDamage();
                                 int outputAmountModified = Math.round(output.getAmount() * outputAmountModifier);
-
-                                //    System.out.println("Output Amount Modifier: " + outputAmountModifier);
 
                                 itemHandler.getStackInSlot(i).shrink(1);
                                 addFluidToTank(output, outputAmountModified);
@@ -455,6 +455,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                         } else {
                             // Progress logic for non-damageable items
                             progress[i]++;
+                            level.setBlockAndUpdate(worldPosition, level.getBlockState(worldPosition).setValue(ControllerBlock.POWERED, true));
 
                             if (progress[i] >= maxProgress) {
                                 itemHandler.getStackInSlot(i).shrink(1);
@@ -469,6 +470,9 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                         resetProgress(i);
                     }
                 }
+            }
+            if (!isPowered) {
+                level.setBlockAndUpdate(worldPosition, level.getBlockState(worldPosition).setValue(ControllerBlock.POWERED, false));
             }
         }
     }

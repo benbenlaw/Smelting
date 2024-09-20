@@ -1,7 +1,9 @@
 package com.benbenlaw.casting.screen;
 
 import com.benbenlaw.casting.block.entity.TankBlockEntity;
+import com.benbenlaw.casting.item.ModItems;
 import com.benbenlaw.casting.networking.payload.ClearTankPayload;
+import com.benbenlaw.casting.networking.payload.FluidMoverPayload;
 import com.benbenlaw.casting.screen.utils.FuelTankFluidStackWidget;
 import com.benbenlaw.opolisutilities.screen.utils.FluidStackWidget;
 import com.benbenlaw.opolisutilities.screen.utils.FluidTankRenderer;
@@ -16,6 +18,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
@@ -126,6 +129,9 @@ public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
     public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
         boolean handled = super.mouseClicked(mouseX, mouseY, mouseButton);
 
+        ItemStack heldItem = menu.getCarried();
+        boolean isHoldingBucket = heldItem.is(ModItems.FLUID_MOVER);
+
         int tankX = leftPos + 27;
         int tankY = topPos + 15;
         int tankWidth = 14;
@@ -136,8 +142,12 @@ public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
             int tank = this.menu.blockEntity.TANK.getTanks();
 
             boolean hasShiftDown = SolidifierScreen.hasShiftDown();
-            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, tank));
 
+            if (isHoldingBucket) {
+                PacketDistributor.sendToServer(new FluidMoverPayload(menu.blockEntity.getBlockPos(), tank)); // Send the packet to fill bucket
+            } else {
+                PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, tank));
+            }
         }
         return handled;
     }

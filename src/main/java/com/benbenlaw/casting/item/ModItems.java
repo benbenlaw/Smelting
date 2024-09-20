@@ -39,6 +39,9 @@ public class ModItems {
     public static final DeferredItem<Item> BLACK_BRICK = ITEMS.register("black_brick",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> FLUID_MOVER = ITEMS.register("fluid_mover",
+            () -> new FluidMoverItem(new Item.Properties()));
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -2,6 +2,12 @@ Changelog BBL Smelting
 
 // TODO //
 
+1.13.0
+
+Controller now has particles when running
+Added fluid mover, does what you think click tank to collect fluid from a tank gui and click to add to another tank
+Added JEI Information about the fluid mover
+
 1.12.1
 
 Fixed fuel tank not effecting the speed of the solidifier in certain directions

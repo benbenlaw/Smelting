@@ -1,6 +1,8 @@
 package com.benbenlaw.casting.screen;
 
+import com.benbenlaw.casting.item.ModItems;
 import com.benbenlaw.casting.networking.payload.ClearTankPayload;
+import com.benbenlaw.casting.networking.payload.FluidMoverPayload;
 import com.benbenlaw.casting.screen.utils.FuelTankFluidStackWidget;
 import com.benbenlaw.opolisutilities.util.MouseUtil;
 import com.benbenlaw.casting.Casting;
@@ -15,6 +17,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
@@ -124,6 +127,11 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
     public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
         boolean handled = super.mouseClicked(mouseX, mouseY, mouseButton);
 
+        // Get the item in the player's hand
+        ItemStack heldItem = menu.getCarried(); // Get the item in the player's main hand
+        boolean isHoldingBucket = heldItem.is(ModItems.FLUID_MOVER); // Check if it's the Fluid Mover item
+
+        // Tank positions and dimensions
         int tankX_1 = leftPos + 136;
         int tankY_1 = topPos + 15;
         int tankX_2 = leftPos + 153;
@@ -136,29 +144,49 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         int tankWidth = 14;
         int tankHeight = 26;
 
-
+        // Check if mouse click is within Tank 1's bounds
         if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_1, tankY_1, tankWidth, tankHeight)) {
             boolean hasShiftDown = SolidifierScreen.hasShiftDown();
-            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 1));
+            if (isHoldingBucket) {
+                PacketDistributor.sendToServer(new FluidMoverPayload(menu.blockEntity.getBlockPos(), 1)); // Send packet to fill the item from Tank 1
+            } else {
+                PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 1)); // Clear Tank 1
+            }
         }
 
+        // Check if mouse click is within Tank 2's bounds
         if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_2, tankY_2, tankWidth, tankHeight)) {
             boolean hasShiftDown = SolidifierScreen.hasShiftDown();
-            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 2));
+            if (isHoldingBucket) {
+                PacketDistributor.sendToServer(new FluidMoverPayload(menu.blockEntity.getBlockPos(), 2)); // Send packet to fill the item from Tank 2
+            } else {
+                PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 2)); // Clear Tank 2
+            }
         }
 
+        // Check if mouse click is within Tank 3's bounds
         if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_3, tankY_3, tankWidth, tankHeight)) {
             boolean hasShiftDown = SolidifierScreen.hasShiftDown();
-            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 3));
+            if (isHoldingBucket) {
+                PacketDistributor.sendToServer(new FluidMoverPayload(menu.blockEntity.getBlockPos(), 3)); // Send packet to fill the item from Tank 3
+            } else {
+                PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 3)); // Clear Tank 3
+            }
         }
 
+        // Check if mouse click is within Tank 4's bounds
         if (MouseUtil.isMouseOver(mouseX, mouseY, tankX_4, tankY_4, tankWidth, tankHeight)) {
             boolean hasShiftDown = SolidifierScreen.hasShiftDown();
-            PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 4));
+            if (isHoldingBucket) {
+                PacketDistributor.sendToServer(new FluidMoverPayload(menu.blockEntity.getBlockPos(), 4)); // Send packet to fill the item from Tank 4
+            } else {
+                PacketDistributor.sendToServer(new ClearTankPayload(menu.blockEntity.getBlockPos(), hasShiftDown, 4)); // Clear Tank 4
+            }
         }
 
         return handled;
     }
+
 
     private void renderWarning(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 

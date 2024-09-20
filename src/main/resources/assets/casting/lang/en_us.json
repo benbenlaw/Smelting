@@ -14,6 +14,7 @@
   "item.casting.gem_mold": "Gem Mold",
   "item.casting.dust_mold": "Dust Mold",
   "item.casting.black_brick": "Black Brick",
+  "item.casting.fluid_mover": "Fluid Mover",
 
   "item.casting.molten_iron_bucket": "Molten Iron Bucket",
   "item.casting.molten_gold_bucket": "Molten Gold Bucket",
@@ -111,6 +112,7 @@
   "jei.casting.controller": "The Controller can be used to melt items into there molten variants! \n\nThis needs a Fuel Tank to work, the Fuel Tank must contain a Fuel that is hot enough to melt the item, Hotter fluids melt faster\n\nHolding Shift whilst above a certain tank and left clicking will remove the fluid from the that tank!\n\nStores fluids when broken!",
   "jei.casting.mixer": "The Mixer can be used to mix molten fluids together! \n\nHolding Shift whilst above a certain tank and left clicking will remove the fluid from the that tank!\n\nStores fluids when broken!",
   "jei.casting.tank": "The Tank stores the fuel used in the Controller to melt items! \n\nStores fluids when broken!",
+  "jei.casting.fluid_mover": "Used to move fluids between tanks, Holds up to 8000mb of a single fluid. \n\nClick on a tank to collect fluid and click on another tank to add!\n\nWill try to fill the selected tank before collecting fluids!",
 
   "itemGroup.casting": "BBL Casting"
 
