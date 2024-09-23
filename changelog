@@ -2,6 +2,12 @@ Changelog BBL Smelting
 
 // TODO //
 
+1.13.2
+
+1.13.1
+
+Made max stack size for fluid mover 1
+
 1.13.0
 
 Controller now has particles when running

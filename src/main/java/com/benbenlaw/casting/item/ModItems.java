@@ -40,7 +40,7 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> FLUID_MOVER = ITEMS.register("fluid_mover",
-            () -> new FluidMoverItem(new Item.Properties()));
+            () -> new FluidMoverItem(new Item.Properties().stacksTo(1)));
 
 
     public static void register(IEventBus eventBus) {
