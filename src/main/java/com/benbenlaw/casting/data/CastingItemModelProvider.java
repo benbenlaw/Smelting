@@ -40,6 +40,8 @@ public class CastingItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.DUST_MOLD);
         simpleItem(ModItems.BLACK_BRICK);
 
+        simpleItem(ModItems.FLUID_MOVER);
+
         simpleBucketItem("molten_coal_bucket", CastingFluids.MOLTEN_COAL.getFluid());
         simpleBucketItem("molten_copper_bucket", CastingFluids.MOLTEN_COPPER.getFluid());
         simpleBucketItem("molten_diamond_bucket", CastingFluids.MOLTEN_DIAMOND.getFluid());

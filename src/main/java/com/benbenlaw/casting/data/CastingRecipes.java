@@ -36,6 +36,16 @@ public class CastingRecipes extends RecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput consumer) {
 
+        //Fluid Mover
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FLUID_MOVER.get(), 1)
+                .pattern(" BB")
+                .pattern(" BB")
+                .pattern("B  ")
+                .define('B', ModItems.BLACK_BRICK.get())
+                .unlockedBy("has_black_brick", has(ModItems.BLACK_BRICK.get()))
+                .save(consumer);
+
         //Black Brick
 
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BRICK), RecipeCategory.MISC, new ItemStack(ModItems.BLACK_BRICK.get()), 0.5f, 100)

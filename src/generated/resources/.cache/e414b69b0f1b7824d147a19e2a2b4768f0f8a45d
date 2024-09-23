@@ -1,5 +1,4 @@
-// 1.21	2024-09-08T18:37:16.7547056	casting Block States
-2aa30e731299e20bfaeb5903cc0ebf7ed84c6ab3 assets/casting/blockstates/black_bricks.json
+// 1.21	2024-09-23T10:44:00.743848	casting Block States
 f1b90fb463ca3cf55b59a9aa89ab469e239debd8 assets/casting/blockstates/molten_aluminum.json
 3ff126254488dc15d81698f04e222175460c7cde assets/casting/blockstates/molten_brass.json
 55dad819f9c7854b6a11504961eeaf8b8b2a5f4d assets/casting/blockstates/molten_bronze.json
@@ -35,7 +34,6 @@ f936596d7f193bc346f8aaab2aeed96b6af10645 assets/casting/blockstates/molten_steel
 b6a7449f430e924676bf1f2a0f0f2f21f51c01ef assets/casting/blockstates/molten_tin.json
 959fe4108c805dad02338a8c5345869283987a46 assets/casting/blockstates/molten_uranium.json
 8b43d7916bf3a98a84fe96f615cbebc8953ed0a7 assets/casting/blockstates/molten_zinc.json
-fe2862acf1cc64652c664c258656b169d5051e53 assets/casting/models/block/black_bricks.json
 9abf91c1cdbbcf542a9337a178e80bafbbdfdba7 assets/casting/models/block/molten_aluminum.json
 01a55a6864453065090c2e193a37a91b334cfa37 assets/casting/models/block/molten_brass.json
 2091f7c269dc81498bde855e561ad661c3f0aebe assets/casting/models/block/molten_bronze.json
@@ -71,4 +69,3 @@ a8765c7d2465ce7a2581cfa63f91815a7f4abd2a assets/casting/models/block/molten_ston
 5072bef6cd1453ede19c30e4f0e447600b2ecf49 assets/casting/models/block/molten_tin.json
 eb42b459a8b913c9d1b0f18ebeae2a4af4944d61 assets/casting/models/block/molten_uranium.json
 8c84bcc5b4b5cba22e1c7eeba7a137809b9d68ea assets/casting/models/block/molten_zinc.json
-7c28615e2ba9bedbd5282c049e24757168c084c9 assets/casting/models/item/black_bricks.json

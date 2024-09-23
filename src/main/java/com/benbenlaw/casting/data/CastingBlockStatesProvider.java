@@ -26,8 +26,6 @@ public class CastingBlockStatesProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
 
-        blockWithItem(ModBlocks.BLACK_BRICKS);
-
         fluidBlocks("molten_coal", CastingFluids.MOLTEN_COAL.getBlock());
         fluidBlocks("molten_copper", CastingFluids.MOLTEN_COPPER.getBlock());
         fluidBlocks("molten_diamond", CastingFluids.MOLTEN_DIAMOND.getBlock());

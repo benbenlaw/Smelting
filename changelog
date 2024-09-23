@@ -4,6 +4,9 @@ Changelog BBL Smelting
 
 1.13.2
 
+Fixed textures (got messed up)
+Added recipe for fluid mover and texture
+
 1.13.1
 
 Made max stack size for fluid mover 1
