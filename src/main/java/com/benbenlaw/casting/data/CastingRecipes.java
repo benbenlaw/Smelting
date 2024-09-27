@@ -240,8 +240,6 @@ public class CastingRecipes extends RecipeProvider {
                         new FluidStack(CastingFluids.MOLTEN_IRON.getFluid(), 90), 1000)
                 .unlockedBy("has_item", has(ironDustTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(ironDustTag))), "casting:melting/iron/from_dust");
 
-
-
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(Tags.Items.STORAGE_BLOCKS_IRON), 1),
                         new FluidStack(CastingFluids.MOLTEN_IRON.getFluid(), 810), 1000)
                 .unlockedBy("has_item", has(Tags.Items.ORES_IRON))
@@ -1413,7 +1411,7 @@ public class CastingRecipes extends RecipeProvider {
                 .unlockedBy("has_item", has(nickelRawOreTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(nickelRawOreTag))), "casting:melting/nickel/from_raw_ore");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(nickelRawOreBlockTag), 1),
-                new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 810), 1000)
+                new FluidStack(CastingFluids.MOLTEN_NICKEL.getFluid(), 900), 1000)
         .unlockedBy("has_item", has(nickelRawOreBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(nickelRawOreBlockTag))), "casting:melting/nickel/from_raw_ore_block");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(nickelBlockTag), 1),
@@ -1468,7 +1466,7 @@ public class CastingRecipes extends RecipeProvider {
                 .unlockedBy("has_item", has(zincRawOreTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(zincRawOreTag))), "casting:melting/zinc/from_raw_ore");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(zincRawOreBlockTag), 1),
-                new FluidStack(CastingFluids.MOLTEN_ZINC.getFluid(), 810), 1000)
+                new FluidStack(CastingFluids.MOLTEN_ZINC.getFluid(), 900), 1000)
         .unlockedBy("has_item", has(zincRawOreBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(zincRawOreBlockTag))), "casting:melting/zinc/from_raw_ore_block");
 
                 MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(zincBlockTag), 1),
@@ -1522,7 +1520,7 @@ public class CastingRecipes extends RecipeProvider {
                 .unlockedBy("has_item", has(iridiumRawOreTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(iridiumRawOreTag))), "casting:melting/iridium/from_raw_ore");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(iridiumRawOreBlockTag), 1),
-                new FluidStack(CastingFluids.MOLTEN_IRIDIUM.getFluid(), 810), 1000)
+                new FluidStack(CastingFluids.MOLTEN_IRIDIUM.getFluid(), 900), 1000)
         .unlockedBy("has_item", has(iridiumRawOreBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(iridiumRawOreBlockTag))), "casting:melting/iridium/from_raw_ore_block");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(iridiumBlockTag), 1),
@@ -1576,7 +1574,7 @@ public class CastingRecipes extends RecipeProvider {
                 .unlockedBy("has_item", has(platinumRawOreTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(platinumRawOreTag))), "casting:melting/platinum/from_raw_ore");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(platinumRawOreBlockTag), 1),
-                new FluidStack(CastingFluids.MOLTEN_PLATINUM.getFluid(), 810), 1000)
+                new FluidStack(CastingFluids.MOLTEN_PLATINUM.getFluid(), 900), 1000)
         .unlockedBy("has_item", has(platinumRawOreBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(platinumRawOreBlockTag))), "casting:melting/platinum/from_raw_ore_block");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(platinumBlockTag), 1),
@@ -1630,7 +1628,7 @@ public class CastingRecipes extends RecipeProvider {
                 .unlockedBy("has_item", has(aluminumRawOreTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(aluminumRawOreTag))), "casting:melting/aluminum/from_raw_ore");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(aluminumRawOreBlockTag), 1),
-                new FluidStack(CastingFluids.MOLTEN_ALUMINUM.getFluid(), 810), 1000)
+                new FluidStack(CastingFluids.MOLTEN_ALUMINUM.getFluid(), 900), 1000)
         .unlockedBy("has_item", has(aluminumRawOreBlockTag)).save(consumer.withConditions(new NotCondition(new TagEmptyCondition(aluminumRawOreBlockTag))), "casting:melting/aluminum/from_raw_ore_block");
 
         MeltingRecipeBuilder.MeltingRecipesBuilder(new SizedIngredient(Ingredient.of(aluminumBlockTag), 1),

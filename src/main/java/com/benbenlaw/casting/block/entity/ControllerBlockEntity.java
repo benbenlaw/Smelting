@@ -253,7 +253,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
     public final ContainerData data;
     public int[] progress = new int[15];
-    public int maxProgress;
+    public int[] maxProgress = new int[15];
     public int fuelTemp = 0;
     private final IItemHandler controllerItemHandler = new InputOutputItemHandler(itemHandler,
             (i, stack) -> i != 15,
@@ -282,7 +282,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                 if (index < 15) {
                     return ControllerBlockEntity.this.progress[index];
                 } else if (index == 15) {
-                    return ControllerBlockEntity.this.maxProgress;
+                    return ControllerBlockEntity.this.maxProgress[index - 15];
                 } else {
                     return 0;
                 }
@@ -292,7 +292,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                 if (index < 15) {
                     ControllerBlockEntity.this.progress[index] = value;
                 } else if (index == 15) {
-                    ControllerBlockEntity.this.maxProgress = value;
+                    ControllerBlockEntity.this.maxProgress[index - 15] = value;
                 }
             }
 
@@ -351,7 +351,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         super.saveAdditional(compoundTag, provider);
         compoundTag.put("inventory", this.itemHandler.serializeNBT(provider));
         compoundTag.putIntArray("progress", progress);
-        compoundTag.putInt("maxProgress", maxProgress);
+        compoundTag.putIntArray("maxProgress", maxProgress);
         compoundTag.putInt("fuelTemp", fuelTemp);
         compoundTag.put("tank1", TANK_1.writeToNBT(provider, new CompoundTag()));
         compoundTag.put("tank2", TANK_2.writeToNBT(provider, new CompoundTag()));
@@ -366,7 +366,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
         this.itemHandler.deserializeNBT(provider, compoundTag.getCompound("inventory"));
 
         progress = compoundTag.getIntArray("progress");
-        maxProgress = compoundTag.getInt("maxProgress");
+        maxProgress = compoundTag.getIntArray("maxProgress");
         fuelTemp = compoundTag.getInt("fuelTemp");
 
         TANK_1.readFromNBT(provider, compoundTag.getCompound("tank1"));
@@ -432,14 +432,17 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
                     if (canFitFluidInAnyTank(output) && hasEnoughFuel(level.getBlockEntity(this.worldPosition), match.value().meltingTemp())) {
 
-                        maxProgress = setNewMaxProgress(fuelTemp, match.value().meltingTemp());
+                        maxProgress[i] = setNewMaxProgress(fuelTemp, match.value().meltingTemp());
+
+                        System.out.println("Slot " + i + " maxProgress set to: " + maxProgress[i]);
+
                         isPowered = true;
                         // Progress logic for damageable items
                         if (itemHandler.getStackInSlot(i).isDamageableItem()) {
                             progress[i]++;
                             level.setBlockAndUpdate(worldPosition, level.getBlockState(worldPosition).setValue(ControllerBlock.POWERED, true));
 
-                            if (progress[i] >= maxProgress) {
+                            if (progress[i] >= maxProgress[i]) {
                                 ItemStack stack = itemHandler.getStackInSlot(i);
                                 float outputAmountModifier = (float) (stack.getMaxDamage() - stack.getDamageValue()) / (float) stack.getMaxDamage();
                                 int outputAmountModified = Math.round(output.getAmount() * outputAmountModifier);
@@ -457,7 +460,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
                             progress[i]++;
                             level.setBlockAndUpdate(worldPosition, level.getBlockState(worldPosition).setValue(ControllerBlock.POWERED, true));
 
-                            if (progress[i] >= maxProgress) {
+                            if (progress[i] >= maxProgress[i]) {
                                 itemHandler.getStackInSlot(i).shrink(1);
                                 addFluidToTank(output, output.getAmount());
                                 useFuel(this);
@@ -508,8 +511,8 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
     private void resetProgress(int slot) {
         progress[slot] = 0;
-    }
 
+    }
     private void addFluidToTank(FluidStack output, int amount) {
         if((TANK_1.getFluid().getFluid() == output.getFluid() && (TANK_1.getCapacity() - TANK_1.getFluidAmount() >= output.getAmount()) ) || TANK_1.getFluid().isEmpty()) {
             TANK_1.fill(new FluidStack(output.getFluid(), amount), IFluidHandler.FluidAction.EXECUTE);
@@ -675,17 +678,13 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
             throw new IllegalArgumentException("recipeTemp must be greater than zero");
         }
 
-        // Handle cases where fuel temperature is too low to have an effect
         if (fuelInTankTemp < recipeTemp) {
-            return 10000; // or some large number indicating that melting cannot proceed
+            return 10000;
         }
 
-        // Calculate newMaxProgress based on the temperature ratio
         double temperatureRatio = (double) fuelInTankTemp / recipeTemp;
         int newMaxProgress = (int) (240 / temperatureRatio);
 
-        // Ensure that newMaxProgress is within a reasonable range
-        // Here you might want to set a minimum progress value
         return Math.max(newMaxProgress, 1); // Ensure it's at least 1
     }
 }

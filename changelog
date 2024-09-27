@@ -2,6 +2,16 @@ Changelog BBL Smelting
 
 // TODO //
 
+1.13.4
+
+1.13.3
+
+DESTROY IN WORLD CONTROLLERS BEFORE UPDATING
+
+Controller max progress now varies per slot this means that each slot can smelt at a different speed if the fluid is hotter than required
+Fixed raw storage recipes melting into the wrong amount
+Empty tanks now display air in the tank
+
 1.13.2
 
 Fixed textures (got messed up)

@@ -4,6 +4,7 @@ import com.benbenlaw.casting.block.entity.TankBlockEntity;
 import com.benbenlaw.casting.item.ModItems;
 import com.benbenlaw.casting.networking.payload.ClearTankPayload;
 import com.benbenlaw.casting.networking.payload.FluidMoverPayload;
+import com.benbenlaw.casting.screen.utils.FluidStackWidgetBigTank;
 import com.benbenlaw.casting.screen.utils.FuelTankFluidStackWidget;
 import com.benbenlaw.opolisutilities.screen.utils.FluidStackWidget;
 import com.benbenlaw.opolisutilities.screen.utils.FluidTankRenderer;
@@ -54,7 +55,7 @@ public class SolidifierScreen extends AbstractContainerScreen<SolidifierMenu> {
     }
 
     private void addFluidWidgets() {
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK, leftPos + 27, topPos + 15, 14, 56));
+        addRenderableOnly(new FluidStackWidgetBigTank(this, getMenu().blockEntity.TANK, leftPos + 27, topPos + 15, 14, 56));
 
 
         FluidTank fuelTank = new FluidTank(0);

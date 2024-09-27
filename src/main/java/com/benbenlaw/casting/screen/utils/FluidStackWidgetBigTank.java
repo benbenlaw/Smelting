@@ -15,18 +15,17 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 
 import java.util.Arrays;
 
-public class FluidStackWidget extends OpolisUtilitiesWidget {
+public class FluidStackWidgetBigTank extends OpolisUtilitiesWidget {
     private final Screen screen;
     private final FluidTank getFluid;
 
-    public FluidStackWidget(Screen screen, FluidTank getFluid, int pX, int pY, int pWidth, int pHeight) {
+    public FluidStackWidgetBigTank(Screen screen, FluidTank getFluid, int pX, int pY, int pWidth, int pHeight) {
         super(pX, pY, pWidth, pHeight);
         this.screen = screen;
         this.getFluid = getFluid;
@@ -81,7 +80,7 @@ public class FluidStackWidget extends OpolisUtilitiesWidget {
     }
 
     public void renderToolTip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        if (MouseUtil.isMouseAboveArea(mouseX, mouseY, this.x, this.y, 0, 0, 14, 26)) {
+        if (MouseUtil.isMouseAboveArea(mouseX, mouseY, this.x, this.y, 0, 0, 14, 52)) {
             Font font = this.screen.getMinecraft().font;
             FormattedCharSequence[] tooltipText = new FormattedCharSequence[2];
             int fluidAmount;

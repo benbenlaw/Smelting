@@ -3,6 +3,7 @@ package com.benbenlaw.casting.screen;
 import com.benbenlaw.casting.item.ModItems;
 import com.benbenlaw.casting.networking.payload.ClearTankPayload;
 import com.benbenlaw.casting.networking.payload.FluidMoverPayload;
+import com.benbenlaw.casting.screen.utils.FluidStackWidgetBigTank;
 import com.benbenlaw.opolisutilities.screen.utils.FluidStackWidget;
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.opolisutilities.util.MouseUtil;
@@ -38,14 +39,14 @@ public class MixerScreen extends AbstractContainerScreen<MixerMenu> {
 
 
     public void addFluidWidgets() {
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_1, this.leftPos + 9, this.topPos + 15, 14, 56));
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_2, this.leftPos + 27, this.topPos + 15, 14, 56));
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_3, this.leftPos + 45, this.topPos + 15, 14, 56));
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_4, this.leftPos + 63, this.topPos + 15, 14, 56));
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_5, this.leftPos + 81, this.topPos + 15, 14, 56));
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.TANK_6, this.leftPos + 99, this.topPos + 15, 14, 56));
+        addRenderableOnly(new FluidStackWidgetBigTank(this, getMenu().blockEntity.TANK_1, this.leftPos + 9, this.topPos + 15, 14, 56));
+        addRenderableOnly(new FluidStackWidgetBigTank(this, getMenu().blockEntity.TANK_2, this.leftPos + 27, this.topPos + 15, 14, 56));
+        addRenderableOnly(new FluidStackWidgetBigTank(this, getMenu().blockEntity.TANK_3, this.leftPos + 45, this.topPos + 15, 14, 56));
+        addRenderableOnly(new FluidStackWidgetBigTank(this, getMenu().blockEntity.TANK_4, this.leftPos + 63, this.topPos + 15, 14, 56));
+        addRenderableOnly(new FluidStackWidgetBigTank(this, getMenu().blockEntity.TANK_5, this.leftPos + 81, this.topPos + 15, 14, 56));
+        addRenderableOnly(new FluidStackWidgetBigTank(this, getMenu().blockEntity.TANK_6, this.leftPos + 99, this.topPos + 15, 14, 56));
 
-        addRenderableOnly(new FluidStackWidget(this, getMenu().blockEntity.OUTPUT_TANK, this.leftPos + 153, this.topPos + 15, 14, 56));
+        addRenderableOnly(new FluidStackWidgetBigTank(this, getMenu().blockEntity.OUTPUT_TANK, this.leftPos + 153, this.topPos + 15, 14, 56));
     }
 
     @Override
