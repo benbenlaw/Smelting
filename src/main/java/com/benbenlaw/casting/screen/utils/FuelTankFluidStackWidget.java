@@ -89,13 +89,13 @@ public class FuelTankFluidStackWidget extends OpolisUtilitiesWidget {
             if (blockEntity instanceof ControllerBlockEntity controllerBlockEntity) {
 
                 // Create an array to hold the tooltip lines
-                FormattedCharSequence[] tooltipLines = new FormattedCharSequence[4];
+                FormattedCharSequence[] tooltipLines = new FormattedCharSequence[3];
 
                 tooltipLines[0] = this.getFluid.getFluid().getHoverName().getVisualOrderText();
                 tooltipLines[1] = Component.literal("" + this.getFluid.getFluidAmount() + "mB / " + this.getFluid.getCapacity() + "mB").getVisualOrderText();
 
                 tooltipLines[2] = Component.literal("Fuel Temp: " + controllerBlockEntity.fuelTemp).getVisualOrderText();
-                tooltipLines[3] = Component.literal("Ticks Per Recipe: " + controllerBlockEntity.maxProgress).getVisualOrderText();
+            //    tooltipLines[3] = Component.literal("Ticks Per Recipe: " + controllerBlockEntity.maxProgress).getVisualOrderText();
 
                 guiGraphics.renderTooltip(var10001, Arrays.asList(tooltipLines), mouseX, mouseY);
 
