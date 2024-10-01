@@ -434,7 +434,7 @@ public class ControllerBlockEntity extends BlockEntity implements MenuProvider, 
 
                         maxProgress[i] = setNewMaxProgress(fuelTemp, match.value().meltingTemp());
 
-                        System.out.println("Slot " + i + " maxProgress set to: " + maxProgress[i]);
+                        //System.out.println("Slot " + i + " maxProgress set to: " + maxProgress[i]);
 
                         isPowered = true;
                         // Progress logic for damageable items

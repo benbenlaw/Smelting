@@ -2,6 +2,11 @@ Changelog BBL Smelting
 
 // TODO //
 
+
+1.13.5
+
+Fixed controller spamming the log with "Slot n maxProgress set to: 240"
+
 1.13.4
 
 Controller fuel tank no longer shows tick rates
