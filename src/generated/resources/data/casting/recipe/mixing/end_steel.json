@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/end_steel"
+      }
+    }
+  ],
+  "type": "casting:mixing",
+  "fluid1": {
+    "amount": 1000,
+    "id": "casting:molten_end_stone"
+  },
+  "fluid2": {
+    "amount": 90,
+    "id": "casting:molten_dark_steel"
+  },
+  "fluid3": {
+    "amount": 1000,
+    "id": "casting:molten_osmium"
+  },
+  "output": {
+    "amount": 90,
+    "id": "casting:molten_end_steel"
+  }
+}

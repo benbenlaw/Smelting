@@ -13,6 +13,7 @@
   "item.casting.nugget_mold": "Nugget Mold",
   "item.casting.gem_mold": "Gem Mold",
   "item.casting.dust_mold": "Dust Mold",
+  "item.casting.ball_mold": "Ball Mold",
   "item.casting.black_brick": "Black Brick",
   "item.casting.fluid_mover": "Fluid Mover",
 
@@ -59,6 +60,20 @@
   "item.casting.molten_brass_bucket": "Molten Brass Bucket",
   "item.casting.molten_enderium_bucket": "Molten Enderium Bucket",
   "item.casting.molten_emerald_bucket": "Molten Emerald Bucket",
+  "item.casting.molten_soul_bucket": "Molten Soul Bucket",
+  "item.casting.molten_dark_steel_bucket": "Molten Dark Steel Bucket",
+  "item.casting.molten_end_steel_bucket": "Molten End Steel Bucket",
+  "item.casting.molten_soularium_bucket": "Molten Soularium Bucket",
+  "item.casting.molten_vibrant_alloy_bucket": "Molten Vibrant Alloy Bucket",
+  "item.casting.molten_energetic_alloy_bucket": "Molten Energetic Alloy Bucket",
+  "item.casting.molten_pulsating_alloy_bucket": "Molten Pulsating Alloy Bucket",
+  "item.casting.molten_conductive_alloy_bucket": "Molten Conductive Alloy Bucket",
+  "item.casting.molten_silicon_bucket": "Molten Silicon Bucket",
+  "item.casting.molten_end_stone_bucket": "Molten End Stone Bucket",
+  "item.casting.molten_copper_alloy_bucket": "Molten Copper Alloy Bucket",
+  "item.casting.molten_redstone_alloy_bucket": "Molten Redstone Alloy Bucket",
+
+
 
   "block.casting.molten_iron": "Molten Iron",
   "block.casting.molten_gold": "Molten Gold",
@@ -103,6 +118,20 @@
   "block.casting.molten_constantan": "Molten Constantan",
   "block.casting.molten_brass": "Molten Brass",
   "block.casting.molten_enderium": "Molten Enderium",
+
+  "block.casting.molten_copper_alloy": "Molten Copper Alloy",
+  "block.casting.molten_vibrant_alloy": "Molten Vibrant Alloy",
+  "block.casting.molten_energetic_alloy": "Molten Energetic Alloy",
+  "block.casting.molten_pulsating_alloy": "Molten Pulsating Alloy",
+  "block.casting.molten_conductive_alloy": "Molten Conductive Alloy",
+  "block.casting.molten_silicon": "Molten Silicon",
+  "block.casting.molten_end_stone": "Molten End Stone",
+  "block.casting.molten_soul": "Molten Soul",
+  "block.casting.molten_dark_steel": "Molten Dark Steel",
+  "block.casting.molten_end_steel": "Molten End Steel",
+  "block.casting.molten_soularium": "Molten Soularium",
+  "block.casting.molten_redstone_alloy": "Molten Redstone Alloy",
+
 
   "screen.casting.warning": "Dump Fluid!",
 

@@ -65,7 +65,7 @@ public class SmelterMenu extends AbstractContainerMenu {
 
     public int getScaledProgress(int slotIndex) {
         int progress = this.data.get(slotIndex);  // Adjust as per how data is accessed in SmelterMenu
-        int maxProgress = this.data.get(15);      // Assuming max progress is stored at index 1
+        int maxProgress = this.blockEntity.maxProgress[slotIndex];      // Assuming max progress is stored at index 1
 
         int progressBarWidth = 19;  // Adjust according to your UI design
 

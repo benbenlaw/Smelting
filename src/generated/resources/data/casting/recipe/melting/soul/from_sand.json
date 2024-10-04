@@ -1,0 +1,12 @@
+{
+  "type": "casting:melting",
+  "input": {
+    "count": 1,
+    "tag": "minecraft:soul_fire_base_blocks"
+  },
+  "meltingTemp": 1200,
+  "output": {
+    "amount": 1000,
+    "id": "casting:molten_soul"
+  }
+}

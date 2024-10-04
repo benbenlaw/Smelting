@@ -31,6 +31,7 @@ public class ModCreativeModTab {
                 output.accept(ModItems.BLOCK_MOLD);
                 output.accept(ModItems.GEM_MOLD);
                 output.accept(ModItems.DUST_MOLD);
+                output.accept(ModItems.BALL_MOLD);
                 output.accept(ModItems.BLACK_BRICK);
                 output.accept(ModBlocks.BLACK_BRICKS);
 
@@ -69,6 +70,19 @@ public class ModCreativeModTab {
                 output.accept(CastingFluids.MOLTEN_SIGNALUM.getBucket());
                 output.accept(CastingFluids.MOLTEN_LUMIUM.getBucket());
                 output.accept(CastingFluids.MOLTEN_ENDERIUM.getBucket());
+
+                output.accept(CastingFluids.MOLTEN_CONDUCTIVE_ALLOY.getBucket());
+                output.accept(CastingFluids.MOLTEN_SILICON.getBucket());
+                output.accept(CastingFluids.MOLTEN_SOUL.getBucket());
+                output.accept(CastingFluids.MOLTEN_END_STONE.getBucket());
+                output.accept(CastingFluids.MOLTEN_SOULARIUM.getBucket());
+                output.accept(CastingFluids.MOLTEN_DARK_STEEL.getBucket());
+                output.accept(CastingFluids.MOLTEN_COPPER_ALLOY.getBucket());
+                output.accept(CastingFluids.MOLTEN_PULSATING_ALLOY.getBucket());
+                output.accept(CastingFluids.MOLTEN_VIBRANT_ALLOY.getBucket());
+                output.accept(CastingFluids.MOLTEN_ENERGETIC_ALLOY.getBucket());
+                output.accept(CastingFluids.MOLTEN_END_STEEL.getBucket());
+                output.accept(CastingFluids.MOLTEN_REDSTONE_ALLOY.getBucket());
 
                 output.accept(ModBlocks.SOLIDIFIER.asItem());
                 output.accept(ModBlocks.CONTROLLER.asItem());

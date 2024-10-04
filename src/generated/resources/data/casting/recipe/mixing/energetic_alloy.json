@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/energetic_alloy"
+      }
+    }
+  ],
+  "type": "casting:mixing",
+  "fluid1": {
+    "amount": 90,
+    "id": "casting:molten_redstone"
+  },
+  "fluid2": {
+    "amount": 90,
+    "id": "casting:molten_gold"
+  },
+  "fluid3": {
+    "amount": 250,
+    "id": "casting:molten_glowstone"
+  },
+  "output": {
+    "amount": 90,
+    "id": "casting:molten_energetic_alloy"
+  }
+}

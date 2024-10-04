@@ -62,6 +62,14 @@ public class CastingFluids {
     public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
             BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_GLOWSTONE;
 
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_END_STONE;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_SOUL;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_SILICON;
+
+
 
 
     //ALLOYS
@@ -88,6 +96,28 @@ public class CastingFluids {
             BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_BRASS;
     public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
             BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_CONSTANTAN;
+
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_END_STEEL;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_SOULARIUM;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_DARK_STEEL;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_PULSATING_ALLOY;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_CONDUCTIVE_ALLOY;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_COPPER_ALLOY;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_VIBRANT_ALLOY;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_ENERGETIC_ALLOY;
+    public static final FluidRegistryObject<FluidDeferredRegister.OpolisUtilitiesFluidTypes, BaseFlowingFluid.Source,
+            BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_REDSTONE_ALLOY;
+
+
+
 
 
     private CastingFluids() {
@@ -191,6 +221,18 @@ public class CastingFluids {
                 renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_glowstone_still"),
                         ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_glowstone_flow")));
 
+        MOLTEN_END_STONE = FLUIDS.register("molten_end_stone", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_end_stone_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_end_stone_flow")));
+
+        MOLTEN_SOUL = FLUIDS.register("molten_soul", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_soul_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_soul_flow")));
+
+        MOLTEN_SILICON = FLUIDS.register("molten_silicon", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_silicon_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_silicon_flow")));
+
 
         //ALLOYS
 
@@ -237,6 +279,45 @@ public class CastingFluids {
         MOLTEN_CONSTANTAN = FLUIDS.register("molten_constantan", (renderProperties) ->
                 renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_constantan_still"),
                         ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_constantan_flow")));
+
+        MOLTEN_END_STEEL = FLUIDS.register("molten_end_steel", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_end_steel_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_end_steel_flow")));
+
+        MOLTEN_SOULARIUM = FLUIDS.register("molten_soularium", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_soularium_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_soularium_flow")));
+
+        MOLTEN_DARK_STEEL = FLUIDS.register("molten_dark_steel", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_dark_steel_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_dark_steel_flow")));
+
+        MOLTEN_PULSATING_ALLOY = FLUIDS.register("molten_pulsating_alloy", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_pulsating_alloy_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_pulsating_alloy_flow")));
+
+        MOLTEN_CONDUCTIVE_ALLOY = FLUIDS.register("molten_conductive_alloy", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_conductive_alloy_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_conductive_alloy_flow")));
+
+        MOLTEN_COPPER_ALLOY = FLUIDS.register("molten_copper_alloy", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_copper_alloy_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_copper_alloy_flow")));
+
+        MOLTEN_VIBRANT_ALLOY = FLUIDS.register("molten_vibrant_alloy", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_vibrant_alloy_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_vibrant_alloy_flow")));
+
+        MOLTEN_ENERGETIC_ALLOY = FLUIDS.register("molten_energetic_alloy", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_energetic_alloy_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_energetic_alloy_flow")));
+
+        MOLTEN_REDSTONE_ALLOY = FLUIDS.register("molten_redstone_alloy", (renderProperties) ->
+                renderProperties.texture(ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_redstone_alloy_still"),
+                        ResourceLocation.fromNamespaceAndPath(Casting.MOD_ID, "block/molten_redstone_alloy_flow")));
+
+
+
 
 
 

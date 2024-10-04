@@ -50,6 +50,9 @@ public class CastingBlockStatesProvider extends BlockStateProvider {
         fluidBlocks("molten_iridium", CastingFluids.MOLTEN_IRIDIUM.getBlock());
         fluidBlocks("molten_glowstone", CastingFluids.MOLTEN_GLOWSTONE.getBlock());
         fluidBlocks("molten_ender", CastingFluids.MOLTEN_ENDER.getBlock());
+        fluidBlocks("molten_end_stone", CastingFluids.MOLTEN_END_STONE.getBlock());
+        fluidBlocks("molten_silicon", CastingFluids.MOLTEN_SILICON.getBlock());
+        fluidBlocks("molten_soul", CastingFluids.MOLTEN_SOUL.getBlock());
 
         fluidBlocks("molten_bronze", CastingFluids.MOLTEN_BRONZE.getBlock());
         fluidBlocks("molten_obsidian", CastingFluids.MOLTEN_OBSIDIAN.getBlock());
@@ -62,6 +65,16 @@ public class CastingBlockStatesProvider extends BlockStateProvider {
         fluidBlocks("molten_enderium", CastingFluids.MOLTEN_ENDERIUM.getBlock());
         fluidBlocks("molten_constantan", CastingFluids.MOLTEN_CONSTANTAN.getBlock());
         fluidBlocks("molten_brass", CastingFluids.MOLTEN_BRASS.getBlock());
+        fluidBlocks("molten_energetic_alloy", CastingFluids.MOLTEN_ENERGETIC_ALLOY.getBlock());
+        fluidBlocks("molten_vibrant_alloy", CastingFluids.MOLTEN_VIBRANT_ALLOY.getBlock());
+        fluidBlocks("molten_pulsating_alloy", CastingFluids.MOLTEN_PULSATING_ALLOY.getBlock());
+        fluidBlocks("molten_copper_alloy", CastingFluids.MOLTEN_COPPER_ALLOY.getBlock());
+        fluidBlocks("molten_dark_steel", CastingFluids.MOLTEN_DARK_STEEL.getBlock());
+        fluidBlocks("molten_soularium", CastingFluids.MOLTEN_SOULARIUM.getBlock());
+        fluidBlocks("molten_end_steel", CastingFluids.MOLTEN_END_STEEL.getBlock());
+        fluidBlocks("molten_conductive_alloy", CastingFluids.MOLTEN_CONDUCTIVE_ALLOY.getBlock());
+        fluidBlocks("molten_redstone_alloy", CastingFluids.MOLTEN_REDSTONE_ALLOY.getBlock());
+
     }
 
     private void fluidBlocks(String name, Block block) {

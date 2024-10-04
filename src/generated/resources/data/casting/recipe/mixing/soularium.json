@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/soularium"
+      }
+    }
+  ],
+  "type": "casting:mixing",
+  "fluid1": {
+    "amount": 90,
+    "id": "casting:molten_gold"
+  },
+  "fluid2": {
+    "amount": 1000,
+    "id": "casting:molten_soul"
+  },
+  "output": {
+    "amount": 90,
+    "id": "casting:molten_soularium"
+  }
+}

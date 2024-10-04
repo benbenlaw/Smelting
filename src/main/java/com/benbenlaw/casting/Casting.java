@@ -146,6 +146,32 @@ public class Casting {
             event.registerFluidType(CastingFluids.MOLTEN_ENDERIUM.getFluidType().getClientExtensions(),
                     CastingFluids.MOLTEN_ENDERIUM.getFluidType());
 
+            event.registerFluidType(CastingFluids.MOLTEN_CONDUCTIVE_ALLOY.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_CONDUCTIVE_ALLOY.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_SILICON.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_SILICON.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_SOUL.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_SOUL.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_END_STONE.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_END_STONE.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_SOULARIUM.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_SOULARIUM.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_DARK_STEEL.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_DARK_STEEL.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_COPPER_ALLOY.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_COPPER_ALLOY.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_PULSATING_ALLOY.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_PULSATING_ALLOY.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_VIBRANT_ALLOY.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_VIBRANT_ALLOY.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_ENERGETIC_ALLOY.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_ENERGETIC_ALLOY.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_END_STEEL.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_END_STEEL.getFluidType());
+            event.registerFluidType(CastingFluids.MOLTEN_REDSTONE_ALLOY.getFluidType().getClientExtensions(),
+                    CastingFluids.MOLTEN_REDSTONE_ALLOY.getFluidType());
+
+
 
             
         }

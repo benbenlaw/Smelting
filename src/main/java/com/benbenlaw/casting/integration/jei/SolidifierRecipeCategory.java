@@ -22,6 +22,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
@@ -89,7 +90,7 @@ public class SolidifierRecipeCategory implements IRecipeCategory<SolidifierRecip
         builder.addSlot(RecipeIngredientRole.INPUT, 40, 2).addFluidStack(recipe.fluid().getFluid(), recipe.fluid().getAmount());
 
         builder.addSlot(RecipeIngredientRole.CATALYST, 4, 2).addIngredients(VanillaTypes.ITEM_STACK, Arrays.asList(recipe.mold().getItems()));
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 113, 2).addIngredients(recipe.output().ingredient());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 113, 2).addItemStacks(Arrays.asList(recipe.output().getItems()));
     }
 
     public void draw(SolidifierRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {

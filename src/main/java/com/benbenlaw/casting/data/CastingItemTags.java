@@ -71,6 +71,19 @@ public class CastingItemTags extends ItemTagsProvider {
                 .add(CastingFluids.MOLTEN_SIGNALUM.getBucket())
                 .add(CastingFluids.MOLTEN_LUMIUM.getBucket())
                 .add(CastingFluids.MOLTEN_ENDERIUM.getBucket())
+                .add(CastingFluids.MOLTEN_ENERGETIC_ALLOY.getBucket())
+                .add(CastingFluids.MOLTEN_VIBRANT_ALLOY.getBucket())
+                .add(CastingFluids.MOLTEN_PULSATING_ALLOY.getBucket())
+                .add(CastingFluids.MOLTEN_COPPER_ALLOY.getBucket())
+                .add(CastingFluids.MOLTEN_DARK_STEEL.getBucket())
+                .add(CastingFluids.MOLTEN_SOULARIUM.getBucket())
+                .add(CastingFluids.MOLTEN_END_STEEL.getBucket())
+                .add(CastingFluids.MOLTEN_CONDUCTIVE_ALLOY.getBucket())
+                .add(CastingFluids.MOLTEN_SILICON.getBucket())
+                .add(CastingFluids.MOLTEN_SOUL.getBucket())
+                .add(CastingFluids.MOLTEN_END_STONE.getBucket())
+                .add(CastingFluids.MOLTEN_REDSTONE_ALLOY.getBucket())
+
         ;
 
 

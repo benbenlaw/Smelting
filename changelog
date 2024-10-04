@@ -2,10 +2,24 @@ Changelog BBL Smelting
 
 // TODO //
 
+1.14.0
+
+Added Molten Copper Alloy, Vibrant Alloy, Energetic Alloy, Pulsating Alloy, Soularium, Dark Steel, End Steel, Conductive Alloy, Redstone Alloy
+    End Stone, Soul and Silicon
+Added Ball Mold
+Ender Pearl Solidifier recipe now uses ball mold
+Solidifier recipes now show the correct amount of outputs in JEI instead of one
+Added Melting, Solidifying and Mixing recipes for the new fluids (Mixing if an alloy)
+This should mean we are now compatible with Ender IO
+
+1.13.6
+
+Fixed controller spamming the log with "Slot n maxProgress set to: 240"
+Progress in the controller now scales correctly with the duration of the slot instead of the duration of the top left slot
+
 
 1.13.5
 
-Fixed controller spamming the log with "Slot n maxProgress set to: 240"
 
 1.13.4
 

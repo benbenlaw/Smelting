@@ -79,6 +79,14 @@ public class ModdedTags {
     public static TagKey<Item> lapisGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
             String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/lapis")))));
 
+    //Silicon
+
+    public static TagKey<Item> silicon = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "silicon")))));
+
+    public static TagKey<Item> siliconDust = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "dusts/silicon")))));
+
     //Rod Tags
 
     public static TagKey<Item> ironRodTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
@@ -516,6 +524,167 @@ public class ModdedTags {
             String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "plates/brass")))));
     public static TagKey<Item> brassDustTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
             String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "dusts/brass")))));
+
+    //Conductive Alloy
+
+    public static TagKey<Item> conductiveAlloyNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/conductive_alloy")))));
+    public static TagKey<Item> conductiveAlloyIngotTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ingots/conductive_alloy")))));
+    public static TagKey<Item> conductiveAlloyBlockTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/conductive_alloy")))));
+    public static TagKey<Item> conductiveAlloyGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/conductive_alloy")))));
+    public static TagKey<Item> conductiveAlloyRodTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "rods/conductive_alloy")))));
+    public static TagKey<Item> conductiveAlloyPlateTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "plates/conductive_alloy")))));
+    public static TagKey<Item> conductiveAlloyDustTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "dusts/conductive_alloy")))));
+
+    //Energetic Alloy
+
+    public static TagKey<Item> energeticAlloyNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/energetic_alloy")))));
+    public static TagKey<Item> energeticAlloyIngotTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ingots/energetic_alloy")))));
+    public static TagKey<Item> energeticAlloyBlockTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/energetic_alloy")))));
+    public static TagKey<Item> energeticAlloyGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/energetic_alloy")))));
+    public static TagKey<Item> energeticAlloyRodTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "rods/energetic_alloy")))));
+    public static TagKey<Item> energeticAlloyPlateTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "plates/energetic_alloy")))));
+    public static TagKey<Item> energeticAlloyDustTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "dusts/energetic_alloy")))));
+
+
+    //Vibrant Alloy
+
+    public static TagKey<Item> vibrantAlloyNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/vibrant_alloy")))));
+    public static TagKey<Item> vibrantAlloyIngotTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ingots/vibrant_alloy")))));
+    public static TagKey<Item> vibrantAlloyBlockTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/vibrant_alloy")))));
+    public static TagKey<Item> vibrantAlloyGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/vibrant_alloy")))));
+    public static TagKey<Item> vibrantAlloyRodTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "rods/vibrant_alloy")))));
+    public static TagKey<Item> vibrantAlloyPlateTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "plates/vibrant_alloy")))));
+    public static TagKey<Item> vibrantAlloyDustTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "dusts/vibrant_alloy")))));
+
+    //Pulsating Alloy
+
+    public static TagKey<Item> pulsatingAlloyNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/pulsating_alloy")))));
+    public static TagKey<Item> pulsatingAlloyIngotTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ingots/pulsating_alloy")))));
+    public static TagKey<Item> pulsatingAlloyBlockTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/pulsating_alloy")))));
+    public static TagKey<Item> pulsatingAlloyGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/pulsating_alloy")))));
+    public static TagKey<Item> pulsatingAlloyRodTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "rods/pulsating_alloy")))));
+    public static TagKey<Item> pulsatingAlloyPlateTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "plates/pulsating_alloy")))));
+    public static TagKey<Item> pulsatingAlloyDustTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "dusts/pulsating_alloy")))));
+
+    //Soularium Tags
+
+
+
+    public static TagKey<Item> soulariumNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/soularium")))));
+    public static TagKey<Item> soulariumIngotTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ingots/soularium")))));
+    public static TagKey<Item> soulariumBlockTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/soularium")))));
+    public static TagKey<Item> soulariumGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/soularium")))));
+    public static TagKey<Item> soulariumRodTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "rods/soularium")))));
+    public static TagKey<Item> soulariumPlateTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "plates/soularium")))));
+    public static TagKey<Item> soulariumDustTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "dusts/soularium")))));
+
+    //End Steel
+
+    public static TagKey<Item> endSteelNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/end_steel")))));
+    public static TagKey<Item> endSteelIngotTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ingots/end_steel")))));
+    public static TagKey<Item> endSteelBlockTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/end_steel")))));
+    public static TagKey<Item> endSteelGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/end_steel")))));
+    public static TagKey<Item> endSteelRodTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "rods/end_steel")))));
+    public static TagKey<Item> endSteelPlateTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "plates/end_steel")))));
+    public static TagKey<Item> endSteelDustTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "dusts/end_steel")))));
+
+    //Dark Steel
+
+    public static TagKey<Item> darkSteelNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/dark_steel")))));
+    public static TagKey<Item> darkSteelIngotTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ingots/dark_steel")))));
+    public static TagKey<Item> darkSteelBlockTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/dark_steel")))));
+    public static TagKey<Item> darkSteelGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/dark_steel")))));
+    public static TagKey<Item> darkSteelRodTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "rods/dark_steel")))));
+    public static TagKey<Item> darkSteelPlateTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "plates/dark_steel")))));
+    public static TagKey<Item> darkSteelDustTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "dusts/dark_steel")))));
+
+    //Redstone Alloy
+
+    public static TagKey<Item> redstoneAlloyNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/redstone_alloy")))));
+    public static TagKey<Item> redstoneAlloyIngotTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ingots/redstone_alloy")))));
+    public static TagKey<Item> redstoneAlloyBlockTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/redstone_alloy")))));
+    public static TagKey<Item> redstoneAlloyGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/redstone_alloy")))));
+    public static TagKey<Item> redstoneAlloyRodTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "rods/redstone_alloy")))));
+    public static TagKey<Item> redstoneAlloyPlateTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "plates/redstone_alloy")))));
+    public static TagKey<Item> redstoneAlloyDustTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "dusts/redstone_alloy")))));
+
+    //Copper Alloy
+
+    public static TagKey<Item> copperAlloyNuggetTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "nuggets/copper_alloy")))));
+    public static TagKey<Item> copperAlloyIngotTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "ingots/copper_alloy")))));
+    public static TagKey<Item> copperAlloyBlockTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/copper_alloy")))));
+    public static TagKey<Item> copperAlloyGearTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "gears/copper_alloy")))));
+    public static TagKey<Item> copperAlloyRodTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "rods/copper_alloy")))));
+    public static TagKey<Item> copperAlloyPlateTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "plates/copper_alloy")))));
+    public static TagKey<Item> copperAlloyDustTag = ItemTags.create(Objects.requireNonNull(ResourceLocation.tryParse(
+            String.valueOf(ResourceLocation.fromNamespaceAndPath("c", "dusts/copper_alloy")))));
+
+
+
+
+
 
 
 

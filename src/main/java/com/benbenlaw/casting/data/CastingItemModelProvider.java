@@ -38,6 +38,7 @@ public class CastingItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.ROD_MOLD);
         simpleItem(ModItems.GEM_MOLD);
         simpleItem(ModItems.DUST_MOLD);
+        simpleItem(ModItems.BALL_MOLD);
         simpleItem(ModItems.BLACK_BRICK);
 
         simpleItem(ModItems.FLUID_MOVER);
@@ -67,6 +68,9 @@ public class CastingItemModelProvider extends ItemModelProvider {
         simpleBucketItem("molten_invar_bucket", CastingFluids.MOLTEN_INVAR.getFluid());
         simpleBucketItem("molten_glowstone_bucket", CastingFluids.MOLTEN_GLOWSTONE.getFluid());
         simpleBucketItem("molten_ender_bucket", CastingFluids.MOLTEN_ENDER.getFluid());
+        simpleBucketItem("molten_end_stone_bucket", CastingFluids.MOLTEN_END_STONE.getFluid());
+        simpleBucketItem("molten_silicon_bucket", CastingFluids.MOLTEN_SILICON.getFluid());
+        simpleBucketItem("molten_soul_bucket", CastingFluids.MOLTEN_SOUL.getFluid());
 
         simpleBucketItem("molten_bronze_bucket", CastingFluids.MOLTEN_BRONZE.getFluid());
         simpleBucketItem("molten_obsidian_bucket", CastingFluids.MOLTEN_OBSIDIAN.getFluid());
@@ -78,6 +82,15 @@ public class CastingItemModelProvider extends ItemModelProvider {
         simpleBucketItem("molten_enderium_bucket", CastingFluids.MOLTEN_ENDERIUM.getFluid());
         simpleBucketItem("molten_constantan_bucket", CastingFluids.MOLTEN_CONSTANTAN.getFluid());
         simpleBucketItem("molten_brass_bucket", CastingFluids.MOLTEN_BRASS.getFluid());
+        simpleBucketItem("molten_energetic_alloy_bucket", CastingFluids.MOLTEN_ENERGETIC_ALLOY.getFluid());
+        simpleBucketItem("molten_vibrant_alloy_bucket", CastingFluids.MOLTEN_VIBRANT_ALLOY.getFluid());
+        simpleBucketItem("molten_pulsating_alloy_bucket", CastingFluids.MOLTEN_PULSATING_ALLOY.getFluid());
+        simpleBucketItem("molten_copper_alloy_bucket", CastingFluids.MOLTEN_COPPER_ALLOY.getFluid());
+        simpleBucketItem("molten_dark_steel_bucket", CastingFluids.MOLTEN_DARK_STEEL.getFluid());
+        simpleBucketItem("molten_soularium_bucket", CastingFluids.MOLTEN_SOULARIUM.getFluid());
+        simpleBucketItem("molten_end_steel_bucket", CastingFluids.MOLTEN_END_STEEL.getFluid());
+        simpleBucketItem("molten_conductive_alloy_bucket", CastingFluids.MOLTEN_CONDUCTIVE_ALLOY.getFluid());
+        simpleBucketItem("molten_redstone_alloy_bucket", CastingFluids.MOLTEN_REDSTONE_ALLOY.getFluid());
 
 
 

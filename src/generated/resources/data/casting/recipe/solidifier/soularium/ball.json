@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "enderio"
+    }
+  ],
+  "type": "casting:solidifier",
+  "fluid": {
+    "amount": 450,
+    "id": "casting:molten_soularium"
+  },
+  "mold": {
+    "count": 1,
+    "item": "casting:ball_mold"
+  },
+  "output": {
+    "count": 24,
+    "item": "enderio:soularium_grinding_ball"
+  }
+}

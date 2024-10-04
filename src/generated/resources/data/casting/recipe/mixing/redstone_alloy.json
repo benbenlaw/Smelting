@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/redstone_alloy"
+      }
+    }
+  ],
+  "type": "casting:mixing",
+  "fluid1": {
+    "amount": 250,
+    "id": "casting:molten_silicon"
+  },
+  "fluid2": {
+    "amount": 90,
+    "id": "casting:molten_redstone"
+  },
+  "output": {
+    "amount": 90,
+    "id": "casting:molten_redstone_alloy"
+  }
+}
