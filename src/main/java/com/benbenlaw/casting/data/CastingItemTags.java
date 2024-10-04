@@ -33,6 +33,7 @@ public class CastingItemTags extends ItemTagsProvider {
                 .add(ModItems.PLATE_MOLD.asItem())
                 .add(ModItems.GEM_MOLD.asItem())
                 .add(ModItems.ROD_MOLD.asItem())
+                .add(ModItems.BALL_MOLD.asItem())
         ;
 
         tag(Tags.Items.BUCKETS)

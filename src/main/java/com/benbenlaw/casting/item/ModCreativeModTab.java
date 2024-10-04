@@ -34,6 +34,7 @@ public class ModCreativeModTab {
                 output.accept(ModItems.BALL_MOLD);
                 output.accept(ModItems.BLACK_BRICK);
                 output.accept(ModBlocks.BLACK_BRICKS);
+                output.accept(ModItems.FLUID_MOVER);
 
                 output.accept(CastingFluids.MOLTEN_BRONZE.getBucket());
                 output.accept(CastingFluids.MOLTEN_OBSIDIAN.getBucket());

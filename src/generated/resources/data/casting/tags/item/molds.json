@@ -8,6 +8,7 @@
     "casting:nugget_mold",
     "casting:plate_mold",
     "casting:gem_mold",
-    "casting:rod_mold"
+    "casting:rod_mold",
+    "casting:ball_mold"
   ]
 }

@@ -2,6 +2,13 @@ Changelog BBL Smelting
 
 // TODO //
 
+1.14.1
+
+Added ball mold to the molds tag
+Added Fluid Mover to jei, emi and the creative menu
+Fixed some vanilla metals not checking for valid tags such as gear, rods, plates ect
+Updated tank information
+
 1.14.0
 
 Added Molten Copper Alloy, Vibrant Alloy, Energetic Alloy, Pulsating Alloy, Soularium, Dark Steel, End Steel, Conductive Alloy, Redstone Alloy
