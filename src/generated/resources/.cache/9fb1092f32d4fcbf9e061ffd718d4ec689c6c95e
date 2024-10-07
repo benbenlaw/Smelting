@@ -1,4 +1,4 @@
-// 1.21	2024-10-04T14:55:56.6342087	Recipes
+// 1.21	2024-10-07T10:22:49.8710256	Recipes
 d2ea4d8ce765581bcbbe977e46d4dada22629c1e data/casting/advancement/recipes/fuel/fuel/lava.json
 d42b7a6d6b1d2bf9f8135d17c5a1f3d53b083e4a data/casting/advancement/recipes/fuel/fuel/molten_coal.json
 87543abaa0e3ad2d740112dc3a783db8f6d295be data/casting/advancement/recipes/fuel/fuel/molten_ender.json
@@ -256,6 +256,7 @@ f31ec5270dfe6766879fa0f58b24faad2851d3f9 data/casting/advancement/recipes/misc/c
 0442ebd191ffb38fb9f6e25c0782e6db419135c8 data/casting/advancement/recipes/misc/gem_mold.json
 aaa0e119ee28200d5e1674ea8b347a65bea3cb68 data/casting/advancement/recipes/misc/ingot_mold.json
 8182a5f87ee10198af833a5cd79a24e9dca87f0a data/casting/advancement/recipes/misc/mixer.json
+231fe1c55c09e143214ae6125f48825030d090cc data/casting/advancement/recipes/misc/mixer_whisk.json
 0d679c3cf9590e769f49905525495a1ba55bd83f data/casting/advancement/recipes/misc/nugget_mold.json
 9ca4d9aae8e9790f2109bf86368f07af9a53a905 data/casting/advancement/recipes/misc/plate_mold.json
 c08ec77916e583b80a3e49a9ce8926eb11eca071 data/casting/advancement/recipes/misc/rod_mold.json
@@ -769,6 +770,7 @@ e579e8a57594b712174026c8f8c90929473f6427 data/casting/recipe/melting/tin/from_ra
 b48e6b467387a8ffb6a98a6764a1ef0d5eb61473 data/casting/recipe/melting/zinc/from_raw_ore.json
 ad6550fa4ab22e9e41934d14b687b46fdbccf860 data/casting/recipe/melting/zinc/from_raw_ore_block.json
 9aa29cf1a35fdbe86706589286f6a92c2882ac6a data/casting/recipe/mixer.json
+9a6a29f92b554616af20279e8cf45705b57a5d4d data/casting/recipe/mixer_whisk.json
 bb7c4da7c2f80eda10c40685eefaf7d6d0ae6b99 data/casting/recipe/mixing/brass.json
 b493dba2d03497acc67756b6bb7fcbb95745a300 data/casting/recipe/mixing/bronze.json
 ed39d620ab8361c468f35a10423444046627c920 data/casting/recipe/mixing/conductive_alloy.json

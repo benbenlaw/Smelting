@@ -1,5 +1,6 @@
 package com.benbenlaw.casting.screen;
 
+import com.benbenlaw.casting.block.ModBlocks;
 import com.benbenlaw.casting.item.ModItems;
 import com.benbenlaw.casting.networking.payload.ClearTankPayload;
 import com.benbenlaw.casting.networking.payload.FluidMoverPayload;
@@ -71,6 +72,36 @@ public class MixerScreen extends AbstractContainerScreen<MixerMenu> {
         renderProgressBars(guiGraphics);
         renderTooltip(guiGraphics, mouseX, mouseY);
         renderWarning(guiGraphics, mouseX, mouseY);
+
+        renderNoWhisks(guiGraphics, mouseX, mouseY, this.leftPos, this.topPos);
+        renderWhisks(guiGraphics, mouseX, mouseY, this.leftPos, this.topPos);
+    }
+
+    private void renderNoWhisks(GuiGraphics guiGraphics, int mouseX, int mouseY, int x, int y) {
+        int whiskTotal = this.menu.blockEntity.totalWhisksAbove;
+        if (MouseUtil.isMouseAboveArea(mouseX, mouseY, x, y, 126,  55, 16, 16) && whiskTotal == 0) {
+            guiGraphics.renderTooltip(this.font, Component.literal("Place Mixer Whisks above the mixer to speed up!").withStyle(ChatFormatting.RED), mouseX, mouseY);
+        }
+    }
+
+    private void renderWhisks(GuiGraphics guiGraphics, int mouseX, int mouseY, int x, int y) {
+        int whiskTotal = this.menu.blockEntity.totalWhisksAbove;
+
+        if (MouseUtil.isMouseAboveArea(mouseX, mouseY, x, y, 126,  55, 16, 16) && whiskTotal > 0) {
+            guiGraphics.renderTooltip(this.font, Component.literal("Ticks Per Recipe: " + this.menu.blockEntity.maxProgress).withStyle(ChatFormatting.WHITE), mouseX, mouseY);
+        }
+
+        guiGraphics.renderItemDecorations(this.font, new ItemStack(ModBlocks.MIXER_WHISK.get(), whiskTotal), x + 126, y + 55);
+        guiGraphics.renderFakeItem(new ItemStack(ModBlocks.MIXER_WHISK.get(), whiskTotal), this.leftPos + 126, this.topPos + 55);
+    }
+
+    private void renderWhiskAmount(GuiGraphics guiGraphics, int mouseX, int mouseY, int x, int y) {
+        if (MouseUtil.isMouseAboveArea(mouseX, mouseY, x, y, 126, 55, 16, 16)) {
+
+
+            guiGraphics.drawString(this.font, this.menu.blockEntity.maxProgress + " ticks", this.leftPos + 126,
+                    this.topPos + 27, 0x3F3F3F, false);
+        }
     }
 
     private void renderProgressBars(GuiGraphics guiGraphics) {

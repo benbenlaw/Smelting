@@ -1,5 +1,6 @@
 package com.benbenlaw.casting.block.entity;
 
+import com.benbenlaw.casting.block.ModBlocks;
 import com.benbenlaw.casting.recipe.FuelRecipe;
 import com.benbenlaw.opolisutilities.recipe.NoInventoryRecipe;
 import com.benbenlaw.casting.recipe.MixingRecipe;
@@ -357,8 +358,9 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
 
     public final ContainerData data;
     public int progress = 0;
-    public int maxProgress = 80;
+    public int maxProgress = 220;
     public int fuelTemp = 0;
+    public int totalWhisksAbove = 0;
 
     public MixerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.MIXER_BLOCK_ENTITY.get(), pos, state);
@@ -431,6 +433,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
         super.saveAdditional(compoundTag, provider);
         compoundTag.putInt("progress", progress);
         compoundTag.putInt("maxProgress", maxProgress);
+        compoundTag.putInt("totalWhisksAbove", totalWhisksAbove);
         compoundTag.put("tank1", TANK_1.writeToNBT(provider, new CompoundTag()));
         compoundTag.put("tank2", TANK_2.writeToNBT(provider, new CompoundTag()));
         compoundTag.put("tank3", TANK_3.writeToNBT(provider, new CompoundTag()));
@@ -448,6 +451,7 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
     protected void loadAdditional(CompoundTag compoundTag, HolderLookup.@NotNull Provider provider) {
         progress = compoundTag.getInt("progress");
         maxProgress = compoundTag.getInt("maxProgress");
+        totalWhisksAbove = compoundTag.getInt("totalWhisksAbove");
         TANK_1.readFromNBT(provider, compoundTag.getCompound("tank1"));
         TANK_2.readFromNBT(provider, compoundTag.getCompound("tank2"));
         TANK_3.readFromNBT(provider, compoundTag.getCompound("tank3"));
@@ -479,6 +483,10 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
                 }
             }
 
+            //Check for Whisk
+
+            whiskCheck();
+
             drainTanksIntoValidBlocks();
             fuelInformation(level.getBlockEntity(this.worldPosition));
             sync();
@@ -498,10 +506,31 @@ public class MixerBlockEntity extends BlockEntity implements MenuProvider {
                         setChanged();
                         resetProgress();
                         sync();
-                    //    System.out.println("Found a match for all required fluids in different tanks");
                     }
                 }
             }
+        }
+    }
+
+    public void whiskCheck() {
+
+        maxProgress = 220;
+        int whiskEffectAmount = 40;
+
+        BlockPos aboveMixer = this.getBlockPos().above();
+        totalWhisksAbove = 0;
+
+        while (true) {
+            assert level != null;
+            if (!level.getBlockState(aboveMixer).is(ModBlocks.MIXER_WHISK.get())) break;
+            totalWhisksAbove++;
+            aboveMixer = aboveMixer.above();
+        }
+
+        maxProgress -= totalWhisksAbove * whiskEffectAmount;
+
+        if (maxProgress < 20) {
+            maxProgress = 20;
         }
     }
 

@@ -4,6 +4,7 @@
     "casting:controller",
     "casting:tank",
     "casting:solidifier",
-    "casting:mixer"
+    "casting:mixer",
+    "casting:mixer_whisk"
   ]
 }

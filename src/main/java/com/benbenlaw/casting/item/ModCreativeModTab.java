@@ -88,6 +88,7 @@ public class ModCreativeModTab {
                 output.accept(ModBlocks.SOLIDIFIER.asItem());
                 output.accept(ModBlocks.CONTROLLER.asItem());
                 output.accept(ModBlocks.MIXER.asItem());
+                output.accept(ModBlocks.MIXER_WHISK.asItem());
                 output.accept(ModBlocks.TANK.asItem());
 
             }).build());

@@ -2,6 +2,19 @@ Changelog BBL Smelting
 
 // TODO //
 
+1.15.1
+
+Added JEI information
+
+1.15.0
+
+Mixer default speed now 220 ticks increased from 80
+Added Mixer Whisk, decreases time needed for the mixer to mix
+    Each whisk above the mixer decreases the ticks needed by 40
+    This means the mixer can run at a min of 20 ticks per recipe
+    Any additional whisks will not decrease the time further
+Mixer now shows tick rate in recipes
+
 1.14.1
 
 Added ball mold to the molds tag

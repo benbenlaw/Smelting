@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "casting:block/black_bricks",
+    "east": "casting:block/mixer_whisk",
+    "north": "casting:block/mixer_whisk",
+    "particle": "casting:block/mixer_whisk",
+    "south": "casting:block/mixer_whisk",
+    "up": "casting:block/black_bricks",
+    "west": "casting:block/mixer_whisk"
+  }
+}

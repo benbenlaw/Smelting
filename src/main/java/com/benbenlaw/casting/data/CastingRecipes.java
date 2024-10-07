@@ -103,6 +103,17 @@ public class CastingRecipes extends RecipeProvider {
                 .unlockedBy("has_black_brick", has(ModBlocks.BLACK_BRICKS.get()))
                 .save(consumer);
 
+        // Mixer Whisk
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.MIXER_WHISK.get(), 1)
+                .pattern("BIB")
+                .pattern("BSB")
+                .pattern("BIB")
+                .define('B', ModItems.BLACK_BRICK.get())
+                .define('S', Tags.Items.STORAGE_BLOCKS_IRON)
+                .define('I', Tags.Items.INGOTS_IRON)
+                .unlockedBy("has_black_brick", has(ModItems.BLACK_BRICK.get()))
+                .save(consumer);
+
         // Gear Mold
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GEAR_MOLD.get(), 1)
                 .pattern(" B ")

@@ -39,6 +39,9 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS).sound(SoundType.STONE)
                     .noOcclusion()));
 
+    public static final DeferredBlock<Block> MIXER_WHISK = registerBlock("mixer_whisk",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.STONE)
+                    .noOcclusion()));
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightLevel) {
         return (blockState) -> blockState.getValue(BlockStateProperties.LIT) ? lightLevel : 0;

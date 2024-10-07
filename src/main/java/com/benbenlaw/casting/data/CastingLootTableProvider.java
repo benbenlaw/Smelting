@@ -25,6 +25,7 @@ public class CastingLootTableProvider extends VanillaBlockLoot {
         this.dropOther(ModBlocks.SOLIDIFIER.get(), Items.AIR);
         this.dropSelf(ModBlocks.BLACK_BRICKS.get());
         this.dropOther(ModBlocks.MIXER.get(), Items.AIR);
+        this.dropSelf(ModBlocks.MIXER_WHISK.get());
 
     }
 

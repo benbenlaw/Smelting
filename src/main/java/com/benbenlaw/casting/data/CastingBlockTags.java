@@ -26,6 +26,7 @@ public class CastingBlockTags extends BlockTagsProvider {
                 .add(ModBlocks.TANK.get())
                 .add(ModBlocks.SOLIDIFIER.get())
                 .add(ModBlocks.MIXER.get())
+                .add(ModBlocks.MIXER_WHISK.get())
         ;
 
 

@@ -47,6 +47,9 @@ public class Information implements IModPlugin {
 
         reg.addIngredientInfo(new ItemStack(ModItems.FLUID_MOVER.get()), VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.casting.fluid_mover"));
+
+        reg.addIngredientInfo(new ItemStack(ModBlocks.MIXER_WHISK), VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.casting.mixer_whisk"));
     }
 
 }
