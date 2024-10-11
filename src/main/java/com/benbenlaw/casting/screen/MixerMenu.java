@@ -2,6 +2,7 @@ package com.benbenlaw.casting.screen;
 
 import com.benbenlaw.casting.block.ModBlocks;
 import com.benbenlaw.casting.block.entity.MixerBlockEntity;
+import com.benbenlaw.opolisutilities.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -106,6 +107,10 @@ public class MixerMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(@NotNull Player player) {
+
+        if (player.getItemInHand(player.getUsedItemHand()).is(ModItems.PORTABLE_GUI))
+            return true;
+
         return stillValid(ContainerLevelAccess.create(player.level(), blockPos),
                 player, ModBlocks.MIXER.get());
     }

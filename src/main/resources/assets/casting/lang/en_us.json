@@ -143,7 +143,7 @@
   "jei.casting.mixer": "The Mixer can be used to mix molten fluids together! \n\nHolding Shift whilst above a certain tank and left clicking will remove the fluid from the that tank!\n\nStores fluids when broken!",
   "jei.casting.tank": "The Tank stores the fuel used in the Controller to melt items!\n\nCan also be used with the Solidifier colder fluids in the tank makes the Solidifier faster \n\nStores fluids when broken!",
   "jei.casting.fluid_mover": "Used to move fluids between tanks, Holds up to 8000mb of a single fluid. \n\nClick on a tank to collect fluid and click on another tank to add!\n\nWill try to fill the selected tank before collecting fluids!",
-  "jei.casting.mixer_whisk": "Used to speed up the mixer when placed above a mixer. \n\nFor each whisk above the mixer the tick rate is decreased by 40 ticks!\n\nAdditional whisks placed after the tick rate is at its lowest (20) will have no affect!",
+  "jei.casting.mixer_whisk": "Used to speed up the mixer when placed above it. \n\nFor each whisk above the mixer the tick rate is decreased by 40 ticks!\n\nAdditional whisks placed after the tick rate is at its lowest (20) will have no effect!",
 
   "itemGroup.casting": "BBL Casting"
 
